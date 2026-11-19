@@ -1,6 +1,10 @@
-// ONE-135 v2.18 : one simple 35 mm film camera, printed parts only.  No spring, no pins, no screws, no supports,
+// ONE-135 v2.19 : one simple 35 mm film camera, printed parts only.  No spring, no pins, no screws, no supports,
 // no glue, no tape, no tools.  The only things that are not printed: the film and (optional, but it makes this a
 // hand-held camera) the lens from a used single-use camera.
+//
+// v2.19 (a print farm's thickness check): the tapered spring's layer on the bed was its outline less 0.3 mm each side, which left a strip 0.3 mm wide along its thin half:
+// narrower than a line of plastic.  It is 0.7 mm or more everywhere now (0.75 before v2.18): rimspring_bed2d.  Nothing above the first layer has moved.  tools/thincheck.py measures
+// thickness the way the farm's checker does and gives its numbers; the other places it lists are edge reliefs and hook lips, named in ROADMAP.md.
 //
 // v2.18 (shape search): the shutter's click spring is a constant-strain beam.  It was a plain beam 1.35 mm thick, as long as the rim allows and 0.3 mm from the wheel's boss,
 // strained 0.53 % on every picture against a limit of 0.5 %.  tools/springsearch.py searched its thickness along its length for the lowest peak strain at the same force on the
@@ -487,6 +491,15 @@ module rimspring2d(c, R, slit, t, a_tip, arc, t0 = 0, t1 = 0, tf = 0) { // on a 
         [for (i = [n : -1 : 0]) let (a = ar - 0.3 + (a1 - ar + 0.3) * i / n, u = min(1, max(0, (a_tip - a) / arc))) pol(c, Ro - max(t1, t0 * sqrt(u) * (1 + tf * pow(u, 6))), a)]));   // so every section works equally hard.  Its outer face stays where it was: the extra is toward the rim, where the beam barely moves
     sector2d(c, R - 1.4, Ro, a0, ar, 6);                                                         // root: 3 mm of solid (it reaches 1.4 mm into the part: the layer on the bed stays in one piece)
 }
+function rs_th(a, a_tip, arc, t0, t1, tf) = let (u = min(1, max(0, (a_tip - a) / arc))) max(t1, t0 * sqrt(u) * (1 + tf * pow(u, 6)));   // the tapered spring's thickness at angle a
+function rs_ro(th, wmin) = min(0.29, max(0.15, th - wmin - 0.05));                          // its relief on the bed: the outer face keeps 0.15 mm or more (the click wall is 0.25 mm away when the rocker is pressed) ...
+function rs_ri(th, wmin) = min(0.29, max(0.05, th - rs_ro(th, wmin) - wmin));               // ... and the inner face gives its relief up first: the slit behind it has 2 mm to spare
+module rimspring_bed2d(c, R, slit, t, a_tip, arc, t0 = 0, t1 = 0, tf = 0, wmin = 0.70) {   // v2.19: the spring's layer on the bed.  It is relieved 0.3 mm each side (elephant's foot), but never to less than wmin wide
+    Ro = R + slit + t; ar = a_tip - arc; a1 = a_tip + 1.5 / R * 180 / PI; n = 96; aend = a1 - 0.25 / Ro * 180 / PI;
+    offset(delta = -0.3) rimspring2d(c, R, slit, t, a_tip, arc, t0, t1, tf);                  // the root block and the thick end: as before
+    if (t0 > 0) { as = concat([for (i = [0 : n]) let (a = ar - 0.3 + (a1 - ar + 0.3) * i / n) if (a < aend - 0.05) a], [aend]);   // the beam: one strip that stands 0.01 mm or more outside the line above everywhere, so the two never run along each other
+        polygon(concat([for (a = as) pol(c, Ro - rs_ro(rs_th(a, a_tip, arc, t0, t1, tf), wmin), a)], [for (k = [len(as) - 1 : -1 : 0]) let (a = as[k], th = rs_th(a, a_tip, arc, t0, t1, tf)) pol(c, Ro - th + rs_ri(th, wmin), a)])); }
+}
 module rimbump2d(c, R, slit, t, a_tip, bump) if (bump > 0.05) translate(pol(c, R + slit + t, a_tip)) rotate(a_tip - 90) hull() {     // the tooth: a round tip (TIP_R) on a 2.6 mm base
     translate([0, bump - TIP_R]) circle(TIP_R, $fn = 48);
     translate([-1.3, -0.9]) square([2.6, 0.9]);
@@ -667,7 +680,7 @@ module blade(phi = PHI) rot_xz(P_S, phi) {                      // prints front 
                 }
             }
             ey(Y_SC0, Y_SC1 - 0.2) rimspring2d(P_S, R_OUT, BL_SLIT, BL_T, DB_A, BL_ARC, BL_T0, BL_T1, BL_TF);   // click spring: the rim itself.  It is a spring (v2.18: tapered, BL_T0 at the root to BL_T1 at the tooth) and keeps its own bed relief
-            ey(Y_SC1 - 0.21, Y_SC1) offset(delta = -0.3) rimspring2d(P_S, R_OUT, BL_SLIT, BL_T, DB_A, BL_ARC, BL_T0, BL_T1, BL_TF);
+            ey(Y_SC1 - 0.21, Y_SC1) rimspring_bed2d(P_S, R_OUT, BL_SLIT, BL_T, DB_A, BL_ARC, BL_T0, BL_T1, BL_TF);   // v2.19: 0.7 mm or more on the bed everywhere (it was 0.3 mm along the thin half)
             ey(Y_SC0, Y_SC1 - 0.4) rimbump2d(P_S, R_OUT, BL_SLIT, BL_T, DB_A, BL_BUMP - 0.02);
             ey(Y_SC1 - 0.41, Y_SC1) rimbump2d(P_S, R_OUT, BL_SLIT, BL_T, DB_A, BL_BUMP - 0.3);       // the two layers on the bed: 0.3 lower
         }
