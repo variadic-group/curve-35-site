@@ -1,6 +1,14 @@
-// ONE-135 v2.19 : one simple 35 mm film camera, printed parts only.  No spring, no pins, no screws, no supports,
+// ONE-135 v2.20 : one simple 35 mm film camera, printed parts only.  No spring, no pins, no screws, no supports,
 // no glue, no tape, no tools.  The only things that are not printed: the film and (optional, but it makes this a
 // hand-held camera) the lens from a used single-use camera.
+//
+// v2.20 (the print farm's "needs support" and thickness checks, worked down part by part): a farm adds supports by rule, wherever a face looks down within 35 degrees of
+// level, and it does not ask whether that face is a bridge that prints well.  So the faces went.  Body: the four foot pockets, the latch's channel, the nut pocket and its
+// hole have 45-degree roofs where they had flat ceilings up to 10.6 mm across; every mouth on the bed widens in a slope, not in steps; the skin over each hook ends in a
+// square edge 0.75 mm thick, not a feather; the tongue in the fork's mouth runs on into the wall.  Front plate, back, shutter, aperture wheel: every first-layer relief is a
+// 45-degree slope that slices to the same two layers as the steps it replaces (cut from outside the outline, so corners stay square: cone_y).  The three dots are dimples.
+// What is left is named in ROADMAP.md: the floor of the lens's pocket in the front plate (the lens sits on it; it is 1 mm thick and prints as bridges 2.7 and 2.9 mm wide) and a few faces of 6 mm2 or less.
+// tools/overhangcheck.py measures what the farm's check measures; tools/layerdiff.py lists, layer by layer, what a change did to the print.
 //
 // v2.19 (a print farm's thickness check): the tapered spring's layer on the bed was its outline less 0.3 mm each side, which left a strip 0.3 mm wide along its thin half:
 // narrower than a line of plastic.  It is 0.7 mm or more everywhere now (0.75 before v2.18): rimspring_bed2d.  Nothing above the first layer has moved.  tools/thincheck.py measures
@@ -187,7 +195,7 @@ SLIDE = 4.4; FOOT_L = 3.6; FOOT_W = 6.4; FOOT_D = 4.4; FOOT_TIP = 2.4; LIP = 1.6
 // its right side (SIDE_L long, the hook's own slope), under a second strip of the body's skin that runs the whole height of its pocket: slid up, the plate still cannot come off.  Only where it
 // has gone up XUP (the feet stand above a wall ZW high) can it be slid XA sideways, out from under those strips, and lifted off.  At home nothing has changed: the four hooks, their stops, the
 // wedge that seats the plate and the latch are as they were; the side lips touch nothing (SIDE_G of room).  It goes on the same way back: on high and to the side, across, down until it clicks.
-SIDE_L = 3.2; SIDE_G = 0.8; XA = 3.6; ZW = 2.2; PK_TOP = 1.0; FOOT_CH = 1.0; PK_D = FOOT_D + 0.8; XUP = ZW + LIP;      // side lip; its room; how far the pocket runs on sideways at its top; the wall under that part; room over the foot at the top of its travel; how deep the pockets are (0.8 mm more than the feet: their roofs are bridges 10.6 mm long); the plate has to go up XUP = 3.8
+SIDE_L = 3.2; SIDE_G = 0.8; XA = 3.6; ZW = 2.2; PK_TOP = 1.0; FOOT_CH = 1.0; PK_D = FOOT_D + 0.8; XUP = ZW + LIP;      // side lip; its room; how far the pocket runs on sideways at its top; the wall under that part; room over the foot at the top of its travel; how deep the pockets are (0.8 mm more than the feet; over that, since v2.20, a 45-degree roof: the flat one was a bridge 10.6 mm long); the plate has to go up XUP = 3.8
 FEET = [[FX0 + FOOT_EDGE + 2.4, FZ0 + 2.3], [FX1 - FOOT_EDGE - FOOT_W, FZ0 + 2.3], [FX0 + FOOT_EDGE + 2.4, FZ1 - 11.5], [FX1 - FOOT_EDGE - FOOT_W, FZ1 - 11.5]];   // [x of the foot's left side, z of its hooked face].  All four hooks point down.  The top two leave 2.5 mm of wall above their pockets (they stand 0.3 mm lower than in v2.9: their pockets are 0.3 mm taller).  (The two left feet stand 2.4 mm further in than in v2.9: their pockets now run on 3.6 mm to the left)
 // v2.8 latch of the front plate.  tools/endcases.py: v2.7's upright tongue engaged SIDEWAYS, and the plate floats sideways on its feet (0.7 mm less twice the wall error), so a printer
 // 0.15 thin left it nothing to hold with, and on one 0.25 fat the tooth could not get past its bump.  Now a LEAF lying in the plate's front face: 7 layers thick, free on three sides,
@@ -204,7 +212,8 @@ LF_RAKE = 38; LF_RAMP = 54; LF_TOP = 0.4; LF_SL = -0.1;   /* v2.14: the bump's t
 LF_ZB = LF_ZH + LF_PL / 2 + LF_FG;                          // far side of the gap beyond the leaf's free end
 LF_ZC0 = LF_ZH - LF_R - 0.9; LF_ZC1 = LF_ZH + SLIDE + 1.6 + LF_R + 0.9;       // the channel's two ends (v2.10: 1.6 mm longer at the top: the plate can go up further before its feet meet the tops of their pockets, on a thin printer 6 mm)
 function leaf_cut_yz() = let(zr0 = LF_ZH + LF_SL + 0.04, zr1 = zr0 + (LF_DE - LF_DB) / tan(LF_RAKE), zt1 = zr1 + LF_TOP, ze1 = zt1 + (LF_DE - LF_DB) / tan(LF_RAMP), zc0 = LF_ZC0, zc1 = LF_ZC1)
-    [[Y_FRONT + 0.01, zc0], [Y_FRONT - LF_DE, zc0], [Y_FRONT - LF_DE, zr0], [Y_FRONT - LF_DB, zr1], [Y_FRONT - LF_DB, zt1], [Y_FRONT - LF_DE, ze1], [Y_FRONT - LF_DE, zc1], [Y_FRONT + 0.01, zc1]];   // the channel's side view (y, z)
+    [[Y_FRONT + 0.01, zc0], [Y_FRONT - LF_DE, zc0], [Y_FRONT - LF_DE - (zr0 - zc0) / 2, (zc0 + zr0) / 2], [Y_FRONT - LF_DE, zr0], [Y_FRONT - LF_DB, zr1], [Y_FRONT - LF_DB, zt1], [Y_FRONT - LF_DE, ze1],
+     [Y_FRONT - LF_DE - (zc1 - ze1) / 2, (ze1 + zc1) / 2], [Y_FRONT - LF_DE, zc1], [Y_FRONT + 0.01, zc1]];   // the channel's side view (y, z).  v2.20: each stretch of its deep face is a 45-degree roof (the post's end is 0.4 mm short of that face, at home and all the way up)
 // legend engraved on the back: [text, x, z, align].  Few words, 5.5 mm tall, three layers deep: small text does not survive a first layer.
 // (no legend on the back: engraved letters on the bed face are the feature most likely to print badly)
 FORK_GAP = 2.3; FORK_R = 3.3; FORK_Z0 = 19.4;          // wind knob: a 6.6 mm round end (v2.9; it was 6.2) with a 2.3 mm slot across it, for the bar inside the cassette's spool.  7.1 mm on the fattest printer.  The key gauge is still the check: 3.1 fits a tighter hole
@@ -244,6 +253,13 @@ module ey(y0, y1) translate([0, y1, 0]) rotate([90, 0, 0]) linear_extrude(y1 - y
 module ez(z0, z1) translate([0, 0, z0]) linear_extrude(z1 - z0) children();                        // 2-D (x,y) -> z0..z1
 module rot_xz(c, deg) translate([c[0], 0, c[1]]) rotate([0, -deg, 0]) translate([-c[0], 0, -c[1]]) children();
 module cyl_y(p, r, y0, y1, r1 = undef) translate([p[0], y1, p[1]]) rotate([90, 0, 0]) cylinder(r1 = is_undef(r1) ? r : r1, r2 = r, h = y1 - y0);
+// v2.20: true chamfers where there were steps, and peaked roofs where there were flat ceilings.  A relief of two stepped layers and a 45-degree chamfer slice to the
+// same layers, and a flat ceiling 10 mm wide prints as a bridge; but a print farm's upload check reads every level underside as an overhang to prop up, and the lip
+// that two opposite steps leave as a thin wall.  cone_y() is what a thin slab is swept with (minkowski) to chamfer its outline: apex at the origin, widening toward
+// -y (s = 1) or +y (s = -1).  It is drawn round the circle, so the chamfer is never smaller than d.  gable_yz() is a 45-degree roof over a ceiling, as (y, z) points.
+module outside2d(c, w = 120) difference() { translate(c) square(w, center = true); children(); }   // everything round a shape: swept with cone_y it cuts a slope on the shape's edge and keeps the shape's corners square
+module cone_y(d, s = 1, n = 12) rotate([s > 0 ? 90 : -90, 0, 0]) cylinder(r1 = 0, r2 = d / cos(180 / n), h = d, $fn = n);
+function gable_yz(y, z0, z1) = [[y + 0.01, z0], [y + 0.01, z1], [y - (z1 - z0) / 2, (z0 + z1) / 2]];
 module rrect2(p0, p1, r) hull() for (x = [p0[0] + r, p1[0] - r], y = [p0[1] + r, p1[1] - r]) translate([x, y]) circle(r);
 module arc_slot(c, r, a0, a1, hw, n = 24) for (i = [0 : n - 1]) hull() {
     translate(pol(c, r, a0 + (a1 - a0) * i / n)) circle(hw); translate(pol(c, r, a0 + (a1 - a0) * (i + 1) / n)) circle(hw); }
@@ -294,12 +310,15 @@ module horn(s) scale([1, 1, s]) difference() {                   // catch for th
 // v2.7: a low ridge round the hole for the frame wheel, sloped like the underside of the wheel's dial and 0.6 mm from it.  Light that used to fall straight into the
 // gap round the neck now has to pass that thin slanted slot first.  The front and sides of the ridge are on the body, the rear on the back's bar.  45-degree faces: no support.
 module fw_ridge() translate([ROLLER[0], ROLLER[1], H - 0.01]) rotate_extrude($fn = 72) polygon([[RIDGE_R0, 0], [RIDGE_R0 + RIDGE_H, RIDGE_H], [RIDGE_R0 + 2 * RIDGE_H, 0]]);
+module leaf_bump_keep() { lc = leaf_cut_yz(); translate([LF_X0 - 0.7 - XA + 0.01, Y_FRONT - 0.7, lc[4][1] - 0.4]) cube([LF_X1 - LF_X0 + 1.4 + XA - 0.02, 0.7 - LF_DB, lc[5][1] - lc[4][1] + 0.9]); }   // the bump's top and shoulders, between the channel's walls: a mouth's slope does not cut here
+module ridge_rear2d(d) { a = asin(d / (RIDGE_R0 + RIDGE_H)); polygon([[0, 0], [20 * cos(a), -20 * sin(a)], [20, -20], [-20, -20], [-20 * cos(a), -20 * sin(a)]]); }   // behind the two lines from the hole's centre that cross the ridge's crest d behind it
 module fork_slot_plan() translate([ROLLER[0] - RB_HWL - FIT, Y_RIM - 1]) square([RB_HWL + RB_HW + 2 * FIT, ROLLER[1] + RB_UP + FIT - Y_RIM + 1]);
 module shaft_slot_plan() { translate(ROLLER) circle(SHAFT_R + SHAFT_CL); translate([ROLLER[0] - SHAFT_R - SHAFT_CL, Y_RIM - 1]) square([2 * (SHAFT_R + SHAFT_CL), ROLLER[1] - Y_RIM + 1]); }
 module tslot_plan(c, r, hw, nk = 0) { hull() { translate(c) circle(r); translate([c[0], c[1] - nk]) circle(r); } translate([c[0] - hw, Y_RIM - 1]) square([2 * hw, c[1] - nk - Y_RIM + 1]); }   // a round seat where the shaft turns, and behind it a straight neck at least as wide as the seat (up to v2.5 the neck was narrower than the shaft: the knobs could not be pushed in)
 module spool_plan() { translate(SPOOL) circle(RCH_S); translate([SPOOL[0] - RCH_S, Y_RIM - 1]) square([2 * RCH_S, SPOOL[1] - Y_RIM + 1]); }
 function foot_pts(x0, c, s) = [[x0 + FOOT_L + s, Y_FRONT + 0.01], [x0 + FOOT_L + s, Y_FRONT - FOOT_D + FOOT_CH], [x0 + FOOT_L + s - FOOT_CH, Y_FRONT - FOOT_D], [x0 - LIP + FOOT_CH, Y_FRONT - FOOT_D], [x0 - LIP, Y_FRONT - FOOT_D + FOOT_CH],
                                [x0 - LIP, Y_FRONT - FOOT_D + FOOT_TIP], [x0, Y_FRONT - 0.3], [x0, Y_FRONT + 0.01]];     // a foot, side view (z, y): the hook is LIP long, its tip FOOT_TIP thick, a 47-degree slope over it.  v2.10: its far end is chamfered FOOT_CH above and below, so a plate set on too high or too low is led into its pockets
+PK_LAND = 0.75;                                                                                      // v2.20: the skin over a hook ends in a square edge this thick (it ran out to nothing)
 PK_SL = LIP / (FOOT_D - FOOT_TIP - 0.3);                                                             // the slope: how far down per millimetre of depth
 function pocket_pts(x0, s) = [[x0 + FOOT_L + s + PK_TOP, Y_FRONT + 0.01], [x0 + FOOT_L + s + PK_TOP, Y_FRONT - PK_D], [x0 - LIP - 0.02, Y_FRONT - PK_D],
                               [x0 - LIP - 0.02, Y_FRONT - FOOT_D + FOOT_TIP + PL_GY - 0.02 / PK_SL], [x0 + (0.31 - PL_GY) * PK_SL, Y_FRONT + 0.01]];
@@ -325,7 +344,6 @@ module body() {
             // and the one gap that opens when the back stands a little off (in front of the wide bar) lies under the knob's head.
         }
         funnel();
-        cyl_y([0, 0], 2.9, Y_FRONT - 0.4, Y_FRONT + 0.1);                                    // the port's mouth is on the bed: 0.35 mm wider for two layers, so elephant's foot cannot shade the picture's corners
         ez(-RAIL_IN, RAIL_IN) polygon(concat([for (a = [-A_DL : 1.5 : A_DR]) arcp(a, RF + 0.05)], [arcp(A_DR, RF + 0.05)],
                                              [for (a = [A_DR : -1.5 : -A_DL]) arcp(a, RF - 0.25)], [arcp(-A_DL, RF - 0.25)]));   // only the rails touch the film
         translate([ROLLER[0], ROLLER[1], WH_Z[0] - 0.6]) cylinder(r = R_ROLL + TOOTH + 0.9, h = 3.2);    // room for the frame wheel's teeth (the wheel sits on the back, which can lie 0.4 mm to either side)
@@ -346,16 +364,34 @@ module body() {
                          exx(f[0] - PK_X, xr) polygon(pocket_yz(f[1], SLIDE));                                                 // the pocket: the foot slides up and down in it; its hook goes in under the skin at the bottom
                          ez(f[1] - 0.01, zt) polygon([[xr - 0.01, Y_FRONT - 0.05], [xr + SIDE_L + 0.3, Y_FRONT - 0.05 - (SIDE_L + 0.3) / PK_SL], [xr + SIDE_L + 0.3, Y_FRONT - PK_D], [xr - 0.01, Y_FRONT - PK_D]]);   // v2.10: room under the skin on its right, the whole height, for the foot's side lip
                          translate([f[0] - PK_X - XA, Y_FRONT - PK_D, f[1] + ZW]) cube([XA + 0.01, PK_D + 0.01, zt - f[1] - ZW]);                                                                    // v2.10: at the top the pocket runs on XA to the left, over a wall ZW high: the way in and out
-                         for (k = [0 : 2]) { translate([f[0] - PK_X - 0.1 * (3 - k), Y_FRONT - 0.2 * (k + 1), f[1] - 0.3 - 0.2 * (3 - k)]) cube([FOOT_W + 2 * PK_X + 0.2 * (3 - k), 0.21 + 0.2 * k, zt - f[1] + 0.3 + 0.4 * (3 - k)]);     // the mouths widen in three steps over the first three layers (a chamfer): room for elephant's foot
-                                             translate([f[0] - PK_X - XA - 0.1 * (3 - k), Y_FRONT - 0.2 * (k + 1), f[1] + ZW - 0.1 * (3 - k)]) cube([XA + 0.1 * (3 - k) + 0.01, 0.21 + 0.2 * k, zt - f[1] - ZW + 0.2 * (3 - k)]); } }
+                         // v2.20: a 45-degree roof over each part of the pocket, in place of a flat ceiling 10.6 mm across.  The pocket's deep face has 0.8 mm of room over the foot: nothing touches it
+                         exx(f[0] - PK_X, xr) polygon(gable_yz(Y_FRONT - PK_D, f[1] - LIP - 0.02, zt));
+                         exx(xr - 0.01, xr + SIDE_L + 0.3) polygon(gable_yz(Y_FRONT - PK_D, f[1] - 0.01, zt));
+                         exx(f[0] - PK_X - XA, f[0] - PK_X + 0.01) polygon(gable_yz(Y_FRONT - PK_D, f[1] + ZW, zt));
+                         // v2.20: the mouths.  They widened in three steps over the first three layers (room for elephant's foot); the same room is now a slope: 0.35 mm a side and 0.7 at the top, over 0.7 mm.
+                         // Where the skin over a hook ran out to a feather edge (under the foot's hook, and beside the pocket over the foot's side lip) it now ends in a square edge PK_LAND thick
+                         translate([f[0] - PK_X, Y_FRONT - PK_LAND - 0.2, f[1] + (0.31 - PL_GY - PK_LAND) * PK_SL]) cube([FOOT_W + 2 * PK_X, PK_LAND + 0.21, 0.3 - (0.31 - PL_GY - PK_LAND) * PK_SL]);
+                         translate([xr - 0.01, Y_FRONT - PK_LAND - 0.2, f[1] - 0.01]) cube([(PK_LAND - 0.05) * PK_SL + 0.01, PK_LAND + 0.21, zt - f[1] + 0.01]);
+                         hull() { translate([f[0] - PK_X - 0.35, Y_FRONT - 0.001, f[1] + (0.31 - PL_GY - PK_LAND) * PK_SL]) cube([FOOT_W + 2 * PK_X + 0.35, 0.011, zt + 0.7 - f[1] - (0.31 - PL_GY - PK_LAND) * PK_SL]);
+                                  translate([f[0] - PK_X, Y_FRONT - 0.7, f[1] + (0.31 - PL_GY - PK_LAND) * PK_SL]) cube([FOOT_W + 2 * PK_X, 0.01, zt - f[1] - (0.31 - PL_GY - PK_LAND) * PK_SL]); }
+                         hull() { translate([f[0] - PK_X, Y_FRONT - 0.001, f[1] + (0.31 - PL_GY - PK_LAND) * PK_SL - 0.35]) cube([FOOT_W + 2 * PK_X + 0.35, 0.011, 0.35 - (0.31 - PL_GY - PK_LAND) * PK_SL]);   // (under the hook, and round the corner
+                                  translate([f[0] - PK_X, Y_FRONT - 0.35, f[1] + (0.31 - PL_GY - PK_LAND) * PK_SL]) cube([FOOT_W + 2 * PK_X, 0.01, -(0.31 - PL_GY - PK_LAND) * PK_SL]); }                        // beside it: 0.35 mm over 0.35, the room the steps gave there on the two bed layers)
+                         hull() { translate([f[0] - PK_X - XA - 0.35, Y_FRONT - 0.001, f[1] + ZW - 0.35]) cube([XA + 0.36, 0.011, zt + 0.7 - f[1] - ZW + 0.35]);
+                                  translate([f[0] - PK_X - XA, Y_FRONT - 0.7, f[1] + ZW]) cube([XA + 0.01, 0.01, zt - f[1] - ZW]); } }
         if (RIB_H > 0) for (s = [1, -1]) scale([1, 1, s]) translate([RIB_X0 - 0.7, Y_RIM - 0.01, RIB_Z[0]]) cube([F_X1 + 2.6 + 0.7 - RIB_X0 + 0.7, RIB_H + 0.66, RIB_Z[1] - RIB_Z[0]]);   // grooves in the rim for the ribs on the back's latch fingers
         exx(LF_X0 - 0.7, LF_X1 + 0.7) polygon(leaf_cut_yz());                                 // channel for the plate's latch post, with its bump
-        intersection() { exx(LF_X0 - 0.7 - XA, LF_X0 - 0.69) polygon(leaf_cut_yz()); translate([LF_X0 - 0.7 - XA - 1, Y_FRONT - 4, LF_ZH + XUP - LF_R - 1.1]) cube([XA + 2, 5, 20]); }   // v2.10: at the top it runs on XA to the left, like the pockets: the post goes sideways with the plate
-        for (k = [0 : 1]) { translate([LF_X0 - 0.7 - 0.2 * (2 - k), Y_FRONT - 0.2 * (k + 1), LF_ZC0 - 0.2 * (2 - k)]) cube([LF_X1 - LF_X0 + 1.4 + 0.4 * (2 - k), 0.21 + 0.2 * k, LF_ZC1 - LF_ZC0 + 0.4 * (2 - k)]);   // its mouth is wider on the two bed layers: elephant's foot
-                            translate([LF_X0 - 0.7 - XA - 0.2 * (2 - k), Y_FRONT - 0.2 * (k + 1), LF_ZH + XUP - LF_R - 1.1 - 0.2 * (2 - k)]) cube([XA + 0.2 * (2 - k) + 0.01, 0.21 + 0.2 * k, LF_ZC1 - LF_ZH - XUP + LF_R + 1.1 + 0.4 * (2 - k)]); }
-        cyl_y([0, 0], PORT_FW[1] + 0.5, Y_FRONT - 0.4, Y_FRONT + 0.1);                       // the port's first two layers are wider: elephant's foot cannot make the port smaller than the largest stop
-        // tripod: 1/4"-20 nut pocket (flats face front and back so its roof is a short bridge)
-        translate([0, 13, -H - 0.01]) { cylinder(d = 11.4 / cos(30), h = 6, $fn = 6); cylinder(d = 7, h = 8); }
+        intersection() { exx(LF_X0 - 0.7 - XA, LF_X0 - 0.69) polygon(leaf_cut_yz()); translate([LF_X0 - 0.7 - XA - 1, Y_FRONT - 5, LF_ZH + XUP - LF_R - 1.1]) cube([XA + 2, 6, 20]); }   // v2.10: at the top it runs on XA to the left, like the pockets: the post goes sideways with the plate
+        difference() { hull() { translate([LF_X0 - 0.7 - 0.5, Y_FRONT - 0.001, LF_ZC0 - 0.5]) cube([LF_X1 - LF_X0 + 1.4 + 1.0, 0.011, LF_ZC1 - LF_ZC0 + 1.0]);   // its mouth is wider on the two bed layers: elephant's foot.  v2.20: a slope, 0.5 mm over 0.5 (0.4 and 0.2 on those layers, as the steps were)
+                               translate([LF_X0 - 0.7, Y_FRONT - 0.5, LF_ZC0]) cube([LF_X1 - LF_X0 + 1.4, 0.01, LF_ZC1 - LF_ZC0]); }
+                       leaf_bump_keep(); }                                                                                                                 // (over the bump it stops 0.4 mm down: that is the bump's top, and it sets the click)
+        difference() { hull() { translate([LF_X0 - 0.7 - XA - 0.5, Y_FRONT - 0.001, LF_ZH + XUP - LF_R - 1.1 - 0.5]) cube([XA + 0.51, 0.011, LF_ZC1 - LF_ZH - XUP + LF_R + 1.1 + 1.0]);
+                               translate([LF_X0 - 0.7 - XA, Y_FRONT - 0.5, LF_ZH + XUP - LF_R - 1.1]) cube([XA + 0.01, 0.01, LF_ZC1 - LF_ZH - XUP + LF_R + 1.1]); }
+                       leaf_bump_keep(); }
+        cyl_y([0, 0], PORT_FW[1] + 0.37, Y_FRONT - 0.56, Y_FRONT + 0.01, PORT_FW[1] + 0.655);     // the port's first two layers are wider (radius 3.2 and 3.1; it was 3.1 on both): elephant's foot cannot shade the picture's corners.  v2.20: a steep cone that runs out inside the funnel, not a step under it
+        // tripod: 1/4"-20 nut pocket (flats face front and back; the one that would be its roof is a 45-degree peak)
+        translate([0, 13, -H - 0.01]) { nr = 5.7 / cos(30);                                                                 // v2.20: as it prints the pocket's roof was a flat 6.6 mm wide and the hole's a round;
+                                        linear_extrude(6) polygon([[nr, 0], [nr / 2, 5.7], [-nr / 2, 5.7], [-nr, 0], [-nr / 2, -5.7], [0, -5.7 - nr / 2], [nr / 2, -5.7]]);   // each now rises to a 45-degree peak.  The nut still seats on the other five flats
+                                        cylinder(d = 7, h = 8); linear_extrude(8) polygon([[-2.47, -2.47], [2.47, -2.47], [0, -4.94]]); }
         for (sx = [-1, 0, 1]) hull() for (q = [[sx * 2.4, Y_RIM + 6], [sx * (2.4 + tan(GATE_A) * (Y_FRONT - 4.5 - Y_RIM - 6)), sx == 0 ? Y_FRONT + 1 : Y_FRONT - 4.5]]) translate([q[0], q[1], H - 0.6]) cylinder(r = AIM_R, h = 1, $fn = 8);   // aim lines, as in v2.9: the outer two are the picture's edges; the middle one lies on the lens's line and (v2.10) runs to the front face
         translate([ROLLER[0], ROLLER[1] + RIDGE_R0 + 2 * RIDGE_H + 0.6, H - 0.6]) linear_extrude(1) polygon([[-0.5, 0], [0.5, 0], [1.9, 4.4], [-1.9, 4.4]]);      // index mark for the frame dial (v2.11: an arrowhead pointing at the dial; it was a 1.4 mm line)
         difference() { ey(Y_FRONT - BED_CHAMFER, Y_FRONT + 1) translate([-BXL - 5, -H - 5]) square([BXL + BXR + 10, 2 * H + 10]);       // v2.17: the bed chamfer (front face down): BED_CHAMFER on the sides and the bottom;
@@ -363,11 +399,16 @@ module body() {
                      ey(Y_FRONT - 0.01, Y_FRONT + 0.01) rrect2([-BXL + BED_CHAMFER, -H + BED_CHAMFER], [BXR - BED_CHAMFER, H], CORNER_R - BED_CHAMFER); } }
     }
     horn(1); horn(-1);
-    difference() { fw_ridge(); translate([ROLLER[0] - RIDGE_R0 - 2 * RIDGE_H - 0.2, Y_RIM - 1, H - 1]) cube([2 * (RIDGE_R0 + 2 * RIDGE_H + 0.2), ROLLER[1] - FW_NK - Y_RIM + 1, 6]); ez(H - 1, H + 5) shaft_slot_plan(); }   // the ridge round the frame wheel's hole (front and sides)
+    difference() { fw_ridge(); translate([ROLLER[0] - RIDGE_R0 - 2 * RIDGE_H - 0.2, Y_RIM - 1, H - 1]) cube([2 * (RIDGE_R0 + 2 * RIDGE_H + 0.2), ROLLER[1] - FW_NK - Y_RIM + 1, 6]); ez(H - 1, H + 5) shaft_slot_plan();   // the ridge round the frame wheel's hole (front and sides)
+                   ez(H - 1, H + 5) translate(ROLLER) ridge_rear2d(FW_NK); }                             // v2.20: its inner slope ends on a line through the hole's centre, square to the slope (the straight cut met it in a feather edge)
     translate([ROLLER[0], ROLLER[1], 0]) difference() {                                      // v2.7: the tongue in the fork's mouth also follows the collar's cone, in front of the neck
-        translate([-RB_GAP / 2 + FIT, SHAFT_R + 0.3, RB_FLOOR - FIT]) cube([RB_GAP - 2 * FIT, RB_UP - FW_LAP - SHAFT_R, COLLAR_Z[0] - RB_FLOOR + FIT]);
+        translate([0, 0, RB_FLOOR - FIT]) linear_extrude(COLLAR_Z[0] - RB_FLOOR + FIT) { tw = RB_GAP / 2 - FIT; ty = SHAFT_R + 0.3;                              // (its two rear faces point at the neck's centre: square to the cone, no feather edge)
+            polygon([[0, 0], [tw, ty], [tw, RB_UP + FIT + 0.5], [-tw, RB_UP + FIT + 0.5], [-tw, ty]]); }   // v2.20: it runs on into the wall in front (it stopped 1 mm short: its front face hung in the air, 2 mm out from the step below, and met the cone in a feather edge)
         translate([0, 0, RB_FLOOR - FIT - 1]) cylinder(r = SHAFT_R + SHAFT_CL, h = CONE_Z0 - RB_FLOOR + FIT + 1.01);
         translate([0, 0, CONE_Z0]) cylinder(r1 = SHAFT_R + SHAFT_CL, r2 = COLLAR_R + 0.8, h = COLLAR_Z[0] - CONE_Z0 + 0.02);
+        for (sx = [-1, 1]) hull() for (dx = [0, 0.7]) translate([sx * dx, 0, 0]) intersection() {                      // v2.20: where the cone runs out through the tongue's side it left a sliver that thinned to nothing;
+            translate([0, 0, CONE_Z0]) cylinder(r1 = SHAFT_R + SHAFT_CL, r2 = COLLAR_R + 0.8, h = COLLAR_Z[0] - CONE_Z0 + 0.02);   // the tongue now ends square where it is 0.5 mm thick
+            translate([sx * (RB_GAP / 2 - FIT - 0.5) - 0.005, -10, 0]) cube([0.01, 20, 40]); }
     }
     for (q = [[LEDGE_Z, CORE_R + 0.7], [LEDGE2_Z, CORE_R + 0.7]])                                                               // solid steps above and under the take-up roll: front half only, so each grows up from the chamber wall as it prints.  (The rear half of the upper one is on the back: the foot of the spool's block)
         ez(q[0][0], q[0][1]) intersection() { difference() { translate(SPOOL) circle(RCH_S + 0.6); translate(SPOOL) circle(q[1]); fork_slot_plan(); }     // (the upper one keeps clear of the pocket for the frame wheel's fork)
@@ -401,6 +442,7 @@ module nub(s) {                                                 // ramp on the w
         translate([NUB_X0, Y_RIM - 0.02, s > 0 ? F_Z1 - 0.6 : -F_Z1 + 0.58]) cube([NUB_X1 - NUB_X0, 0.02, 0.02]);       // the ramp starts 0.6 mm below the finger's top: on a fat printer it still goes in under the bar
     }
     translate([NUB_X0 + 0.2, Y_RIM - DOOR_T, s > 0 ? F_Z1 - 0.8 : -F_Z1 - NUB_H]) cube([NUB_X1 - NUB_X0 - 0.4, 0.21, NUB_H + 0.8]);     // its layer on the bed is 0.2 mm narrower (and reaches down into the finger, so it is not a loose island)
+    translate([NUB_X0 + 0.2, Y_RIM - DOOR_T, s > 0 ? F_Z1 - 0.8 : -F_Z1 - 0.01]) cube([NUB_X1 - NUB_X0 - 0.4, 0.5, 0.81]);                // v2.20: under the nub the finger's edge keeps no bed slope (it left a notch over a skin one layer thick)
 }
 // The film block: guide, pressure pad and film post as ONE solid shape, from the cassette side to the take-up side.  Its top follows the back of the film;
 // both ends are straight-sided (nothing narrows toward its foot).  rg: radius of the guide's round top; dd: how far behind the film the pad lies; rp: radius of the post's round top.
@@ -437,7 +479,8 @@ module forkfloor2d(c) difference() {                           // floor zone: on
 module back() {
     difference() {
         intersection() {
-            union() { ey(Y_RIM - DOOR_T + 0.39, Y_RIM) back2d(); ey(Y_RIM - DOOR_T + 0.19, Y_RIM - DOOR_T + 0.4) offset(delta = -0.2) back2d(); ey(Y_RIM - DOOR_T, Y_RIM - DOOR_T + 0.2) offset(delta = -0.4) back2d(); }     // the layer on the bed is 0.2 mm smaller all round
+            difference() { ey(Y_RIM - DOOR_T, Y_RIM) back2d();                                 // the bed layers are smaller all round: 0.4 mm, then 0.2.  v2.20: as a 45-degree slope over 0.5 mm (it slices to the same two layers), where there were two steps
+                           minkowski() { ey(Y_RIM - DOOR_T + 0.49, Y_RIM - DOOR_T + 0.5) outside2d([0, 0], 2 * (max(BXL, BXR) + 8)) back2d(); cone_y(0.51, 1); } }
             union() { yb = Y_RIM - DOOR_T;                                                    // v2.17: the bed chamfer on the outline (BED_CHAMFER); the latch fingers, slits and pads keep the 0.4 mm steps above
                       ey(yb + BED_CHAMFER - 0.01, Y_RIM + 1) translate([-BXL - 5, -H - 5]) square([BXL + BXR + 10, 2 * H + 10]);
                       hull() { ey(yb + BED_CHAMFER - 0.02, yb + BED_CHAMFER) rrect2([-BXL, -H], [BXR, H], CORNER_R); ey(yb - 0.01, yb + 0.01) rrect2([-BXL + BED_CHAMFER, -H + BED_CHAMFER], [BXR - BED_CHAMFER, H - BED_CHAMFER], CORNER_R - BED_CHAMFER); }
@@ -473,7 +516,8 @@ module back() {
     ez(RB_Z[0], RB_FLOOR) forkfloor2d(ROLLER);
     ez(RB_Z[1] - 0.01, H - 0.2) translate([ROLLER[0] - SHAFT_R, Y_RIM - 0.01]) square([2 * SHAFT_R, ROLLER[1] - COLLAR_R - 0.7 - Y_RIM]);   // fills the slot in the body's top behind the neck: light trap
     difference() {                                                                           // ... and over that a wide bar that comes right up to the neck: its two tips pass either side of it.  The lifted collar goes under it
-        union() { intersection() { translate([0, 0, -0.19]) fw_ridge(); translate([ROLLER[0] - SHAFT_R - FW_KSW + FIT, Y_RIM, H - 1]) cube([2 * (SHAFT_R + FW_KSW - FIT), ROLLER[1] - FW_NK - FIT - Y_RIM, 6]); }   // the rear part of the ridge round the frame wheel's hole
+        union() { intersection() { translate([0, 0, -0.19]) fw_ridge(); translate([ROLLER[0] - SHAFT_R - FW_KSW + FIT, Y_RIM, H - 1]) cube([2 * (SHAFT_R + FW_KSW - FIT), ROLLER[1] - FW_NK - FIT - Y_RIM, 6]);   // the rear part of the ridge round the frame wheel's hole
+                                   ez(H - 1, H + 5) translate(ROLLER) ridge_rear2d(FW_NK + FIT); }      // (v2.20: its outer slope ends on a line through the hole's centre, as the body's inner slope does)
                   ez(FW_LZ + FIT, H - 0.2) translate([ROLLER[0] - SHAFT_R - FW_KSW + FIT, Y_RIM - 0.01]) square([2 * (SHAFT_R + FW_KSW - FIT), ROLLER[1] - FW_NK - FIT - Y_RIM]);
                   ez(ZR_OUT, FW_LZ + 0.41) translate([ROLLER[0] - SHAFT_R - FW_KSW + FIT, Y_RIM - 0.01]) square([2 * (SHAFT_R + FW_KSW - FIT), BAND_H - 0.3]); }   // at the rim it stands on the seal band
         translate([ROLLER[0], ROLLER[1], RB_Z[1]]) cylinder(r = SHAFT_R + 0.5, h = H);     // 0.5, not SHAFT_CL: the film pulls the neck back against this cradle and against the fork's floor: two bearings in line, and the gap behind the neck is closed
@@ -563,11 +607,12 @@ module front(slid = SLID) translate([0, 0, slid]) {
             exx(LF_X0, LF_X1) polygon([[Y_CVF - LF_T + 0.01, LF_ZR - 0.01], [Y_CVF - LF_T - 0.8, LF_ZR - 0.01], [Y_CVF - LF_T + 0.01, LF_ZR + 2.4]]);   // the leaf's root is filled in behind with a long wedge: no sharp corner where it bends most
         }
         ey(Y_FRONT - 3, Y_CVF + 1) leaf_slit2d();                                                    // the latch leaf: a slit round three sides, through the plate
-        for (k = [0 : 1]) ey(Y_CVF - 0.21 - 0.2 * k, Y_CVF + 1) offset(delta = 0.2 * (2 - k)) leaf_slit2d();   // (wider on the two bed layers, in steps: elephant's foot)
+        minkowski() { ey(Y_CVF - 0.5, Y_CVF - 0.49) leaf_slit2d(); cone_y(0.51, -1); }                    // (wider toward the bed: elephant's foot.  v2.20: a 45-degree slope over 0.5 mm, where there were two steps)
+        for (x = [LF_X0 - LF_G / 2, LF_X1 - 0.01]) translate([x, Y_FRONT - 3, LF_ZR]) cube([LF_G / 2 + 0.01, Y_CVF - LF_T - Y_FRONT + 3, LF_G / 2 + 0.01]);   // v2.20: the corner between each slit's round end and the room behind the leaf (it left a fin 0.4 mm long that thinned to nothing)
         difference() { translate([LF_X0 - 0.01, Y_FRONT - 3, LF_ZR]) cube([LF_X1 - LF_X0 + 0.02, Y_CVF - LF_T - Y_FRONT + 3, LF_ZB - LF_ZR]);        // and everything behind the leaf
                        exx(LF_X0 - 1, LF_X1 + 1) polygon([[Y_CVF - LF_T + 0.01, LF_ZR - 0.01], [Y_CVF - LF_T - 0.8, LF_ZR - 0.01], [Y_CVF - LF_T + 0.01, LF_ZR + 2.4]]); }
         ey(Y_CV0 - 1, Y_CVF + 1) fin_slot2d();                                                       // aperture handle
-        for (k = [0 : 1]) ey(Y_CVF - 0.21 - 0.2 * k, Y_CVF + 1) offset(delta = 0.2) fin_slot2d();    // (wider on the two bed layers, in steps)
+        minkowski() { ey(Y_CVF - 0.5, Y_CVF - 0.49) fin_slot2d(); cone_y(0.51, -1); }                 // (wider toward the bed.  v2.20: a 45-degree slope over 0.5 mm, where there was a step 0.2 mm wide and two layers tall)
         // lens port through the pocket floor.  Three layers, each a bridge the printer can make: a slot, a square, an octagon.  Nothing to poke out.
         translate([-PORT_H, Y_SEAT - 0.2, -(LENS_D / 2 + 0.3)]) cube([2 * PORT_H, 0.21, LENS_D + 0.6]);
         translate([-PORT_H, Y_SEAT - 0.4, -PORT_H]) cube([2 * PORT_H, 0.21, 2 * PORT_H]);
@@ -577,8 +622,8 @@ module front(slid = SLID) translate([0, 0, slid]) {
             for (a = [90, 210, 330]) cyl_y(pol([0, 0], LENS_D / 2 + 0.55, a), 0.8, Y_SEAT - 0.01, Y_CVF - 0.6);
         }
         cyl_y([0, 0], LENS_D / 2 + 0.1, Y_CVF - 0.6, Y_CVF + 0.01, LENS_D / 2 + 0.7);
-        for (k = [0 : 2], l = [[0.6, 0], [0.2, 0.25]]) ey(Y_CVF - l[0], Y_CVF + 0.01)                   // three dots by the handle, small to large: 3 layers deep, a little wider on the bed layer
-            translate(pol(WHEEL_C, H_RHO + LAB_R, HANDLE_A0 - WPOS[k])) circle(r = DOT_R[k] + l[1], $fn = 32);
+        for (k = [0 : 2]) { dd = min(DOT_R[k] + 0.35, 1.6);                                            // three dots by the handle, small to large.  v2.20: each is a 45-degree dimple, the size it was on the bed layer,
+            cyl_y(pol(WHEEL_C, H_RHO + LAB_R, HANDLE_A0 - WPOS[k]), DOT_R[k] + 0.35 - dd + 0.01, Y_CVF - dd, Y_CVF + 0.01, DOT_R[k] + 0.37, $fn = 32); }   // 1.6 mm deep at most (it was a flat-bottomed hole three layers deep: a roof to bridge)
     }
     translate([LF_X0, Y_FRONT - 0.01, LF_ZH - LF_PL / 2]) cube([LF_X1 - LF_X0, Y_CVF - LF_T - Y_FRONT + 0.02, LF_PL]);                        // the latch post, standing on the leaf's free end
     exx(LF_X0, LF_X1) hull() { translate([Y_FRONT - TOOTH_H + LF_R, LF_ZH]) circle(LF_R, $fn = 32); translate([Y_FRONT - 0.01, LF_ZH - LF_R]) square([0.02, 2 * LF_R]); }   // its round end, behind the plate
@@ -620,7 +665,8 @@ exx(xf - 1.1, xf + SIDE_L + 0.1) polygon(foot_yz(f[1], 0, 0)); } }              
         }
         ey(Y_FRONT - 0.01, Y_FRONT + P1_D) p1_pocket2d();                                           // the slide's pocket, open toward the body; the tab's slot runs out through the top edge
         ey(Y_FRONT - 3, Y_CVF + 1) leaf_slit2d();                                                    // the latch leaf: a slit round three sides, through the plate
-        for (k = [0 : 1]) ey(Y_CVF - 0.21 - 0.2 * k, Y_CVF + 1) offset(delta = 0.2 * (2 - k)) leaf_slit2d();   // (wider on the two bed layers, in steps: elephant's foot)
+        minkowski() { ey(Y_CVF - 0.5, Y_CVF - 0.49) leaf_slit2d(); cone_y(0.51, -1); }                    // (wider toward the bed: elephant's foot.  v2.20: a 45-degree slope over 0.5 mm, where there were two steps)
+        for (x = [LF_X0 - LF_G / 2, LF_X1 - 0.01]) translate([x, Y_FRONT - 3, LF_ZR]) cube([LF_G / 2 + 0.01, Y_CVF - LF_T - Y_FRONT + 3, LF_G / 2 + 0.01]);   // v2.20: the corner between each slit's round end and the room behind the leaf (it left a fin 0.4 mm long that thinned to nothing)
         difference() { translate([LF_X0 - 0.01, Y_FRONT - 3, LF_ZR]) cube([LF_X1 - LF_X0 + 0.02, Y_CVF - LF_T - Y_FRONT + 3, LF_ZB - LF_ZR]);        // and everything behind the leaf
 exx(LF_X0 - 1, LF_X1 + 1) polygon([[Y_CVF - LF_T + 0.01, LF_ZR - 0.01], [Y_CVF - LF_T - 0.8, LF_ZR - 0.01], [Y_CVF - LF_T + 0.01, LF_ZR + 2.4]]); }
         translate([-PORT_H, P1_SEAT - 0.2, -(LENS_D / 2 + 0.3)]) cube([2 * PORT_H, 0.21, LENS_D + 0.6]);
@@ -663,21 +709,16 @@ module pie2d() polygon(concat([P_S], [for (a = [A0 - SPAN : 2 : A0 + SPAN]) pol(
 module blade(phi = PHI) rot_xz(P_S, phi) {                      // prints front face down; hub, arm and tab rise from it
     difference() {
         union() {
-            intersection() {
+            difference() {
                 union() {
-                    ey(Y_SC0 + 0.19, Y_SC1 - 0.2) pie2d();
-                    ey(Y_SC0, Y_SC0 + 0.2) offset(delta = -0.3) pie2d();                                     // the layer that faces the wheel is 0.3 smaller: a lead-in
-                    ey(Y_SC1 - 0.21, Y_SC1) offset(delta = -0.4) pie2d();                                    // the layer on the bed is 0.4 smaller: elephant's foot lands on size
+                    difference() { ey(Y_SC0, Y_SC1) pie2d();                                                 // the layer that faces the wheel has a lead-in.  v2.20: a 45-degree slope one layer deep, where that layer was a step 0.3 mm smaller
+                                   minkowski() { ey(Y_SC0 + 0.19, Y_SC0 + 0.2) outside2d(P_S) pie2d(); cone_y(0.21, 1); } }   // (a step above and steps below left the rim two layers thick over its outermost 0.2 mm; the two slopes are parallel)
                     ey(Y_FRONT + 0.25, Y_SC1) root2d();                                                      // hub and root: nearly the full depth of the pocket, so the blade cannot tip, and a hard press cannot snap the blade off its hub
                     ey(Y_FRONT + 0.25, Y_SC1) blade_web2d();                                                 // v2.17: the root's web, as deep, out to BW_R
                     ey(Y_FRONT + 0.25, Y_SC1) arm2d();                                                       // arm: comes up through the top of the plate; its corners under the rocker are rounded
                     ey(Y_SC1 - FIN_L, Y_SC1) translate(P_S) rocker2d();                                       // rocker: lies over the top of the camera.  Press the raised side flat
                 }
-                union() {                                                                                    // v2.17: the bed chamfer (BED_CH_FIT), in two layers
-                    ey(Y_SC1 - FIN_L - 1, Y_SC1 - BED_CH_FIT + 0.01) translate(P_S) square(120, center = true);
-                    ey(Y_SC1 - BED_CH_FIT, Y_SC1 - BED_CH_FIT / 2 + 0.01) offset(delta = -BED_CH_FIT / 2) blade_out2d();
-                    ey(Y_SC1 - BED_CH_FIT / 2, Y_SC1 + 0.01) offset(delta = -BED_CH_FIT) blade_out2d();
-                }
+                minkowski() { ey(Y_SC1 - 0.5, Y_SC1 - 0.49) outside2d(P_S) blade_out2d(); cone_y(0.51, -1); }   // the bed chamfer: the bed layer 0.4 mm smaller, the next 0.2.  v2.20: a 45-degree slope over 0.5 mm (it slices to those two layers)
             }
             ey(Y_SC0, Y_SC1 - 0.2) rimspring2d(P_S, R_OUT, BL_SLIT, BL_T, DB_A, BL_ARC, BL_T0, BL_T1, BL_TF);   // click spring: the rim itself.  It is a spring (v2.18: tapered, BL_T0 at the root to BL_T1 at the tooth) and keeps its own bed relief
             ey(Y_SC1 - 0.21, Y_SC1) rimspring_bed2d(P_S, R_OUT, BL_SLIT, BL_T, DB_A, BL_ARC, BL_T0, BL_T1, BL_TF);   // v2.19: 0.7 mm or more on the bed everywhere (it was 0.3 mm along the thin half)
@@ -702,11 +743,9 @@ module wheel_web_room2d() offset(delta = 1.1) sector2d(WHEEL_C, WW_R[0], WW_R[1]
 module wheel(pos = STOP) rot_xz(WHEEL_C, -WPOS[pos]) {
     difference() {
         union() {
-            ey(Y_WH0 + 0.39, Y_WH1 - 0.2) translate(WHEEL_C) circle(WHEEL_R);
-            ey(Y_WH0 + 0.19, Y_WH0 + 0.4) translate(WHEEL_C) circle(WHEEL_R - BED_CH_FIT / 2);       // v2.17: the bed chamfer, two layers (0.4, then 0.2)
-            ey(Y_WH0, Y_WH0 + 0.2) translate(WHEEL_C) circle(WHEEL_R - BED_CH_FIT);                  // the layer on the bed is 0.4 smaller: elephant's foot lands on size
+            translate([WHEEL_C[0], 0, WHEEL_C[1]]) rotate([-90, 0, 0]) rotate_extrude()                // the disc, as one turned shape.  v2.20: its bed chamfer (the bed layer 0.4 mm smaller, the next 0.2) and its lead-in for the blade's edge
+                polygon([[0, Y_WH0], [WHEEL_R - 0.5, Y_WH0], [WHEEL_R, Y_WH0 + 0.5], [WHEEL_R, Y_WH1 - 0.2], [WHEEL_R - 0.2, Y_WH1], [0, Y_WH1]]);   // (one layer deep; that layer was a step 0.3 mm smaller) are 45-degree slopes, where there were steps
             ey(Y_WH1 - 0.01, Y_SC1) wheel_web2d();                                                   // v2.17: the web (see WW_R), up to the blade's front face
-            ey(Y_WH1 - 0.21, Y_WH1) translate(WHEEL_C) circle(WHEEL_R - 0.3);                        // top layer 0.3 smaller: a lead-in for the blade's edge
             ey(Y_WH0 + 0.19, Y_WH1) rimspring2d(WHEEL_C, WHEEL_R, WH_SLIT, WH_T, WD_A0, WH_ARC);     // click spring: the rim itself
             ey(Y_WH0, Y_WH0 + 0.2) offset(delta = -0.3) rimspring2d(WHEEL_C, WHEEL_R, WH_SLIT, WH_T, WD_A0, WH_ARC);
             ey(Y_WH0 + 0.4, Y_WH1) rimbump2d(WHEEL_C, WHEEL_R, WH_SLIT, WH_T, WD_A0, WH_BUMP - 0.02);
@@ -854,12 +893,21 @@ module keygauge() { translate([-6, -5, 0]) cube([len(KEYS) * 12, 10, 1.6]);
 // fit gauge: a comb of slots and a 3 mm key.  The narrowest slot the key drops into tells how fat or thin YOUR printer prints its walls
 // (tools/tune.py turns that number into one slicer setting).  The slots are 3.0 mm + 0.1 x their number.
 GSLOT = [for (i = [-3 : 8]) 3.0 + 0.1 * i];
+// v2.20: the numbers are cut from plain bars 0.55 mm wide.  A printed typeface left islands and corners thinner than a printed line inside its digits
+BARS = [[1, 1, 1, 1, 1, 1, 0], [0, 1, 1, 0, 0, 0, 0], [1, 1, 0, 1, 1, 0, 1], [1, 1, 1, 1, 0, 0, 1], [0, 1, 1, 0, 0, 1, 1], [1, 0, 1, 1, 0, 1, 1], [1, 0, 1, 1, 1, 1, 1], [1, 1, 1, 0, 0, 0, 0], [1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 0, 1, 1]];   // per digit: top, top right, bottom right, bottom, bottom left, top left, middle
+module bardigit(n, w = 2.2, h = 3.8, t = 0.55) { b = BARS[n]; m = (h - t) / 2;
+    if (b[0]) translate([0, h - t]) square([w, t]); if (b[1]) translate([w - t, m]) square([t, h - m]); if (b[2]) translate([w - t, 0]) square([t, m + t]); if (b[3]) square([w, t]);
+    if (b[4]) square([t, m + t]); if (b[5]) translate([0, m]) square([t, h - m]); if (b[6]) translate([0, m]) square([w, t]); }
+module barnumber(n, w = 2.2, h = 3.8, t = 0.55) { wm = 1.3; g = 0.7;                                   // centred on x = 0, standing on y = 0; a minus sign for n < 0
+    if (n < 0) { translate([-(wm + g + w) / 2, (h - t) / 2]) square([wm, t]); translate([-(wm + g + w) / 2 + wm + g, 0]) bardigit(-n, w, h, t); }
+    else translate([-w / 2, 0]) bardigit(n, w, h, t); }
 module fitgauge() {
     L = len(GSLOT) * 7.5 + 3;
     difference() {
         union() { translate([0, 0, 0.2]) cube([L, 13, 1.4]); translate([0.3, 0.3, 0]) cube([L - 0.6, 12.4, 0.21]); }
-        for (i = [0 : len(GSLOT) - 1]) { translate([3.5 + 7.5 * i, 6, -1]) cube([GSLOT[i], 8, 4]); translate([3.2 + 7.5 * i, 6, -1]) cube([GSLOT[i] + 0.6, 8, 1.21]);     // slots (wider on the bed layer: elephant's foot is not what this measures)
-            translate([3.5 + 7.5 * i + GSLOT[i] / 2, 1.2, 1.2]) linear_extrude(1) text(str(i - 3), size = 3.2, halign = "center", font = "Liberation Sans:style=Bold"); }
+        for (i = [0 : len(GSLOT) - 1]) { translate([3.5 + 7.5 * i, 6, -1]) cube([GSLOT[i], 8, 4]);                                                                          // slots (wider on the bed layer: elephant's foot is not what this measures.
+            hull() { translate([3.1 + 7.5 * i, 6, -0.01]) cube([GSLOT[i] + 0.8, 8, 0.01]); translate([3.5 + 7.5 * i, 6, 0.39]) cube([GSLOT[i], 8, 0.01]); }                // v2.20: as a 45-degree slope, where there was a step)
+            translate([3.5 + 7.5 * i + GSLOT[i] / 2, 1.2, 1.2]) linear_extrude(1) barnumber(i - 3); }
     }
     translate([0, -13, 0]) { translate([0, 0, 0.2]) cube([14, 9, 1.4]); translate([0.3, 0.3, 0]) cube([13.4, 8.4, 0.21]);                     // the key: a 3.0 mm tab on a handle
         translate([5.5, 8.99, 0.2]) cube([3.0, 9, 1.4]); translate([5.8, 8.99, 0]) cube([2.4, 8.7, 0.21]); }

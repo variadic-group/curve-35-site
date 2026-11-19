@@ -454,7 +454,7 @@
       '<dl class="bns"><div class="bn-y"><dt>' + esc(factSay("shutter_speed", "1/322 s")) + '</dt><dd><span class="bn-l">how long the shutter stays open</span><span class="bn-s">shutter</span></dd></div>' +
       '<div class="bn-b"><dt class="bn-sm">' + dots.map(esc).join(" &middot; ") + '</dt><dd><span class="bn-l">three dots on one wheel set how much light gets in</span><span class="bn-s">three dots for the light</span></dd></div>' +
       '<div class="bn-g"><dt>' + esc(factSay("light_rays", "69 million")) + '</dt><dd><span class="bn-l">light rays traced at the closed camera. None got in.</span><span class="bn-s">light rays tried. None got in.</span></dd></div>' +
-      '<div class="bn-o"><dt>' + esc(factSay("print_hours", "9.3 hours")) + '</dt><dd><span class="bn-l">to print every part on your own 3D printer</span><span class="bn-s">to print your own</span></dd></div></dl></div></section>' +
+      '<div class="bn-o"><dt>' + esc(factSay("print_hours", "9.4 hours")) + '</dt><dd><span class="bn-l">to print every part on your own 3D printer</span><span class="bn-s">to print your own</span></dd></div></dl></div></section>' +
       // THE CAMERA VIEWER
       explodeSection() +
       // PROGRAMS, OPEN FILES, BUILDS: one line
@@ -1096,7 +1096,7 @@
     var rows = ch.rows.map(function (r) { return "<tr><td>" + fmt(r.q) + "</td><td>" + fmt(r.how) + "</td><td>" + fmt(r.result) + "</td></tr>"; }).join("");
     var S = FILES.source || {};
     return '<div class="wrap files-page"><div class="pagehead"><p class="kick">Open files</p><h1>Print it yourself. Free.</h1><p class="lead">Eight parts, no supports, any ordinary printer. Add one lens and you have the camera. <a href="#open-files">What you can do with the files</a>.</p>' +
-      '<dl class="bns"><div class="bn-y"><dt>9.3 h</dt><dd>of printing</dd></div><div class="bn-b"><dt>' + esc(FILES.grams || 117) + ' g</dt><dd>of plastic</dd></div><div class="bn-g"><dt>0</dt><dd>supports</dd></div><div class="bn-o"><dt>0.2 mm</dt><dd>layers</dd></div></dl>' +
+      '<dl class="bns"><div class="bn-y"><dt>9.4 h</dt><dd>of printing</dd></div><div class="bn-b"><dt>' + esc(FILES.grams || 118) + ' g</dt><dd>of plastic</dd></div><div class="bn-g"><dt>0</dt><dd>supports</dd></div><div class="bn-o"><dt>0.2 mm</dt><dd>layers</dd></div></dl>' +
       '<p class="dlstate note" id="dlstate" role="status">Checking whether this view can save files.</p></div>' +
       '<ol class="files">' + FILES.parts.map(fileRow).join("") +
       '<li class="file src"><span class="srcicon" aria-hidden="true">{ }</span><div class="file-t"><h3>OpenSCAD source</h3><p class="fmeta"><span>Every part, as code</span><span>' + kib(S.bytes || 0) + "</span></p></div>" +

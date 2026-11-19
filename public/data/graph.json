@@ -7,8 +7,8 @@
    "kind": "printed",
    "colour": "black",
    "hex": "#3A3632",
-   "grams": 62.99,
-   "time": "4h 51m 37s",
+   "grams": 63.83,
+   "time": "4h 59m 38s",
    "does": "the dark box; the film lies on its curved rails",
    "steps": [
     "b1",
@@ -59,8 +59,8 @@
    "kind": "printed",
    "colour": "black",
    "hex": "#9AA1A9",
-   "grams": 27.97,
-   "time": "2h 5m 56s",
+   "grams": 27.96,
+   "time": "2h 5m 54s",
    "does": "closes the box; carries the frame wheel and the post the film turns round",
    "steps": [
     "b3",
@@ -108,8 +108,8 @@
    "kind": "printed",
    "colour": "orange",
    "hex": "#E8641B",
-   "grams": 12.02,
-   "time": "56m 46s",
+   "grams": 12.04,
+   "time": "56m 58s",
    "does": "holds the lens, the shutter and the wheel; slides onto the body",
    "steps": [
     "b5",
@@ -159,7 +159,7 @@
    "colour": "black",
    "hex": "#1F9E92",
    "grams": 1.65,
-   "time": "8m 34s",
+   "time": "8m 37s",
    "does": "swings across to let light in for an instant; the rocker on top is its button",
    "steps": [
     "b5",
@@ -209,8 +209,8 @@
    "kind": "printed",
    "colour": "black",
    "hex": "#F2C230",
-   "grams": 1.79,
-   "time": "9m 46s",
+   "grams": 1.8,
+   "time": "9m 49s",
    "does": "three holes: how much light",
    "steps": [
     "b6",
@@ -601,8 +601,8 @@
    "kind": "gauge",
    "colour": null,
    "hex": null,
-   "grams": 15.5,
-   "time": "1h 5m 45s",
+   "grams": 14.96,
+   "time": "1h 5m 12s",
    "does": "a two-hour print of the front plate's finest details, to try a printer before the long parts",
    "steps": [],
    "lessons": [],
@@ -2280,8 +2280,8 @@
   },
   {
    "id": "plastic_grams",
-   "say": "117 g",
-   "sentence": "One camera's eight printed parts use about 117 g of plastic.",
+   "say": "118 g",
+   "sentence": "One camera's eight printed parts use about 118 g of plastic.",
    "checks": [
     "print"
    ],
@@ -2292,8 +2292,8 @@
   },
   {
    "id": "print_hours",
-   "say": "9.3 hours",
-   "sentence": "Printing one camera's parts takes about 9.3 hours.",
+   "say": "9.4 hours",
+   "sentence": "Printing one camera's parts takes about 9.4 hours.",
    "checks": [
     "print"
    ],
@@ -2304,8 +2304,8 @@
   },
   {
    "id": "body_print_time",
-   "say": "4h 51m 37s",
-   "sentence": "The body, the longest print, takes 4 hours 52 minutes.",
+   "say": "4h 59m 38s",
+   "sentence": "The body, the longest print, takes 5 hours.",
    "checks": [
     "print"
    ],
@@ -2316,7 +2316,7 @@
   },
   {
    "id": "front_print_time",
-   "say": "56m 46s",
+   "say": "56m 58s",
    "sentence": "The front plate takes 57 minutes to print.",
    "checks": [
     "print"
@@ -3121,7 +3121,7 @@
    "name": "Print",
    "question": "Will it print without supports, on an ordinary printer?",
    "proves": "Every part stands on the bed, has no thin or free-standing feature left unexplained, and slices cleanly.",
-   "headline": "Yes: 9.3 hours and 117 g of plastic for one camera, 0.2 mm layers, no supports.",
+   "headline": "Yes: 9.4 hours and 118 g of plastic for one camera, 0.2 mm layers, no supports.",
    "facts": [
     "print_hours",
     "plastic_grams",
@@ -4156,7 +4156,7 @@
    "id": "print-free",
    "title": "Print it free",
    "for": "Anyone with a printer: makers, libraries, makerspaces, schools that print their own.",
-   "what": "Every print file (8 parts, about 9.3 hours of printing), the OpenSCAD source, the gauges, the guides, the 9 lessons and 4 maker lessons, and the films. Add one lens and you have the camera.",
+   "what": "Every print file (8 parts, about 9.4 hours of printing), the OpenSCAD source, the gauges, the guides, the 9 lessons and 4 maker lessons, and the films. Add one lens and you have the camera.",
    "products": [
     "the-files"
    ],

@@ -52,6 +52,25 @@ def weld_stl(path, tol=WELD_TOL):
     v0 = M.volume(); M = M.simplify(tol); me = M.to_mesh()
     Q = np.array(me.vert_properties, dtype=float)[:, :3]; T = np.array(me.tri_verts)
     if abs(M.volume() - v0) > 1e-3 * max(1.0, v0) or len(T) == 0: raise RuntimeError(f"weld: {path} changed volume {v0:.3f} -> {M.volume():.3f}")
+    # v2.20: simplify() can leave a triangle whose three corners lie on one line (two slopes that end a few nanometres apart on one wall: it fills the joint and has no
+    # area).  Each is taken out here, as the file will be written (six decimals): if its shortest edge is under tol that edge is collapsed; if not, the long edge it
+    # shares with its neighbour is swapped for the short one across, which moves nothing.  The result must still be one closed solid of the same volume.
+    R = np.round(Q, 6); flat = lambda: np.nonzero(np.linalg.norm(np.cross(R[T[:, 1]] - R[T[:, 0]], R[T[:, 2]] - R[T[:, 0]]), axis=1) / 2 < 1e-9)[0]
+    for _ in range(400):
+        bad = flat()
+        if not len(bad): break
+        t = T[bad[0]]; E = sorted((float(np.linalg.norm(R[t[k]] - R[t[(k + 1) % 3]])), k) for k in range(3))
+        if E[0][0] < tol:
+            p_, q_ = t[E[0][1]], t[(E[0][1] + 1) % 3]; T = np.where(T == q_, p_, T); T = T[(T[:, 0] != T[:, 1]) & (T[:, 1] != T[:, 2]) & (T[:, 2] != T[:, 0])]
+        else:
+            k = E[2][1]; u, v, w = t[k], t[(k + 1) % 3], t[(k + 2) % 3]
+            nb = [(j, m) for j in range(len(T)) for m in range(3) if T[j][m] == v and T[j][(m + 1) % 3] == u]
+            if len(nb) != 1: raise RuntimeError(f"weld: {path} has a face of no area that cannot be taken out")
+            j, m = nb[0]; d = T[j][(m + 2) % 3]; T[bad[0]] = [u, d, w]; T[j] = [d, v, w]
+    else: raise RuntimeError(f"weld: {path} still has {len(flat())} faces of no area")
+    used = np.unique(T); remap = -np.ones(len(Q), dtype=np.int64); remap[used] = np.arange(len(used)); Q = Q[used]; T = remap[T]
+    M2 = m3.Manifold(m3.Mesh(vert_properties=Q.astype(np.float32), tri_verts=T.astype(np.uint32)))
+    if M2.status() != m3.Error.NoError or abs(M2.volume() - v0) > 1e-3 * max(1.0, v0): raise RuntimeError(f"weld: {path} is not a closed solid of the same volume once its flat faces are out ({M2.status()})")
     n = np.cross(Q[T[:, 1]] - Q[T[:, 0]], Q[T[:, 2]] - Q[T[:, 0]]); n /= np.maximum(np.linalg.norm(n, axis=1)[:, None], 1e-30)
     out = ["solid OpenSCAD_Model"]
     for t, nn in zip(T, n):

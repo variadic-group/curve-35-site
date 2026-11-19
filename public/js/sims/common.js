@@ -20,7 +20,7 @@
     sharp_from_m: { small: 1.0, middle: 1.3, large: 1.5 }, sharp_far_pct: { small: 99, large: 62 },
     pinhole: { mm: 0.24, dist_mm: 28.9, f: 120, counts_iso400: { sun: "open, shut", cloud: 1, shade: 3, window: 40 } },
     time_counts_small_iso400: { window: 1, lamps: 5, dim: 20 },
-    iso: 400, latitude: { under: 1, over: 3 }, pieces: 9, size_mm: [127, 41, 70], plastic_g: 117, print_h: 9.3,
+    iso: 400, latitude: { under: 1, over: 3 }, pieces: 9, size_mm: [127, 41, 70], plastic_g: 118, print_h: 9.4,
     wavelength_mm: 0.00055,
     // which dot, ISO 400 (FACTS) and how far off by the model (build/log_dial_exposure.txt part 2), in steps of light; + is more
     which_dot_iso400: [{ sky: "full sun", dot: "small", off: 0.5 }, { sky: "hazy sun", dot: "middle", off: 0.6 }, { sky: "bright cloud", dot: "large", off: 0.0 }],

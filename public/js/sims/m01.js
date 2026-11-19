@@ -81,12 +81,12 @@
 
   reg("sim", "m01_slice", function (host, api) {
     var K = (api && api.colour) || "#2f855a";
-    var r = root(host, K), st = { shape: "ledge", ang: 40, span: 10, layer: 30 };
+    var r = root(host, K), st = { shape: "ledge", ang: 40, span: 7, layer: 30 };
     var cv = el("canvas", { width: 720, height: 420, role: "img" });
     r.appendChild(el("div", { "class": "mx-stage" }, [cv, el("div", { "class": "mx-tag", text: "printing simulated" })]));
     var sSeg = seg("Shape", [{ v: "ledge", t: "A slope" }, { v: "bridge", t: "A bridge" }], "ledge", function (v) { st.shape = v; aS.input.disabled = v !== "ledge"; bS.input.disabled = v !== "bridge"; draw(); });
     var aS = slider({ label: "Slope, from upright:", min: 0, max: 90, step: 1, value: 40, fmt: function (v) { return v + "°" + (v === 90 ? " (a flat shelf)" : ""); }, on: function (v) { st.ang = v; draw(); } });
-    var bS = slider({ label: "Bridge span:", min: 2, max: 40, step: 1, value: 10, fmt: function (v) { return v + " mm" + (v === 10 ? " (about the front plate's foot pockets)" : ""); }, on: function (v) { st.span = v; draw(); } });
+    var bS = slider({ label: "Bridge span:", min: 2, max: 40, step: 1, value: 7, fmt: function (v) { return v + " mm" + (v === 7 ? " (about the camera's longest bridge)" : ""); }, on: function (v) { st.span = v; draw(); } });
     var lS = slider({ label: "Layers printed:", min: 1, max: 30, step: 1, value: 30, fmt: function (v) { return v + " of 30 (" + (v * LAYER).toFixed(1) + " mm)"; }, on: function (v) { st.layer = v; draw(); } });
     bS.input.disabled = true;
     r.appendChild(el("div", { "class": "mx-row" }, [sSeg]));
@@ -142,7 +142,7 @@
         cA.val(sp + " mm"); cA.querySelector("span").textContent = "span over air";
         cS.val(sagmm < 0.1 ? "a hair" : sagmm.toFixed(1) + " mm"); cS.querySelector("span").textContent = "sag (trend)";
         cV.val(ok ? "short: fine" : sp <= 25 ? "saggy" : "a mess", ok ? "good" : "bad");
-        out.textContent = "A bridge of " + sp + " mm: " + (ok ? "short, so the hot line stays taut and the layers above can sit on it. The pockets for the front plate's feet are roofed by bridges about 10.6 mm long, and the parts print with the fan on so each line sets before it can sag." : "the longer the span, the more the line sags before it cools. Keep bridges short.");
+        out.textContent = "A bridge of " + sp + " mm: " + (ok ? "short, so the hot line stays taut and the layers above can sit on it. The longest bridge in this camera is about 7.4 mm, under the lens's seat in the front plate, and the parts print with the fan on so each line sets before it can sag." : "the longer the span, the more the line sags before it cools. Keep bridges short.");
       }
       cv.setAttribute("aria-label", out.textContent);
     }
