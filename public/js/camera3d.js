@@ -172,6 +172,9 @@
       var cur = { v: range ? Number(range.value) : 0, az: V.az, el: V.el - 4 }, tgt = { v: cur.v, az: V.az, el: V.el - 4 };
       var running = false, visible = true, K = reduce ? 1 : 0.12;
       function size() { var w = stage.clientWidth, h = stage.clientHeight; if (!w || !h) return; renderer.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix(); draw(); }
+      // on a narrow (portrait) stage the opened camera drifts off-centre: aim at the middle of what is on screen instead
+      function boxAt(m) { S.parts.forEach(function (o) { o.grp.position.set(o.ex[0] * m, o.ex[1] * m, o.ex[2] * m); }); return new THREE.Box3().setFromObject(S.scene).getCenter(new THREE.Vector3()); }
+      var mid0 = boxAt(0), mid1 = boxAt(1); boxAt(0);
       function draw() {
         var open = 0;
         S.parts.forEach(function (o) {
@@ -180,7 +183,8 @@
           if (o.key === "pinring") { o.grp.visible = m > 0.02; o.mats[0].opacity = o.base[0] * m; o.mats[1].opacity = o.base[1] * m; }
         });
         var c = center.clone(); c.y += 14 * open; c.z += -46 * open;
-        aim(cam, c, cur.az, cur.el, (66 + 40 * open) * (cam.aspect < 1 ? 1.18 : 1));
+        if (cam.aspect < 1.3) c = mid0.clone().lerp(mid1, open);
+        aim(cam, c, cur.az, cur.el, cam.aspect < 1.3 ? 70 + 34 * open : 66 + 40 * open);
         renderer.render(S.scene, cam);
       }
       function frame() {
