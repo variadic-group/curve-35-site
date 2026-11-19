@@ -1,0 +1,322 @@
+{
+ "n": 8,
+ "title": "Aiming and framing",
+ "question": "Same camera, same film. Why are some pictures better than others?",
+ "hook": "Two people, the same camera, the same roll, the same afternoon. One comes home with pictures people stop to look at. This camera has one speed, three dots and nothing to focus, so it isn't the camera. It's four choices: where you aim, where you stand, where the light comes from, and how still you hold.",
+ "colour": "#B7791F",
+ "hero_fig": "fig_l08_sight",
+ "chips": [
+  "No screen",
+  "Two big steps back",
+  "Sun behind you"
+ ],
+ "film": false,
+ "still": {
+  "img": "hero",
+  "alt": "The finished camera from the front: orange front plate, lens, the dot handle, red and green knobs",
+  "caption": "Everything left to decide is yours."
+ },
+ "sections": [
+  {
+   "id": "predict",
+   "kind": "predict",
+   "title": "Your guess first",
+   "body": "<p>The usual guess: a better camera makes better pictures, so with the <em>same</em> camera, it must be luck.</p><p>But this camera has one shutter speed, three dots and nothing to focus. There is no better setting to find. And luck doesn't explain why one person's pictures are better roll after roll.</p>",
+   "q": "Two people, same camera, same film, same day. Why are one person's pictures better?",
+   "choices": [
+    "Luck",
+    "They got a better copy of the camera",
+    "Where they stood, what they put in the middle, and the light"
+   ],
+   "answer": 2,
+   "reveal": "<p>Every choice that is left belongs to you: where to stand, which way the light falls, what goes in the middle, and when to press. That is good news. Choices can be learned, planned, written down and checked.</p>"
+  },
+  {
+   "id": "why",
+   "kind": "story",
+   "title": "Four choices the camera leaves to you",
+   "body": "<p><strong>Aim.</strong> There's no window to look through. You aim along the top: from the edge of the pad at the back to the point at the front, on the middle groove. The two outer lines run where the picture's edges run. But the sight sits 30 mm above the lens, and two parallel lines never meet. So the front point is 0.37 mm lower, and the sight line crosses the lens's line about 2.8 m away. Nearer than that you aim a touch high; at 1.4 m, by 1.4 % of the picture. Nobody will ever notice.</p><p><strong>Stand.</strong> With nothing to focus, where you stand is the focus. The middle of the picture is sharp from 1.0 m (small dot), 1.3 m (middle) or 1.5 m (large). The picture is three quarters of the distance tall, so a whole person fits from about 2.3 m. Two big steps back, at least.</p><p><strong>Light.</strong> Sun behind you lights faces flat. Sun to the side shows shape. Sun behind them makes edges glow and faces dark: give one dot bigger. The film forgives too much light far better than too little.</p><p><strong>Hold still.</strong> At a three-hundredth of a second ordinary hands barely move the picture. A stab at the rocker does: it swings the camera just as the shutter opens. One quick press, both hands, elbows in. And put what matters in the middle: a single lens is sharpest there.</p>",
+   "timeline": [
+    {
+     "year": "1888",
+     "what": "The first Kodak has no viewfinder: a V on its top is the sight. 'You press the button, we do the rest.'"
+    },
+    {
+     "year": "1900",
+     "what": "The Brownie: a camera for a dollar, sold to children. Almost nothing to set, so the choices were where to stand and when."
+    },
+    {
+     "year": "1954",
+     "what": "Paul Fitts measures aiming: big, near targets are hit fastest. Like the rocker's raised side under your finger."
+    }
+   ],
+   "label": "Why this piece exists"
+  },
+  {
+   "id": "play",
+   "kind": "sim",
+   "title": "Aim, hold, frame",
+   "sims": [
+    {
+     "sim": "l08_sight",
+     "intro": "Move your friend nearer and further, then change how much lower the front point is, and watch where the lines cross.",
+     "after": "Near, the aim lands a little high; at 2.8 m it's spot on; far away it drifts about 1 % low. Set the drop to zero and the lines never cross."
+    },
+    {
+     "sim": "l08_shake",
+     "intro": "Take a picture at the shutter's one speed, then as a counted time picture. Try a table, two hands, one hand, and a stab.",
+     "after": "At 1/322 s even a wobbly hand barely moves the picture. A stab is different. And for a count of 1 or 5 no hand is still enough: time pictures stand on a table."
+    },
+    {
+     "sim": "l08_frame",
+     "intro": "You're the photographer. Choose where to stand, the dot, the sky and the sun, then drag your friend around the picture.",
+     "after": "Head to toe needs about 2.3 m. The face is sharpest in the middle. Sun behind them costs about two steps on the face; one dot bigger brings it back. Every fix was a choice, not a better camera."
+    }
+   ]
+  },
+  {
+   "id": "camera",
+   "kind": "kit",
+   "title": "The sight on top",
+   "render": "s2",
+   "alt": "The top of the camera, with the sight line from the pad at the back to the point at the front",
+   "caption": "The sight: a groove, a pad edge and a point.",
+   "body": "<p>Every picture is four moves. Choose a dot: slide the handle and count the clicks. Aim: pad edge to point, picture between the outer lines, two big steps away or more. Press: one quick press of the raised side, both hands, elbows in. Wind: the green knob, until the arrow comes home.</p><p>Nothing to press your eye against, so glasses are fine and you can keep both eyes open to watch the world.</p>",
+   "step": [
+    "p1",
+    "p2",
+    "p3"
+   ]
+  },
+  {
+   "id": "phone",
+   "kind": "phone",
+   "title": "What a phone fixes, and what it can't",
+   "body": "<p>A phone fixes some of this for you: a screen instead of a sight, autofocus instead of stepping back, and often stabilisation, where tiny motors move the lens or the sensor to cancel your shaking hands. What it can't fix is the same as here: where you stand, where the light comes from, and what you put in the middle. Those are still yours.</p>"
+  },
+  {
+   "id": "maths",
+   "kind": "maths",
+   "title": "How much of the world fits?",
+   "summary": "one sum, with the real numbers",
+   "lines": [
+    "the picture: 24 mm tall, 32 mm behind the lens",
+    "24 ÷ 32 = 0.75: picture height = 0.75 × distance",
+    "at 1.5 m: 0.75 × 1.5 = 1.1 m tall: cut at the knees",
+    "a whole person, 1.7 m: 1.7 ÷ 0.75 = 2.3 m away",
+    "a face, 0.25 m: 0.25 ÷ 0.75 = 0.33 m away, but nothing is sharp nearer than 1.0 m"
+   ],
+   "body": "<p>So: no close-ups, and full-length portraits from about 2.3 m. The sight agrees within a few per cent everywhere you can stand.</p>"
+  },
+  {
+   "id": "try",
+   "kind": "try",
+   "title": "Aim without a screen",
+   "minutes": 15,
+   "needs": [
+    "a phone",
+    "a strip of tape",
+    "a sticky note",
+    "a target: a cross drawn on paper, taped to a wall",
+    "a partner"
+   ],
+   "steps": [
+    "Stick the tape along the phone's top edge above the lens. Draw two short marks on it, in a line straight ahead of the lens.",
+    "Open the camera and cover the screen with the sticky note.",
+    "From 3 m, line the marks up on the cross and take a picture. Five times.",
+    "Now five times from 1 m. Your partner writes down which is which.",
+    "Uncover the screen and see where the cross landed in each picture."
+   ],
+   "notice": "From 3 m the cross lands near the middle. From 1 m it sits off to one side by the gap between your marks and the lens: parallax, the same thing your camera's tilted sight corrects."
+  },
+  {
+   "id": "quiz",
+   "kind": "quiz",
+   "title": "Check yourself",
+   "items": [
+    {
+     "q": "Why put what matters in the middle of the picture?",
+     "choices": [
+      "The middle gets more light",
+      "A single lens is sharpest there; the ends are softer",
+      "The sight only shows the middle",
+      "The film is thicker in the middle"
+     ],
+     "answer": 1,
+     "why": "Like a single-use camera, one lens is sharpest in the middle and softer toward the ends. Faces in the middle, horizons wherever you like."
+    },
+    {
+     "q": "How tall is the picture at 2 m?",
+     "choices": [
+      "0.75 m",
+      "1.5 m",
+      "2 m",
+      "2.7 m"
+     ],
+     "answer": 1,
+     "why": "The picture is 24 mm tall, 32 mm behind the lens: 24 ÷ 32 = 0.75. So 0.75 × 2 m = 1.5 m."
+    },
+    {
+     "q": "Your friend stands with the sun behind them. What happens, and what do you do?",
+     "choices": [
+      "Nothing changes",
+      "Their face goes dark: give more light, one dot bigger",
+      "Their face goes too bright: one dot smaller",
+      "Wait for the sun to set"
+     ],
+     "answer": 1,
+     "why": "The face is in its own shadow, about two steps darker. The film forgives too much light far better than too little, so give more."
+    },
+    {
+     "q": "You aim with the sight at a friend 1.4 m away. Where do they land?",
+     "choices": [
+      "Dead in the middle",
+      "A touch high: about 1.4 % of the picture",
+      "Off the top of the picture",
+      "A touch low"
+     ],
+     "answer": 1,
+     "why": "The sight sits 30 mm above the lens and its line crosses the lens's line about 2.8 m away. Nearer than that you aim a touch high. Nobody will ever notice."
+    },
+    {
+     "q": "At a three-hundredth of a second, what is most likely to blur a picture?",
+     "choices": [
+      "Ordinary steady hands",
+      "A stab at the rocker",
+      "Breathing",
+      "The film moving"
+     ],
+     "answer": 1,
+     "why": "In 1/322 s ordinary hands barely move the picture. A stab swings the camera just as the shutter opens. One quick press, both hands, elbows in."
+    }
+   ]
+  },
+  {
+   "id": "roll",
+   "kind": "roll",
+   "title": "Try it on your roll",
+   "frames": 3,
+   "lead": "Three pictures of one friend, three choices.",
+   "shots": [
+    "Head to toe: step back to about 2.3 m. Aim along the middle groove of the sight.",
+    "Light from the side: turn so the sun falls across your friend's face, not straight into it.",
+    "Off-centre: put your friend just inside one of the sight's outer lines, which mark the picture's edges. Fill the rest with something worth seeing."
+   ],
+   "look": "Is your friend where you aimed? Head and feet both in? Which light do you like better, and why?"
+  },
+  {
+   "id": "next",
+   "kind": "next",
+   "body": "<p>You now know every piece of your camera. Every one of them is also in your pocket.</p>",
+   "links": [
+    {
+     "title": "Parallax",
+     "url": "https://en.wikipedia.org/wiki/Parallax",
+     "why": "Why a sight above the lens aims a little off, and where else that shows up."
+    },
+    {
+     "title": "How to hand-hold a camera",
+     "url": "https://photographylife.com/how-to-hold-a-camera",
+     "why": "Photography Life on stance, grip and breathing."
+    },
+    {
+     "title": "Composition: rule of thirds",
+     "url": "https://www.cambridgeincolour.com/tutorials/rule-of-thirds.htm",
+     "why": "A classic guide, for when your lens is sharp all the way out."
+    }
+   ]
+  }
+ ],
+ "teach": {
+  "objectives": [
+   "Say why, with a fixed-focus, one-speed camera, the differences between pictures come from the photographer's choices.",
+   "Aim with the sight, and explain why near things land a touch high (the sight sits 30 mm above the lens).",
+   "Work out how much of a scene fits at a distance (height = 0.75 × distance) and use it to choose where to stand.",
+   "Choose the dot from the sky, and give one dot more into the light.",
+   "Hold the camera still: one quick press, both hands, elbows in; a time picture on a table."
+  ],
+  "materials": [
+   "one phone per pair, sticky notes, masking tape, pencils, rulers",
+   "a target sheet (a cross on paper) per pair, taped to a wall",
+   "a frame card per pair: card with a window 20 cm wide and 12 cm tall, and a 16 cm string taped to one edge (string end at the cheekbone, pulled straight: the window shows what the camera takes in)",
+   "chalk for marks at 1.5 m, 2.3 m and 4 m",
+   "the light chart (which dot for which sky)",
+   "this page on a projector for the three sims"
+  ],
+  "period": [
+   {
+    "minutes": 5,
+    "phase": "hook",
+    "what": "Show 'Your guess first'. Vote: luck, a better copy of the camera, or where they stood and the light. Many choose luck. Do not correct yet."
+   },
+   {
+    "minutes": 8,
+    "phase": "explain",
+    "what": "'Four choices the camera leaves to you' on the board: aim, stand, light, hold still. Then the sight sim: where do the lines cross?"
+   },
+   {
+    "minutes": 14,
+    "phase": "explore",
+    "what": "Outside: chalk marks at 1.5 m, 2.3 m and 4 m. One student stands at each; partners look through the frame card and sketch what fits. Then the subject turns: sun behind, beside, in front."
+   },
+   {
+    "minutes": 10,
+    "phase": "explore",
+    "what": "The Try card in pairs (aim without a screen) from 3 m and 1 m. Why do the 1 m misses all go the same way?"
+   },
+   {
+    "minutes": 8,
+    "phase": "apply",
+    "what": "The frame sim and the shake sim on the projector, then the sum: a whole person from 2.3 m, a face too near to be sharp."
+   },
+   {
+    "minutes": 5,
+    "phase": "check",
+    "what": "Exit ticket; back to the vote."
+   }
+  ],
+  "questions": [
+   {
+    "q": "This camera has one speed, three dots and no focus. So what makes one picture better than another?",
+    "a": "The person's choices: where to stand, what goes in the middle, which way the light falls, when to press."
+   },
+   {
+    "q": "How tall is the picture at 2 m?",
+    "a": "0.75 × 2 m = 1.5 m."
+   },
+   {
+    "q": "Your friend stands with the sun behind them. What happens, and what do you do?",
+    "a": "The edges glow and the face goes dark. Give more light: one dot bigger. The film forgives too much light far better than too little."
+   },
+   {
+    "q": "Name two things this camera does badly, and why.",
+    "a": "Close-ups (nothing sharp nearer than 1.0 m; a face needs a third of a metre); dim rooms in the hand (needs a time picture); also fast things near, and the ends and corners."
+   },
+   {
+    "q": "The sight's pad is 30.0 mm above the lens's line; the point is 35 mm forward and 0.37 mm lower. Where do the lines cross?",
+    "a": "30.0 ÷ 0.37 = 81 steps of 35 mm; 81 × 35 mm ≈ 2.8 m."
+   },
+   {
+    "q": "How do you know which side of the rocker to press?",
+    "a": "The side that is up. After each click the other side is up: the part itself tells you."
+   }
+  ],
+  "exit_ticket": "Name one choice you made today that the camera could not make for you. And one number: how far away must a 1.7 m person stand to fit in the picture? (About 2.3 m.)",
+  "misconception": "That good pictures come from a good camera and the rest is luck. In its place: a simple camera leaves every choice to the person, and those choices (where to stand, the middle, the light, the moment) can be planned, written down and checked.",
+  "differentiation": {
+   "support": "Give the sum as a table to fill (distance, × 0.75, height). In the sims, use the buttons before the sliders. Give the eye-line drawing with 30 mm and 0.37 mm already marked.",
+   "stretch": "The picture is about 1.26 × the distance wide, not 36 ÷ 32 = 1.125. Explain why a curved film makes it wider. Then plan a group photo of five people in a row: where do you stand, which dot for a bright cloudy day?",
+   "access": "The sims work from the keyboard and say what they show in words. The frame card works for anyone who can hold it; a partner can describe. The rocker's raised side can be found by touch."
+  },
+  "safety": "Nobody looks at the sun, through the frame card or along the sight. The moving classmate walks, never runs, and nobody steps backwards while looking through a frame card."
+ },
+ "slides": [
+  "predict",
+  "why",
+  "play",
+  "camera",
+  "maths",
+  "try",
+  "quiz"
+ ]
+}

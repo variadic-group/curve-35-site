@@ -1,0 +1,316 @@
+{
+ "n": 3,
+ "code": "M3",
+ "maker": true,
+ "film": false,
+ "title": "Testing",
+ "slug": "how-we-know-it-works",
+ "question": "How do you know a camera works before it has taken a picture?",
+ "hook": "<p>Before any plastic melts, this camera has been traced, sliced, bent and dropped thousands of times inside a computer. That's how most of its mistakes were caught. But a model only says what <em>should</em> happen. Your print, and your first roll, say what <em>did</em>.</p>",
+ "colour": "#E0402A",
+ "hero_fig": "fig_m03_card",
+ "still": {
+  "img": "hero_back",
+  "alt": "The finished camera seen from behind",
+  "caption": "Ready for its first roll."
+ },
+ "sections": [
+  {
+   "id": "guess",
+   "kind": "predict",
+   "title": "When does a camera 'work'?",
+   "body": "<p>You build a camera, shoot a roll and get it developed. There are pictures on it.</p>",
+   "q": "Does that prove the camera works?",
+   "choices": [
+    "Yes: the pictures came out",
+    "Yes, if the computer model also said it would work",
+    "Only if you said first what each picture would look like, and it did"
+   ],
+   "answer": 2,
+   "reveal": "<p>A roll that's fogged at one edge, soft everywhere and wound unevenly still 'comes out': there are pictures on it. And a model, however careful, leaves things out. A real test <strong>says first</strong> what each picture will look like. Then you shoot, and see. A prediction that could be wrong, and isn't: that's proof.</p>"
+  },
+  {
+   "id": "why",
+   "kind": "why",
+   "title": "The model: a cheap place to be wrong",
+   "body": "<p class=\"lp-lead\">A mistake costs a keystroke in a model, an evening on a printer, and a roll of film in a camera. So find it in the model.</p><p>Every part of this camera is drawn exactly in <code>scad/one135.scad</code>, and a set of scripts in <code>tools/</code> puts that drawing through more than any first print could take:</p><ul><li><strong>Light:</strong> 21 ways the closed camera might leak (a loose blade, a thin print, the dial up and down). 69 million rays traced. None reached the film.</li><li><strong>Fit:</strong> every joint rebuilt as five printers would print it, walls 0.15 mm thin to 0.25 mm fat. Nothing binds; every hold is still there on the thinnest.</li><li><strong>Motion:</strong> every moving part stepped through its travel with a perforated film in place. 1865 positions, no collisions.</li><li><strong>Printing:</strong> every part sliced, and the tool paths rebuilt into plastic and compared with the drawing. 9 h 19 min and 117 g, no supports.</li><li><strong>Springs and falls:</strong> each spring bent in a finite-element model; the front plate dropped from four heights on three kinds of printer.</li></ul><p>And it caught real mistakes. A frame-wheel tooth passed within <strong>0.06 mm</strong> of a hole's edge, less than a printer's error: reshaped, now 0.18 mm. The front plate came off in two drops out of three: redesigned. On the fattest printer a knob's cone met its pocket's ceiling: the pocket grew 0.3 mm. The model even caught the model: a closer focus trace found the lens set for <strong>13 m</strong>, not the 3.8 m intended. One layer, 0.2 mm, on LENS_SEAT fixed it: now 3.7 m.</p><p>That's the old deal of science: a claim you can check beats one you have to believe. A model gives you claims like that. A print and a roll are the check.</p>",
+   "timeline": [
+    {
+     "year": "1839",
+     "what": "The first practical photographic process is given free to the world, so anyone can follow the steps and check the claim."
+    },
+    {
+     "year": "1934",
+     "what": "Karl Popper argues that a claim only counts if some result could prove it wrong."
+    },
+    {
+     "year": "Your roll",
+     "what": "Twelve frames, each with its prediction written first."
+    }
+   ],
+   "label": "Why it's drawn this way",
+   "figure": {
+    "svg": "fig_m03_ledger",
+    "caption": "The ledger: the model's column is full. The other waits for a print and a roll."
+   }
+  },
+  {
+   "id": "play",
+   "kind": "play",
+   "title": "The five-thing focus check",
+   "sims": [
+    {
+     "sim": "m03_five",
+     "intro": "Five things in a line: 1 m, 1.5 m, 2 m, 4 m and far away. One look through the camera. Which one comes out sharpest tells you where your lens sits, to one 0.2 mm layer. Predict first: which of the five will be sharpest? Move the lens 0.2 mm too far from the film. Which one wins now?",
+     "after": "As designed, the 4 m thing wins (0.023 mm of blur). If the 2 m thing wins instead, the lens sits 0.2 mm too far from the film: set <code>LENS_SEAT</code> one layer lower and reprint the front plate. A wrong answer isn't a failure. It tells you exactly which number to change."
+    }
+   ]
+  },
+  {
+   "id": "print-test",
+   "kind": "text",
+   "label": "What a print adds",
+   "title": "What only a print can show",
+   "body": "<p>A model leaves things out: friction, a real printer's quirks, a real hand. It can't say whether a click <em>feels</em> like a click, or whether someone can build it from the guide. And it develops no film. So the first printed camera has a list of its own, cheapest first:</p><ol><li><strong>The fit gauge</strong> says where your printer sits, before anything else is printed (M1).</li><li><strong>The test slab</strong>: front plate, blade and wheel on a slice of the body. If the plate slides on and the rocker clicks, the rest will fit.</li><li><strong>Every part prints clean</strong>, first try, no supports.</li><li><strong>Someone new builds it</strong> from the guide alone. Time it; note where they stop.</li><li><strong>The clicks feel like clicks</strong>; the knobs turn; the frame dial goes round once a picture. A kitchen scale under the camera reads the front plate's click force.</li><li><strong>No fog</strong> on a roll left in the sun for an hour with the lens covered.</li><li><strong>The focus check</strong>: the 4 m thing is the sharpest.</li><li><strong>The shutter's time</strong>, from a slow-motion phone video of the blade swinging.</li></ol><p>Then the roll. Write what each frame will show <em>before</em> the film goes in, shoot it, and mark each one when the scans come back.</p>"
+  },
+  {
+   "id": "play-2",
+   "kind": "play",
+   "title": "Plan your test roll",
+   "sims": [
+    {
+     "sim": "m03_roll",
+     "intro": "Twelve frames, each with a prediction written first. Pick the dot and the light, write what you expect, and peek at what the model says. Your sheet saves in this browser as you type. Write all twelve predictions before the film goes in. Make each one checkable: a place, a size or a brightness.",
+     "after": "Frame 6 is predicted to fail: deep shade at the large dot is about two steps short. If it comes out well, that's news: the film forgives more, or the shade was brighter, or the hole printed bigger than drawn. Find out which. Reading negatives: pale and thin means too little light, dense means too much, a streak can be a leak. Change one thing, shoot the card again, and let the frame before be the judge."
+    }
+   ]
+  },
+  {
+   "id": "files",
+   "kind": "camera",
+   "label": "In the files",
+   "title": "What to change when a test says no",
+   "render": "p_front",
+   "alt": "The front plate lying as it is printed",
+   "caption": "Most fixes are one number and one reprint of the front plate.",
+   "body": "<p>Each test points at a number. Change one at a time, reprint the smallest part that carries it, and test again.</p><ul><li><strong>Near things sharper than 4 m?</strong> <code>LENS_SEAT = 1.0</code> in <code>scad/one135.scad</code>: lower it by 0.2 mm (one layer). Far things sharpest, or nothing sharp? Raise it. It must stay between 0.6 and 1.4: the file refuses anything else. Reprint <code>one135_front.stl</code> only.</li><li><strong>A different lens?</strong> Print <code>one135_lens_gauge.stl</code>; the hole it presses into snugly is your <code>LENS_D</code>. The seat is drawn for a 32 mm lens.</li><li><strong>Weak clicks, or a plate that's hard to slide on?</strong> That's wall error, not the design: print the fit gauge, tune, reprint (M1).</li><li><strong>Fog or a streak?</strong> Check the colour first: hold each part to a phone light in the dark. Then the back's seal steps (<code>STEP_H</code>, <code>LAP_G</code>): the light check found 0.2 mm of slack on those treads lets in several hundred times more stray light.</li><li><strong>After any change</strong>, run <code>sh tools/run_all.sh</code> (about 13 minutes): every check above runs again on your version.</li></ul><table class=\"lp-facts\"><tr><th>Focus set for</th><td>3.7 m (LENS_SEAT 1.0 mm)</td></tr><tr><th>One layer of the seat</th><td>0.2 mm</td></tr><tr><th>Sharp on a postcard</th><td>blur 0.05 mm or less</td></tr><tr><th>Light check</th><td>21 cases, 69 million rays, 0 on the film</td></tr><tr><th>Motion check</th><td>1865 positions, no collisions</td></tr><tr><th>Frames on the test roll</th><td>12</td></tr></table>"
+  },
+  {
+   "id": "maths",
+   "kind": "maths",
+   "title": "A prediction you can check",
+   "summary": "five blur numbers, and what they say about LENS_SEAT",
+   "lines": [
+    "Five things at 1, 1.5, 2, 4 m and far; large dot; middle of the picture.",
+    "The model's blur, mm: 1 m 0.086 · 1.5 m 0.049 · 2 m 0.033 · 4 m 0.023 · far 0.040.",
+    "Smallest first: 0.023 (4 m) < 0.033 < 0.040 < 0.049 < 0.086. So the 4 m thing should be sharpest.",
+    "Sharp on a postcard: 0.05 mm or less. Four pass; 1 m fails.",
+    "0.086 ÷ 0.023 ≈ 3.7: the 1 m thing is about 3.7 times as blurred as the 4 m one.",
+    "Lens 0.2 mm too far out: the 2 m thing wins (0.023). Fix: LENS_SEAT − 0.2.",
+    "So the order of sharpness reads the lens's position to one layer, with nothing but five boxes and your eye."
+   ],
+   "body": "<p><strong>Your turn.</strong> On your test frame the far-away roof is the sharpest of the five. Which way do you change LENS_SEAT?</p><p><strong>Answer.</strong> Up. The lens sits too close to the film (0.2 to 0.6 mm, by the model), so raise LENS_SEAT a layer at a time, reprint the front plate and look again.</p>"
+  },
+  {
+   "id": "try",
+   "kind": "try",
+   "title": "The focus check, no film needed",
+   "minutes": 15,
+   "needs": [
+    "your built camera, no film in it",
+    "frosted sticky tape",
+    "a magnifier",
+    "five things with print on them (boxes, books), and something far away",
+    "a coat or a dark cloth"
+   ],
+   "steps": [
+    "Stand the five things at 1, 1.5, 2 and 4 m from the camera, a little apart, with something far away (a roof, a tree) as the fifth. Bright day, large dot.",
+    "Take the back off. Stick a strip of frosted tape across the film rails, frosted side toward the lens.",
+    "Hold the rocker level at its middle click: the shutter stays open.",
+    "Put the coat over your head and the back of the camera, and look at the tape through the magnifier. Look in the middle of the picture.",
+    "Before you look closely, write down which one you expect to be sharpest. Then decide which one is.",
+    "4 m sharpest: leave it. 2 m: LENS_SEAT down one layer. 1.5 m: two layers. Far away: up one layer.",
+    "If everything looks soft: the tape isn't flat on the rails, or the lens isn't pressed home on its seat. Press it from the front until it stops.",
+    "If it's too dim to see: try a brighter day and a darker coat, and keep the large dot."
+   ],
+   "notice": "You just checked the model's focus trace with your own eye, and you wrote the prediction first, so the result could have proved it wrong. That's the whole method. The roll does the same for everything else."
+  },
+  {
+   "id": "quiz",
+   "title": "Check yourself",
+   "kind": "quiz",
+   "items": [
+    {
+     "q": "Which of these is a prediction a scan can prove wrong?",
+     "choices": [
+      "Frame 10 will be nice",
+      "Frame 10's face will be sharp and the picture cut at the knees",
+      "Frame 10 will be interesting",
+      "Frame 10 will come out"
+     ],
+     "answer": 1,
+     "why": "It names a place, a sharpness and a size. 'Nice' can't be wrong, so it can't prove anything."
+    },
+    {
+     "q": "Which of these did the computer model check?",
+     "choices": [
+      "That the clicks feel like clicks",
+      "That no light reaches the film with the camera closed",
+      "That a first-timer can build it from the guide",
+      "That a roll left in the sun shows no fog"
+     ],
+     "answer": 1,
+     "why": "69 million rays traced through 21 cases. Feel, building and real fog all need a printed camera."
+    },
+    {
+     "q": "On the five-thing check, the 2 m thing comes out sharpest. What does that mean?",
+     "choices": [
+      "The camera is broken",
+      "The lens sits about 0.2 mm too far from the film: set LENS_SEAT one layer lower",
+      "The film was bad",
+      "Nothing: any one being sharp is fine"
+     ],
+     "answer": 1,
+     "why": "As designed, 4 m is sharpest. 2 m sharpest matches the lens 0.2 mm out, by the model. A wrong answer says exactly what to change."
+    },
+    {
+     "q": "A negative comes back pale and thin. What's the likeliest cause?",
+     "choices": [
+      "Too much light",
+      "Too little light",
+      "A light leak",
+      "The camera moved"
+     ],
+     "answer": 1,
+     "why": "Thin negative, too little light; dense negative, too much; a streak can be a leak."
+    },
+    {
+     "q": "Your first roll has a problem. What's the best next step?",
+     "choices": [
+      "Change three things at once to be sure",
+      "Change one thing, shoot the card again, compare with the record",
+      "Throw the camera away",
+      "Never shoot frame 1 again"
+     ],
+     "answer": 1,
+     "why": "Change one thing at a time, so you know which change did it. The record before is the judge."
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "kind": "next",
+   "label": "Print it, then next",
+   "title": "The files and settings that matter",
+   "body": "<ul><li><strong>Before the camera:</strong> <code>one135_fit_gauge.stl</code>, then <code>one135_test_slab.stl</code> with the front plate, blade and wheel. Cheap tests first.</li><li><strong>For the focus:</strong> <code>one135_lens_gauge.stl</code> if your lens isn't the one the files are drawn for, and the focus check sheet (<code>CURVE-35_focus_check.pdf</code>).</li><li><strong>For the roll:</strong> the reference card (<code>CURVE-35_reference_card.pdf</code>): tape it to a wall and make it frame 1, from 4 m. The light chart (<code>CURVE-35_light_chart.pdf</code>) gives the dot for each frame.</li><li><strong>Settings:</strong> the camera's own: PLA, 0.2 mm layers, 3 walls, no supports. Change anything and the checks above no longer describe your print.</li><li><strong>Your version:</strong> after any change to <code>scad/one135.scad</code>, <code>sh tools/run_all.sh</code> re-runs every check and rewrites the reports in <code>build/</code>.</li></ul><p>Everything is on the <a href=\"#files\">Files page</a>.</p>",
+   "href": "#maker-4",
+   "kicker": "Next · M4 · Made for hands",
+   "question": "A sight can be right by the sums and still aim wrong. So who decides if a part works: the maths or the hand?",
+   "links": [
+    {
+     "title": "Science works with testable ideas",
+     "url": "https://undsci.berkeley.edu/understanding-science-101/what-is-science/science-works-with-testable-ideas/",
+     "why": "Why an idea has to predict something that could fail, from the University of California's Understanding Science."
+    },
+    {
+     "title": "Finite element method",
+     "url": "https://en.wikipedia.org/wiki/Finite_element_method",
+     "why": "How a computer bends a part it has never seen printed: the method behind the spring and strength checks."
+    },
+    {
+     "title": "Siemens star",
+     "url": "https://en.wikipedia.org/wiki/Siemens_star",
+     "why": "The spoked star on the reference card, and how its grey middle shows a lens's limit."
+    }
+   ]
+  }
+ ],
+ "teach": {
+  "objectives": [
+   "Sort claims about the camera into 'checked in the model' and 'needs a print', and say why each belongs where it does.",
+   "Write a prediction a scan could prove wrong, and mark it right or wrong afterwards.",
+   "Use the model's blur numbers to predict which of five distances will be sharpest, and say which number in the files to change if another one is.",
+   "Read a negative as thin, dense or streaked, and name one cause for each.",
+   "Change one thing at a time and rerun the checks (sh tools/run_all.sh)."
+  ],
+  "misconception": "That a camera works if the pictures come out, or if a computer says so. In its place: a test says first what each picture will look like, then checks. A model predicts; a print and a roll confirm or refute, and a wrong answer points at one number to change.",
+  "materials": [
+   "The test-roll plan from the second sim, printed or on a phone, one per person",
+   "The reference card (CURVE-35_reference_card.pdf), printed, and tape",
+   "For the focus check: a built camera, frosted tape, a magnifier, five boxes and a dark coat",
+   "Cameras and film for the roll, or, on scan day, the scans and negatives",
+   "The two sims on a projector"
+  ],
+  "period": [
+   {
+    "minutes": 5,
+    "phase": "hook",
+    "what": "Predict block: does a roll that comes out prove the camera works? Most say yes. Don't correct yet."
+   },
+   {
+    "minutes": 8,
+    "phase": "explain",
+    "what": "The model's ledger: light, fit, motion, printing, springs and falls. Then 'what only a print can show'. Hands up for each claim: model or print?"
+   },
+   {
+    "minutes": 12,
+    "phase": "explore",
+    "what": "The five-thing sim in pairs: predict first, then move the lens 0.2 mm each way. Work the sum on the board: which way does LENS_SEAT go?"
+   },
+   {
+    "minutes": 15,
+    "phase": "apply",
+    "what": "Plan the test roll: everyone writes all twelve predictions; partners swap and rewrite anything a scan couldn't prove wrong. (On scan day instead: lay scans beside the plans and mark each right or wrong, with a cause for every wrong one.)"
+   },
+   {
+    "minutes": 5,
+    "phase": "check",
+    "what": "The quiz, then: which prediction do you doubt most, and why?"
+   },
+   {
+    "minutes": 5,
+    "phase": "check",
+    "what": "Exit ticket; plans kept with the roll."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Name one thing the model checked and one that needs a print.",
+    "a": "Checked: light (69 million rays, none on the film), fit (five printers), motion (1865 positions). Needs a print: the feel of the clicks, building from the guide, no fog in real sun, the real shutter time."
+   },
+   {
+    "q": "Why write the predictions before the film goes in?",
+    "a": "So the result can't change the prediction. A prediction made after the fact can't be wrong, so it proves nothing."
+   },
+   {
+    "q": "Which of the five things should be sharpest, and why?",
+    "a": "The 4 m one: the lens is set for 3.7 m, and the model gives it the least blur, 0.023 mm."
+   },
+   {
+    "q": "The far-away roof comes out sharpest. What now?",
+    "a": "The lens sits too close to the film. Raise LENS_SEAT a layer, reprint the front plate only, and look again."
+   },
+   {
+    "q": "Frame 6 is predicted too dark and comes out fine. Is that bad?",
+    "a": "No, it's news: the film forgives more, the shade was brighter, or the hole printed bigger than drawn. Find out which."
+   }
+  ],
+  "exit_ticket": "Write one prediction for your roll that a scan could prove wrong. And one number: by the model, which of 1, 1.5, 2, 4 m and far should be sharpest? (4 m.)",
+  "differentiation": {
+   "support": "Sentence starters for predictions: 'The ___ will be sharp/soft', 'It will be light/dark because ___'. In the five-thing sim, stay with the lens as designed and one move.",
+   "stretch": "From the five blur numbers, explain why 'far' is softer than 4 m when the lens is set for 3.7 m. Then design frames that would tell a too-big hole from a too-slow shutter.",
+   "access": "Both sims work by keyboard and say what they show in words. The roll plan can be filled on paper or read aloud."
+  },
+  "safety": "Nobody looks at the sun while shooting the roll, along the sight or otherwise."
+ },
+ "slides": [
+  "guess",
+  "why",
+  "play",
+  "print-test",
+  "play-2",
+  "files",
+  "maths",
+  "quiz"
+ ]
+}

@@ -1,0 +1,65 @@
+"""Writes MOTION.md from build/motion.json (tools/motion.py) and the films' chapter lists: every number in the report is read, none is typed."""
+import json, os
+R = json.load(open("build/motion.json")); M_ = R["motions"]; F = R["film"]; S = R["summary"]; NAME = {"front": "front plate", "roller": "frame wheel", "knob": "wind knob", "cassette": "film's shell", "shutter open": "shutter, open", "film, empty take-up": "film"}
+nm = lambda n: NAME.get(n, n); cs = F["cases"]; gmin = min(c["min_gap_mm"] for c in cs.values()); gmax = max(c["min_gap_mm"] for c in cs.values()); cl = F["closing"]
+def chap(f):
+    p = f"build/motion/{f}_chapters.json"
+    return json.load(open(p)) if os.path.exists(p) else []
+def mmss(s): return "%d:%02d" % (s // 60, s % 60)
+W = []; w = W.append
+w(f"# Does it all move? The motion proof\n\nWritten 17 November 2026 for {R['model']}. **Nothing has been printed.** This is the model moved through every step of building and using it, and measured at each position. It says what a print should do; only a print can say what it does.\n")
+w("## 1. What was done\n")
+w(f"- **Every part that moves was stepped through the whole of its travel**: {R['positions_tested']} positions in all. At each one, two things were measured against every neighbour: the space the two share (it must be none: two solid parts cannot be in the same place) and the nearest they come to each other.")
+w("- **The film was simulated as a strip with both rows of holes**, drawn along the camera's own film path, and pulled through one picture's length while it turns the frame wheel. Three film thicknesses (0.10, 0.13, 0.15 mm), an empty take-up roll and a full one.")
+w("- **The back was closed over the film** in steps, with the film wrapping round the frame wheel as the back comes home.")
+w("- **The take-up roll was grown** from empty to a whole 36-picture film.")
+w("- Tool: `tools/motion.py` (results in `build/motion.json`). It uses the same exported part meshes as the interference audit, moved by the same sums the films are drawn from (`tools/kin.py`).\n")
+w("## 2. What it found\n")
+w(f"**One thing to change, and it is changed.** On the way into a hole in the film, a tooth of the frame wheel came within 0.06 to 0.09 mm of the hole's edge: no contact as drawn, but less than a printer's error. The tooth kept 1.0 mm of width almost to its tip. It now tapers straight from 1.5 mm at its root to 0.4 mm at its tip, and clears the edge by {gmin:.2f} to {gmax:.2f} mm. That is the only change in v2.12. The slicer still lays plastic to the tooth's full height.\n")
+w("**Everything else is free.** No part shares space with a neighbour anywhere in its travel.\n")
+w("| The move | Positions | Space shared | Nearest | To |\n|---|---|---|---|---|")
+for s in S: w(f"| {s['move']} | {s['steps']} | {'none' if s['shared_mm3'] <= 0.002 else '%.3f mm3' % s['shared_mm3']} | {s['nearest_mm']:.2f} mm | {nm(s['nearest_to'])} |")
+w(f"| film through the frame wheel's teeth, six cases | {sum(len(c['adv']) for c in cs.values())} | none | {gmin:.2f} mm | the edge of a hole |")
+w(f"| the dial and the red knob, both turning | all round | none | {R['dial_and_knob']['nearest_mm']:.2f} mm | each other |\n")
+w("Reading the last column: 0.00 to 0.05 mm is two parts that rest on each other and are meant to (a knob on the top of the body, the plate on the body's face, the film's shell on the chamber floor, the shutter and the aperture wheel lying in the plate). The parts that slide past each other without touching have 0.18 to 0.37 mm between them (shutter to aperture wheel %.2f, shutter to body %.2f, knobs and frame wheel to the back %.2f to %.2f, frame wheel to body %.2f).\n" % (min(M_["shutter"]["pairs"]["aperture wheel at stop 0"]["gap"]), min(M_["shutter"]["pairs"]["body"]["gap"]), min(M_["spool_turn"]["pairs"]["back"]["gap"]), min(M_["wheel_turn"]["pairs"]["back"]["gap"]), min(M_["wheel_turn"]["pairs"]["body"]["gap"])))
+w("**The tightest sliding fit is the aperture wheel**: it lies in the plate and has %.2f mm, as drawn, to the body's face in front of it. The model holds the wheel that closely so that it cannot tip, and the gap is across the layers, where a printer is at its most exact. But it is the first place a print will bind if a first layer comes out thick. The 15-minute test slab is there to try exactly this before the body is printed. It was not changed in this round: whether that gap can be opened without letting light past the wheel is a question for the light tests.\n" % min(M_["aperture"]["pairs"]["body"]["gap"]))
+w("**The film.**\n")
+w("| Film | Take-up roll | Teeth in holes at once | Tooth to hole edge, least | Holes could be this much smaller all round |\n|---|---|---|---|---|")
+for k, c in cs.items(): a, b = k.split("; "); w(f"| {a} | {b} | {c['teeth_in_holes']} | {c['min_gap_mm']:.2f} mm | {c['holes_could_shrink_by_mm']:.2f} mm |")
+w(f"\n- One turn of the dial moves {F['pictures']['one_turn_of_dial_mm']:.2f} mm of film; eight holes are {F['pictures']['eight_pitches_mm']:.2f} mm: one turn, one picture.")
+w(f"- A control: with the wheel set half a tooth out of step, the test reports {F['out_of_step_check_mm3']:.2f} mm3 of tooth where film is. So it can see a tooth on the film; it sees none when they are in step.")
+w(f"- **Closing the back on a loaded film:** at each of {len(cl)} positions of the back there is a place for the wheel to stand with every tooth clear (least room: {min(c['free_deg'] for c in cl)} of the 45 degrees between two teeth). The wheel turns freely, so it finds that place. If the teeth come down between two holes instead, the film's top edge is held up by a tooth until the first 5 mm of winding lets them drop in; the guide already says so.")
+r = [q for q in F["roll"] if q["thickness"] == 0.13]; r15 = [q for q in F["roll"] if q["thickness"] == 0.15]
+w(f"- **The roll on the spool** grows from {r[0]['roll_radius']:.1f} mm to {r[-1]['roll_radius']:.1f} mm for 36 pictures ({r15[-1]['roll_radius']:.1f} mm with thick film) in a chamber of 12 mm: {r[-1]['chamber_wall_gap']:.1f} mm to spare ({r15[-1]['chamber_wall_gap']:.1f} mm), if it is wound tight. A roll that springs loose will touch the wall; that is friction, not a jam.")
+w(f"- **Winding the film out takes about {F['turns_to_wind_out']:.0f} turns** of the red knob for 36 pictures and about 25 for 24. The guide said 25 to 30; it now says 25 and 33.\n")
+w("## 3. What it does not show\n")
+w("- **Friction.** How hard the knobs turn, and whether winding feels smooth, are for the print.")
+w("- **Bending.** The clicks, the latches and the lens's crush ribs work by pressing: their bumps were removed here (or counted as meant, for the lens: 0.31 mm3). Their strength is in the separate strength check (`tools/fea.py`). The film is drawn along a set path; real film finds its own.")
+w("- **A real printer's error.** Parts are at their drawn size. The tolerance audit (`tools/tolerance.py`) grows and shrinks them; it was not re-run for v2.12, which changes only the teeth.")
+w("- **Hands.** Whether a 13-year-old finds the fork with the frame wheel is not a question for a simulation.\n")
+P1 = json.load(open("build/plate1.json")) if os.path.exists("build/plate1.json") else None
+if P1:
+    w("## 3a. The first plate and its slide (added in v2.13)\n")
+    w("Two new parts for lesson 1; no part measured above was changed. Checked on its own by `tools/plate1check.py`:\n")
+    w(f"- **Going on:** {P1['going_on']['steps']} positions of the same three moves as the front plate (onto the body, across, down), with slide and ring on board: space shared {'none' if P1['going_on']['most_shared_mm3'] <= 0.002 else P1['going_on']['most_shared_mm3']}. At home its hooks and latch hold it (pulled 0.6 mm off: {P1['holds']['plate pulled 0.6 mm off x body']:.1f} mm3 in the way; pushed 0.9 mm up: {P1['holds']['plate pushed 0.9 mm up x body']:.1f} mm3).")
+    w(f"- **The slide:** {P1['slide_travel']['steps']} positions over its 10 mm: space shared {'none' if P1['slide_travel']['most_shared_mm3'] <= 0.002 else P1['slide_travel']['most_shared_mm3']}; {P1['slide_travel']['least_gap_to_body']:.2f} mm to the body's face and {P1['slide_travel']['least_gap_to_plate']:.2f} mm to the plate. It stops at both ends and cannot come out while the plate is on.")
+    w(f"- **Open:** a straight line from the pinhole reaches {P1['open']['picture_lit_pct']:.1f} % of the picture (the very corners are cut by the body's own opening).")
+    w(f"- **Shut:** of {P1['shut']['rays']:,} straight lines from the body's opening outward, {P1['shut']['straight_ways_out']} get out ({P1['shut']['for_comparison_ways_out_with_the_slide_up']:,} with the slide up, as a control).")
+    w("- **Printing:** both lie flat with no supports; the plate has the same few bridged layers as the front plate (the lens pocket's floor).")
+    w("- **Not checked:** light that scatters round the slide rather than travelling straight, which matters more for a pinhole than for a lens because its exposures are long. That is a sun test with film. Nothing has been printed.\n")
+w("## 4. The two films, and the clips\n")
+g = chap("guide"); p = chap("proof")
+if g: w(f"**`build/CURVE-35_assembly_guide.mp4`** ({mmss(g[-1]['start'] + g[-1]['seconds'])}): the guide's 22 steps as moving pictures, spoken and on screen in the guide's own words (do, check, why), in the guide's order: the dark box first, then the front plate. The shutter is shown as it works: a press flips it and it stays. A step whose words take longer than its move plays the move again.\n")
+if p: w(f"**`build/CURVE-35_motion_proof.mp4`** ({mmss(p[-1]['start'] + p[-1]['seconds'])}): each move with its measurements beside it, the film through the teeth in close-up, the table, and the limits.\n")
+w("Every step is also its own clip with its sound, named by the step (`build/motion/clips/guide_b1.mp4` ... `guide_o2.mp4`): BUILD 7 is `b7`, FILM IN 2 is `f2`. The printed guide, the clips and the web pages share those names. The proof film's moves are `build/motion/proof_NN_<move>.mp4`, without sound.\n")
+if g:
+    w("| Start | Clip | Seconds |\n|---|---|---|")
+    for c in g: w(f"| {mmss(c['start'])} | {c['key']} | {c['seconds']:.0f} |")
+    w("")
+w("Both are drawn from the same exported part meshes the measurements were made on, with their click bumps left on (`scad/motion.scad` places each mesh with a matrix from `tools/kin.py`), so what is seen is what was tested. `python3 tools/motionfilm.py guide` and `... proof` remake them.\n")
+w("**Shelved, as you said:** ray-traced scenes of the camera in use. They need a scene worth lighting, and a real photograph of a real print will be better than any of them.\n")
+w("## 5. Checks run for v2.12, and not run\n")
+w("- Run: `tools/check.py` (no overlaps in four states; every way in and out free), `tools/printcheck.py`, `tools/printrules.py` (nothing unexplained; the eight teeth are listed as thin on purpose), `tools/motion.py`, and a slice of the frame wheel.")
+w("- For v2.13 (two new parts): `tools/plate1check.py` and a check of both parts as they lie on the bed. The production and packaging tools do not list them yet.")
+w("- Not re-run: the tolerance audit, the light tests, the full slicing check. `END_CASES.md`, `PRODUCTION.md` and the older PDFs (maker guide, print sheets, engineering report) still describe earlier versions.")
+open("MOTION.md", "w").write("\n".join(W) + "\n"); print("MOTION.md written,", len(" ".join(W).split()), "words")

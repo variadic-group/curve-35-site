@@ -1,0 +1,320 @@
+{
+ "n": 2,
+ "code": "M2",
+ "maker": true,
+ "film": false,
+ "title": "Snap fits",
+ "slug": "click",
+ "question": "Nine pieces, no screws, no glue, no bought springs. What holds it together?",
+ "hook": "<p>Wind it, shake it, knock it off a desk: it stays in one piece. Every joint that holds ends in a <strong>click</strong>, and every click is a spring made of the part's own plastic. Here's how to draw one that clicks on a hundred printers and still lets go when you want it to.</p>",
+ "colour": "#14A08C",
+ "hero_fig": "fig_m02_catch",
+ "still": {
+  "img": "step_b9",
+  "alt": "The orange front plate sliding down onto the camera body",
+  "caption": "The front plate going home: the hardest click in the build."
+ },
+ "sections": [
+  {
+   "id": "guess",
+   "kind": "predict",
+   "title": "Make a guess first",
+   "body": "<p>The whole camera: a body, a back, a front plate, a shutter, a dot wheel, a spool, two knobs, a frame wheel and a lens. Nine pieces, held together with no screws, no glue and no springs from a shop. You can wind it, shake it, knock it off a desk.</p>",
+   "q": "So what makes a good snap hold on?",
+   "choices": [
+    "It's stiff: the harder it is to bend, the better it grips",
+    "It's tight: it squeezes the other part hard",
+    "Its shape: something about the faces where the parts meet"
+   ],
+   "answer": 2,
+   "reveal": "<p>Most people pick stiff. But a stiff snap could never get on in the first place: something has to <em>bend out of the way</em>. The snaps here are soft on purpose. What holds is <strong>shape</strong>. Read on to see which shape.</p>",
+   "figure": {
+    "svg": "fig_m02_nine",
+    "caption": "Nine pieces, and not one screw."
+   }
+  },
+  {
+   "id": "why",
+   "kind": "why",
+   "title": "A slope in, a square face out",
+   "body": "<p class=\"lp-lead\">A stiff hook never goes on. A soft one, the right shape, never comes off.</p><p>Look at the back. At each end there's a long thin <strong>finger</strong>, cut from the back itself, with a little <strong>nub</strong> on its tip. Press the back on: the nub meets a slope on the body, the finger bends, the nub rides over, and the finger springs back behind a bar. <strong>Click.</strong></p><p>Now pull the back straight off. The nub's back face is square, and so is the bar's. Square on square, nothing slides: pulling harder only presses them together. To open it you pinch two pads, which bends the fingers clear from the other side. About 0.5 N a pad, by the model: the weight of a chocolate bar on your thumb.</p><p>So what holds is <strong>shape</strong>. Stiffness only has to be enough to spring back, and that's the catch: bend PLA's surface more than about <strong>1.7 %</strong> and it yields, stays bent, and shows a pale stress mark. The camera keeps its springs well under that: about 0.5 % for one that bends at every picture, 1.0 % for one that bends now and then.</p><p>None of this is new. A printed snap replaces a screw, a spring and a tool, and each of the front plate's feet fits its pocket only one way.</p>",
+   "figure": {
+    "svg": "fig_m02_catch",
+    "caption": "The slope lets the nub in; the square face stops it coming out. The finger is part of the back."
+   },
+   "timeline": [
+    {
+     "year": "1960s",
+     "what": "Shigeo Shingo makes mistake-proofing a factory habit: parts that can only go together the right way."
+    },
+    {
+     "year": "1977",
+     "what": "Geoffrey Boothroyd starts what becomes Design for Assembly: the cheapest part to put together is the one you leave out."
+    },
+    {
+     "year": "Now",
+     "what": "Nine printed pieces and a lens. Every spring is part of a piece; nothing is bought."
+    }
+   ],
+   "label": "Why it's drawn this way"
+  },
+  {
+   "id": "play",
+   "kind": "play",
+   "title": "Bend a snap until it clicks",
+   "sims": [
+    {
+     "sim": "m02_snap",
+     "intro": "This is the back's own finger: 35 mm long, 1.3 mm thick, with a 1.6 mm nub. Push the back on and watch the root stretch and the force graph draw itself. Then make the finger short and fat, and break it. Push slowly and stop right at the click. What does the force graph do there? Press 'Pull it straight off'. Why won't it move?",
+     "after": "A long thin finger bends a long way at the tip while its root hardly stretches. Strain grows with thickness and falls with length <em>squared</em>; force grows with thickness <em>cubed</em>. So thickness is the knob that bites. And did you see the force drop to nothing at the click? That sudden drop is what your thumb feels and your ear hears."
+    }
+   ]
+  },
+  {
+   "id": "plate",
+   "kind": "text",
+   "label": "The hardest hold",
+   "title": "The front plate: hooks, a latch, and a path a knock can't follow",
+   "body": "<p>The front plate carries the lens, shutter and dot wheel, and it's what a fall hits first. Three things hold it:</p><ul><li><strong>Four hooked feet</strong> drop into four pockets on the body. Their hooks are 43° wedges: pressing the plate down pulls it tight onto the body's flat face, and that face sets the focus.</li><li><strong>A side lip on each foot</strong> tucks under the body's skin when you slide the plate across. Now it can't lift off.</li><li><strong>A leaf latch</strong>: a strip 1.6 mm thick (eight layers) lying in the plate's face, with a post on its free end. As the plate slides home, the post climbs a bump in the body and drops behind it. About 3 to 5 N to click on, the hardest push in the build; about 2 N to slide off.</li></ul><p>It used to slide straight up and off. Then the model dropped it, from four heights, on three kinds of printer. From 1 m the old plate came off in <strong>two falls out of three</strong>. Now, to come off, it has to go <em>up</em> and then <em>sideways</em> before it can come <em>away</em>. A knock pushes one way at a time.</p><p>The latch got a second look too. Its bump used to climb at 62°, and the click took about 9 N. Now the climbing side lies back at 54° and the push is about half. The holding side didn't change at all.</p>",
+   "figure": {
+    "svg": "fig_m02_path",
+    "caption": "To come off: up, then sideways, then away. A knock pushes in one direction at a time."
+   }
+  },
+  {
+   "id": "play-2",
+   "kind": "play",
+   "title": "Drop a hundred cameras",
+   "sims": [
+    {
+     "sim": "m02_fall",
+     "intro": "Pick the old plate or today's, a height and a printer, and drop 100 cameras onto a hard floor. These are the fall model's own numbers. Guess first: old plate, 1 m, typical printer. How many plates come off? Then drop. Same drop, today's plate. How many times fewer?",
+     "after": "From 1 m on a typical printer the old plate comes off 67 times in 100; today's, 7. Look at the amber ones: the plate was knocked up but the lips held it, and you just slide it back down. And see how much worse a thin, slippery print does? That's another reason to print the fit gauge first."
+    }
+   ]
+  },
+  {
+   "id": "files",
+   "kind": "camera",
+   "label": "In the files",
+   "title": "Where the springs live",
+   "render": "step_b4",
+   "alt": "The back being pressed onto the body until its two fingers click",
+   "caption": "BUILD 4: two fingers, two clicks.",
+   "body": "<p>Every spring is a few numbers in <code>scad/one135.scad</code> (and the shutter and dot wheel's rims in <code>scad/layout.scad</code>, which <code>tools/layout.py</code> writes: change them there).</p><ul><li><strong>The back's fingers:</strong> <code>F_T = 1.3</code> (thickness), <code>NUB_H = 1.6</code> (how far the nub stands up), <code>PAD_UP = 1.8</code> (how proud the pads stand). A thicker finger pushes harder by the cube of its thickness and strains more; a taller nub holds harder but must bend further to open.</li><li><strong>The front plate's leaf:</strong> <code>LF_T = 1.6</code> (eight layers), 25 mm long so the climb strains it 0.85 % at most. The bump: <code>LF_RAMP = 54</code> (the side the post climbs) and <code>LF_RAKE = 38</code> (the side that holds). Steepen <code>LF_RAMP</code> and the click gets harder fast; steepen <code>LF_RAKE</code> and the plate holds harder and comes off harder.</li><li><strong>The shutter and dot wheel:</strong> each one's rim is the spring, a beam with a round tooth that drops into 45° notches (<code>BL_T</code>, <code>WH_T</code>, <code>SPR_RAMP</code>). The rocker clicks at about 2.3 N, the dot wheel at about 2.4 N.</li><li><strong>The lens</strong> is the only part with no click: three small crush ribs squeeze it.</li></ul><p>Every spring lies flat on the bed so it bends along its lines, never across its layers. Turn a part in the slicer and you break that.</p><table class=\"lp-facts\"><tr><th>Back on / off</th><td>0.6 N / 0.5 N a pad</td></tr><tr><th>Rocker click</th><td>about 2.3 N (0.8 N on a thin print)</td></tr><tr><th>Dot click</th><td>about 2.4 N</td></tr><tr><th>Front plate click</th><td>about 3 to 5 N; off about 2 N</td></tr><tr><th>PLA yields at</th><td>about 1.7 % strain</td></tr><tr><th>Bought springs</th><td>none</td></tr></table>",
+   "step": "b4"
+  },
+  {
+   "id": "maths",
+   "kind": "maths",
+   "title": "How far can a finger bend?",
+   "summary": "strain, force, and the drop test in numbers",
+   "lines": [
+    "For a finger fixed at one end and pushed at the tip: strain at the root ≈ 1.5 × thickness × tip bend ÷ length².",
+    "The back's finger: 1.5 × 1.3 × 1.6 ÷ 35² = 3.12 ÷ 1225 ≈ 0.25 %. Gentle.",
+    "Short and fat, 10 mm by 2 mm, same bend: 1.5 × 2 × 1.6 ÷ 10² = 4.8 %. Nearly three times the 1.7 % where PLA stays bent.",
+    "Force to bend it grows with thickness³ ÷ length³. A finger 1.6 mm thick instead of 1.3: (1.6 ÷ 1.3)³ ≈ 1.9 times the push.",
+    "The fattest printer makes the finger about 0.25 mm thicker and the nub 2.1 mm tall: the push goes from 0.61 N to about 1.4 N.",
+    "Opening the back, pads pinched all the way, the full model gives 0.44 % to 1.03 % across the five printers: the fattest sits right on the 1.0 % line.",
+    "Drop test, 1 m, typical printer: old plate off 67 in 100, today's 7. 67 ÷ 7 ≈ 9.6: nearly ten times fewer."
+   ],
+   "body": "<p><strong>Your turn.</strong> You make the back's finger 30 mm long instead of 35, same thickness and nub. About what is the strain at its root now, in %?</p><p><strong>Answer.</strong> 1.5 × 1.3 × 1.6 ÷ 30² = 3.12 ÷ 900 ≈ 0.35 %. Still gentle, and the push goes up by (35 ÷ 30)³ ≈ 1.6 times.</p>"
+  },
+  {
+   "id": "try",
+   "kind": "try",
+   "title": "Print a finger and break it",
+   "minutes": 15,
+   "needs": [
+    "your printer",
+    "a quick model in any CAD tool, or OpenSCAD",
+    "safety glasses"
+   ],
+   "steps": [
+    "Draw three flat strips, all 1.3 mm thick and 6 mm wide: 35, 20 and 10 mm long, each on a solid 10 mm block. Lay them flat on the bed, like the back's finger.",
+    "Print them with the camera's settings (a few minutes for all three).",
+    "Hold each block and push the strip's tip sideways 1.6 mm, the nub's height, against a ruler. Let go. Does it spring back straight?",
+    "Now push each one 3 mm, then 5 mm. Which one shows a pale mark at its root first? Which stays bent?",
+    "Print one more 35 mm strip standing up, so it bends across its layers. Bend it the same way. Where does it break?"
+   ],
+   "notice": "The long strip shrugs off bends that ruin the short one, and the standing strip snaps clean along a layer line. That's the whole design rule for printed springs: long, thin, and lying flat.",
+   "safety": "Wear glasses: a strip that snaps can flick a sharp piece. The nozzle and bed are hot."
+  },
+  {
+   "id": "quiz",
+   "title": "Check yourself",
+   "kind": "quiz",
+   "items": [
+    {
+     "q": "Why are the snaps on this camera soft rather than stiff?",
+     "choices": [
+      "Soft plastic is cheaper to print",
+      "So they can bend out of the way going on, then spring back behind a square face",
+      "So they grip the other part harder",
+      "So they wear in and get tighter over time"
+     ],
+     "answer": 1,
+     "why": "A stiff snap could not get past the bar at all, or it would crack trying. Bending is the whole trick; the square face does the holding."
+    },
+    {
+     "q": "You pull the back straight off. Why does it not come away?",
+     "choices": [
+      "The fingers are glued in",
+      "The nub's square face meets the bar's square face, so there is no slope to slide up",
+      "The film inside holds it",
+      "Air pressure holds it shut"
+     ],
+     "answer": 1,
+     "why": "Square against square: pulling only presses the faces together. Pinching the pads bends the fingers clear from the other side."
+    },
+    {
+     "q": "You make a finger twice as long but bend its tip the same amount. What happens to the strain at its root?",
+     "choices": [
+      "It doubles",
+      "It stays the same",
+      "It halves",
+      "It drops to a quarter"
+     ],
+     "answer": 3,
+     "why": "Strain goes with 1 ÷ length². Twice as long: 2² = 4 times less strain. Long and thin wins."
+    },
+    {
+     "q": "Why can a knock not take the front plate off?",
+     "choices": [
+      "The plate is too heavy to move",
+      "It must go up, then sideways, then away: three directions, and a knock pushes one way at a time",
+      "The lens holds it on",
+      "It is held by magnets"
+     ],
+     "answer": 1,
+     "why": "The path off has three turns in it. A fall can knock the plate up (the amber cameras in the sim), but the lips hold it, and a knock rarely steers it the rest of the way."
+    },
+    {
+     "q": "In the model, one-move plates came off in 67 falls in 100 and three-move plates in 7. Roughly how many times fewer?",
+     "choices": [
+      "About 2 times",
+      "About 5 times",
+      "About 10 times",
+      "About 60 times"
+     ],
+     "answer": 2,
+     "why": "67 ÷ 7 ≈ 9.6: nearly ten times fewer plates on the floor."
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "kind": "next",
+   "label": "Print it, then next",
+   "title": "The files and settings that matter",
+   "body": "<ul><li><strong>Don't rotate the springy parts.</strong> <code>one135_back.stl</code>, <code>one135_front.stl</code>, <code>one135_blade.stl</code> and <code>one135_wheel.stl</code> are exported lying the way their springs must bend.</li><li><strong>3 walls, 15 % infill, 0.2 mm layers.</strong> The leaf is eight layers and the nub's reach is counted in layers, so a different layer height changes the click.</li><li><strong>Avoid crossing perimeters on:</strong> it keeps the nozzle from dragging strings across the slits behind the click springs. A string there glues a spring shut.</li><li><strong>Weak clicks?</strong> Your printer is printing thin. Print <code>one135_fit_gauge.stl</code> and tune before you reprint (M1).</li><li><strong>Changed a spring?</strong> Run <code>python3 tools/snapcurves.py</code> for the new forces and <code>python3 tools/platefall.py</code> for the drop test, or <code>sh tools/run_all.sh</code> for everything.</li></ul><p>Everything is on the <a href=\"#files\">Files page</a>.</p>",
+   "href": "#maker-3",
+   "kicker": "Next · M3 · How we know it works",
+   "question": "How do you know a camera works before it has taken a picture?",
+   "links": [
+    {
+     "title": "How do you design snap-fit joints for 3D printing?",
+     "url": "https://www.hubs.com/knowledge-base/how-design-snap-fit-joints-3d-printing/",
+     "why": "Cantilever and ring snaps, where the strain peaks, clearances and print direction."
+    },
+    {
+     "title": "How to design snap fit components",
+     "url": "https://www.fictiv.com/articles/how-to-design-snap-fit-components",
+     "why": "The full engineer's equations for strain and mating force, and the strain limits of printed plastics."
+    },
+    {
+     "title": "Snap-fit",
+     "url": "https://en.wikipedia.org/wiki/Snap-fit",
+     "why": "The families of snaps, with everyday examples from pen caps to battery lids."
+    }
+   ]
+  }
+ ],
+ "teach": {
+  "objectives": [
+   "Explain how a snap goes on and why it doesn't come off: a slope one way, a square face the other, a spring that bends between.",
+   "Say why the springs are the part's own plastic, and why they stay well under PLA's 1.7 % strain: 0.5 % for every picture, 1.0 % now and then.",
+   "Use strain ≈ 1.5 × thickness × bend ÷ length² to compare two fingers, and name the scad numbers that set them (F_T, NUB_H, LF_T, LF_RAMP, LF_RAKE).",
+   "Describe the front plate's moves off and use the fall model's numbers to compare the old plate with today's."
+  ],
+  "misconception": "That a snap holds by being stiff and tight, so a stiffer snap is a better one. In its place: a snap holds by shape (a slope in, a square face out) on a spring soft enough to bend and spring back without staying bent. And a part is held most surely by a path off that no single knock can follow.",
+  "materials": [
+   "Per group of three: one built camera, empty of film, or a printed back and body",
+   "Three strips cut from a clean plastic food tub, about 1 by 8 cm, or the three printed strips from the Try card",
+   "A ruler and safety glasses for each person",
+   "Everyday snaps: pen caps, a battery cover, a lunchbox clip",
+   "The two sims on a projector"
+  ],
+  "period": [
+   {
+    "minutes": 5,
+    "phase": "hook",
+    "what": "Predict block: stiff, tight or shape? Everyone commits. Show of hands. Don't correct yet."
+   },
+   {
+    "minutes": 7,
+    "phase": "explain",
+    "what": "Draw the catch on the board: slope in, square face out. Why is the finger long and thin? Project the snap sim: the real finger, then a short fat one, then pull it straight off."
+   },
+   {
+    "minutes": 14,
+    "phase": "explore",
+    "what": "Glasses on. Groups bend strips a little further each time until one stays bent or whitens; measure the tip bend; find where the mark appears (the root). Then hunt slopes and square faces on the everyday snaps."
+   },
+   {
+    "minutes": 7,
+    "phase": "explain",
+    "what": "The front plate: hooks, lips, latch. Run the drop sim at 1 m, old plate then today's. Work the sum on the board, then the 30 mm finger."
+   },
+   {
+    "minutes": 12,
+    "phase": "apply",
+    "what": "Open scad/one135.scad (or the files section): each group picks one spring number, predicts what doubling it does to force and strain, and checks with the formula. Then the quiz."
+   },
+   {
+    "minutes": 5,
+    "phase": "check",
+    "what": "Exit ticket."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Why are the snaps on this camera soft, not stiff?",
+    "a": "So they bend out of the way going on and spring back behind a square face. A stiff one wouldn't go on, or would crack."
+   },
+   {
+    "q": "Pulled straight off, why doesn't the back come away?",
+    "a": "The nub's square face meets the bar's square face: nothing slopes, so nothing slides. It opens only when the pads bend the fingers clear."
+   },
+   {
+    "q": "Make the finger 1.6 mm thick instead of 1.3. What happens to the push?",
+    "a": "Force goes with thickness cubed: (1.6 ÷ 1.3)³ ≈ 1.9 times."
+   },
+   {
+    "q": "Why can't a knock take the front plate off?",
+    "a": "It has to go up past its click, then sideways, then away. A knock pushes one way at a time."
+   },
+   {
+    "q": "Why must every spring lie flat on the bed?",
+    "a": "So it bends along its lines. Across its layers a print is about half as strong and snaps along a layer line."
+   }
+  ],
+  "exit_ticket": "In one sentence: what holds a snap on, if not stiffness? And one number: 30 cameras with today's plate are dropped once each from 1 m; 7 in 100 plates come off. About how many is that? (About 2.)",
+  "differentiation": {
+   "support": "Give the catch drawing labelled 'way in' and 'way out'. In the snap sim, keep the printer on 'as drawn' and change only the length.",
+   "stretch": "Design a finger that stays under 0.5 % with a 1.6 mm bend and pushes no harder than today's. Then explain from the drop sim why a thin, slippery printer loses more plates, and propose one change to the plate.",
+   "access": "Both sims work from the keyboard and say what they show in words. Building the back with eyes shut, counting clicks, suits someone who can't see the screen."
+  },
+  "safety": "Safety glasses while strips are bent: a strip can snap and fly. Bend away from faces. Nobody forces a camera part: the hardest push in the build is about 5 N, a firm thumb."
+ },
+ "slides": [
+  "guess",
+  "why",
+  "play",
+  "plate",
+  "play-2",
+  "files",
+  "maths",
+  "quiz"
+ ]
+}

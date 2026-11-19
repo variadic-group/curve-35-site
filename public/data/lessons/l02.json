@@ -1,0 +1,314 @@
+{
+ "n": 2,
+ "title": "The lens",
+ "question": "If a hole already makes a picture, why does anyone need a lens?",
+ "hook": "Lesson 1's camera worked with nothing but a hole, and by a window you counted forty. One piece of plastic, 12 mm across, goes where the pinhole disc was, and the count becomes a three-hundredth of a second. About 150 times the light. Same picture.",
+ "colour": "#2B6CD8",
+ "hero_fig": "fig_l02_hero",
+ "chips": [
+  "150 times the light",
+  "A magnifying glass",
+  "Why it's called CURVE"
+ ],
+ "sections": [
+  {
+   "id": "predict",
+   "kind": "predict",
+   "title": "Your guess first",
+   "body": "",
+   "q": "What does a camera lens mostly do?",
+   "choices": [
+    "It makes things bigger, like a magnifying glass",
+    "It lets a big hole make a sharp picture, so far more light gets in",
+    "It turns the upside-down picture the right way up"
+   ],
+   "answer": 1,
+   "reveal": "<p>Most people pick 'makes things bigger'. But your camera's picture is always 36 by 24 mm, lens or no lens. Nothing needs to be bigger. And the picture with a lens is still upside down. What a lens does is <strong>gather</strong>: it takes all the light from one point that lands anywhere on the glass, and bends it back to one point. Keep reading.</p>"
+  },
+  {
+   "id": "why",
+   "kind": "story",
+   "title": "A hole sorts light. A lens gathers it.",
+   "body": "<p>A pinhole gives you a sharp picture if you are happy to throw away almost all the light. Make the hole bigger for more light and every point of the scene lands as a blurry disc the size of the hole.</p><p>A lens breaks that deal. From one point of the scene, light hits the whole lens, and the curved glass bends every one of those rays back together to one point on the film. A big hole and a sharp picture. That's the whole reason lenses exist.</p><p>There is a catch. A single lens draws its sharp picture on a curve, not on a flat sheet. Most cameras fix that with more glass. Yours bends the film instead: it lies on a curve of 32 mm radius, centred on the lens. That's the camera's name.</p>",
+   "figure": {
+    "svg": "fig_l02_gather",
+    "caption": "Many rays from one point, bent back to one point."
+   },
+   "timeline": [
+    {
+     "year": "1568",
+     "what": "Daniele Barbaro puts a spectacle lens in the hole of a dark room, and finds a smaller opening makes it clearer still."
+    },
+    {
+     "year": "1611",
+     "what": "Johannes Kepler's <em>Dioptrice</em> works out how lenses bend light into a picture."
+    },
+    {
+     "year": "1812",
+     "what": "William Wollaston bends a single lens into a shallow bowl, a meniscus. Your lens is the same idea."
+    },
+    {
+     "year": "1840",
+     "what": "Joseph Petzval designs a lens by calculation: about twenty times brighter than those of 1839."
+    },
+    {
+     "year": "1888",
+     "what": "The first Kodak: fixed focus, nothing to set. Point, press. The choice your camera makes."
+    }
+   ],
+   "label": "Why this piece exists"
+  },
+  {
+   "id": "play",
+   "kind": "sim",
+   "title": "Bend it back to a point",
+   "sims": [
+    {
+     "sim": "l02_lens",
+     "intro": "A lamp, your camera's lens and its film. The lens is fixed, set for 3.7 m. Move the lamp and watch where the rays meet.",
+     "after": "Near things focus further behind the lens. The film can't move, so very near things land as small discs; a smaller dot shrinks the disc. Cover half the lens and you keep the whole picture, half as bright."
+    },
+    {
+     "sim": "l02_curve",
+     "intro": "Flat film or curved film? Slide and compare the sharpness from the middle of the picture to the ends.",
+     "after": "On flat film the ends go soft. Curve the film so every part is 32 mm from the lens and it follows the sharp picture most of the way out."
+    }
+   ]
+  },
+  {
+   "id": "camera",
+   "kind": "kit",
+   "title": "The lens",
+   "render": "step_b10",
+   "alt": "The lens being pressed into the round pocket on the orange front plate",
+   "caption": "The lens presses in from the front, bulge outward.",
+   "body": "<p>One piece of moulded plastic, 12 mm across, shaped like a shallow bowl. It presses into the round pocket on the front plate until it stops; three small ribs hold it. Its focal length is 32 mm, and it never moves: fixed focus, set for 3.7 m.</p><p>Behind it the film lies on its 32 mm curve. Pick a dot and the middle of the picture is sharp from 1.0 m (small), 1.3 m (middle) or 1.5 m (large) out to the horizon, softer toward the ends, like a single-use camera.</p>",
+   "step": [
+    "b10"
+   ]
+  },
+  {
+   "id": "phone",
+   "kind": "phone",
+   "title": "A stack of lenses, and they move",
+   "body": "<p>A phone's main camera has a stack of several small moulded plastic lenses, each shaped by computer so that together they lay a sharp picture flat across a flat sensor. That's the job your camera does by curving its film. And the stack moves: a tiny motor slides it a fraction of a millimetre to focus, so a phone can photograph your hand and the horizon. Your lens stays put, so you step back instead.</p>"
+  },
+  {
+   "id": "maths",
+   "kind": "maths",
+   "title": "How much brighter is the lens than the pinhole?",
+   "summary": "one sum, with the real numbers",
+   "lines": [
+    "pinhole: f/120      lens at the large dot: f/9.6",
+    "light goes as 1 ÷ (f-number)²",
+    "120 ÷ 9.6 = 12.5",
+    "12.5 × 12.5 = 156",
+    "so the lens gives about 150 times the light",
+    "a 1 s count ÷ 156 = 0.0064 s: under a hundredth of a second"
+   ],
+   "body": "<p>Squared, because light comes through the hole's area, and area grows with width times width. Lesson 4 is all about that.</p>"
+  },
+  {
+   "id": "try",
+   "kind": "try",
+   "title": "A window on a sheet of paper",
+   "minutes": 10,
+   "needs": [
+    "a magnifying glass",
+    "a sheet of white paper or card",
+    "a ruler",
+    "a room with one bright window, lights off"
+   ],
+   "steps": [
+    "Stand across the room from the window, your back to the wall.",
+    "Hold the paper flat, facing the window, with the glass between them, close to the paper.",
+    "Move the glass slowly away from the paper until the window appears on it, sharp.",
+    "Measure from the glass to the paper: that's close to its focal length.",
+    "Find something nearer, like a lamp. Is it sharp at the same distance?",
+    "Cover most of the glass with your fingers, leaving a small hole in the middle. Watch the picture."
+   ],
+   "notice": "The window is upside down, like the pinhole's, but far brighter. Nearer things need the glass further from the paper. Covering most of the glass makes the picture dimmer, not smaller, and sharper over a wider range: your fingers became a small dot."
+  },
+  {
+   "id": "quiz",
+   "kind": "quiz",
+   "title": "Check yourself",
+   "items": [
+    {
+     "q": "Why does a big hole with no glass give a blurred picture?",
+     "choices": [
+      "It lets in too little light",
+      "Each point of the scene lands as a disc as wide as the hole",
+      "Light bends at the edges",
+      "The film can't cope"
+     ],
+     "answer": 1,
+     "why": "With no glass, light from one point goes straight through the whole gap, so it lands as a disc the size of the hole."
+    },
+    {
+     "q": "You cover the top half of the lens with your thumb. The picture…",
+     "choices": [
+      "loses its top half",
+      "loses its bottom half",
+      "is all still there, half as bright",
+      "turns black"
+     ],
+     "answer": 2,
+     "why": "Every part of the lens sends light from every point to the same place on the film, so the whole picture stays; it just gets half the light."
+    },
+    {
+     "q": "A lamp moves from far away to 1 m from the lens. Where are its rays sharp now?",
+     "choices": [
+      "Closer to the lens than before",
+      "Further behind the lens than before",
+      "In the same place",
+      "In front of the lens"
+     ],
+     "answer": 1,
+     "why": "Near things focus further behind the lens (1/f = 1/u + 1/v). Your film doesn't move, so very near things go a little soft."
+    },
+    {
+     "q": "Why is this camera's film curved?",
+     "choices": [
+      "To fit more pictures on the roll",
+      "A single lens makes its sharp picture on a curve, so the film follows it",
+      "To stop light getting in",
+      "To make the picture bigger"
+     ],
+     "answer": 1,
+     "why": "One lens focuses the sides of the view a little too soon. Every part of the curved film is 32 mm from the lens, so it follows the sharp picture."
+    },
+    {
+     "q": "Pinhole f/120, large dot f/9.6. About how many times more light does the lens give?",
+     "choices": [
+      "12",
+      "25",
+      "150",
+      "1,200"
+     ],
+     "answer": 2,
+     "why": "120 ÷ 9.6 = 12.5, and light goes with the square: 12.5 × 12.5 ≈ 156."
+    }
+   ]
+  },
+  {
+   "id": "roll",
+   "kind": "roll",
+   "title": "Try it on your roll",
+   "frames": 2,
+   "lead": "Lens in. One quick press now does what took a count.",
+   "shots": [
+    "The same scene as your pinhole frame, in sun, small dot, one press.",
+    "Something about 1 m away with the small dot: a flower, a cup, a face. That is as near as the small dot stays sharp."
+   ],
+   "look": "Put the lens frame next to the pinhole frame: crisper in the middle, a little softer toward the ends. The near frame should be sharp at 1 m; any nearer and it starts to blur."
+  },
+  {
+   "id": "next",
+   "kind": "next",
+   "body": "<p>The lens makes the picture. Now something has to keep it.</p>",
+   "links": [
+    {
+     "title": "Geometric Optics (PhET)",
+     "url": "https://phet.colorado.edu/en/simulations/geometric-optics",
+     "why": "Move an object and a lens; watch the image form. University of Colorado."
+    },
+    {
+     "title": "Geometric Optics: Crash Course Physics",
+     "url": "https://www.pbs.org/video/geometric-optics-crash-course-physics-38-uii94l",
+     "why": "Ten quick minutes on mirrors, lenses and rays."
+    },
+    {
+     "title": "The Kodak camera of 1888",
+     "url": "https://collection.sciencemuseumgroup.org.uk/objects/co8205688/the-kodak-camera",
+     "why": "Science Museum Group: the fixed-focus box that started it all."
+    }
+   ]
+  }
+ ],
+ "teach": {
+  "objectives": [
+   "Say what a lens does to the light from one point (it bends every ray that reaches it back to one point).",
+   "Explain why a big hole alone gives a blurred picture, and why a lens with the same opening does not.",
+   "Work out how much more light the lens lets in than the pinhole, from the two f-numbers.",
+   "Explain why this camera's film lies on a curve."
+  ],
+  "materials": [
+   "per group of three: a magnifying glass, white card, a ruler, squared paper",
+   "a room that can be dimmed, with one window or a bright lamp",
+   "the cameras from lesson 1 and the lenses",
+   "this page on a projector"
+  ],
+  "exit_ticket": "In one sentence: what does a lens do that a hole cannot? And one number: about how many times more light does the large dot let in than the pinhole?",
+  "misconception": "That a lens magnifies, and that covering part of it cuts off part of the picture. A lens gathers; each part of it draws the whole picture.",
+  "differentiation": {
+   "support": "Give a half-drawn ray diagram (point, lens, film) and ask students only to draw where three rays go. Use the sim's 'cover half the lens' button before the real glass. For the sum, give 12.5 and ask only for the square.",
+   "stretch": "Use 1/f = 1/u + 1/v to find where a face 1 m away comes sharp (33.06 mm) and how big its blur is at the large dot (about 0.08 mm: soft). Then explain from the numbers why the small dot is sharp from 1.0 m.",
+   "access": "Each sim says what it shows in a line of text. The window-on-paper activity can be done seated by moving the paper instead of the glass."
+  },
+  "safety": "Magnifying glasses never point at the sun or sit in sunlight. Keep them in a box when not in use.",
+  "period": [
+   {
+    "minutes": 5,
+    "phase": "hook",
+    "what": "The question on the board; hold up the foil ring and the lens. Everyone answers 'Your guess first' on paper. Do not correct yet."
+   },
+   {
+    "minutes": 8,
+    "phase": "explain",
+    "what": "'A hole sorts light. A lens gathers it.' on the board: one point, five rays, a big hole against a lens of the same size."
+   },
+   {
+    "minutes": 14,
+    "phase": "explore",
+    "what": "The Try card in threes: find the window on paper, measure the distance, find something near, then cover most of the glass with a hand and look again."
+   },
+   {
+    "minutes": 8,
+    "phase": "explore",
+    "what": "'Bend it back to a point' on the projector: move the lamp near and far, then flat film against curved. Work the sum together; pairs do the count check."
+   },
+   {
+    "minutes": 10,
+    "phase": "apply",
+    "what": "Swap the foil ring for the lens in each camera (build step BUILD 10 on the screen). Groups predict, then check: brighter? upside down? sharper?"
+   },
+   {
+    "minutes": 5,
+    "phase": "check",
+    "what": "Exit ticket; back to the opening vote."
+   }
+  ],
+  "questions": [
+   {
+    "q": "What does a lens do to the light from one point?",
+    "a": "It bends every ray that reaches the glass back to one point on the film."
+   },
+   {
+    "q": "You cover half the lens with your thumb. What happens to the picture?",
+    "a": "All of it is still there, about half as bright: every part of the lens draws the whole picture."
+   },
+   {
+    "q": "Why is this camera's film curved?",
+    "a": "A single lens makes its sharp picture on a curve. Every point of the film lies 32 mm from the lens, so it follows the sharp picture."
+   },
+   {
+    "q": "How much more light at the large dot than the pinhole?",
+    "a": "(120 ÷ 9.6)² = 12.5² ≈ 156: about 150 times."
+   },
+   {
+    "q": "The lens is set for 3.7 m. Why is the small dot sharp from 1.0 m and the large dot only from 1.5 m?",
+    "a": "Near things come sharp a little behind the film. A narrower cone of light makes a smaller blur from the same miss."
+   }
+  ]
+ },
+ "slides": [
+  "predict",
+  "why",
+  "play",
+  "camera",
+  "maths",
+  "try",
+  "quiz"
+ ]
+}

@@ -1,0 +1,334 @@
+{
+ "n": 4,
+ "code": "M4",
+ "maker": true,
+ "film": false,
+ "title": "Ergonomics",
+ "slug": "made-for-hands",
+ "question": "A sight can be right by the sums and still aim wrong. So who decides if a part works: the maths or the hand?",
+ "hook": "<p>No screen, no window, no words on any part. You find the rocker with a thumb, count the dots by clicks, wind by feel and aim along two marks on top. Every one of those is a handful of numbers in <code>scad/one135.scad</code>, and every one was set by watching what hands and eyes actually do. This lesson is about designing for people, with the numbers to prove it.</p>",
+ "colour": "#6B4FBB",
+ "hero_fig": "fig_m04_rocker",
+ "still": {
+  "img": "s3",
+  "alt": "The camera from the front, an arrow pressing down on the raised side of the teal rocker",
+  "caption": "One quick press on the raised side: about 2 N, drawn from the model."
+ },
+ "sections": [
+  {
+   "id": "guess",
+   "kind": "predict",
+   "title": "Aim at a nose",
+   "body": "<p>There's no viewfinder. You aim along a sight on top of the camera, and the sight sits 30 mm <em>above</em> the lens. You line it up on a friend's nose from very close, about 0.7 m.</p>",
+   "q": "Where does the nose land in the picture?",
+   "choices": [
+    "Dead in the middle",
+    "A little high",
+    "A little low",
+    "Off the picture"
+   ],
+   "answer": 1,
+   "reveal": "<p><strong>A little high: about 4 % of the picture's height</strong>, by the model. The sight looks from above the lens, so near things land high. The sight is tilted so its line crosses the lens's line at 2.8 m, where people actually stand to take a picture. Closer than that, a bit high; further, a hair low. Neither is enough to cut anyone's head off.</p>"
+  },
+  {
+   "id": "why",
+   "kind": "why",
+   "label": "Why it's drawn this way",
+   "title": "A camera you can work with your eyes shut",
+   "body": "<p class=\"lp-lead\">A part that's right on paper still has to be found, pressed and read by a person in a hurry. So every control here says what it's for with its shape.</p><p><strong>The rocker</strong> is a shallow V on top of the shutter. One side is always up: that's the side you press. Either end, either hand, about <strong>2 N</strong> (2.3 N by the model: the weight of a large apple) and 5 mm of travel. After the click the other side is up, so the part tells you what to do next. Nothing to read, nothing to get wrong.</p><p><strong>The dots</strong> have no numbers. Each is a hollow pressed three layers into the front plate, the same size as the hole behind it: bigger dot, more light. And each is a click of the handle (about 2.4 N), so in the dark you count clicks from one end.</p><p><strong>The knobs</strong> are big for their job: 19 and 21 mm across, 7 mm tall, ringed with saw teeth 0.8 mm deep. A tooth's steep face catches your thumb going the right way and slips going the wrong way, and the two knobs' teeth lean opposite ways because they turn opposite ways.</p><p>Designers call a shape that invites the right move an <strong>affordance</strong>, and the visible clue a <strong>signifier</strong>. A raised side says <em>press me</em>. A groove says <em>look along me</em>. Saw teeth say <em>this way round</em>. And bigger targets are quicker to hit: Paul Fitts measured that in 1954, which is why the rocker's raised side is a whole 10.5 mm pad sitting right under your thumb.</p>",
+   "figure": {
+    "svg": "fig_m04_rocker",
+    "caption": "The raised side is the one to press. After the click, the other side is raised. Drawn from the model."
+   },
+   "timeline": [
+    {
+     "year": "1888",
+     "what": "The first roll-film box camera has no viewfinder: a V marked on its top is the sight."
+    },
+    {
+     "year": "1954",
+     "what": "Paul Fitts measures aiming: bigger, nearer targets are hit faster."
+    },
+    {
+     "year": "1955",
+     "what": "Henry Dreyfuss publishes <em>Designing for People</em>, with charts of real bodies so things can be shaped to fit them."
+    },
+    {
+     "year": "1988",
+     "what": "Donald Norman's <em>The Design of Everyday Things</em> brings 'affordance' into design."
+    }
+   ],
+   "after": "<p>Two of those ideas got tested the hard way on this camera. A guard round the rocker protected it in a fall, and stood exactly where the eye looks along the top. It came off. The back's pinch pads were 3.4 mm wide, no wider than a child's fingertip. They're 5.6 mm now. Fixing one thing can break another, so every fix gets checked against a hand and an eye.</p>"
+  },
+  {
+   "id": "play",
+   "kind": "play",
+   "title": "Hold still for a three-hundredth",
+   "intro": "The rocker is drawn so a press doesn't move the camera. Here's why that matters, and why it stops mattering on a time picture.",
+   "sims": [
+    {
+     "sim": "m04_shake",
+     "title": "Hold still",
+     "intro": "Take a picture at the shutter's one speed, then as a time picture with a count. Try two hands, one hand, a table, and a stab at the rocker. Your hands' wander is your guess; the camera's numbers are real. Two hands, one press: how big is the smear against the 0.05 mm limit? Now stab the rocker. What changes? Count 1, two hands: how many times past the limit?",
+     "after": "At about 1/300 s even a wobbly hand barely moves the picture: drifting 1° a second, the camera turns only about 0.003° while the shutter is open. A stab is different: it swings the camera right as the shutter opens. That's why the rocker needs only about 2 N and 5 mm: a light, short press you make with the thumb, not the arm. And for a count of 1 or 5, no hand on Earth is still enough. Time pictures stand on a table."
+    }
+   ]
+  },
+  {
+   "id": "sight",
+   "kind": "text",
+   "label": "The sight",
+   "title": "A groove, a pad and a point",
+   "body": "<p>Look down along the top of the camera. A <strong>middle groove</strong> runs along the lens's line, and two <strong>outer lines</strong> run the way the picture's edges run: what's between them is your picture. At the back, the edge of the <strong>back's pinch pad</strong>; at the front, a small <strong>point</strong> on the front plate. Line the pad's edge up with the point on your subject. Nothing to press your eye against, so glasses are fine and your other eye can stay open.</p><p>It took four tries. The first was two rails beside the lens, and by the sums it pointed exactly where the lens pointed. Then someone looked along it, and it <em>looked</em> wrong: the eye wanted the line somewhere else, and pulled the aim off with it. The sums said yes, the eye said no. The eye won.</p><p>The one in the kit has a gap to deal with: the pad's top is 30 mm above the lens's line. Two lines that start 30 mm apart and run side by side never meet, so up close you'd always aim high. The fix is tiny: the front point stands <strong>0.375 mm lower</strong> than the pad, 35 mm further forward. The sight line tilts down and <strong>crosses the lens's line 2.8 m away</strong>. That offset between where you look from and where the lens looks from is <strong>parallax</strong>, and the tilt puts its zero where people stand.</p>",
+   "figure": {
+    "svg": "fig_m04_eyeline",
+    "caption": "The sight line tilts down just enough to cross the lens's line about 2.8 m away. Heights stretched."
+   }
+  },
+  {
+   "id": "play-2",
+   "kind": "play",
+   "title": "Move the crossing",
+   "sims": [
+    {
+     "sim": "m04_sight",
+     "title": "Aim at a friend",
+     "intro": "Move your friend nearer and further. Then change SIGHT_DROP, how much lower the front point is, and watch where the lines cross. Find the distance where your aim is spot on. How far off is it at 0.7 m? Double SIGHT_DROP: where do the lines cross now? Set it to zero: what happens?",
+     "after": "Near, your aim lands high: 4.3 % of the picture at 0.7 m, 1.4 % at 1.4 m. At 2.8 m it's spot on, and at 10 m it drifts only about 1 % low. Double the drop to 0.75 mm and the lines cross at half the distance, 1.4 m: better for close portraits, worse for landscapes. Set it to zero and they never cross: always 30 mm apart, which hurts most up close. That's one number in the file, and it decides which pictures the sight is best at."
+    }
+   ]
+  },
+  {
+   "id": "files",
+   "kind": "camera",
+   "label": "In the files",
+   "title": "The numbers that fit a hand",
+   "render": "s2",
+   "alt": "The top of the camera drawn from the model: the two knobs, the rocker, and the aim lines running toward the front",
+   "caption": "The top, drawn from the model: knobs, rocker, and the lines you aim along.",
+   "body": "<p>Open <code>scad/one135.scad</code>. Here's where the hands and eyes live, and what each number does if you move it.</p><ul><li><strong>The rocker:</strong> <code>RK_L = 13.0</code> (each side's length from the pivot), <code>THETA_S = 15.5</code> (how far each side tips: the V's angle and the 5 mm of travel), <code>FIN_W = 11.0</code> (the rocker's width), <code>RK_T = 3.15</code> (its thickness) and <code>FIN_CLR = 1.8</code> (how high the pressed side stays above the body). Longer and wider is an easier target for a big or gloved thumb; a bigger <code>THETA_S</code> means more travel per picture, and a different blade swing, so the shutter's time changes too.</li><li><strong>The click under it</strong> isn't in the rocker at all: it's the blade's rim spring (<code>BL_T</code>, <code>SPR_RAMP = 45</code>, written by <code>tools/layout.py</code>). That same click sets how fast the blade flies, so you can't make the rocker firmer for gloves without changing the shutter's time. Run <code>tools/exposure.py</code> after.</li><li><strong>The dots:</strong> <code>DOT_R = STOP_R</code>, the holes' own sizes (2.0, 2.9 and 3.4 mm across), pressed three layers deep. <code>HND_UP = 3.5</code> is how far the handle stands proud for a fingertip.</li><li><strong>The knobs:</strong> <code>WIND_HEAD = 9.5</code> and <code>TAKE_HEAD = 10.5</code> (radii: 19 and 21 mm across), <code>HEAD_H = 7.0</code> tall, <code>GRIP_D = 0.8</code> deep saw teeth, <code>WIND_CW</code> and <code>TAKE_CW</code> set which way the teeth lean. The heads also cover the gap in front of the blocks that close their slots, so they can grow but not shrink.</li><li><strong>The sight:</strong> <code>SIGHT_DROP = (Y_CVF + 4.5) * (H + PAD_UP) / 2800</code>. The 2800 is the crossing distance in mm. <code>PAD_UP = 1.8</code> is how proud the back's pinch pads stand, and the pad's edge is the rear sight, so raising the pads raises the sight too.</li><li><strong>The pads:</strong> <code>PAD_X0 = -10.8</code> to <code>PAD_X1 = -0.7</code>: 5.6 mm wide each. Until v2.10 they were 3.4 mm, no wider than a child's fingertip: hard to find, harder to pinch.</li></ul><p>After any change, <code>sh tools/run_all.sh</code> reruns the light, fit, motion and force checks. Bigger knobs and rockers are where light traps and clearances get tested hardest.</p><table class=\"lp-facts\"><tr><th>Rocker</th><td>about 2 N (2.3), 5 mm travel, either end</td></tr><tr><th>Dot click</th><td>about 2.4 N</td></tr><tr><th>Knobs</th><td>19 and 21 mm across, 7 mm tall, teeth 0.8 mm</td></tr><tr><th>Sight crosses the lens's line</th><td>2.8 m</td></tr><tr><th>Aim at 0.7 m</th><td>4.3 % high</td></tr><tr><th>Words on the parts</th><td>none</td></tr></table>",
+   "step": [
+    "p1",
+    "p2",
+    "p3"
+   ]
+  },
+  {
+   "id": "maths",
+   "kind": "maths",
+   "title": "Where does the sight cross the lens's line?",
+   "summary": "one slope, one division, and how far off the aim is up close",
+   "lines": [
+    "The pad's top: H + PAD_UP = 28.2 + 1.8 = 30.0 mm above the lens's line.",
+    "The front point: 35 mm further forward and SIGHT_DROP = 35 × 30 ÷ 2800 = 0.375 mm lower.",
+    "So the sight line falls 0.375 mm every 35 mm. To fall 30 mm: 30 ÷ 0.375 = 80 steps.",
+    "80 × 35 mm = 2800 mm: the lines cross 2.8 m away.",
+    "At 0.7 m the sight is still 30 × (1 − 0.7 ÷ 2.8) = 22.5 mm high.",
+    "The picture there is 24 × 700 ÷ 32 = 525 mm tall. 22.5 ÷ 525 ≈ 4.3 % of the picture.",
+    "Holding still: the film is 32 mm behind the lens, and a postcard forgives 0.05 mm of smear. 0.05 ÷ 32 rad ≈ 0.09°. At 1/300 s you could be turning at about 27° a second and still be sharp."
+   ],
+   "body": "<p><strong>Your turn.</strong> Your club shoots mostly close portraits at about 1.4 m. What should the 2800 in <code>SIGHT_DROP</code> become, and how much lower is the front point then?</p><p><strong>Answer.</strong> 1400. SIGHT_DROP = 35 × 30 ÷ 1400 = 0.75 mm: twice the drop, half the distance. Far away the aim now lands about 3 % low instead of 1.5 %.</p>"
+  },
+  {
+   "id": "try",
+   "kind": "try",
+   "title": "Hand it to someone and stay quiet",
+   "minutes": 15,
+   "lead": "The model checks forces and fits. Only a person checks whether a shape says what it's for.",
+   "needs": [
+    "a built camera, or the test slab with the front plate, blade and wheel",
+    "a friend who has never seen it",
+    "a pair of thick gloves (winter or work gloves)",
+    "a phone timer and a pencil"
+   ],
+   "steps": [
+    "Hand the camera to your friend with one sentence: 'Take a picture, then get ready for the next one.' No pointing, no help.",
+    "Time them. Write down every moment they stop, hesitate or try the wrong thing, and what they touched.",
+    "Now gloves on. Same task. Which control got harder: the rocker, the dot handle, the knobs, the pads?",
+    "Then shut your own eyes and set the middle dot by counting clicks. Did you land on it?",
+    "Pick the worst moment and name the number you'd change: RK_L or FIN_W for the rocker, HND_UP for the handle, HEAD_H or GRIP_D for the knobs, PAD_X0 to PAD_X1 for the pads.",
+    "Say what that change would cost: a bigger knob needs room on the top, a longer rocker swings the blade differently, deeper teeth thin the head's wall."
+   ],
+   "notice": "Where people stop is almost never where the sums worry. That's the point of testing on a person: you find the problem you didn't know to calculate. For small hands, reach and pad width matter most; for gloves, target size and how far a control stands proud.",
+   "safety": "Nobody aims the sight at the sun."
+  },
+  {
+   "id": "quiz",
+   "kind": "quiz",
+   "title": "Check yourself",
+   "items": [
+    {
+     "q": "The first sight pointed exactly right by the sums. Why was it dropped?",
+     "choices": [
+      "It was too hard to print",
+      "To an eye looking along it, it looked wrong, so people aimed it badly",
+      "It was too small to see",
+      "It blocked the lens"
+     ],
+     "answer": 1,
+     "why": "A sight is used by an eye. It has to look right as well as be right."
+    },
+    {
+     "q": "You want the sight to cross the lens's line at 1.4 m instead of 2.8 m. What happens to SIGHT_DROP?",
+     "choices": [
+      "It halves, to about 0.19 mm",
+      "It stays the same",
+      "It doubles, to 0.75 mm",
+      "It goes to zero"
+     ],
+     "answer": 2,
+     "why": "SIGHT_DROP = 35 × 30 ÷ distance. Half the distance, twice the drop."
+    },
+    {
+     "q": "At about 1/300 s, why does a steady hand not blur the picture while a stab at the rocker can?",
+     "choices": [
+      "The shutter is too fast for any movement to matter",
+      "A gentle drift turns the camera far less than 0.09° in that time; a stab swings it hard right as the shutter opens",
+      "The lens is fixed focus",
+      "The film is too slow to see movement"
+     ],
+     "answer": 1,
+     "why": "Smear on the film = 32 mm × the angle turned. A postcard forgives about 0.05 mm, so about 0.09°. Drift is far below that in 1/300 s; a stab isn't."
+    },
+    {
+     "q": "Why can't you just make the rocker's click firmer so it's easier to feel through gloves?",
+     "choices": [
+      "The rocker would break",
+      "The click comes from the blade's rim spring, and that same spring sets how fast the blade flies: the shutter's time would change",
+      "Gloves can't press plastic",
+      "Firmer clicks need a metal spring"
+     ],
+     "answer": 1,
+     "why": "One spring does two jobs. Change it, then rerun the exposure check."
+    },
+    {
+     "q": "How do you tell the three dots apart in the dark?",
+     "choices": [
+      "By the numbers printed beside them",
+      "By colour",
+      "By counting the handle's clicks from one end",
+      "You can't"
+     ],
+     "answer": 2,
+     "why": "Each dot is a click. In daylight the hollows' sizes tell you too: bigger dot, more light."
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "kind": "next",
+   "label": "Print it, then next",
+   "title": "The files and settings that matter",
+   "body": "<ul><li><strong>Try a change cheaply:</strong> the rocker and the dots are on the front plate (<code>one135_front.stl</code>, about an hour) and the blade (<code>one135_blade.stl</code>). Print them on <code>one135_test_slab.stl</code> to feel a change before reprinting the body.</li><li><strong>Knobs:</strong> <code>one135_knob.stl</code> and <code>one135_spool.stl</code> print solid, head down. Bigger heads still have to clear each other and the frame wheel's dial.</li><li><strong>Sight:</strong> change the 2800 in <code>SIGHT_DROP</code>; the point is on the front plate, so that's the only reprint.</li><li><strong>Check it:</strong> <code>sh tools/run_all.sh</code> after any change; <code>python3 tools/snapcurves.py</code> for the click forces.</li></ul><p>Everything is on the <a href=\"#files\">Files page</a>.</p>",
+   "href": "#maker-1",
+   "kicker": "Next · M1 · Designed for a printer",
+   "question": "Back to the start: if a printer can make any shape, why isn't this camera just any shape?",
+   "links": [
+    {
+     "title": "Pointing at things: Fitts's law",
+     "url": "https://www.csfieldguide.org.nz/en/chapters/human-computer-interaction/fitts-law/",
+     "why": "Click targets of different sizes and distances and measure yourself, the way Fitts did."
+    },
+    {
+     "title": "Signifiers, not affordances",
+     "url": "https://jnd.org/signifiers-not-affordances/",
+     "why": "Don Norman on the clues that tell people what a thing does."
+    },
+    {
+     "title": "Parallax",
+     "url": "https://en.wikipedia.org/wiki/Parallax",
+     "why": "Why a sight that isn't the lens sees a slightly different picture."
+    }
+   ]
+  }
+ ],
+ "teach": {
+  "objectives": [
+   "Explain why a part that is right by calculation can still fail a person, using the first sight and the rocker guard.",
+   "Name what each control tells the hand without words: the rocker's raised side, the dots' sizes and clicks, the knobs' saw teeth.",
+   "Find where the sight's line crosses the lens's line from three numbers, and change SIGHT_DROP for a new distance.",
+   "Use 32 mm and 0.05 mm to explain why about 1/300 s forgives a steady hand but a time picture needs a table.",
+   "Test a control on someone who hasn't seen it, name the parameter they struggled with, and say what changing it would cost."
+  ],
+  "standards_like": "Engineering design with users (human factors, usability testing, accessibility); parametric CAD and design trade-offs; rates and similar triangles; small angles; proportional reasoning.",
+  "misconception": "That a design is finished when its numbers check out. In its place: a part is used by a person, so it has to look, feel and be right at once. The model checks forces and fits; a person checks whether the shape says what it's for, and one spring can do two jobs, so a 'hands' change can move the shutter's time.",
+  "materials": [
+   "One built camera or test slab per group of three, plus a pair of thick gloves",
+   "A phone timer, a pencil and a sheet to note every hesitation",
+   "Card, tape and modelling clay for mock-ups of a bigger rocker or knob",
+   "A laptop with OpenSCAD and scad/one135.scad, if the club has one",
+   "The two sims on a projector"
+  ],
+  "period": [
+   {
+    "minutes": 5,
+    "phase": "hook",
+    "what": "Predict block: where does the nose land at 0.7 m? Everyone commits. Don't reveal yet."
+   },
+   {
+    "minutes": 8,
+    "phase": "explain",
+    "what": "Pass cameras round, eyes shut: find the rocker's raised side, count to the middle dot, wind a knob. Then the 'why' section: affordance, signifier, Fitts. Show the rocker figure."
+   },
+   {
+    "minutes": 10,
+    "phase": "explore",
+    "what": "Project the sight sim: reveal the predict answer, find 2.8 m, then double SIGHT_DROP. Work the sum on the board. Then the shake sim: one press, a stab, count 1."
+   },
+   {
+    "minutes": 15,
+    "phase": "apply",
+    "what": "The Try card: hand the camera to someone from another group, timed, no words; then gloves. Each group names the worst moment and the parameter they'd change, and its cost. Mock it up in card or clay if there's time."
+   },
+   {
+    "minutes": 7,
+    "phase": "check",
+    "what": "Groups report one change each (thirty seconds). Then the quiz."
+   },
+   {
+    "minutes": 5,
+    "phase": "check",
+    "what": "Exit ticket."
+   }
+  ],
+  "questions": [
+   {
+    "q": "How do you know which side of the rocker to press?",
+    "a": "The side that's up. After each click the other side is up: the part tells you."
+   },
+   {
+    "q": "The pad's top is 30 mm above the lens's line; the point is 35 mm forward and 0.375 mm lower. Where do the lines cross?",
+    "a": "30 ÷ 0.375 = 80 steps; 80 × 35 mm = 2800 mm = 2.8 m."
+   },
+   {
+    "q": "Why did the guard round the rocker come off?",
+    "a": "It protected the rocker in a fall but stood exactly where the eye looks along the top. Fixing one thing broke another."
+   },
+   {
+    "q": "A gloved hand can't feel the rocker's click. What would you change, and what else moves?",
+    "a": "A wider, longer rocker (FIN_W, RK_L) is an easier target. A firmer click means a stiffer blade spring, and that changes the shutter's time: rerun the exposure check."
+   },
+   {
+    "q": "Why are the knobs' heads allowed to grow but not shrink?",
+    "a": "Each head also covers the gap in front of the block that closes its slot: smaller, and light could get in."
+   }
+  ],
+  "exit_ticket": "Name one control on the camera that tells your hand what to do without words, and how. And one number: if SIGHT_DROP doubles, where do the lines cross? (1.4 m.)",
+  "differentiation": {
+   "support": "Give the eye-line drawing with 30 mm and 0.375 mm marked, and do the sum as 'how many 35 mm steps'. In the sight sim, use only the 'Jump to' buttons. In the Try card, the observer only ticks a list: rocker, dots, knobs, pads.",
+   "stretch": "Write the aim offset as a percentage of the picture for any distance d and SIGHT_DROP s, and find where it's worst. Then pick one parameter, change it in OpenSCAD, export the front plate and run the checks: what failed?",
+   "access": "Both sims run from the keyboard and describe themselves in words. The eyes-shut and gloves tests suit everyone; pair a student who can't see the screen as the tester."
+  },
+  "safety": "Nobody aims the sight or a phone at the sun."
+ },
+ "slides": [
+  "guess",
+  "why",
+  "play",
+  "sight",
+  "play-2",
+  "files",
+  "maths",
+  "quiz"
+ ]
+}

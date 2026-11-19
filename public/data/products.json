@@ -1,0 +1,509 @@
+{
+ "currency": "USD",
+ "groups": [
+  {
+   "key": "kits",
+   "title": "Kits",
+   "blurb": "Same camera in both. The starter kit adds a roll of film and the developing."
+  },
+  {
+   "key": "film",
+   "title": "Film and developing",
+   "blurb": "The next roll. Developing means your film comes back as scans, by email."
+  },
+  {
+   "key": "parts",
+   "title": "Spares, colours and extras",
+   "blurb": "Bits that wear, bits that look cool, one ring for nearer pictures."
+  },
+  {
+   "key": "class",
+   "title": "For a class",
+   "blurb": "Sets for thirty students, packed flat."
+  },
+  {
+   "key": "free",
+   "title": "Free",
+   "blurb": "For people who print their own."
+  }
+ ],
+ "products": [
+  {
+   "id": "starter-kit",
+   "group": "kits",
+   "name": "Starter kit",
+   "for": "Everything for a first roll.",
+   "contents": [
+    "The camera kit: 9 pieces, 2 spares, the pinhole ring and disc, the printed build guide, the card",
+    "1 roll of colour film: ISO 400, 24 pictures",
+    "1 code for developing and scanning that roll"
+   ],
+   "price_usd": 49,
+   "price_text": "$49",
+   "basket": true,
+   "note": "",
+   "payment_link": "",
+   "guide": "b1",
+   "lessons": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "img": "media/img/hero.webp",
+   "img_what": "The camera, front"
+  },
+  {
+   "id": "camera-kit",
+   "group": "kits",
+   "name": "Camera kit",
+   "for": "People who already have film.",
+   "contents": [
+    "The 9 pieces: body, back, front plate, shutter, aperture wheel, spool, wind knob, frame wheel, lens",
+    "2 spares: a shutter and a wind knob",
+    "For the pinhole experiment: the pinhole ring and a pinhole disc (thin metal, laser-drilled 0.25 mm hole)",
+    "The printed build guide, 16 small pages",
+    "The card"
+   ],
+   "price_usd": 29,
+   "price_text": "$29",
+   "basket": true,
+   "note": "Takes any 35 mm film.",
+   "payment_link": "",
+   "guide": "b1",
+   "lessons": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "img": "media/img/hero_back.webp",
+   "img_what": "The camera, back"
+  },
+  {
+   "id": "film-and-developing",
+   "group": "film",
+   "name": "Film and developing",
+   "for": "One more roll, start to finish.",
+   "contents": [
+    "1 roll of colour film: ISO 400, 24 pictures",
+    "1 developing code"
+   ],
+   "price_usd": 24,
+   "price_text": "$24",
+   "basket": true,
+   "note": "",
+   "payment_link": "",
+   "guide": "f1",
+   "lessons": [
+    3,
+    8
+   ]
+  },
+  {
+   "id": "three-rolls-three-codes",
+   "group": "film",
+   "name": "Three rolls and three codes",
+   "for": "",
+   "contents": [
+    "3 rolls of colour film: ISO 400, 24 pictures",
+    "3 developing codes"
+   ],
+   "price_usd": 66,
+   "price_text": "$66",
+   "basket": true,
+   "note": "",
+   "payment_link": "",
+   "guide": "f1",
+   "lessons": [
+    3,
+    8
+   ]
+  },
+  {
+   "id": "film-roll",
+   "group": "film",
+   "name": "Film, one roll",
+   "for": "",
+   "contents": [
+    "1 roll of colour film: ISO 400, 24 pictures"
+   ],
+   "price_usd": 10,
+   "price_text": "$10",
+   "basket": true,
+   "note": "",
+   "payment_link": "",
+   "guide": "f1",
+   "lessons": [
+    3
+   ]
+  },
+  {
+   "id": "developing-code",
+   "group": "film",
+   "name": "Developing code",
+   "for": "",
+   "contents": [
+    "Developing and scanning for one roll",
+    "The scans come back by email"
+   ],
+   "price_usd": 15,
+   "price_text": "$15",
+   "basket": true,
+   "note": "",
+   "payment_link": "",
+   "guide": "o1",
+   "lessons": [
+    3
+   ]
+  },
+  {
+   "id": "negatives-back",
+   "group": "film",
+   "name": "Negatives back",
+   "for": "",
+   "contents": [
+    "The negatives of one roll posted back to you, if asked for within 30 days"
+   ],
+   "price_usd": 5,
+   "price_text": "$5",
+   "basket": true,
+   "note": "",
+   "payment_link": "",
+   "guide": "o2",
+   "lessons": [
+    3
+   ]
+  },
+  {
+   "id": "small-prints",
+   "group": "film",
+   "name": "A set of small prints",
+   "for": "",
+   "contents": [
+    "One 4 x 6 inch print of each of twelve frames"
+   ],
+   "price_usd": 7,
+   "price_text": "$7",
+   "basket": true,
+   "note": "",
+   "payment_link": "",
+   "guide": "o2",
+   "lessons": [
+    8
+   ]
+  },
+  {
+   "id": "proof-sheet",
+   "group": "film",
+   "name": "The proof sheet",
+   "for": "",
+   "contents": [
+    "All twelve frames of a proof roll on one 8 x 10 inch print",
+    "Under each frame, the dot and the light you wrote down"
+   ],
+   "price_usd": 9,
+   "price_text": "$9",
+   "basket": true,
+   "note": "",
+   "payment_link": "",
+   "guide": "o2",
+   "lessons": []
+  },
+  {
+   "id": "black-and-white-pack",
+   "group": "film",
+   "name": "Black-and-white pack",
+   "for": "",
+   "contents": [
+    "1 roll of black-and-white film",
+    "1 developing code"
+   ],
+   "price_usd": null,
+   "price_text": "Ask by email",
+   "basket": false,
+   "note": "Labs charge more for black and white.",
+   "payment_link": "",
+   "guide": "f1",
+   "lessons": [
+    3
+   ]
+  },
+  {
+   "id": "spares-pack",
+   "group": "parts",
+   "name": "Spares pack",
+   "for": "",
+   "contents": [
+    "1 shutter",
+    "1 wind knob"
+   ],
+   "price_usd": 5,
+   "price_text": "$5",
+   "basket": true,
+   "note": "",
+   "payment_link": "",
+   "guide": "b5",
+   "lessons": [
+    5,
+    6
+   ]
+  },
+  {
+   "id": "lenses-three",
+   "group": "parts",
+   "name": "Lenses, three",
+   "for": "",
+   "contents": [
+    "3 lenses in a bag"
+   ],
+   "price_usd": 5,
+   "price_text": "$5",
+   "basket": true,
+   "note": "",
+   "payment_link": "",
+   "guide": "b10",
+   "lessons": [
+    2
+   ]
+  },
+  {
+   "id": "near-ring",
+   "group": "parts",
+   "name": "Near ring",
+   "for": "For nearer pictures.",
+   "contents": [
+    "One thin ring (0.4 mm) that goes under the lens",
+    "Sets the camera for 1.5 m: at the small dot, sharp from 0.7 m to far away"
+   ],
+   "price_usd": null,
+   "price_text": "Ask by email",
+   "basket": false,
+   "note": "Optional part, for the lesson on focus.",
+   "payment_link": "",
+   "guide": "b10",
+   "lessons": [
+    2,
+    8
+   ]
+  },
+  {
+   "id": "pinhole-discs",
+   "group": "parts",
+   "name": "Pinhole discs, five",
+   "for": "For the pinhole experiment.",
+   "contents": [
+    "Five thin metal discs, 10.5 mm across, each with a laser-drilled 0.25 mm hole",
+    "One goes in the lens pocket, under the pinhole ring, in place of the lens"
+   ],
+   "price_usd": null,
+   "price_text": "Ask by email",
+   "basket": false,
+   "note": "Or make one from a drinks can and a pin: the pinhole experiment, step 1.",
+   "payment_link": "",
+   "guide": "h1",
+   "lessons": [
+    1
+   ]
+  },
+  {
+   "id": "swap-pack",
+   "group": "parts",
+   "name": "Colour pack",
+   "for": "Make it yours.",
+   "contents": [
+    "A front plate and two knobs in other colours"
+   ],
+   "price_usd": 6,
+   "price_text": "$6",
+   "basket": true,
+   "note": "",
+   "payment_link": "",
+   "guide": "b5",
+   "lessons": []
+  },
+  {
+   "id": "sticker-sheet",
+   "group": "parts",
+   "name": "Sticker sheet",
+   "for": "",
+   "contents": [
+    "One sheet, about 4 x 6 inches",
+    "1 name label, 3 which-dot stickers (one for each film speed), 2 \"film inside\" labels, 2 knob arrows",
+    "A dozen plain shapes in the kit's colours"
+   ],
+   "price_usd": 4,
+   "price_text": "$4",
+   "basket": true,
+   "note": "",
+   "payment_link": "",
+   "guide": "p1",
+   "lessons": [
+    4,
+    8
+   ]
+  },
+  {
+   "id": "film-can",
+   "group": "parts",
+   "name": "Film can, printed",
+   "for": "",
+   "contents": [
+    "1 printed can to keep a roll of film in"
+   ],
+   "price_usd": 3,
+   "price_text": "$3",
+   "basket": true,
+   "note": "",
+   "payment_link": "",
+   "guide": "o2",
+   "lessons": []
+  },
+  {
+   "id": "single-part",
+   "group": "parts",
+   "name": "Any single part",
+   "for": "",
+   "contents": [
+    "One part, printed to order, by its number in the guide"
+   ],
+   "price_usd": null,
+   "price_text": "$3 to $8",
+   "basket": false,
+   "note": "Free in the first year if a part breaks.",
+   "payment_link": "",
+   "guide": "b1",
+   "lessons": []
+  },
+  {
+   "id": "class-pack",
+   "group": "class",
+   "name": "Class pack",
+   "for": "Schools, clubs, museums.",
+   "contents": [
+    "30 camera kits, packed flat in one box",
+    "10 rolls of film",
+    "10 developing codes",
+    "30 printed build guides"
+   ],
+   "price_usd": 690,
+   "price_text": "$690 ($23 a student)",
+   "basket": true,
+   "note": "",
+   "payment_link": "",
+   "guide": "b1",
+   "lessons": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+   ]
+  },
+  {
+   "id": "class-set-cameras",
+   "group": "class",
+   "name": "Class set: cameras only",
+   "for": "",
+   "contents": [
+    "30 camera kits",
+    "A teacher sheet"
+   ],
+   "price_usd": 540,
+   "price_text": "$540 ($18 a student)",
+   "basket": false,
+   "note": "By quote.",
+   "payment_link": "",
+   "guide": "b1",
+   "lessons": []
+  },
+  {
+   "id": "class-set-black-and-white",
+   "group": "class",
+   "name": "Class set with black-and-white film",
+   "for": "A school with a darkroom.",
+   "contents": [
+    "30 camera kits",
+    "A teacher sheet",
+    "30 rolls of black-and-white film"
+   ],
+   "price_usd": 780,
+   "price_text": "$780 ($26 a student)",
+   "basket": false,
+   "note": "By quote.",
+   "payment_link": "",
+   "guide": "b1",
+   "lessons": []
+  },
+  {
+   "id": "class-set-colour",
+   "group": "class",
+   "name": "Class set with colour film and developing",
+   "for": "",
+   "contents": [
+    "30 camera kits",
+    "A teacher sheet",
+    "30 rolls of colour film",
+    "30 developing codes"
+   ],
+   "price_usd": 1170,
+   "price_text": "$1,170 ($39 a student)",
+   "basket": false,
+   "note": "By quote.",
+   "payment_link": "",
+   "guide": "b1",
+   "lessons": []
+  },
+  {
+   "id": "class-set-print-it-yourself",
+   "group": "class",
+   "name": "Print it yourself",
+   "for": "Shop classes: the printing is the lesson.",
+   "contents": [
+    "The print files",
+    "35 lenses",
+    "The teacher pack",
+    "The school prints the cameras"
+   ],
+   "price_usd": 149,
+   "price_text": "$149 ($5 a student, plus about $2 of plastic)",
+   "basket": false,
+   "note": "By quote.",
+   "payment_link": "",
+   "guide": "b1",
+   "lessons": []
+  },
+  {
+   "id": "the-files",
+   "group": "free",
+   "name": "The files",
+   "for": "Makers, and schools with printers.",
+   "contents": [
+    "The print files",
+    "The guides",
+    "The model"
+   ],
+   "price_usd": 0,
+   "price_text": "free",
+   "basket": false,
+   "note": "",
+   "payment_link": "",
+   "guide": "b1",
+   "lessons": []
+  }
+ ]
+}

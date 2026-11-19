@@ -1,0 +1,313 @@
+{
+ "n": 4,
+ "title": "Aperture",
+ "question": "Why do camera numbers go 8, 11, 16?",
+ "hook": "Every proper camera carries the same strange row: 4, 5.6, 8, 11, 16. It looks random. It isn't. Each number lets in half the light of the one before, and the reason is a shape you met at primary school: the circle. Your camera has three of them, on a yellow wheel.",
+ "colour": "#E8641B",
+ "hero_fig": "fig_l04_stops",
+ "chips": [
+  "Three dots",
+  "× 1.41",
+  "Sunny 16"
+ ],
+ "sections": [
+  {
+   "id": "predict",
+   "kind": "predict",
+   "title": "Your guess first",
+   "body": "",
+   "q": "Which lets in more light, f/8 or f/16? And how much more?",
+   "choices": [
+    "f/16, twice as much: 16 is twice 8",
+    "f/8, twice as much",
+    "f/8, four times as much",
+    "They let in the same"
+   ],
+   "answer": 2,
+   "reveal": "<p>Most people say f/16, twice, because sixteen is twice eight. It's the other way round, and it's more than twice. An f/16 hole is <strong>half as wide</strong> as an f/8 hole. And half as wide doesn't let in half the light. It lets in a <strong>quarter</strong>. Here's why.</p>"
+  },
+  {
+   "id": "why",
+   "kind": "story",
+   "title": "Width is not the point. Area is.",
+   "body": "<p>Behind the lens sits a hole that decides how much light gets through: the aperture. Your camera calls its three holes dots.</p><p>Light comes through the whole of a hole, so what counts is its area, and area grows with width times width. Twice as wide lets in four times the light.</p><p>Photographers name a hole by how many times it fits into the lens's length: the f-number. Your lens is 32 mm, so a 2 mm hole is 32 ÷ 2 = f/16. Bigger number, smaller hole. And since the same f-number gives the same brightness on any lens, long or short, it became the universal language of light.</p><p>To double the light the area must double, so the width grows by √2, about 1.41. Divide by 1.41 again and again: 16, 11.3, 8, 5.7, 4. Round them, and there is the row.</p>",
+   "figure": {
+    "svg": "fig_l04_area",
+    "caption": "Twice the width, four times the area."
+   },
+   "timeline": [
+    {
+     "year": "1867",
+     "what": "Sutton and Dawson describe a hole as a share of the lens's length: the f-number idea."
+    },
+    {
+     "year": "1890",
+     "what": "Hurter and Driffield measure how plates darken with light, and give plates speed numbers."
+    },
+    {
+     "year": "1943",
+     "what": "The American ASA film speed scale: double the number, half the light."
+    },
+    {
+     "year": "1974",
+     "what": "International standards bring the American and German scales together. Hence 'ISO 400' on the box."
+    }
+   ],
+   "label": "Why this piece exists"
+  },
+  {
+   "id": "play",
+   "kind": "sim",
+   "title": "Slide the dot, build the row",
+   "sims": [
+    {
+     "sim": "l04_dots",
+     "intro": "Your camera's three holes on squared paper. Slide the width, count squares, watch the light on the film.",
+     "after": "Small to middle is about double (× 2.16): one step. Middle to large adds about a third. The picture never got bigger, only brighter: the lens makes the picture, the hole decides how much light makes it."
+    },
+    {
+     "sim": "l04_ladder",
+     "intro": "Find the step that makes each hole let in exactly twice the light of the one before.",
+     "after": "Divide by 1.41 each time and every step doubles the light; every second step doubles the width. That's the row printed on cameras for a hundred years."
+    }
+   ]
+  },
+  {
+   "id": "camera",
+   "kind": "kit",
+   "title": "The wheel and its three dots",
+   "render": "k_inside",
+   "alt": "The inside of the orange front plate, with the yellow wheel and its three holes",
+   "caption": "Inside the front plate: the wheel with three holes.",
+   "body": "<p>The wheel sits behind the lens inside the front plate. A handle on the front turns it and a springy tooth clicks into one of three notches, so a hole always stops exactly behind the lens. Small 1.96 mm (f/16), middle 2.88 mm (f/11), large 3.34 mm (f/9.5).</p><p>Which dot, with ISO 400 film: full sun, small; hazy sun, middle; bright cloud, large. Darker than that, hold the rocker open and count. The large dot stops at f/9.5, not f/8, because a single lens gets soft away from the middle when the hole grows. That's the trade.</p>",
+   "step": [
+    "b6",
+    "p1"
+   ]
+  },
+  {
+   "id": "phone",
+   "kind": "phone",
+   "title": "One hole, wide open",
+   "body": "<p>Most phones have a single hole that never changes, usually wider than f/2, about as wide across as your large dot but in front of a lens only a few millimetres long. A few models have had two settings. So a phone can't pick a dot. It controls light with the other two settings instead: how long it collects, and how much it amplifies. That's lesson 9.</p>"
+  },
+  {
+   "id": "maths",
+   "kind": "maths",
+   "title": "Your three dots, in steps of light",
+   "summary": "one sum, with the real numbers",
+   "lines": [
+    "light goes with area: width × width",
+    "small → middle: 2.88 ÷ 1.96 = 1.47; 1.47 × 1.47 = 2.16: one step",
+    "middle → large: 3.34 ÷ 2.88 = 1.16; 1.16 × 1.16 = 1.35: a third more",
+    "f-numbers: 32 ÷ 1.96 = 16.3, 32 ÷ 2.88 = 11.1, 32 ÷ 3.34 = 9.6",
+    "why 8, 11, 16: 1.41 × 1.41 = 2, so 16 ÷ 1.41 = 11.3, 11.3 ÷ 1.41 = 8"
+   ],
+   "body": "<p>The model's own table says f/16.4 for the small dot: a printed hole comes out a touch smaller than drawn.</p>"
+  },
+  {
+   "id": "try",
+   "kind": "try",
+   "title": "Three dots on tracing paper",
+   "minutes": 15,
+   "needs": [
+    "your camera, with no film inside",
+    "a strip of tracing paper, about 4 cm wide",
+    "tape",
+    "a room with one bright window",
+    "squared paper and a pencil"
+   ],
+   "steps": [
+    "Take the back off. Tape the tracing paper over the two curved rails, where the film would lie.",
+    "Set the small dot. Press the rocker to its middle click and hold it: the shutter stays open.",
+    "Point the camera at the window and look at the tracing paper from behind.",
+    "Still holding the rocker, slide to the middle dot, then the large.",
+    "On squared paper draw circles 19.6, 28.8 and 33.4 mm across (ten times the holes). Count the squares in each."
+   ],
+   "notice": "The window gets brighter, never bigger. And the squares come out close to 1 : 2.2 : 2.9."
+  },
+  {
+   "id": "quiz",
+   "kind": "quiz",
+   "title": "Check yourself",
+   "items": [
+    {
+     "q": "Which is the bigger hole?",
+     "choices": [
+      "f/16",
+      "f/8",
+      "They're the same",
+      "It depends on the film"
+     ],
+     "answer": 1,
+     "why": "The f-number is the lens's length divided by the hole's width. A bigger number means a smaller hole."
+    },
+    {
+     "q": "A hole twice as wide lets in…",
+     "choices": [
+      "twice the light",
+      "four times the light",
+      "half the light",
+      "the same light"
+     ],
+     "answer": 1,
+     "why": "Twice as wide and twice as tall: four times the area, four times the light."
+    },
+    {
+     "q": "Why is the row 8, 11, 16 and not 8, 12, 16?",
+     "choices": [
+      "Tradition, no reason",
+      "Each step doubles the light, which needs 1.41 times the width",
+      "11 is a prime number",
+      "12 was already taken"
+     ],
+     "answer": 1,
+     "why": "Doubling the area takes √2 ≈ 1.41 times the width: 8 × 1.41 = 11.3, rounded to 11; 11.3 × 1.41 = 16."
+    },
+    {
+     "q": "Middle dot 2.88 mm, large dot 3.34 mm. How much more light does the large one give?",
+     "choices": [
+      "About a third more",
+      "About double",
+      "About 16 % more",
+      "About four times"
+     ],
+     "answer": 0,
+     "why": "3.34 ÷ 2.88 = 1.16, and light goes with the square: 1.16 × 1.16 = 1.35."
+    },
+    {
+     "q": "Why does the large dot stop at f/9.5 and not go to f/8?",
+     "choices": [
+      "The wheel was too small",
+      "f/8 would let in less light",
+      "A bigger hole makes a single lens softer away from the middle",
+      "f/8 is not a real setting"
+     ],
+     "answer": 2,
+     "why": "f/8 would need a 4.0 mm hole (32 ÷ 8): about half a step more light than the large dot, but a single lens gets softer away from the middle as the hole grows. So the wheel stops at 3.34 mm."
+    }
+   ]
+  },
+  {
+   "id": "roll",
+   "kind": "roll",
+   "title": "Try it on your roll",
+   "frames": 3,
+   "lead": "One scene, three dots. The cheapest experiment in photography.",
+   "shots": [
+    "Find a scene in hazy sun, with soft shadows. Small dot, one press.",
+    "Same spot, same scene: middle dot.",
+    "Same again: large dot. Write down which frame was which."
+   ],
+   "look": "Hazy sun is the middle dot's light, so the middle frame should look right, the small one a little darker, the large one a little lighter. Small to middle doubles the light; middle to large adds only a third, so the last two look closer than the first two."
+  },
+  {
+   "id": "next",
+   "kind": "next",
+   "body": "<p>The hole decides how bright. Something else decides how long.</p>",
+   "links": [
+    {
+     "title": "Variables that affect exposure",
+     "url": "https://sites.google.com/site/marclevoylectures/applets/variables-that-affect-exposure",
+     "why": "Marc Levoy's applet: aperture, time and ISO, side by side."
+    },
+    {
+     "title": "F-number",
+     "url": "https://en.wikipedia.org/wiki/F-number",
+     "why": "The encyclopedia article, with the full row and its history."
+    },
+    {
+     "title": "Sunny 16 rule",
+     "url": "https://en.wikipedia.org/wiki/Sunny_16_rule",
+     "why": "Exposure without a meter: f/16 in full sun."
+    }
+   ]
+  }
+ ],
+ "teach": {
+  "objectives": [
+   "Say why a bigger f-number is a smaller hole (it is the lens's length divided by the hole's width).",
+   "Show that twice the width is four times the area, and so four times the light.",
+   "Explain why each step in the row 8, 11, 16 is 1.41 times the one before, and that each step doubles or halves the light.",
+   "Use this camera's three widths to show that small to middle doubles the light and middle to large adds about a third.",
+   "Choose a dot for the light outside, and say why the large dot is not bigger."
+  ],
+  "materials": [
+   "per group of three: a built camera with no film inside, a strip of tracing paper, tape",
+   "squared paper (5 mm), a compass or round things to draw round, a calculator",
+   "a room with one window as the only light",
+   "this page on a projector"
+  ],
+  "exit_ticket": "In one sentence: why is f/16 a smaller hole than f/8? And one number: how many times more light does a hole twice as wide let in?",
+  "misconception": "That a bigger f-number means a bigger hole, and that light goes up in step with the width. The f-number is length ÷ width; light goes with the area, width × width; one step on the row is 1.41 times the width and twice the light.",
+  "differentiation": {
+   "support": "Use squares only, not circles: 1, 2 and 3 squares wide, and count. Give the ladder sim's three buttons instead of the slider. For the sum, give the divisions and ask only for the squaring.",
+   "stretch": "Work out the area of each dot with π r² and compare with the square counts. Then: a camera has shutter speeds 1/250 and 1/500. Which f-number at 1/500 gives the same picture as f/11 at 1/250? (f/8.)",
+   "access": "Each sim has a text line saying what it shows. The squared-paper task can use printed circles of the right sizes for students who find drawing them hard."
+  },
+  "safety": "Nobody points the camera, or looks, at the sun. No film in the camera during the tracing-paper activity.",
+  "period": [
+   {
+    "minutes": 5,
+    "phase": "hook",
+    "what": "The question; hold up the yellow wheel. Everyone answers the f/8 or f/16 question on paper; count the votes."
+   },
+   {
+    "minutes": 7,
+    "phase": "explain",
+    "what": "'Width is not the point. Area is.' on the board: a square and one twice as wide; then two circles on squared paper."
+   },
+   {
+    "minutes": 14,
+    "phase": "explore",
+    "what": "Squared-paper circles in threes: 2, 3, 4 and 5.6 cm across. Count the squares, divide each by the one before. Which pair doubles?"
+   },
+   {
+    "minutes": 7,
+    "phase": "explore",
+    "what": "The ladder sim, whole class: who finds × 2.00 first? Then the sum on the board with the camera's three dots."
+   },
+   {
+    "minutes": 12,
+    "phase": "apply",
+    "what": "The Try card: tracing paper behind the open camera, the three dots in turn. Finished groups choose a dot for today's sky with the chart."
+   },
+   {
+    "minutes": 5,
+    "phase": "check",
+    "what": "Exit ticket; return to the opening vote."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Which is the bigger hole, f/8 or f/16?",
+    "a": "f/8. The f-number is the lens's length divided by the hole's width: a bigger number is a smaller hole."
+   },
+   {
+    "q": "A hole twice as wide lets in how much more light?",
+    "a": "Four times: twice as wide and twice as tall."
+   },
+   {
+    "q": "Why is the row 8, 11, 16 and not 8, 12, 16?",
+    "a": "Each step doubles the light, which takes √2 ≈ 1.41 times the width: 8 × 1.41 ≈ 11, 11 × 1.41 ≈ 16."
+   },
+   {
+    "q": "Small dot 1.96 mm, middle 2.88 mm. How much more light?",
+    "a": "(2.88 ÷ 1.96)² ≈ 2.2: about double, one step."
+   },
+   {
+    "q": "Full sun, ISO 400 film. Which dot, and which old rule does that match?",
+    "a": "The small dot, f/16: the sunny-16 rule, f/16 at about 1 ÷ ISO of a second."
+   }
+  ]
+ },
+ "slides": [
+  "predict",
+  "why",
+  "play",
+  "camera",
+  "maths",
+  "try",
+  "quiz"
+ ]
+}

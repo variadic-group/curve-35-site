@@ -1,0 +1,319 @@
+{
+ "n": 3,
+ "title": "Film",
+ "question": "How does a strip of plastic remember a picture?",
+ "hook": "Light touches your film for about a three-hundredth of a second. Afterwards the film looks exactly as it did before. Weeks later, after two chemical baths, there is the picture. Where was it hiding? About four atoms, and an amplifier a billion times strong.",
+ "colour": "#D23F31",
+ "hero_fig": "fig_l03_hero",
+ "chips": [
+  "4 atoms",
+  "A billion times",
+  "A negative on your phone"
+ ],
+ "sections": [
+  {
+   "id": "predict",
+   "kind": "predict",
+   "title": "Your guess first",
+   "body": "",
+   "q": "When is the picture actually on the film?",
+   "choices": [
+    "The moment the light hits it, like a phone screen",
+    "It's there straight away, but invisible, until chemicals bring it out",
+    "Only when the lab scans it into a computer"
+   ],
+   "answer": 1,
+   "reveal": "<p>The light makes a hidden picture: real, but far too small to see. People who tried to let light do <em>all</em> the work found it hopeless. Around 1800 Thomas Wedgwood coated paper with silver salts and let the sun print shadows on it. It took ages, it never worked inside a camera, and his pictures kept darkening in daylight until they were gone. Too slow, and it never stops. Film fixes both problems.</p>"
+  },
+  {
+   "id": "why",
+   "kind": "story",
+   "title": "Silver that remembers",
+   "body": "<p>On the film's plastic is a thin coat of gelatin, the stuff in jelly. In it sit billions of tiny crystals of silver salt, each about a thousandth of a millimetre across.</p><p>When light strikes a crystal it knocks loose a few silver atoms, which gather into a speck. About four atoms is enough to mark the crystal. Bright parts of the scene mark many crystals, dark parts few. That pattern is the picture, hidden: the <em>latent image</em>.</p><p>The <strong>developer</strong> turns every marked crystal, all of it, into black silver. Four atoms become billions. The <strong>fixer</strong> dissolves the crystals light never touched, so the film stops reacting. What's left is dark where the scene was bright: a negative. Shine light through it onto paper and it flips again into a print.</p>",
+   "figure": {
+    "svg": "fig_l03_chain",
+    "caption": "Light, a speck, developer, fixer: the chain that keeps a picture."
+   },
+   "timeline": [
+    {
+     "year": "1727",
+     "what": "Johann Schulze shows silver salts darken in light, not heat."
+    },
+    {
+     "year": "1839",
+     "what": "Daguerre's process is made public. John Herschel finds hypo fixes a picture, and names negative and positive."
+    },
+    {
+     "year": "1841",
+     "what": "Henry Fox Talbot develops a hidden picture on paper: one negative, many prints."
+    },
+    {
+     "year": "1871",
+     "what": "Richard Leach Maddox puts silver salt in gelatin: the coating every film since has used."
+    },
+    {
+     "year": "1888",
+     "what": "The first Kodak comes loaded with a roll for 100 pictures; the whole camera goes back to be developed."
+    }
+   ],
+   "label": "Why this piece exists"
+  },
+  {
+   "id": "play",
+   "kind": "sim",
+   "title": "Expose, develop, fix, print",
+   "sims": [
+    {
+     "sim": "l03_grains",
+     "intro": "A patch of film, magnified until you can see every crystal. Run the darkroom in order.",
+     "after": "After the click, nothing shows. The developer multiplies the light's work about a billion times. The fixer clears what was never marked. Black silver where the scene was bright: a negative."
+    },
+    {
+     "sim": "l03_window",
+     "intro": "A scene, its negative and the print. Now give it too little light, then too much. How forgiving is film?",
+     "after": "Colour negative film forgives about 1 step too little and 3 steps too much (a step is double the light). That wide window is why a camera with one speed and three dots works at all."
+    }
+   ]
+  },
+  {
+   "id": "camera",
+   "kind": "kit",
+   "title": "The film",
+   "render": "l4",
+   "alt": "The camera with its back off and a roll of film lying across the curved rails",
+   "caption": "The film lies on a curve, 32 mm from the lens.",
+   "body": "<p>Any ordinary 35 mm film in its standard shell goes in. ISO 400 colour negative is the easy choice: with your three dots it covers full sun to bright cloud, and its window forgives a lot.</p><p>After each picture you wind it back into its shell, into the dark. Keep the back shut until the roll is finished and wound in: until it is developed, film keeps catching light. Then it goes to a lab, the way the first Kodak went back to its factory.</p>",
+   "step": [
+    "f3",
+    "f4"
+   ]
+  },
+  {
+   "id": "phone",
+   "kind": "phone",
+   "title": "A sensor instead of film",
+   "body": "<p>Your phone has no film. Behind its lens sits a sensor: millions of tiny light buckets that turn light into electric charge. The phone reads every bucket, turns it into a number and wipes the sensor clean, ready for the next picture a moment later. Film is a one-shot chemistry set; a sensor is reused forever. Lesson 9 opens it up.</p>"
+  },
+  {
+   "id": "maths",
+   "kind": "maths",
+   "title": "How wide is the film's window?",
+   "summary": "one sum, with the real numbers",
+   "lines": [
+    "one step = twice the light, or half of it",
+    "the film forgives 1 step too little and 3 steps too much",
+    "1 step too little: 1 ÷ 2 = 1/2 of the right light",
+    "3 steps too much: 2 × 2 × 2 = 8 times the right light",
+    "8 ÷ 1/2 = 16: the most light it takes is 16 times the least"
+   ],
+   "body": "<p>Film speed counts in the same steps. ISO 100 to 200 to 400 is two steps, so ISO 400 film needs a quarter of the light ISO 100 needs.</p>"
+  },
+  {
+   "id": "try",
+   "kind": "try",
+   "title": "See a negative before you have one",
+   "minutes": 15,
+   "needs": [
+    "a phone or tablet with a camera",
+    "dark coloured paper that fades (sugar paper)",
+    "a key or a coin",
+    "a sunny window sill"
+   ],
+   "steps": [
+    "Lay the key on the dark paper in the sun. Note the time.",
+    "On the phone, turn on the setting that reverses all colours (under Accessibility: 'Classic Invert' or 'Colour inversion').",
+    "Open the camera and look around: a window, something white, something black, a face.",
+    "Note what is darkest on screen, and what colour the sky and skin turn.",
+    "Turn the setting off. After four to six hours of full sun, lift the key."
+   ],
+   "notice": "On screen the brightest things are darkest and every colour has swapped: a negative. The paper under the key took hours of sun to show a shape. Film does its part in a three-hundredth of a second because the developer does the rest."
+  },
+  {
+   "id": "quiz",
+   "kind": "quiz",
+   "title": "Check yourself",
+   "items": [
+    {
+     "q": "Right after the click, what has light done to the film?",
+     "choices": [
+      "Turned the bright parts black",
+      "Left tiny specks of a few silver atoms on some crystals",
+      "Burned a picture into the plastic",
+      "Nothing yet: that happens at the lab"
+     ],
+     "answer": 1,
+     "why": "Light marks crystals with specks of about four atoms: a hidden picture, far too small to see."
+    },
+    {
+     "q": "What does developer do?",
+     "choices": [
+      "Dissolves the unmarked crystals",
+      "Turns each marked crystal, all of it, into black silver",
+      "Adds the colours",
+      "Makes the picture the right way up"
+     ],
+     "answer": 1,
+     "why": "Developer multiplies the light's work about a billion times: a few atoms become a whole black crystal."
+    },
+    {
+     "q": "Why must film be fixed?",
+     "choices": [
+      "To make it sharper",
+      "Unmarked crystals could still darken in light, so fixer dissolves them",
+      "To make it waterproof",
+      "To turn it into a positive"
+     ],
+     "answer": 1,
+     "why": "Until the untouched crystals are gone, light would keep darkening the film. Fixed, it is plain silver and stays."
+    },
+    {
+     "q": "On the negative, a white cloud is…",
+     "choices": [
+      "white",
+      "black (or dark)",
+      "clear",
+      "orange"
+     ],
+     "answer": 1,
+     "why": "Most light, most silver: the brightest things are darkest on the negative."
+    },
+    {
+     "q": "The film forgives 1 step too little and 3 too much. The most light it takes is how many times the least?",
+     "choices": [
+      "4",
+      "8",
+      "16",
+      "32"
+     ],
+     "answer": 2,
+     "why": "From 1/2 to 8: 8 ÷ 1/2 = 16. Or: 4 steps, 2 × 2 × 2 × 2 = 16."
+    }
+   ]
+  },
+  {
+   "id": "roll",
+   "kind": "roll",
+   "title": "Try it on your roll",
+   "frames": 2,
+   "lead": "Label the roll, then give the film something with bright and dark in it.",
+   "shots": [
+    "The slate: your name, the date and the film, in thick letters on paper. A friend holds it in sun about 1.5 m away. Small dot.",
+    "A sunlit wall with a deep shadow across it. Small dot."
+   ],
+   "look": "Ask for the negatives back if you can. On the negative, light and dark swap: the sunlit wall is the densest part and the shadow almost clear."
+  },
+  {
+   "id": "next",
+   "kind": "next",
+   "body": "<p>Film needs just the right amount of light. So how do you measure out light?</p>",
+   "links": [
+    {
+     "title": "How photographic film works",
+     "url": "https://electronics.howstuffworks.com/film.htm",
+     "why": "HowStuffWorks, from crystals to colour layers."
+    },
+    {
+     "title": "Sun prints",
+     "url": "https://science.nasa.gov/wp-content/uploads/2023/10/Construction-Paper-Sun-Prints-Activity.pdf",
+     "why": "NASA's one-page activity: let sunlight print shapes."
+    },
+    {
+     "title": "From the camera obscura to the Kodak",
+     "url": "https://www.eastman.org/camera-obscura-revolutionary-kodak",
+     "why": "George Eastman Museum: the early cameras, in pictures."
+    }
+   ]
+  }
+ ],
+ "teach": {
+  "objectives": [
+   "Say what light does to film (marks crystals of silver salt with specks of a few atoms) and why nothing shows after the click.",
+   "Say what developer and fixer do, in the right order.",
+   "Explain why a negative is dark where the scene was bright, and how a positive is made from it.",
+   "Work out that 1 step under to 3 steps over is a window 16 times wide, and say why that lets a simple camera work."
+  ],
+  "materials": [
+   "per group of three: dark construction paper, two or three flat objects, a phone or tablet",
+   "a sunny sill",
+   "old negatives if anyone can bring some (or the 'backwards' sim on the projector)",
+   "sun-print paper if the school has it",
+   "this page on a projector"
+  ],
+  "exit_ticket": "In two sentences: what does light do to film, and what do developer and fixer each do? Then: on a negative, is the sky dark or light?",
+  "misconception": "That light draws the picture on the film there and then, like a screen. Light only marks crystals with a few atoms; developing makes the marks a picture, and fixing makes it stay.",
+  "differentiation": {
+   "support": "Give the five darkroom steps on cards to put in order before the sim. Use 'double' and 'half' instead of 'steps' throughout; the sum can be done with a strip of paper folded in half four times.",
+   "stretch": "Explain why faster film is grainier, using the crystal sizes. Then work out how many steps the film's window is if the most light it takes is 32 times the least (5), and what that would mean for the camera.",
+   "access": "The grains sim has a text line that says what each stage shows. Students who cannot use a phone camera can pair up; the sun-print part needs no screen."
+  },
+  "safety": "Nobody looks at the sun, through a phone or otherwise. If real developing chemicals are ever used, that is a separate, supervised practical with its own rules; this lesson uses none.",
+  "period": [
+   {
+    "minutes": 5,
+    "phase": "hook",
+    "what": "The question. Everyone writes when they think the picture is on the film, then votes on 'Your guess first'."
+   },
+   {
+    "minutes": 4,
+    "phase": "explore",
+    "what": "Start the sun prints first so they get the whole day: groups lay a key or a coin on the paper on the sunny sill."
+   },
+   {
+    "minutes": 8,
+    "phase": "explain",
+    "what": "'Silver that remembers' on the board: plastic, gelatin, crystals, a speck of four atoms. Then the timeline: Niépce, Daguerre, Talbot."
+   },
+   {
+    "minutes": 12,
+    "phase": "explore",
+    "what": "The darkroom sim, driven by students in turn on the projector: expose, develop, fix, print, then out of order. Each group says what each bath does."
+   },
+   {
+    "minutes": 10,
+    "phase": "explore",
+    "what": "Phones on invert (the Try card): groups look at the room. Then the second sim: too little light, then too much. How forgiving is film?"
+   },
+   {
+    "minutes": 6,
+    "phase": "apply",
+    "what": "The sum on the board; pairs do the window check: 1 step under to 3 over is 16 times."
+   },
+   {
+    "minutes": 5,
+    "phase": "check",
+    "what": "Exit ticket. Check the sun prints at the end of the day."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Right after the click, what is on the film?",
+    "a": "A hidden picture: specks of a few silver atoms on some crystals, far too small to see."
+   },
+   {
+    "q": "What does developer do, and what does fixer do?",
+    "a": "Developer turns every marked crystal into black silver, about a billion times the light's work. Fixer dissolves the unmarked crystals so the film stops reacting to light."
+   },
+   {
+    "q": "On the negative, is a white cloud dark or light?",
+    "a": "Dark: most light, most silver."
+   },
+   {
+    "q": "Why could Wedgwood's silver pictures not be kept?",
+    "a": "Nothing removed the crystals light had not yet touched, so they kept darkening in daylight until the picture was gone."
+   },
+   {
+    "q": "Why does a camera with no light meter still give good pictures?",
+    "a": "Film forgives about 1 step too little and 3 too much: a window 16 times wide. Choosing the dot from the sky lands inside it."
+   }
+  ]
+ },
+ "slides": [
+  "predict",
+  "why",
+  "play",
+  "camera",
+  "maths",
+  "try",
+  "quiz"
+ ]
+}

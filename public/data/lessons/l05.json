@@ -1,0 +1,306 @@
+{
+ "n": 5,
+ "title": "The shutter",
+ "question": "How do you make a piece of plastic move that fast, the same way every time?",
+ "hook": "Press the rocker. Click. For about three thousandths of a second a window in a plastic blade swings past the lens and the film gets its picture. No motor, no battery, no spring from a shop. One printed blade, and a trick you already do with your fingers.",
+ "colour": "#0E9AA7",
+ "hero_fig": "fig_l05_blade",
+ "chips": [
+  "1/322 s",
+  "No bought spring",
+  "Freeze a horse"
+ ],
+ "sections": [
+  {
+   "id": "predict",
+   "kind": "predict",
+   "title": "Your guess first",
+   "body": "<p>Three hundred of these openings would fit into one second. And the whole shutter is one piece of printed plastic: a blade with a hole in it, sitting on a peg. Nothing you could buy in a shop, nothing wound up.</p>",
+   "q": "When you press the rocker, what decides how fast the blade swings past the lens?",
+   "choices": [
+    "A strong spring hidden inside",
+    "How fast your finger presses",
+    "Something else that does not care about your finger"
+   ],
+   "answer": 2,
+   "reveal": "<p><strong>Something else.</strong> There is no spring to buy, and fingers are hopeless timers: by the model, a slow push with nothing to snap would let in about <strong>eleven times</strong> the light of a quick one. The camera uses a click. Your finger only loads it. Keep reading: you will build the proof yourself in two experiments.</p>"
+  },
+  {
+   "id": "why",
+   "kind": "story",
+   "title": "Fast, and the same every time",
+   "body": "<p>In daylight film needs only a sip of light. Too long and the picture comes out muddy; too long and anything moving smears. So the shutter has to open for a tiny moment, about 1/322 of a second, and do it the same way whether your finger is quick or lazy.</p><p>Fingers are hopeless timers. The fix is a snap. Press your finger against your thumb harder and harder: nothing moves. Then it slips and all the stored push goes at once. You can't snap slowly.</p><p>The blade does exactly this. Its own thin rim is the spring. A tooth on the rim sits in a notch; press the rocker and the tooth climbs the notch's slope, the rim bends, nothing moves yet. At about 2.3 newtons, the weight of a big apple, the tooth jumps out and the blade flies through its swing. Your finger loads the click. The click decides the speed.</p>",
+   "figure": {
+    "svg": "fig_l05_blade",
+    "caption": "One blade, one window, one peg."
+   },
+   "timeline": [
+    {
+     "year": "1839",
+     "what": "Pictures take minutes. The shutter is a lens cap: off, count, on."
+    },
+    {
+     "year": "1878",
+     "what": "Eadweard Muybridge fires twelve cameras with tripwires and shows a galloping horse with all four feet off the ground."
+    },
+    {
+     "year": "1880s",
+     "what": "Drop shutters: a plate with a hole falls or is pulled past the lens. Your blade is the same idea, swung."
+    },
+    {
+     "year": "1910",
+     "what": "Clockwork shutters with thin leaves that open like an eye, up to 1/250 s."
+    }
+   ],
+   "label": "Why this piece exists"
+  },
+  {
+   "id": "play",
+   "kind": "sim",
+   "title": "Freeze the horse, slow the blade",
+   "sims": [
+    {
+     "sim": "l05_gallop",
+     "intro": "A horse at full gallop covers about 16 metres a second. Pick a shutter time and see what the film would get.",
+     "after": "Blur is speed × time. At 1/322 s the horse moves 5 cm and the legs stay crisp. At 1/28 s it moves 57 cm and the legs dissolve."
+    },
+    {
+     "sim": "l05_swing",
+     "intro": "Press the rocker in slow motion, a hundred times slower, with a clock in real thousandths. Then take the click away.",
+     "after": "With the click, a slow finger only changes the wait before the snap; the swing takes the same 3 thousandths or so. Without it, a slow push leaves the window open eleven times as long."
+    }
+   ]
+  },
+  {
+   "id": "camera",
+   "kind": "kit",
+   "title": "The blade and the rocker",
+   "render": "s3",
+   "alt": "A finger pressing the teal rocker on top of the camera",
+   "caption": "One quick press of the rocker.",
+   "body": "<p>Building the shutter takes a second: lay the front plate face down and drop the blade onto its peg, rocker over the edge. The rocker is a shallow V; press the raised side, and next time the other side is up.</p><p>The secret middle click: press only halfway and the window stops right over the lens. The shutter stays open while you count, for pictures in dim light. Stand the camera on something first.</p>",
+   "step": [
+    "b5",
+    "p3"
+   ]
+  },
+  {
+   "id": "phone",
+   "kind": "phone",
+   "title": "A shutter with no blade",
+   "body": "<p>Most phones have no blade at all. The sensor is told to start collecting light, then read out, all electronically, so a phone can open for many seconds at night or for far less than a thousandth in sun. Here's a mind-bender: slow-motion video at 240 pictures a second takes one picture every 4.2 thousandths of a second. Your shutter's whole opening, 3.1 thousandths, fits in the gap.</p>"
+  },
+  {
+   "id": "maths",
+   "kind": "maths",
+   "title": "What the click saves",
+   "summary": "one sum, with the real numbers",
+   "lines": [
+    "with the click: about 1/322 s",
+    "a slow push with no click: about 1/28 s",
+    "322 ÷ 28 = 11.5 times the light",
+    "8 is 3 steps, 16 is 4 steps: 11.5 is about 3.5 steps",
+    "full sun, small dot, ISO 400, with the click: half a step over",
+    "with a slow push: 0.5 + 3.5 = 4 steps over: outside the film's 3"
+   ],
+   "body": "<p>The film forgives 3 steps too much (lesson 3). The click keeps you well inside; a lazy finger would not.</p>"
+  },
+  {
+   "id": "try",
+   "kind": "try",
+   "title": "Catch the window on film",
+   "minutes": 15,
+   "needs": [
+    "your camera, with no film inside",
+    "a phone that films slow motion",
+    "a pile of books to stand it on",
+    "a bright lamp"
+   ],
+   "steps": [
+    "Stand the phone 10 to 15 cm from the camera's front, so the lens and the rocker are both in view. Light the front well.",
+    "Set the large dot. Start the slow motion.",
+    "Press the rocker flat in one quick press, then the other side. Stop filming.",
+    "Play it back frame by frame and count the frames where the window is over the lens.",
+    "Now press as slowly as you can until it clicks. Film it and count again."
+   ],
+   "notice": "Quick press or slow press, the window shows for about the same number of frames. The click, not your finger, sets the time."
+  },
+  {
+   "id": "quiz",
+   "kind": "quiz",
+   "title": "Check yourself",
+   "items": [
+    {
+     "q": "What actually lets light reach the film in this camera?",
+     "choices": [
+      "A gap that opens between two blades",
+      "A round window in one swinging blade",
+      "The lens moves out of the way",
+      "A flap that lifts up"
+     ],
+     "answer": 1,
+     "why": "One teal blade with one window. At rest solid plastic covers the lens; a press swings the window across it once."
+    },
+    {
+     "q": "You press the rocker very slowly. What happens to the picture?",
+     "choices": [
+      "Much brighter on the print: more light got in",
+      "Nothing different: the click lets go at the same push every time",
+      "Blurry, because the blade wobbles",
+      "Nothing at all: a slow press doesn't fire"
+     ],
+     "answer": 1,
+     "why": "Nothing moves until the push reaches the click, about 2.3 N. Then the tooth jumps out and the blade flies at about the same speed however slowly you pressed."
+    },
+    {
+     "q": "Without the click, a slow push gives about 1/28 s. Roughly how many steps more light than 1/322 s is that?",
+     "choices": [
+      "About half a step",
+      "About 1 step",
+      "About 3.5 steps",
+      "About 11 steps"
+     ],
+     "answer": 2,
+     "why": "322 ÷ 28 = 11.5 times the light. 8 is 3 steps and 16 is 4, so 11.5 is about 3.5 steps. Careful: 11.5 is the times, not the steps."
+    },
+    {
+     "q": "A horse runs at 16 m a second. How far does it move while this camera's shutter is open (1/322 s)?",
+     "choices": [
+      "About 5 mm",
+      "About 5 cm",
+      "About 50 cm",
+      "About 5 m"
+     ],
+     "answer": 1,
+     "why": "16 ÷ 322 = 0.05 m = 5 cm. A couple of percent of the horse: sharp enough to count its legs."
+    },
+    {
+     "q": "It's a dim room. How do you take a picture?",
+     "choices": [
+      "Press the rocker extra hard",
+      "Press it to the middle click, count, then press on down, with the camera on something steady",
+      "Press it twice quickly",
+      "Use the small dot"
+     ],
+     "answer": 1,
+     "why": "At the middle click the window stops over the lens, so it stays open while you count: a time picture. With ISO 400 and the small dot, lamps on: count 5."
+    }
+   ]
+  },
+  {
+   "id": "roll",
+   "kind": "roll",
+   "title": "Try it on your roll",
+   "frames": 2,
+   "lead": "About a three-hundredth of a second. Find out what that freezes.",
+   "shots": [
+    "A friend jumping, in full sun, small dot, about 2.5 m away. Press smoothly, don't stab.",
+    "Something crossing in front of you: a bike, a runner, a dog. Same light, same dot."
+   ],
+   "look": "The jump should hang in the air, sharp. The bike may smear a little sideways: at 20 km/h it moves about 17 mm while the shutter is open."
+  },
+  {
+   "id": "next",
+   "kind": "next",
+   "body": "<p>One picture taken. Now the film has to move on exactly one picture, no more, no less.</p>",
+   "links": [
+    {
+     "title": "The first 'GIF' of a galloping horse",
+     "url": "https://www.smithsonianmag.com/smithsonian-institution/how-19th-century-photographer-first-gif-galloping-horse-180970990/",
+     "why": "Smithsonian magazine on Muybridge's 1878 pictures."
+    },
+    {
+     "title": "The Horse in Motion",
+     "url": "https://en.wikipedia.org/wiki/The_Horse_in_Motion",
+     "why": "The cards themselves, and how the tripwires worked."
+    },
+    {
+     "title": "A guide to camera shutter designs",
+     "url": "https://petapixel.com/camera-shutter-designs/",
+     "why": "PetaPixel: from guillotines to electronic shutters."
+    }
+   ]
+  }
+ ],
+ "teach": {
+  "objectives": [
+   "Describe how this shutter makes a picture: a blade with one window swings once past the lens.",
+   "Explain why a click gives the same speed whatever the finger does, and why a plain push would not.",
+   "Work out that a slow push (about 1/28 s) lets in about 11.5 times the light of a click (about 1/322 s), about 3.5 steps, and say why that spoils the picture.",
+   "Use speed × time to work out how far a moving thing travels while the shutter is open.",
+   "Take a time picture with the rocker's middle click."
+  ],
+  "materials": [
+   "Per group of three: one built camera with no film in it, a phone that films slow motion, a stack of books, paper, pencil, calculator",
+   "For the drop-shutter demo: a rubber band, two rulers, a card with a hole, a torch",
+   "The page on a projector for the two sims and the film"
+  ],
+  "exit_ticket": "In one sentence: what decides how fast the shutter moves, your finger or the click? Why? And one number: about how many times more light does a slow push let in? (About 11 or 12.)",
+  "misconception": "That a fast shutter needs a strong spring and a fast finger, and that the photographer's press decides the speed. In its place: the finger only loads a click; the click lets go at a fixed force, so the speed is the same whoever presses.",
+  "differentiation": {
+   "support": "Give the sum as a fill-in-the-blanks card (322 ÷ 28 = __). Use the gallop sim's readouts instead of calculating blur. Pair readers with confident talkers for the Try card's write-up.",
+   "stretch": "Design a way to time 3 thousandths of a second with school kit (a light sensor on a data logger, or a phone's light meter app recording). Or: using speed × time, find the slowest shutter that keeps a sprinter (about 10 m/s) under 1 cm of blur.",
+   "access": "Both sims work with the keyboard and describe every result in words. The Try card works without a phone: listen to the click and feel for the middle one."
+  },
+  "safety": "No film in cameras used for slow motion. Nobody points a camera or phone at the sun. The rubber-band drop shutter is aimed at the desk, not at faces.",
+  "period": [
+   {
+    "minutes": 5,
+    "phase": "hook",
+    "what": "Show the question and 'Your guess first' on the board. Every student writes A, B or C. Count; do not correct yet."
+   },
+   {
+    "minutes": 7,
+    "phase": "explain",
+    "what": "The story and its timeline, quickly: lens caps to Muybridge. Drop a card with a hole past a torch beam: the drop shutter."
+   },
+   {
+    "minutes": 14,
+    "phase": "explore",
+    "what": "Groups do the Try card (catch the window on slow motion). Groups that finish early run the gallop sim."
+   },
+   {
+    "minutes": 7,
+    "phase": "explain",
+    "what": "Snap your fingers slowly: impossible. The blade sim in slow motion, with the click and without it."
+   },
+   {
+    "minutes": 12,
+    "phase": "apply",
+    "what": "The sum on the board, then the quiz in pairs. Then the middle click: each group holds the rocker there and sees the window stay open: a time picture."
+   },
+   {
+    "minutes": 5,
+    "phase": "check",
+    "what": "Exit ticket. Return to the opening vote: who changed their mind, and why?"
+   }
+  ],
+  "questions": [
+   {
+    "q": "Why did shutters only become a problem after 1839?",
+    "a": "At first pictures took minutes and a lens cap was fine. When plates got faster, hands were too slow."
+   },
+   {
+    "q": "Why does a quick press and a slow press give the same picture?",
+    "a": "Nothing moves until the push reaches the click (about 2.3 N). Then it all lets go at once, so the blade always flies at about the same speed."
+   },
+   {
+    "q": "A slow push lets in 11.5 times the light. Is that inside the film's window?",
+    "a": "11.5 times is about 3.5 steps; with the half step full sun already gives, 4 steps over. The film forgives 3: outside."
+   },
+   {
+    "q": "How far does a car at 30 m/s move while the shutter is open?",
+    "a": "30 ÷ 322 = 0.093 m, about 9 cm."
+   }
+  ]
+ },
+ "slides": [
+  "predict",
+  "why",
+  "play",
+  "camera",
+  "maths",
+  "try",
+  "quiz"
+ ]
+}

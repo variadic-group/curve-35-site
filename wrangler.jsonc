@@ -1,0 +1,13 @@
+{
+  // A static site: no Worker script, only the files in ./public.
+  "name": "curve35",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./public",
+    "not_found_handling": "404-page"
+  },
+  "routes": [
+    { "pattern": "curve35.com", "custom_domain": true },
+    { "pattern": "www.curve35.com", "custom_domain": true }
+  ]
+}

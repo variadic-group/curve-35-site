@@ -1,0 +1,64 @@
+# Cloudflare Pages headers, written by site/build.py
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+/
+  Cache-Control: public, max-age=0, must-revalidate
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
+/404.html
+  Cache-Control: public, max-age=0, must-revalidate
+/js/*
+  Cache-Control: public, max-age=300, must-revalidate
+/css/*
+  Cache-Control: public, max-age=300, must-revalidate
+/data/*
+  Cache-Control: public, max-age=300, must-revalidate
+/media/*
+  Cache-Control: public, max-age=2592000
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+/downloads/*
+  Cache-Control: public, max-age=86400
+/downloads/layout.scad
+  Content-Type: text/plain; charset=utf-8
+/downloads/one135.scad
+  Content-Type: text/plain; charset=utf-8
+/downloads/one135_back.stl
+  Content-Type: model/stl
+/downloads/one135_blade.stl
+  Content-Type: model/stl
+/downloads/one135_body.stl
+  Content-Type: model/stl
+/downloads/one135_fit_gauge.stl
+  Content-Type: model/stl
+/downloads/one135_front.stl
+  Content-Type: model/stl
+/downloads/one135_knob.stl
+  Content-Type: model/stl
+/downloads/one135_lens_gauge.stl
+  Content-Type: model/stl
+/downloads/one135_pinring.stl
+  Content-Type: model/stl
+/downloads/one135_roller.stl
+  Content-Type: model/stl
+/downloads/one135_spool.stl
+  Content-Type: model/stl
+/downloads/one135_test_slab.stl
+  Content-Type: model/stl
+/downloads/one135_wheel.stl
+  Content-Type: model/stl
+/media/lessons/l01/captions.vtt
+  Content-Type: text/vtt; charset=utf-8
+/media/lessons/l02/captions.vtt
+  Content-Type: text/vtt; charset=utf-8
+/media/lessons/l03/captions.vtt
+  Content-Type: text/vtt; charset=utf-8
+/media/lessons/l04/captions.vtt
+  Content-Type: text/vtt; charset=utf-8
+/media/lessons/l05/captions.vtt
+  Content-Type: text/vtt; charset=utf-8
+/media/lessons/l06/captions.vtt
+  Content-Type: text/vtt; charset=utf-8
+/media/lessons/l07/captions.vtt
+  Content-Type: text/vtt; charset=utf-8

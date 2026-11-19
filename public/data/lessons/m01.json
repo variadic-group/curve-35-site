@@ -1,0 +1,315 @@
+{
+ "n": 1,
+ "code": "M1",
+ "maker": true,
+ "film": false,
+ "title": "Printing",
+ "slug": "designed-for-a-printer",
+ "question": "If a printer can make any shape, why isn't this camera just any shape?",
+ "hook": "<p>Every part of this camera comes off an ordinary desktop printer: no supports, no brim, no sanding. That isn't luck. A printer lays a hot line of plastic thinner than a pencil lead, one layer at a time, and it never hits a drawn width exactly. Every hook, gap and spring in the files is drawn around those two facts.</p>",
+ "colour": "#7C8A1A",
+ "hero_fig": "fig_m01_layers",
+ "still": {
+  "img": "p_body",
+  "alt": "The camera body as it stands on the printer bed, open side up",
+  "caption": "The body as it prints: front face down, 164 layers, no supports."
+ },
+ "sections": [
+  {
+   "id": "guess",
+   "kind": "predict",
+   "title": "Print anything?",
+   "body": "<p>The pitch you hear: draw it on a computer, press print, get exactly what you drew. Any shape, any size.</p>",
+   "q": "Which is true of an ordinary desktop printer?",
+   "choices": [
+    "Any shape, at exactly the size drawn",
+    "Any shape, but not exactly the size drawn",
+    "Only some shapes, and not exactly the size drawn"
+   ],
+   "answer": 2,
+   "reveal": "<p><strong>Only some shapes, and not exactly the size drawn.</strong> A printer can't lay a line of plastic on thin air. It doesn't hit a drawn width sideways: walls come out a little fat or a little thin. And a printed part is weaker across its layers than along them. This page shows all three, and how the camera's files dodge each one.</p>"
+  },
+  {
+   "id": "why",
+   "kind": "why",
+   "title": "A hot glue gun on rails",
+   "body": "<p class=\"lp-lead\">A mould can make almost any shape. A printer can't, and that's the whole story of these files.</p><p>For a hundred years cheap cameras were moulded: fast and exact, but a steel mould costs a fortune to cut and only pays after thousands of copies. Then the patent on printing with a line of melted plastic ran out, and one camera, or thirty, stopped needing a mould at all.</p><p>But a printer plays by its own rules. It squeezes out a line about <strong>0.45 mm</strong> wide and fills one layer <strong>0.2 mm</strong> tall, then the next. Three things follow, and every part here is drawn around them:</p><ol><li><strong>It can't lay a line on air.</strong> Slopes up to about 45°, and short bridges, and that's it.</li><li><strong>It's exact up and down, not sideways.</strong> It counts whole layers perfectly, but every wall comes out a little fat or thin: the wall error.</li><li><strong>It has a grain, like wood.</strong> Lines in a layer melt into each other well; layers stick to each other less well. In the model it takes about 30 MPa to break a print along its lines and about 15 across its layers. So every spring in this camera lies flat on the bed and bends along its lines.</li></ol>",
+   "figure": {
+    "svg": "fig_m01_grain",
+    "caption": "The grain of a print: strong along its lines, about half as strong across its layers."
+   },
+   "timeline": [
+    {
+     "year": "1872",
+     "what": "The Hyatt brothers patent an early injection moulding machine: hot material into a steel mould, out pops a part."
+    },
+    {
+     "year": "1930s",
+     "what": "Cheap camera bodies are moulded plastic."
+    },
+    {
+     "year": "1989",
+     "what": "S. Scott Crump files a patent on building parts from a line of melted plastic."
+    },
+    {
+     "year": "2005",
+     "what": "The open RepRap project sets out to build a printer that prints its own parts."
+    },
+    {
+     "year": "2009",
+     "what": "The patent runs out. Home printers get cheap."
+    }
+   ],
+   "label": "Why it's drawn this way"
+  },
+  {
+   "id": "play",
+   "kind": "play",
+   "title": "Slopes, bridges and fat walls",
+   "intro": "Two benches. The first prints a slope or a bridge, layer by layer. The second puts five printers through three fits and the fit gauge, and lets you change FIT, the number in the files that sets the room round every shaft.",
+   "sims": [
+    {
+     "sim": "m01_slice",
+     "title": "Print a slope, layer by layer",
+     "intro": "Lines 0.45 mm wide, layers 0.2 mm tall, drawn 50 times life size. Set the slope and scrub through the layers. Then switch to a bridge. Build a 30° slope. How much of each new line sits on the last? Find the steepest slope that still prints. Where does it start to droop?",
+     "after": "Each layer leans out 0.2 × tan(angle) mm. At 45° that's 0.2 mm, and a 0.45 mm line keeps 55 % of itself on the line below: it prints. Past about 48°, less than half rests on plastic and it droops. So every slope in the camera is 45° or less: the frame wheel's dial stands on a 45° cone, the sights on top lean 32°, and the pockets for the front plate's feet are roofed by short bridges. Nothing needs supports, so nothing leaves a scar."
+    },
+    {
+     "sim": "m01_fit",
+     "title": "Fat printers, thin printers",
+     "intro": "Draw a 3 mm slot and no printer makes it 3. The model rebuilt every joint on five printers, from walls 0.15 mm thin to 0.25 mm fat. Slide through them. Then change FIT, the number in the files that sets the room round every shaft, and see what it buys you. Typical printer (+0.10): how much room is left round the knob? Does the 0.2 mm machinist's fit survive? Fattest printer (+0.25): does the knob still turn?",
+     "after": "A fat wall makes a shaft bigger and its hole smaller at the same time, so every gap loses <strong>twice</strong> the wall error. FIT = 0.65 mm keeps 0.15 mm round the knobs even on the fattest printer. A 0.2 mm gap, which a machinist would call loose, binds on any printer more than 0.1 mm fat. Loose looks sloppy. It's on purpose.  The other trick is the rule: <strong>a flat face where the position must be exact, a wedge everywhere else.</strong> A wedge slides in until it meets, so it's snug on every printer. The one place where 'a little sooner or later' matters is lens to film, so the lens sits on a flat seat built from whole layers, and the front plate's 43° hooks are wedges that pull the plate hard onto the body's flat face."
+    }
+   ],
+   "figure": {
+    "svg": "fig_m01_layers",
+    "caption": "At 45° each layer steps out 0.2 mm, and each 0.45 mm line still rests over half on the one below."
+   }
+  },
+  {
+   "id": "files",
+   "kind": "camera",
+   "label": "In the files",
+   "title": "The numbers that make it printable",
+   "render": "p_front",
+   "alt": "The front plate lying as it is printed, front face down",
+   "caption": "The front plate prints front face down: 47 layers, 57 minutes.",
+   "body": "<p>Open <code>scad/one135.scad</code>. These are the numbers the printer forced on the design, and what happens if you change them.</p><ul><li><strong><code>FIT = 0.65</code></strong>: the room beside every shaft, bar and ring that slides into a slot (knobs, the frame wheel's fork, the blocks on the back). Drop it toward 0.4 and fat printers bind; push it up and the knobs rattle and the light traps get wider than the light check was run for.</li><li><strong><code>HOLE_COMP = 0.15</code></strong>: small holes print small, so they're drawn 0.15 mm bigger on the radius. Nothing needs drilling out.</li><li><strong>Whole layers.</strong> Every thickness in the front stack (wheel, blade, lens pocket) is a whole number of 0.2 mm layers, and so are the light seal's steps (<code>STEP_H = 1.2</code>). Slice at another layer height and the slicer rounds those away: clearances can vanish. Keep 0.2 mm.</li><li><strong>The front plate's feet</strong> (<code>FOOT_D</code>, <code>FOOT_TIP</code>, <code>LIP</code>): their hooks are the 43° wedges. The hook's tip stands on the pocket's floor, so only twice the wall error moves the plate, and pressing it down wedges it tight.</li><li><strong>First layers.</strong> The bed squashes the first layers wider (elephant's foot), so every pocket mouth on the bed side widens in small steps. If you add a hole on the bed face, do the same.</li></ul><p>Each part is exported lying the way it must print. Don't turn any of them: the springs were checked for that layer direction only.</p><table class=\"lp-facts\"><tr><th>Layer</th><td>0.2 mm</td></tr><tr><th>Line</th><td>about 0.45 mm (0.4 mm nozzle)</td></tr><tr><th>Body</th><td>164 layers, 4 h 52 min, 63 g</td></tr><tr><th>Whole camera</th><td>9 h 19 min, 117 g</td></tr><tr><th>Printers checked</th><td>walls −0.15 to +0.25 mm</td></tr><tr><th>FIT round the knobs</th><td>0.65 mm; 0.15 mm left on the fattest</td></tr></table>"
+  },
+  {
+   "id": "maths",
+   "kind": "maths",
+   "title": "Read your printer off the gauge",
+   "summary": "why slot N means 0.025 × N mm, and what's left round the knobs",
+   "lines": [
+    "Every wall prints e too fat (e is negative on a thin printer). Both sides of the key move out: the 3.0 mm key prints 3.0 + 2e.",
+    "Both walls of a slot move in: slot N, drawn 3.0 + 0.1 × N, prints 3.0 + 0.1 × N − 2e.",
+    "The key goes in when 3.0 + 2e ≤ 3.0 + 0.1 × N − 2e, so when 4e ≤ 0.1 × N, so when e ≤ 0.025 × N.",
+    "Example, e = 0.1 mm: the key prints 3.2. Slot 3 prints 3.1: no. Slot 4 prints 3.2: just.",
+    "Narrowest slot 4: 4 × 0.025 = 0.1 mm. That's your printer's number.",
+    "The knobs: FIT = 0.65. Fattest printer, e = 0.25: 0.65 − 0.25 − 0.25 = 0.15 mm left. It turns.",
+    "The hooks: a 43° wedge's seat moves 2e ÷ sin 43°. At e = 0.25 that's 0.73 mm, and it doesn't matter: the hook pulls the plate onto a flat face, and the face sets the focus."
+   ],
+   "body": "<p>The gap closes from four sides at once, so a printer just 0.1 mm fat needs a slot 0.4 mm wider than the key.</p><p><strong>Your turn.</strong> Your key first drops into slot 6. How fat are your walls, and how much of FIT = 0.65 is left round each knob?</p><p><strong>Answer.</strong> 6 × 0.025 = 0.15 mm fat. 0.65 − 0.15 − 0.15 = 0.35 mm left.</p>"
+  },
+  {
+   "id": "try",
+   "kind": "try",
+   "title": "Print the fit gauge, then tune once",
+   "minutes": 15,
+   "needs": [
+    "your printer, loaded with the filament you'll print the camera in",
+    "one135_fit_gauge.stl (in the print files)",
+    "a computer with the camera's files, or just your slicer"
+   ],
+   "steps": [
+    "Slice one135_fit_gauge.stl with the camera's settings: 0.2 mm layers, 3 walls, no supports, no brim. Print it.",
+    "Take the key (the 3 mm tab on its own handle) and try it in each slot from the narrow end. Find the narrowest slot it drops into without forcing. That number is N.",
+    "Work out your wall error: e ≈ 0.025 × N mm. Slot 4 means about 0.1 mm fat.",
+    "Run python3 tools/tune.py N. It names the one slicer setting to change (XY size compensation, or X-Y contour and hole compensation) and checks the shutter's clicks with it. No Python? Set that compensation to −e by hand.",
+    "Print the gauge again with the new setting. The key should now drop into slot 0 or 1.",
+    "Optional: before the 5-hour body, print one135_test_slab.stl with the front plate, blade and wheel. Slide the plate on, press the rocker, move the handle. If those click, the rest will fit.",
+    "If the key goes into every slot: your printer prints thin. N is the narrowest slot it still enters, even a negative one.",
+    "If the key won't go in anywhere: your printer is more than 0.2 mm fat. Check the filament diameter and flow first, then tune."
+   ],
+   "notice": "One number from your own printer, set once, puts every joint in the middle of its range instead of near an edge. Change filament or nozzle and print the gauge again: the number moves.",
+   "safety": "The nozzle and bed are hot. Hands off while it prints."
+  },
+  {
+   "id": "quiz",
+   "title": "Check yourself",
+   "kind": "quiz",
+   "items": [
+    {
+     "q": "Why is every spring in the camera printed lying flat?",
+     "choices": [
+      "It prints faster",
+      "A print is weaker across its layers, so springs must bend along them",
+      "Flat parts use less plastic",
+      "So they fit in the bag"
+     ],
+     "answer": 1,
+     "why": "About 15 MPa across the layers against 30 along them, in the model. Bent across its layers, a strip splits along a layer line."
+    },
+    {
+     "q": "A hole is drawn 3.0 mm. The printer is 0.1 mm fat on every wall. What does it print?",
+     "choices": [
+      "3.1 mm",
+      "3.0 mm",
+      "2.9 mm",
+      "2.8 mm"
+     ],
+     "answer": 3,
+     "why": "Both walls grow inward: 3.0 − 0.1 − 0.1 = 2.8 mm."
+    },
+    {
+     "q": "What's the steepest slope the camera uses without supports?",
+     "choices": [
+      "About 10° from upright",
+      "About 45° from upright",
+      "About 70° from upright",
+      "Flat shelves are fine"
+     ],
+     "answer": 1,
+     "why": "At 45° each 0.2 mm layer steps out 0.2 mm, and each 0.45 mm line still rests over half on the line below."
+    },
+    {
+     "q": "Why is the lens seat a flat face of whole layers, when almost every other fit is loose or a wedge?",
+     "choices": [
+      "Flat is prettier",
+      "The lens-to-film distance must be exact, and a printer is exact up and down",
+      "Wedges can't hold glass",
+      "It prints faster"
+     ],
+     "answer": 1,
+     "why": "Focus depends on that one distance. Layers are counted exactly; sideways sizes are not."
+    },
+    {
+     "q": "The key first enters slot 6 on the fit gauge. About how fat are the printer's walls?",
+     "choices": [
+      "0.6 mm",
+      "0.15 mm",
+      "0.06 mm",
+      "0.025 mm"
+     ],
+     "answer": 1,
+     "why": "6 × 0.025 = 0.15 mm."
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "kind": "next",
+   "label": "Print it, then next",
+   "title": "The files and settings that matter",
+   "body": "<ul><li><strong>Settings:</strong> PLA, 0.4 mm nozzle, 0.2 mm layers, 3 walls, 15 % infill, fan on, seam aligned, avoid crossing perimeters on, no supports, no brim. The knobs, spool and frame wheel come out solid.</li><li><strong>Colour:</strong> dark and opaque. Hold a printed part against a phone light in a dark room: nothing should glow.</li><li><strong>Files:</strong> <code>one135_fit_gauge.stl</code> first, once per printer and filament. Then <code>one135_test_slab.stl</code> if you want a quick check. Then the whole kit: <code>one135_plate.3mf</code> fits a 220 mm bed in one run, or print the parts one by one (<code>one135_body.stl</code>, <code>one135_back.stl</code>, <code>one135_front.stl</code> and the rest).</li><li><strong>Changing the design:</strong> edit <code>scad/one135.scad</code>, export the part with <code>PART = \"p_front\"</code> (or <code>p_body</code>, <code>p_back</code>…) so it lies the right way, then run <code>sh tools/run_all.sh</code> to repeat every check.</li></ul><p>Everything is on the <a href=\"#files\">Files page</a>.</p>",
+   "href": "#maker-2",
+   "kicker": "Next · M2 · Click",
+   "question": "Nine pieces, no screws, no glue, no bought springs. What holds it together?",
+   "links": [
+    {
+     "title": "How to design parts for FDM 3D printing",
+     "url": "https://www.hubs.com/knowledge-base/how-design-parts-fdm-3d-printing/",
+     "why": "Overhangs, bridges, holes and build direction, with pictures, from a manufacturing network's design guide."
+    },
+    {
+     "title": "3D print tolerance calculator and test coupon",
+     "url": "https://madegooddesigns.com/tools/3d-print-tolerance/",
+     "why": "Make a pin-and-hole test coupon for any gap you like: the same idea as the fit gauge, for your own designs."
+    },
+    {
+     "title": "Fused filament fabrication",
+     "url": "https://en.wikipedia.org/wiki/Fused_filament_fabrication",
+     "why": "How the line-of-plastic printer works, and how an expired patent made it cheap."
+    }
+   ]
+  }
+ ],
+ "teach": {
+  "objectives": [
+   "Describe how a printer builds a part (lines, layers) and name three things it can't do: a roof over air, a drawn size sideways, a thin part strong in every direction.",
+   "Explain why every spring in the camera lies flat on the bed and bends along its lines.",
+   "Work out what a wall error does to a gap, from both sides, and read a printer's number off the fit gauge.",
+   "State the rule 'a flat face where the position must be exact, a wedge everywhere else' and say why the lens seat is built from whole layers.",
+   "Name FIT and HOLE_COMP in scad/one135.scad and say what moving each would do."
+  ],
+  "misconception": "That a printer makes exactly what is drawn, so the drawing is the part. In its place: a printer builds in lines and layers, a little fat or thin sideways and exact up and down, weaker across its layers than along them. A part that works is drawn for the printer: loose fits, wedges, slopes of 45° or less, and springs laid along the lines.",
+  "materials": [
+   "Per group of three: millimetre graph paper, a red pen and a ruler; a built camera or its loose parts; calipers if you have them",
+   "A few printed objects of any kind and a magnifier, to find layer lines",
+   "If there's a printer: the fit gauge (one135_fit_gauge.stl), printed before the session",
+   "Two strips cut from a clean plastic food tub, to bend (eye protection)",
+   "The two sims on a projector"
+  ],
+  "period": [
+   {
+    "minutes": 5,
+    "phase": "hook",
+    "what": "Predict block: everyone commits to A, B or C. Show of hands; most pick A or B. Don't correct yet."
+   },
+   {
+    "minutes": 7,
+    "phase": "explain",
+    "what": "Pass round printed objects and a magnifier: find the layer lines. Where would each snap? Project the slice sim: 30°, 45°, 70°, then a bridge."
+   },
+   {
+    "minutes": 14,
+    "phase": "explore",
+    "what": "Measure three fits: a knob's stem and its slot, the lens and its pocket, a front plate foot and its pocket (calipers, or the numbers in the files section). Work out each gap. Which are big, and why would anyone draw them big?"
+   },
+   {
+    "minutes": 7,
+    "phase": "explain",
+    "what": "Project the fit sim through the five printers, then change FIT. State the wedge rule. Work the sum on the board."
+   },
+   {
+    "minutes": 12,
+    "phase": "apply",
+    "what": "The Try card. Groups with a printed gauge read their N and work out e. Without a printer: draw the 3 mm key and slots 0 to 6 on graph paper, fatten every edge by 0.1 mm in red, and find the first slot the key still fits. Then the quiz."
+   },
+   {
+    "minutes": 5,
+    "phase": "check",
+    "what": "Exit ticket. Back to the opening vote."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Where would this printed object snap first? Does anything hang over air?",
+    "a": "Along a layer line. Slopes and short bridges, never a flat shelf over nothing."
+   },
+   {
+    "q": "Which gaps in the camera are big? Why draw a gap that big?",
+    "a": "About 0.65 mm round the knobs (FIT), so they still turn on a printer 0.25 mm fat."
+   },
+   {
+    "q": "A printer 0.15 mm fat: how much of the knob's 0.65 mm is left?",
+    "a": "0.65 − 0.15 − 0.15 = 0.35 mm."
+   },
+   {
+    "q": "The key first drops into slot 4. What does that say?",
+    "a": "The walls print about 4 × 0.025 = 0.1 mm fat. Set the slicer's size compensation to −0.1 mm (tools/tune.py does it)."
+   },
+   {
+    "q": "Why is the lens seat a flat face of whole layers when almost everything else is loose or a wedge?",
+    "a": "Focus depends on the lens-to-film distance, and a printer counts layers exactly. Sideways sizes it doesn't."
+   }
+  ],
+  "exit_ticket": "In one sentence: name one shape a printer can't make and how this camera avoids needing it. And one number: a printer 0.1 mm fat on every wall: how much narrower does a slot print? (0.2 mm.)",
+  "differentiation": {
+   "support": "Give the Try card's key and slots already drawn; students only fatten edges and count squares. In the fit sim, watch the knob ring only.",
+   "stretch": "Derive e ≤ 0.025 × N from the drawing. Then: a wedge's seat moves 2e ÷ sin 43°. How far does a +0.25 printer lift the front plate's hooks? (About 0.73 mm.) Why doesn't that move the focus?",
+   "access": "Both sims run from the keyboard and say what they show in words. The paper version of the Try card works at any size."
+  },
+  "safety": "Calipers have sharp jaws. Bend plastic strips gently, away from faces, with eye protection. A printer's nozzle and bed are hot."
+ },
+ "slides": [
+  "guess",
+  "why",
+  "play",
+  "files",
+  "maths",
+  "try",
+  "quiz"
+ ]
+}

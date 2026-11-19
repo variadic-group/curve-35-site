@@ -1,0 +1,309 @@
+{
+ "n": 7,
+ "title": "Light traps",
+ "question": "How can a box full of gaps be dark inside?",
+ "hook": "Inside this camera lies film that one moment of daylight would ruin. Yet the knobs turn, the dial spins and the back comes off. Air leaks through every gap. Light doesn't. The trick is a fact from lesson 1: light goes in straight lines.",
+ "colour": "#4B5563",
+ "hero_fig": "fig_l07_trap",
+ "chips": [
+  "69 million rays, none in",
+  "No foam, no glue",
+  "A shoebox light trap"
+ ],
+ "sections": [
+  {
+   "id": "predict",
+   "kind": "predict",
+   "title": "Your guess first",
+   "body": "<p>This camera is not tight anywhere. Each knob has <strong>0.65 mm</strong> of room all round so it can turn. The back sits in its groove with <strong>0.6 mm</strong> to spare. The frame wheel's opening on top is simply open. Pour smoke at it and smoke would get in.</p>",
+   "q": "So why doesn't light get in and fog the film?",
+   "choices": [
+    "The gaps are too small for light to fit through",
+    "Something soft seals them shut",
+    "Light can't get round the corners in the gaps"
+   ],
+   "answer": 2,
+   "reveal": "<p><strong>Corners.</strong> Light is far smaller than any gap: a 0.6 mm gap is about a thousand times the size of a light wave. And there's no foam or seal anywhere. What stops light is that it goes in straight lines, and no straight line runs through any gap to the film. To get in it would have to bounce round corners, and every bounce off black plastic throws most of it away.</p>"
+  },
+  {
+   "id": "why",
+   "kind": "story",
+   "title": "Bend the gap and light can't follow",
+   "body": "<p>If light only travels in straight lines, a gap is harmless as long as no straight line runs through it to the film. Give the gap a corner or two and you've built a wall light can't walk through, while the parts still move. That's a light trap.</p><p>Hunt the ways in. Each knob's head lies flat on the body, a ring on its stem runs in a channel, and a block closes the slot behind it: corner, corner, corner. A ridge on the back stands in a groove in the body, reaching almost 2 mm in. The front plate's hooks pull it flat. The only open way in is the lens, and only while the shutter is open.</p><p>Light also bounces, and no plastic is perfectly black. Each bounce keeps only a share, so a few corners shrink it to nothing worth counting. The computer model checked it the hard way: rays fired outward from the film in every direction, 21 cases, 69 million rays. Not one got out. With the shutter held open, rays escaped, every one through the lens. The test can find light; shut, it found none.</p>",
+   "figure": {
+    "svg": "fig_l07_waysin",
+    "caption": "The places light could try its luck."
+   },
+   "timeline": [
+    {
+     "year": "c. 1021",
+     "what": "Ibn al-Haytham: light travels in straight lines, one spot for each lamp."
+    },
+    {
+     "year": "1934",
+     "what": "The daylight-loading film shell: film leaves through a slot lined with soft fibres. A light trap in your pocket."
+    },
+    {
+     "year": "2026",
+     "what": "This camera's model: 69 million rays fired from the film, none gets out."
+    }
+   ],
+   "label": "Why this piece exists"
+  },
+  {
+   "id": "play",
+   "kind": "sim",
+   "title": "Shine a torch into a gap",
+   "sims": [
+    {
+     "sim": "l07_trap",
+     "intro": "A cut through a gap, 60 times life size: 0.6 mm wide, the back's ridge reaching 1.9 mm in. Drag the torch and fire.",
+     "after": "A straight gap lets light walk right in. One corner lets a few bounces through. The real joint, with black walls: nothing worth counting."
+    },
+    {
+     "sim": "l07_bounces",
+     "intro": "Every bounce keeps only a share of the light. Choose the share and the number of corners.",
+     "after": "At 0.3 a bounce, five corners leave about one part in 400 at most. With white walls (0.9) you'd need about 57 corners. Black matters."
+    }
+   ]
+  },
+  {
+   "id": "camera",
+   "kind": "kit",
+   "title": "Press the back home",
+   "render": "b9",
+   "alt": "The light grey back being pressed onto the camera",
+   "caption": "The back closes the dark box.",
+   "body": "<p>Press the back on until both ends click. The light trap only works when the ridge is down in its groove, so a back left standing off is the biggest risk to your pictures.</p><p>Open it only when the film is wound home into its shell, and then in the shade. The back is drawn light grey so you can see it; the parts round the film are black.</p>",
+   "step": [
+    "b4",
+    "f5"
+   ]
+  },
+  {
+   "id": "phone",
+   "kind": "phone",
+   "title": "Sealed at the factory",
+   "body": "<p>A phone's camera is a sealed little module: light can reach the sensor only through the lens. Inside, black coatings and baffles soak up stray bounces, which would otherwise show as flare, those ghostly streaks when you shoot toward a lamp. Same job as your light traps, done once and sealed shut.</p>"
+  },
+  {
+   "id": "maths",
+   "kind": "maths",
+   "title": "How much light survives the corners?",
+   "summary": "one sum, with the real numbers",
+   "lines": [
+    "worst case: every surface sends back 30 % of the light: 0.3",
+    "1 bounce: 0.3",
+    "2 bounces: 0.3 × 0.3 = 0.09",
+    "3 bounces: 0.027, about 1 part in 37",
+    "5 bounces: 0.00243, about 1 part in 400",
+    "a straight line: 0 bounces, keeps all of it: 1"
+   ],
+   "body": "<p>Multiplying a number under 1 by itself again and again shrinks it fast: that's a power, and it's the whole engineering of a light trap. Which is why the first check is that no straight line exists.</p>"
+  },
+  {
+   "id": "try",
+   "kind": "try",
+   "title": "A light trap in a shoebox",
+   "minutes": 15,
+   "needs": [
+    "a shoebox with a lid",
+    "scissors",
+    "black paper or a black marker",
+    "a strip of card, about 10 × 20 cm",
+    "tape",
+    "a phone, and a torch",
+    "a room you can make dark"
+   ],
+   "steps": [
+    "Cut a slot in one end of the box, about 1 cm by 5 cm.",
+    "Set the phone inside at the far end, camera facing the slot. Start a video. Lid on.",
+    "Darken the room. Shine the torch at the slot from the front, the left, the right and above.",
+    "Watch the video: when did the inside light up?",
+    "Fold the card into a Z, blacken it, and tape it just behind the slot, so light must turn two corners.",
+    "Test again. Then once more with the card left white."
+   ],
+   "notice": "Straight slot: the inside lights up. Black Z: almost nothing. White Z: more gets through than black. Corners and black walls, the same two tricks as your camera."
+  },
+  {
+   "id": "quiz",
+   "kind": "quiz",
+   "title": "Check yourself",
+   "items": [
+    {
+     "q": "The knobs have 0.65 mm of room all round. Why doesn't light come through?",
+     "choices": [
+      "0.65 mm is too small for light",
+      "There's no straight line through: the light would have to bounce round corners",
+      "A foam ring seals them",
+      "The knobs are painted"
+     ],
+     "answer": 1,
+     "why": "The head lies on the body, a ring runs in a channel and a block closes the slot behind: several corners, and every bounce throws light away."
+    },
+    {
+     "q": "Why was the ray test also run with the shutter held open?",
+     "choices": [
+      "To make it faster",
+      "To check the test can find light when there is a way in",
+      "To measure the shutter speed",
+      "To warm up the model"
+     ],
+     "answer": 1,
+     "why": "With the shutter held open, rays did escape, every one through the lens. A test that can never find anything might be broken; this one can."
+    },
+    {
+     "q": "Each bounce keeps 0.3. What's left after four bounces?",
+     "choices": [
+      "1.2",
+      "0.09",
+      "0.0081",
+      "0.3"
+     ],
+     "answer": 2,
+     "why": "0.3 × 0.3 × 0.3 × 0.3 = 0.0081, under one part in 120."
+    },
+    {
+     "q": "What is the biggest real risk of light getting in?",
+     "choices": [
+      "The lens",
+      "A back not pressed home",
+      "The knobs turning",
+      "Bright sunlight on the front plate"
+     ],
+     "answer": 1,
+     "why": "With the back standing off, the ridge isn't deep in its groove. Press until both ends click."
+    },
+    {
+     "q": "Each bounce off black plastic keeps at most 0.3 of the light. What do five corners leave?",
+     "choices": [
+      "About a third",
+      "About one part in 40",
+      "About one part in 400",
+      "Exactly none"
+     ],
+     "answer": 2,
+     "why": "0.3 × 0.3 × 0.3 × 0.3 × 0.3 = 0.0024: about one part in 400, and that is the worst case."
+    }
+   ]
+  },
+  {
+   "id": "roll",
+   "kind": "roll",
+   "title": "Try it on your roll",
+   "frames": 1,
+   "lead": "With the back on, the light traps keep the dark in. With the back off, that's your job.",
+   "shots": [
+    "Load the film in shade or indoors, with your back to the window. Never in direct sun. First frame: anything bright, in sun, small dot. At the end, wind the film back into its shell before the back comes off."
+   ],
+   "look": "Check the edges of the scans and the gaps between frames. Clean: the traps and your loading worked. An orange or red streak from one edge means light got in. Note where, and look at the join on that side."
+  },
+  {
+   "id": "next",
+   "kind": "next",
+   "body": "<p>The camera is complete. The rest is up to you.</p>",
+   "links": [
+    {
+     "title": "Ibn al-Haytham: testing is believing",
+     "url": "https://www.aramcoworld.com/articles/2023/ibn-al-haytham-testing-is-believing",
+     "why": "AramcoWorld on the scientist behind straight-line light."
+    },
+    {
+     "title": "Reflection and the ray model of light",
+     "url": "https://www.physicsclassroom.com/class/refln",
+     "why": "The Physics Classroom, step by step."
+    },
+    {
+     "title": "Light leak",
+     "url": "https://en.wikipedia.org/wiki/Light_leak",
+     "why": "What happens when a camera's dark isn't dark."
+    }
+   ]
+  }
+ ],
+ "teach": {
+  "objectives": [
+   "Say why a gap with a bend in it keeps light out when the same gap straight does not.",
+   "Name the ways into this camera (two knobs, the frame wheel's opening, the back's joint, the front plate's edge, the lens) and what keeps light out at each.",
+   "Work out how much light is left after a number of bounces at a given share, and say why the model's 0.3 is a worst case.",
+   "Explain why a test must be shown finding a problem (the open shutter) before its 'none' can be believed."
+  ],
+  "materials": [
+   "Per group of three: a shoebox with lid, card, black paper or marker, tape, scissors, one phone, one torch",
+   "Two or three lamps or torches and a card with a 1 cm hole (the Ibn al-Haytham demo)",
+   "A room that can be dimmed",
+   "Built cameras, empty, one per group, if available"
+  ],
+  "exit_ticket": "In one sentence: why does a gap with corners keep light out? And one number: after three bounces that each keep 0.3, what share is left? (0.027, about one part in 37.)",
+  "misconception": "That keeping light out means sealing tight, as with water or air. In its place: light goes in straight lines, so a gap is safe if no straight line runs through it and every bounce on the way is off something dark.",
+  "differentiation": {
+   "support": "Give the sum as a table to fill in, one bounce per row. In the hunt, give each group the list of ways in and ask only for the corners.",
+   "stretch": "Find how many corners at 0.3 keep light below one part in a million (12, since 0.3^12 ≈ 5 × 10^-7). Or: redesign the frame wheel's opening to add a corner without stopping the wheel from turning.",
+   "access": "The trap sim is keyboard-driven (arrow keys move the torch) and reports the result in words. The shoebox test can be judged by eye through a peephole instead of a phone."
+  },
+  "safety": "In a dark room keep bags off the floor and leave one light by the door. Torches are never pointed at eyes.",
+  "period": [
+   {
+    "minutes": 5,
+    "phase": "hook",
+    "what": "Show 'Your guess first'; everyone writes A, B or C. Class vote. Do not correct yet."
+   },
+   {
+    "minutes": 7,
+    "phase": "explain",
+    "what": "Dim the room: three lamps, one card with a hole, paper behind. Cover one lamp; its spot goes. Light goes straight."
+   },
+   {
+    "minutes": 14,
+    "phase": "explore",
+    "what": "Groups build the shoebox light trap (the Try card): straight slot first, then the folded card."
+   },
+   {
+    "minutes": 7,
+    "phase": "explain",
+    "what": "The torch-in-a-gap sim, then the 69 million rays and the open-shutter control. Then the sum on the board, with the bounces sim."
+   },
+   {
+    "minutes": 12,
+    "phase": "apply",
+    "what": "The hunt: each group takes an empty camera (or the 'In your camera' render on a printout), lists every way in and what stops light at each."
+   },
+   {
+    "minutes": 5,
+    "phase": "check",
+    "what": "Exit ticket. Back to the vote: who changed their mind?"
+   }
+  ],
+  "questions": [
+   {
+    "q": "What does the lamps-and-hole demo tell us about light in a gap?",
+    "a": "It goes straight. A bend stops it."
+   },
+   {
+    "q": "From which side did light get into the shoebox? What changed with the card?",
+    "a": "In line with the slot; with the card, nowhere or nearly."
+   },
+   {
+    "q": "If black plastic sent back only 0.1, how much is left after three bounces?",
+    "a": "0.001: one part in a thousand."
+   },
+   {
+    "q": "Which way in has the fewest corners? What would you change?",
+    "a": "The frame wheel's opening; a back not pressed home."
+   },
+   {
+    "q": "What does a straight-line test miss?",
+    "a": "Light that bounces. That needs a bounce model, and in the end a real roll of film in the sun."
+   }
+  ]
+ },
+ "slides": [
+  "predict",
+  "why",
+  "play",
+  "camera",
+  "maths",
+  "try",
+  "quiz"
+ ]
+}

@@ -1,0 +1,329 @@
+{
+ "n": 1,
+ "title": "The pinhole",
+ "question": "How can a hole make a picture?",
+ "hook": "Take the lens out of your camera. Put a thin metal disc with one tiny hole in its place. Load film, open the shutter, count, close it. You get a photograph. No glass, no electronics. Just a hole.",
+ "colour": "#1F8A70",
+ "hero_fig": "fig_l01_crossing",
+ "chips": [
+  "No lens",
+  "A can and a pin",
+  "2,400 years old"
+ ],
+ "sections": [
+  {
+   "id": "predict",
+   "kind": "predict",
+   "title": "Your guess first",
+   "body": "<p>Scientists have a habit worth stealing: before you look, say what you think will happen. Then you find out if your head works the way the world does.</p>",
+   "q": "How does a tiny hole make a picture?",
+   "choices": [
+    "The hole bends the light, like a very small lens",
+    "The hole blocks almost all the light, so each spot on the film only gets light from one point of the scene",
+    "The film only sees whatever is straight in front of it"
+   ],
+   "answer": 1,
+   "reveal": "<p><strong>The hole bends nothing.</strong> It does something stranger: it throws light away. Almost all of it. What gets through is only the light that happens to be lined up with the hole, and that turns out to be exactly what a picture needs. The next three screens show why.</p>"
+  },
+  {
+   "id": "why",
+   "kind": "story",
+   "title": "Light goes in straight lines. That is the whole trick.",
+   "body": "<p>Hold a sheet of film out in the open, facing a tree. Every leaf sends light in every direction, so every spot on the film gets light from the whole tree at once. The result is an even grey wash. Too much information is the same as none.</p><p>Now put the film in a dark box with one tiny hole. From each point of the tree, only one thin line of light makes it through, and it lands in one place. Every point gets its own spot. That is a picture.</p><p>The lines cross at the hole like an X, so the top of the tree lands at the bottom of the film and left swaps with right. The hole bends nothing. It just throws away almost all the light and keeps the rays that are lined up. Your eye does the same thing, by the way; your brain flips the picture back.</p>",
+   "figure": {
+    "svg": "fig_l01_crossing",
+    "caption": "The rays cross in the hole: the top of the tree lands at the bottom of the film."
+   },
+   "timeline": [
+    {
+     "year": "c. 400 BC",
+     "what": "Mozi's school, China: a small hole makes an upside-down picture because light travels in straight lines."
+    },
+    {
+     "year": "c. 1021",
+     "what": "Ibn al-Haytham, Cairo: several lamps outside one opening give one spot each. Cover a lamp, its spot goes."
+    },
+    {
+     "year": "1544",
+     "what": "Gemma Frisius watches an eclipse projected safely inside a dark room."
+    },
+    {
+     "year": "1604",
+     "what": "Johannes Kepler calls it a <em>camera obscura</em>, Latin for 'dark room'. Hence the word camera."
+    },
+    {
+     "year": "1826–27",
+     "what": "Nicéphore Niépce keeps a camera picture for the first time: the view from his window."
+    }
+   ],
+   "after": "<p>For two thousand years the picture was something you watched on a wall, and it vanished when the light changed. Keeping it is lesson 3.</p>",
+   "label": "Why this piece exists"
+  },
+  {
+   "id": "play",
+   "kind": "sim",
+   "title": "Three lamps and one hole",
+   "sims": [
+    {
+     "sim": "l01_rays",
+     "intro": "Ibn al-Haytham's experiment, on your screen. Switch lamps off, shrink the hole, move the paper back, take the card away.",
+     "after": "Each lamp makes its own spot, in the opposite order. A smaller hole gives smaller, sharper spots. No card at all, and every lamp lights all of the paper: no picture."
+    },
+    {
+     "sim": "l01_hole",
+     "intro": "So why not make the hole as small as possible? Or as big as one of your camera's dots? Slide it and find out. The picture is simulated from your camera's numbers: 28.9 mm from hole to film.",
+     "after": "A big hole blurs because each point lands as a disc the size of the hole: slide to 1.96 mm, the small dot, and the picture is mush. A tiny hole blurs because light spreads out after squeezing through it (diffraction). The best hole sits between them: 0.24 mm."
+    }
+   ]
+  },
+  {
+   "id": "pinhole",
+   "kind": "story",
+   "label": "A good question",
+   "title": "Your camera already has holes and a shutter. Why the pinhole disc?",
+   "body": "<p>Fair question. The yellow wheel has three holes, the dots, and there is a shutter to open and close them. Why not leave the lens out and use those?</p><p>Because they are far too big. The dots are <strong>1.96 to 3.34 mm</strong> across. With no lens, the light from each point of the scene goes straight through the whole hole and lands on the film as a spot about as wide as the hole. A 2 mm spot for every point of a tree, on a picture only 24 mm tall: every leaf runs into its neighbours. You get mush.</p><p>To be sharp, a hole this far from the film has to be about a <strong>quarter of a millimetre</strong>: 0.24 mm, the very tip of a pin. You just found that in the sim. But a hole that small lets in very little light. It is about 8 times narrower than the small dot, so it has (1.96 ÷ 0.24)² ≈ 67 times less area: <strong>about 70 times less light</strong> gets through. One quick click of the shutter, a three-hundredth of a second, would leave the film nearly blank. So you hold the shutter open and count.</p><table class=\"lp-table\"><thead><tr><th>The hole</th><th>Across</th><th>Each point lands as</th><th>Light</th></tr></thead><tbody><tr><th>Small dot, no lens</th><td>1.96 mm</td><td>a 2 mm smear: mush</td><td>plenty</td></tr><tr><th>Pinhole in foil</th><td>0.24 mm</td><td>a sharp spot</td><td>about 70 times less: count</td></tr><tr><th>Small dot with the lens</th><td>1.96 mm</td><td>a sharp spot</td><td>plenty: click</td></tr></tbody></table><p>That last row is the whole reason lenses exist. A lens lets a <em>big</em> hole make a <em>sharp</em> picture. That's lesson 2.</p>"
+  },
+  {
+   "id": "camera",
+   "kind": "kit",
+   "title": "The pinhole experiment",
+   "render": "step_h2",
+   "alt": "The pinhole disc and the pinhole ring going into the lens pocket on the orange front plate",
+   "caption": "The disc, then the ring over it, go in the lens pocket.",
+   "body": "<p>The pinhole experiment is optional: a first picture before the lens goes in. The pinhole is a thin metal disc with a hole a quarter of a millimetre across. The kit has one, drilled by a laser. Or make your own: ask an adult to cut a square about 10 mm across from a clean drinks can with kitchen scissors and snip off its corners; lay it on card, press a pin in to make a dent, then push just until the tip comes through, and check it against a lamp. The disc lies in the round pocket on the orange front plate, exactly where the lens goes in lesson 2, and the pinhole ring presses in on top to hold it flat. Same plate, same pocket. Lift the ring out with a fingernail, tip the disc out, press the lens in, and it is the camera again.</p><p>Set the large dot so the wheel hides as little as possible. The hole is 0.25 mm, 28.9 mm from the film: about f/116. That is far too little light for the shutter's quick click, so stand the camera on something, press the rocker to its middle click, count, and press on. ISO 400 film: sun, open and shut; cloud, count 1; shade, 3; indoors by a window, 40.</p>",
+   "step": [
+    "h1",
+    "h2",
+    "h3"
+   ],
+   "label": "An experiment"
+  },
+  {
+   "id": "phone",
+   "kind": "phone",
+   "title": "A dark box with a hole",
+   "body": "<p>The camera in your phone is a dark box too: a sealed box a few millimetres deep, a hole at the front, a light catcher at the back. Light still goes in straight lines and the picture still lands upside down. The phone just turns it the right way round before you ever see it.</p>"
+  },
+  {
+   "id": "maths",
+   "kind": "maths",
+   "title": "How big should the hole be?",
+   "summary": "one sum, with the real numbers",
+   "lines": [
+    "best hole = 1.9 × √(distance × wavelength)",
+    "distance = 28.9 mm, green light = 0.00055 mm",
+    "= 1.9 × √(28.9 × 0.00055) = 1.9 × √0.0159",
+    "= 1.9 × 0.126 = 0.24 mm",
+    "f-number = distance ÷ hole = 28.9 ÷ 0.24 ≈ 120: f/120",
+    "light against the small dot: (1.96 ÷ 0.24)² = 8.2² ≈ 67: about 70 times less"
+   ],
+   "body": "<p>Lord Rayleigh worked this out in the 1890s. The two blurs pull opposite ways and balance at a square root. A 300 mm shoebox wants a bigger hole: 1.9 × √(300 × 0.00055) ≈ 0.77 mm, and a much longer count.</p><p>The film sees a little less than 67 times the difference, about 54, because the pinhole sits nearer the film than the lens does: f/120 against f/16.4, and (120 ÷ 16.4)² ≈ 54. Either way, you count instead of click.</p>"
+  },
+  {
+   "id": "try",
+   "kind": "try",
+   "title": "Make a pinhole viewer",
+   "minutes": 15,
+   "needs": [
+    "a small box or a paper cup",
+    "kitchen foil, a 15 mm square",
+    "a needle",
+    "tracing paper or baking paper",
+    "tape",
+    "a coat or a thick towel"
+   ],
+   "steps": [
+    "Cut a hole about 10 mm across in one end of the box. Tape the foil over it.",
+    "Lay the foil on card and turn the needle tip through it once. Turn, don't push.",
+    "Tape tracing paper over the open other end.",
+    "Point the foil at a bright window. Look at the tracing paper from behind, with the coat over your head and the box.",
+    "Wait ten seconds for your eyes. Find the window. Wave a hand outside the hole.",
+    "Make the hole bigger with a pencil point and look again."
+   ],
+   "notice": "The window is upside down and swapped left to right, and your hand moves the wrong way. The bigger hole gives a brighter, softer picture: the trade-off from the sim, in your hands.",
+   "safety": "Never point the viewer, or your eyes, at the sun."
+  },
+  {
+   "id": "quiz",
+   "kind": "quiz",
+   "title": "Check yourself",
+   "items": [
+    {
+     "q": "Why does film on its own, with no hole, show no picture?",
+     "choices": [
+      "It is too dark",
+      "Every spot on it gets light from every point of the scene",
+      "Film needs glass to work",
+      "The light goes straight through it"
+     ],
+     "answer": 1,
+     "why": "Each point of the scene sends light everywhere, so each spot on the film gets a mix of everything: an even wash."
+    },
+    {
+     "q": "Light from the top of a tree goes through a pinhole. Where does it land?",
+     "choices": [
+      "At the top of the film",
+      "In the middle",
+      "At the bottom of the film",
+      "Everywhere"
+     ],
+     "answer": 2,
+     "why": "Light goes in straight lines. A line from the top of the tree through the hole carries on downward, to the bottom of the film."
+    },
+    {
+     "q": "You cover half of the pinhole with tape. What happens to the picture?",
+     "choices": [
+      "Half of it disappears",
+      "It is all still there, a bit dimmer",
+      "It turns the right way up",
+      "It goes completely dark"
+     ],
+     "answer": 1,
+     "why": "Every point of the scene still has a line through what is left of the hole. Less light gets through, so it is dimmer, and a little sharper."
+    },
+    {
+     "q": "Why not make the pinhole as small as possible?",
+     "choices": [
+      "It would let in too much light",
+      "Light spreads out after a very small hole, so the picture gets soft again, and very dim",
+      "Foil can't have small holes",
+      "The picture would be the right way up"
+     ],
+     "answer": 1,
+     "why": "Below the best size, spreading (diffraction) blurs more than a smaller hole saves. And the light falls with the hole's area, so the count gets very long."
+    },
+    {
+     "q": "Take the lens out and use the camera's small dot, 1.96 mm across, as the hole. What do you get?",
+     "choices": [
+      "A sharp, bright picture",
+      "Mush: every point of the scene lands as a smear about 2 mm wide",
+      "No picture at all",
+      "A picture the right way up"
+     ],
+     "answer": 1,
+     "why": "With no lens, each point of the scene lands as a spot about as wide as the hole. 2 mm smears on a picture 24 mm tall run into each other. Sharp needs about 0.24 mm, which lets in about 70 times less light: so you hold the shutter open and count."
+    }
+   ]
+  },
+  {
+   "id": "roll",
+   "kind": "roll",
+   "title": "Try it on your roll",
+   "frames": 2,
+   "lead": "Shoot these before the lens goes in, while the pinhole disc and ring sit in the lens pocket.",
+   "shots": [
+    "Full sun. Stand the camera on a wall facing something that won't move: a house, a parked bike, a tree. Large dot. Press the rocker to its middle click, say “open, shut”, press on.",
+    "Shade. The same kind of scene, out of the sun. Middle click, count 3, press on."
+   ],
+   "look": "Soft all over, with nothing sharp and nothing badly blurred, edge to edge. If the two frames are about as dark as each other, your counts were right. Write the counts down and keep them with the scans."
+  },
+  {
+   "id": "next",
+   "kind": "next",
+   "body": "<p>A pinhole works, but it is dim: you count seconds. Somebody put a piece of glass in the hole.</p>",
+   "links": [
+    {
+     "title": "We turned this truck into a giant camera",
+     "url": "https://www.pbs.org/video/we-turned-this-truck-into-a-giant-camera-5rg94c",
+     "why": "Physics Girl builds a pinhole camera you can stand inside. 7 minutes."
+    },
+    {
+     "title": "How to make a pinhole camera",
+     "url": "https://www.jpl.nasa.gov/edu/resources/project/how-to-make-a-pinhole-camera/",
+     "why": "NASA JPL: card and foil, to watch the sun safely."
+    },
+    {
+     "title": "The first photograph that survives",
+     "url": "https://smarthistory.org/joseph-nicephore-niepce-view-from-the-window-at-le-gras",
+     "why": "Smarthistory on Niépce's view from his window."
+    }
+   ]
+  }
+ ],
+ "teach": {
+  "objectives": [
+   "Say in one sentence how a hole makes a picture (it blocks all the light from each point except the rays lined up with the hole).",
+   "Predict where a point of a scene lands on the screen, and explain why the picture is upside down.",
+   "Explain why there is a best hole size (shadow blur against spreading), and work it out for a given depth.",
+   "Explain why the camera's own dots (2 to 3.4 mm) cannot be used as a pinhole, and why the pinhole needs a count instead of a click."
+  ],
+  "materials": [
+   "the room dimmed",
+   "per group of three: three phone torches, a card with a 3 mm hole, white paper, a ruler",
+   "per student: a 15 mm square of kitchen foil, a needle, a small box or cup, tracing paper, tape",
+   "this page on a projector for the sims and slides"
+  ],
+  "exit_ticket": "In one sentence: how does a hole make a picture? And: why can't the camera's 2 mm dot be the pinhole?",
+  "misconception": "That the hole bends or focuses light like a tiny lens. It bends nothing: it only stops light, so each part of the film sees one point of the world.",
+  "differentiation": {
+   "support": "Give the X-shaped ray drawing half-done (the hole and two lamp positions marked) and ask only where each spot lands. Use the sim's lamp on/off buttons instead of real torches. Skip the square root: give the shoebox answer and ask them to check it is bigger than 0.24 mm and say why.",
+   "stretch": "Work out the best hole for a whole room 3 m deep (about 2.4 mm) and its f-number (about 1250). Using the counts in the 'In your camera' box, estimate how long that room would need in bright cloud. Then read about Rayleigh and why people disagree on the 1.9.",
+   "access": "Every sim has a text line under it that says what it shows; the lamp experiment works with lamps called out by colour. Students who cannot use the viewer under a coat can use a larger box with a viewing slot."
+  },
+  "safety": "Nobody points a pinhole viewer, or looks, at the sun. Needles: turn, don't stab; collect them at the end.",
+  "period": [
+   {
+    "minutes": 5,
+    "phase": "hook",
+    "what": "Show the question, the pinhole ring and a pinhole disc. Everyone answers 'Your guess first' on paper. Count the votes; do not correct yet."
+   },
+   {
+    "minutes": 7,
+    "phase": "explain",
+    "what": "'Light goes in straight lines' on the board: the tree and the film, one ray from the top, one from the bottom. Then add a card with a hole and redraw."
+   },
+   {
+    "minutes": 12,
+    "phase": "explore",
+    "what": "The lamp experiment in threes with real torches (or the 'Three lamps and one hole' sim on the projector if the room cannot be dimmed). Predict which spot is which lamp, then cover one. Move the paper back."
+   },
+   {
+    "minutes": 8,
+    "phase": "explore",
+    "what": "The hole-size sim, whole class: students call out when the picture is sharpest. Then ask: 'The camera already has holes and a shutter. Why the pinhole disc?' Slide the hole to 1.96 mm, the small dot, and work the light sum on the board: (1.96 ÷ 0.24)² ≈ 67."
+   },
+   {
+    "minutes": 13,
+    "phase": "apply",
+    "what": "Everyone builds the pinhole viewer from the Try card and points it at the window. Early finishers make the hole bigger and compare."
+   },
+   {
+    "minutes": 5,
+    "phase": "check",
+    "what": "Exit ticket. Return to the opening vote: who would change their answer, and why?"
+   }
+  ],
+  "questions": [
+   {
+    "q": "Why does a sheet of film on its own, with no box and no hole, show no picture?",
+    "a": "Every spot on it gets light from every point of the scene at once: an even grey wash."
+   },
+   {
+    "q": "Why is the pinhole picture upside down?",
+    "a": "The lines of light cross at the hole: light from the top of the tree carries on down to the bottom of the film."
+   },
+   {
+    "q": "The camera already has holes 2 to 3.4 mm wide, and a shutter. Why not use them with the lens out?",
+    "a": "With no lens, each point lands as a spot as wide as the hole: 2 mm smears on a 24 mm picture are mush. Sharp needs a hole of about 0.24 mm."
+   },
+   {
+    "q": "How much less light gets through the 0.24 mm pinhole than the 1.96 mm small dot?",
+    "a": "(1.96 ÷ 0.24)² = 8.2² ≈ 67: about 70 times less. Far too little for a three-hundredth of a second, so the rocker is held at its middle click and you count."
+   },
+   {
+    "q": "So what is a lens for?",
+    "a": "It lets a big hole make a sharp picture: all the light through a 3 mm dot, bent back to points. That is lesson 2."
+   }
+  ]
+ },
+ "slides": [
+  "predict",
+  "why",
+  "play",
+  "pinhole",
+  "camera",
+  "maths",
+  "try",
+  "quiz"
+ ]
+}

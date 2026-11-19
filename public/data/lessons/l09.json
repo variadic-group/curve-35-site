@@ -1,0 +1,344 @@
+{
+ "n": 9,
+ "title": "Your phone's camera",
+ "question": "Your phone has no film, no dots and no blade. So how does it take a picture?",
+ "hook": "Open your phone's camera and every piece of the CURVE 35 is in there, shrunk to the size of a pea: the dark box, the hole, the lens, the shutter, the thing that catches light. They just work differently. Here they all are again, and the one idea that ties them together.",
+ "colour": "#C2306B",
+ "hero_fig": "fig_l09_triangle",
+ "chips": [
+  "Sensor, not film",
+  "The exposure triangle",
+  "Count in stops"
+ ],
+ "film": false,
+ "still": {
+  "img": "hero_back",
+  "alt": "The finished camera seen from behind, with its knobs and frame dial on top",
+  "caption": "Every piece of this camera has a twin in your phone."
+ },
+ "sections": [
+  {
+   "id": "predict",
+   "kind": "predict",
+   "title": "Your guess first",
+   "body": "<p>Your camera has three dots. Most phone cameras have one hole, fixed, and it never changes size. No blade either.</p>",
+   "q": "You walk from the sunny street into a dim room. How does the phone still make a bright enough picture?",
+   "choices": [
+    "It opens its hole wider, like moving to your large dot",
+    "It collects light for longer and amplifies the signal more",
+    "It shines a light of its own on everything"
+   ],
+   "answer": 1,
+   "reveal": "<p><strong>Time and amplification.</strong> The hole is fixed, and the flash is a separate story. So the phone keeps its sensor collecting for longer, and turns up the ISO, how strongly the signal is amplified. Many phones also take a dozen quick pictures and merge them. Every one of those has a price: smear, noise, or both. The rest of this lesson is that trade.</p>"
+  },
+  {
+   "id": "why",
+   "kind": "story",
+   "title": "From silver to silicon",
+   "body": "<p>Film has one big problem: you can't see what you got until it's developed, and you can only use it once. From the 1960s engineers chased a way to catch light with electronics instead: a chip that turns light into charge, reads it out as numbers, and is ready again a moment later.</p><p>The first digital camera was the size of a toaster and took about 23 seconds to save a picture of 100 × 100 pixels to a cassette tape. Twenty-five years later a camera fitted into a phone. Today the clever part of a phone camera is as much the computer behind it as the glass in front.</p>",
+   "timeline": [
+    {
+     "year": "1969",
+     "what": "Willard Boyle and George Smith at Bell Labs invent the CCD, a chip that can hold a picture as electric charge."
+    },
+    {
+     "year": "1975",
+     "what": "Steven Sasson at Kodak builds the first digital camera: 100 × 100 pixels, 23 seconds per picture, saved to tape."
+    },
+    {
+     "year": "1976",
+     "what": "Bryce Bayer at Kodak patents a pattern of red, green and blue filters, one over each pixel. Phones still use it."
+    },
+    {
+     "year": "1990s",
+     "what": "Eric Fossum's team at NASA's Jet Propulsion Laboratory develops the CMOS image sensor, cheap enough for everything."
+    },
+    {
+     "year": "2000",
+     "what": "Sharp's J-SH04 in Japan: one of the first phones with a built-in camera, 110,000 pixels."
+    },
+    {
+     "year": "2018",
+     "what": "Phones start merging many short pictures into one at night: up to 15 frames for a single shot."
+    }
+   ],
+   "label": "Why this piece exists"
+  },
+  {
+   "id": "sensor",
+   "kind": "story",
+   "label": "Film becomes a sensor",
+   "title": "Millions of tiny light buckets",
+   "body": "<p>Behind the phone's lens sits a sensor: a grid of millions of photosites. Each one is a bucket that fills with electric charge as light lands on it. When the picture is taken, the phone reads every bucket as a number, then empties them all.</p><p>Each bucket sees only one colour, through a tiny red, green or blue filter. The phone works out the full colour of every pixel from its neighbours. Twelve megapixels is a grid of about 4000 × 3000.</p><p>And here is the catch. A large phone sensor is about 10 × 7.5 mm; many are smaller. Your film's picture is 36 × 24 mm, more than ten times the area. Each pixel on a phone is about a thousandth of a millimetre across: the size of one silver crystal in your film. Tiny buckets catch few raindrops of light, and with few drops the count is shaky. That shakiness is <strong>noise</strong>. More megapixels on the same sensor means smaller buckets, so many phones group neighbours in fours and use them as one bigger bucket when the light is dim.</p>"
+  },
+  {
+   "id": "triangle",
+   "kind": "story",
+   "label": "Three ways to buy light",
+   "title": "The exposure triangle",
+   "body": "<p>Every camera, yours and the phone's, makes a picture bright enough in three ways, and each has a side effect:</p><ul><li><strong>Aperture</strong>: the size of the hole. Bigger lets in more light, and leaves less of the scene sharp in front of and behind what you focus on. Your camera has three dots. Most phones have one, fixed, usually wider than f/2.</li><li><strong>Shutter time</strong>: how long light is collected. Longer lets in more, and anything that moves smears. Yours is about 1/322 s. A phone chooses anything from many seconds to far under a thousandth, electronically.</li><li><strong>ISO</strong>: how strongly the signal is amplified. On film you choose it at the shop: ISO 400. On a phone it changes for every picture. Higher ISO brightens the picture without adding any light, so the noise is turned up too.</li></ul><p>Photographers count all three in the same unit: the <strong>stop</strong>. One stop is double the light, or half. A stop more from the hole and a stop less from the time give the same brightness. That's the whole game.</p>"
+  },
+  {
+   "id": "play",
+   "kind": "sim",
+   "title": "Spend your stops",
+   "sims": [
+    {
+     "sim": "l09_triangle",
+     "intro": "A simulated scene with a rider going past. Set the aperture, the shutter time and the ISO, and watch brightness, smear, background and noise. Try 'Phone at night', then fix it.",
+     "after": "Every setting buys light and charges a price: the hole softens the background, the time smears the rider, the ISO adds noise. Auto modes juggle this for you, many times a second."
+    },
+    {
+     "sim": "l09_stops",
+     "intro": "Your camera's three settings and a phone's, on one ladder of stops. Pick a sky and let the phone balance.",
+     "after": "In full sun the phone's wide hole lets in about 6 stops more than your small dot. It gives them back with a time about 3.6 stops shorter and an ISO about 3 stops lower. Different settings, same picture brightness."
+    }
+   ]
+  },
+  {
+   "id": "focus",
+   "kind": "story",
+   "label": "Sharp by itself",
+   "title": "Focus, and the tricks",
+   "body": "<p><strong>Autofocus.</strong> Your lens never moves, so you step back. A phone's lens sits on a tiny motor that slides it by fractions of a millimetre. Special pixels on the sensor compare the light coming through the left and right sides of the lens; if they disagree, the picture is out of focus, and they tell the phone which way to move.</p><p><strong>Computational photography.</strong> A phone takes several pictures every time you press, quickly, and merges them. Lined-up frames average away the noise, which is how a phone sees in a dim room. Dark and bright frames merged together keep the sky blue and the faces bright. Your camera gets one go, on film. A phone gets a dozen, and does the maths.</p>"
+  },
+  {
+   "id": "camera",
+   "kind": "kit",
+   "title": "The same three settings, in plastic",
+   "render": "s1",
+   "alt": "The camera from the front with the handle set at a dot",
+   "caption": "Choose a dot, aim, press.",
+   "body": "<table class=\"lp-table\"><thead><tr><th></th><th>Your CURVE 35</th><th>A typical phone</th></tr></thead><tbody><tr><th>Aperture</th><td>three dots: f/16, f/11, f/9.5</td><td>one, fixed, about f/1.8</td></tr><tr><th>Shutter</th><td>one blade, about 1/322 s</td><td>electronic, seconds to far under 1/1000 s</td></tr><tr><th>ISO</th><td>the film: 400</td><td>chosen every picture</td></tr><tr><th>Picture</th><td>36 × 24 mm of film</td><td>a sensor of about 10 × 7.5 mm or smaller</td></tr><tr><th>Focus</th><td>fixed, 3.7 m</td><td>a motor</td></tr></tbody></table><p>Your camera makes you choose one setting: the dot. The chart picks it from the sky, and you've just seen why that works.</p>",
+   "step": [
+    "p1"
+   ]
+  },
+  {
+   "id": "maths",
+   "kind": "maths",
+   "title": "Your camera and a phone, in stops",
+   "summary": "one sum, with the real numbers",
+   "lines": [
+    "stops = log₂ of the light ratio (2 × the light = 1 stop)",
+    "aperture: (16.4 ÷ 1.8)² = 83 times the light ≈ 6.4 stops more",
+    "time: 1/322 s → 1/4000 s: 4000 ÷ 322 = 12.4 ≈ 3.6 stops less",
+    "ISO: 400 → 50: 400 ÷ 50 = 8 = 3 stops less",
+    "total: + 6.4 − 3.6 − 3.0 ≈ 0: the same brightness"
+   ],
+   "body": "<p>The same sum works for any two cameras. Photographers fold the three into one number, the exposure value, and the sunny-16 rule is just that sum done in your head.</p>"
+  },
+  {
+   "id": "try",
+   "kind": "try",
+   "title": "Catch your phone's settings",
+   "minutes": 15,
+   "needs": [
+    "a phone with a camera",
+    "a sunny window or the outdoors",
+    "a lit room",
+    "a dim room",
+    "paper and a pencil"
+   ],
+   "steps": [
+    "Take one picture outside in daylight, one in a lit room, one in a dim room. Hold the same pose each time.",
+    "Open each picture's info or details in your photo app. Look for three numbers: the f-number, the time (like 1/2000) and the ISO.",
+    "Write them in a table, one row per picture.",
+    "Did the f-number change? Work out how many stops the time changed, and how many the ISO.",
+    "Zoom right in on the dim-room picture. Look at a plain wall or a shadow."
+   ],
+   "notice": "The f-number stays the same: one fixed hole. As the light falls the time gets longer and the ISO climbs, and the dim picture's shadows are speckled with noise, or oddly smooth where the phone merged frames to hide it."
+  },
+  {
+   "id": "quiz",
+   "kind": "quiz",
+   "title": "Check yourself",
+   "items": [
+    {
+     "q": "What takes the place of film in a phone?",
+     "choices": [
+      "A tiny roll of digital film",
+      "A sensor: a grid of millions of buckets that fill with charge as light lands",
+      "The screen",
+      "The memory card"
+     ],
+     "answer": 1,
+     "why": "Each photosite fills with electric charge. The phone reads every one as a number, then empties them all, ready for the next picture."
+    },
+    {
+     "q": "One stop is…",
+     "choices": [
+      "ten times the light",
+      "double the light, or half",
+      "one f-number",
+      "one second"
+     ],
+     "answer": 1,
+     "why": "Photographers count hole, time and ISO in the same unit. One stop is a doubling or a halving, whichever way you go."
+    },
+    {
+     "q": "Turning up the ISO brightens the picture. What is the price?",
+     "choices": [
+      "Smear",
+      "Noise: it amplifies the signal without adding any light",
+      "A softer background",
+      "Nothing"
+     ],
+     "answer": 1,
+     "why": "ISO amplifies what the sensor caught, shaky count and all. Only a bigger hole or a longer time catch more light."
+    },
+    {
+     "q": "Your small dot is f/16.4. A typical phone's hole is about f/1.8. About how many times the light does the phone's hole let in?",
+     "choices": [
+      "9",
+      "16",
+      "83",
+      "1,000"
+     ],
+     "answer": 2,
+     "why": "Light goes with the square: (16.4 ÷ 1.8)² = 9.1² ≈ 83. That is about 6.4 stops."
+    },
+    {
+     "q": "Why do phone pictures in a dim room look speckled?",
+     "choices": [
+      "The lens gets dirty",
+      "Each pixel is tiny, so it catches few drops of light and the count is shaky",
+      "Phones show the picture before it is finished",
+      "The screen adds the speckles"
+     ],
+     "answer": 1,
+     "why": "A phone's pixel is about a thousandth of a millimetre across. Few drops of light make a shaky count: noise. Phones group pixels and merge frames to hide it."
+    }
+   ]
+  },
+  {
+   "id": "roll",
+   "kind": "roll",
+   "title": "Try it on your roll",
+   "frames": 2,
+   "lead": "A time picture, then a contest with your phone.",
+   "shots": [
+    "Indoors with the lamps on: camera on a table, small dot, rocker to the middle click, count 5, press on.",
+    "One scene, two cameras: shoot it on film and with your phone at the same moment. Write down the phone's shutter time and ISO (many phones show them in the photo's details)."
+   ],
+   "look": "How many stops apart are the phone's shutter time and your camera's 1/322 s? Then go and shoot the final roll.",
+   "link": {
+    "href": "#final-roll",
+    "text": "The final roll: 24 frames that use all nine lessons"
+   }
+  },
+  {
+   "id": "next",
+   "kind": "next",
+   "href": "#makers",
+   "kicker": "For makers",
+   "question": "How was a camera designed to come off an ordinary 3D printer and click together?",
+   "body": "<p>That's the main story: nine questions, one camera, and the one in your pocket.</p>",
+   "links": [
+    {
+     "title": "Night Sight: seeing in the dark on Pixel phones",
+     "url": "https://research.google/blog/night-sight-seeing-in-the-dark-on-pixel-phones/",
+     "why": "Google's engineers on merging many frames, noise and shaking hands."
+    },
+    {
+     "title": "The first digital camera, 1975",
+     "url": "https://ethw.org/Milestones:Handheld_Digital_Camera,_1975",
+     "why": "The IEEE milestone for Steven Sasson's toaster-sized camera."
+    },
+    {
+     "title": "How a large sensor in a smartphone affects image quality",
+     "url": "https://www.dxomark.com/dxomark-decodes-how-a-large-sensor-in-a-smartphone-affects-image-quality/",
+     "why": "DXOMARK on sensor size, pixel size and noise."
+    }
+   ]
+  }
+ ],
+ "teach": {
+  "objectives": [
+   "Name the phone's twin of each piece of the CURVE 35: dark box, hole, lens, shutter, film.",
+   "Say how a sensor records a picture (charge in millions of buckets, read out as numbers) and why small pixels are noisy.",
+   "Name the three ways a camera buys light (hole, time, ISO) and the price of each (background blur, smear, noise).",
+   "Count light in stops, and show that a stop more from one setting and a stop less from another give the same brightness.",
+   "Compare their phone's settings with the CURVE 35's, from the numbers in a real picture."
+  ],
+  "materials": [
+   "phones with cameras, one per pair (pair up anyone without one)",
+   "a CURVE 35, or the 'In your camera' picture on the screen",
+   "paper, pencil and a calculator",
+   "a room that can be dimmed, and a window",
+   "this page on a projector for the two sims"
+  ],
+  "period": [
+   {
+    "minutes": 5,
+    "phase": "hook",
+    "what": "Phones out, camera open. 'Your guess first' on the board; everyone writes A, B or C. Do not correct yet."
+   },
+   {
+    "minutes": 8,
+    "phase": "explain",
+    "what": "'From silver to silicon' and its timeline, then 'Millions of tiny light buckets': draw a grid of buckets in the rain on the board. Big buckets, steady counts; tiny buckets, shaky ones."
+   },
+   {
+    "minutes": 10,
+    "phase": "explore",
+    "what": "'The exposure triangle' on the board, then 'Spend your stops' on the projector: start at 'Phone at night', and fix it three different ways. What did each fix cost?"
+   },
+   {
+    "minutes": 7,
+    "phase": "explain",
+    "what": "The stops ladder sim, then the sum: your small dot against a phone in full sun, hole, time and ISO, adding up to about zero."
+   },
+   {
+    "minutes": 15,
+    "phase": "apply",
+    "what": "The Try card in pairs: three pictures (outside, lit room, dim room), the three numbers from each into a table, the stops worked out."
+   },
+   {
+    "minutes": 5,
+    "phase": "check",
+    "what": "Exit ticket; back to the opening vote."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Which piece of the CURVE 35 does each phone part replace: the sensor, the electronic shutter, the focus motor?",
+    "a": "The film; the blade and rocker; stepping back (your lens is fixed, set for 3.7 m)."
+   },
+   {
+    "q": "Why doesn't a phone open its hole wider in a dim room?",
+    "a": "It can't: most phone cameras have one fixed hole, already wide (about f/1.8). It changes the time and the ISO instead."
+   },
+   {
+    "q": "A stop more from the hole and a stop less from the time. What happens to the brightness?",
+    "a": "Nothing: they cancel. Only the side effects change: less smear, softer background."
+   },
+   {
+    "q": "(16.4 ÷ 1.8)² ≈ 83. About how many stops is that?",
+    "a": "2⁶ = 64 and 2⁷ = 128, so a bit over 6: about 6.4 stops."
+   },
+   {
+    "q": "Why are more megapixels on the same sensor not always better?",
+    "a": "Smaller buckets catch fewer drops of light, so each count is shakier: more noise. That is why phones group pixels in fours when it is dim."
+   }
+  ],
+  "exit_ticket": "Name the three ways a camera buys light, and the price of each. And one number: how many times the light is 3 stops? (8.)",
+  "misconception": "That a higher ISO makes the sensor catch more light. It only amplifies what was caught, noise included. Only a bigger hole or a longer time catch more light.",
+  "differentiation": {
+   "support": "Use a doubling ladder (1, 2, 4, 8, 16, 32, 64, 128) and count steps instead of using logarithms. In 'Spend your stops', change one setting at a time and say what got worse.",
+   "stretch": "Full sun, ISO 400: the sunny-16 rule says f/16 at 1/400 s. Your camera gives f/16.4 at 1/322 s. How many stops apart are they? (About a quarter of a stop: (400 ÷ 322) × (16 ÷ 16.4)² ≈ 1.18.) Then explain why merging 8 frames lowers noise.",
+   "access": "Students without a phone pair up; the table can also be filled from pictures pooled by the class. Both sims say in words what they show."
+  },
+  "safety": "Nobody points a phone or a camera at the sun. Ask before taking anyone's picture, and delete it if they ask."
+ },
+ "slides": [
+  "predict",
+  "why",
+  "sensor",
+  "triangle",
+  "play",
+  "maths",
+  "try",
+  "quiz"
+ ]
+}
