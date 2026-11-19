@@ -42,9 +42,11 @@
   // one scene from the mesh file
   function makeScene(THREE, J) {
     var scene = new THREE.Scene();
-    scene.add(new THREE.HemisphereLight(0xffffff, 0x8a8078, 0.8));
-    var key = new THREE.DirectionalLight(0xffffff, 0.8); key.position.set(-120, 200, -160); scene.add(key);
-    var fill = new THREE.DirectionalLight(0xffffff, 0.35); fill.position.set(160, 60, 120); scene.add(fill);
+    // r155+ lights are physical: the old (legacy) look is the same intensities times pi, so nothing has to switch the renderer to legacy mode
+    var k = THREE.REVISION && Number(THREE.REVISION) >= 155 ? Math.PI : 1;
+    scene.add(new THREE.HemisphereLight(0xffffff, 0x8a8078, 0.8 * k));
+    var key = new THREE.DirectionalLight(0xffffff, 0.8 * k); key.position.set(-120, 200, -160); scene.add(key);
+    var fill = new THREE.DirectionalLight(0xffffff, 0.35 * k); fill.position.set(160, 60, 120); scene.add(fill);
     var parts = [];
     J.parts.forEach(function (P) {
       var q = b64(P.v, Uint16Array), idx = b64(P.i, P.idx32 ? Uint32Array : Uint16Array), pos = new Float32Array(q.length);
@@ -67,7 +69,6 @@
     var r = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "low-power" });
     r.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
     if ("outputColorSpace" in r && THREE.SRGBColorSpace) r.outputColorSpace = THREE.SRGBColorSpace; else r.outputEncoding = THREE.sRGBEncoding;
-    if ("useLegacyLights" in r) r.useLegacyLights = true;
     var c = r.domElement; c.className = cls; c.setAttribute("aria-hidden", "true");
     box.appendChild(c);
     return r;
@@ -213,5 +214,81 @@
     return { destroy: function () { dead = true; if (raf) cancelAnimationFrame(raf); offs.forEach(function (f) { f(); }); disposeAll(renderer, S); } };
   }
 
-  window.Camera3D = { hero: hero, viewer: viewer };
+  // ------------------------------------------------------------------ the build guide: the camera as it stands after one step
+  // Camera3D.stepper(box, data) -> { set(model), destroy() }.  model (site/build.py, from canon/steps.yaml): in (parts in by then), new (the parts this
+  // step moves), pose (part -> [x, y, z] mm where it sits at this step, if not in its place), az, el (the eye).  Parts not in yet are faint ghosts in
+  // their places; the new parts glow and fly in from their exploded direction.  Reduced motion: they are simply there.  No WebGL: the box keeps its picture.
+  function stepper(box, data) {
+    var dead = false, renderer = null, S = null, raf = 0, offs = [], want = null, api = { set: function (m) { want = m; } };
+    var reduce = reducedMotion();
+    function still(why) { box.setAttribute("data-why", why); }
+    if (!webgl()) { still("no-webgl"); return { set: function () {}, destroy: function () {} }; }
+    Promise.all([loadThree(data.three), loadMeshes(data.src)]).then(function (res) {
+      if (dead) return;
+      var THREE = res[0];
+      try { renderer = makeRenderer(THREE, box, "st3-canvas"); } catch (e) { still("no-webgl"); return; }
+      S = makeScene(THREE, res[1]);
+      var GLOW = new THREE.Color(0xff8a3d);
+      S.parts.forEach(function (o) { o.cur = { x: 0, y: 0, z: 0, a: 1, g: 0 }; o.tgt = { x: 0, y: 0, z: 0, a: 1, g: 0 }; o.mats[0].emissive = GLOW.clone(); o.mats[0].emissiveIntensity = 0; });
+      var cam = new THREE.PerspectiveCamera(26, 1, 1, 4000), center = new THREE.Vector3(0, 2, -9);
+      var view = { az: -35, el: 22 }, cv = { az: -35, el: 22 }, drag = null, running = false, visible = true, t0 = 0, flying = [];
+      function size() { var w = box.clientWidth, h = box.clientHeight; if (!w || !h) return; renderer.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix(); kick(); }
+      function apply(m) {
+        var inn = {}, nw = {}; (m.in || []).forEach(function (k) { inn[k] = 1; }); (m.new || []).forEach(function (k) { nw[k] = 1; });
+        flying = [];
+        S.parts.forEach(function (o) {
+          var p = toThree((m.pose && m.pose[o.key]) || [0, 0, 0]), was = o.tgt.a > 0.5;
+          o.tgt.x = p[0]; o.tgt.y = p[1]; o.tgt.z = p[2]; o.tgt.a = inn[o.key] ? 1 : (o.key === "pinring" ? 0 : 0.1); o.tgt.g = nw[o.key] ? 1 : 0;
+          if (nw[o.key] && !reduce) {          // fly in from its exploded direction
+            var e = o.ex, l = Math.sqrt(e[0] * e[0] + e[1] * e[1] + e[2] * e[2]) || 1, d = was ? 0 : 46;
+            if (d) { o.cur.x = p[0] + e[0] / l * d; o.cur.y = p[1] + e[1] / l * d; o.cur.z = p[2] + e[2] / l * d; o.cur.a = 0.15; }
+            flying.push(o);
+          }
+          if (reduce) { o.cur.x = o.tgt.x; o.cur.y = o.tgt.y; o.cur.z = o.tgt.z; o.cur.a = o.tgt.a; o.cur.g = o.tgt.g; }
+        });
+        view.az = m.az == null ? -35 : m.az; view.el = m.el == null ? 22 : m.el; if (reduce) { cv.az = view.az; cv.el = view.el; }
+        t0 = performance.now(); kick();
+      }
+      function draw(now) {
+        var pulse = reduce ? 0.55 : 0.4 + 0.25 * Math.sin((now - t0) / 260);
+        S.parts.forEach(function (o) {
+          o.grp.position.set(o.cur.x, o.cur.y, o.cur.z);
+          var a = o.cur.a, base = o.base;
+          o.grp.visible = a > 0.02;
+          o.mats[0].opacity = base[0] * a; o.mats[0].depthWrite = a > 0.5;
+          o.mats[1].opacity = a < 0.5 ? 0.12 : base[1];
+          o.mats[0].emissiveIntensity = o.cur.g * pulse * 0.45;
+        });
+        aim(cam, center, cv.az, cv.el, 70 * (cam.aspect < 1 ? 1.2 : 1));
+        renderer.render(S.scene, cam);
+      }
+      function frame(now) {
+        raf = 0; if (dead || !visible) { running = false; return; }
+        var K = reduce ? 1 : 0.1, moving = false;
+        S.parts.forEach(function (o) {
+          ["x", "y", "z", "a", "g"].forEach(function (k) { var d = o.tgt[k] - o.cur[k]; if (Math.abs(d) > 0.003) { o.cur[k] += d * K; moving = true; } else o.cur[k] = o.tgt[k]; });
+        });
+        cv.az += (view.az - cv.az) * (reduce ? 1 : 0.08); cv.el += (view.el - cv.el) * (reduce ? 1 : 0.08);
+        if (Math.abs(view.az - cv.az) > 0.02 || Math.abs(view.el - cv.el) > 0.02) moving = true;
+        var glowing = !reduce && S.parts.some(function (o) { return o.tgt.g > 0; }) && now - t0 < 4000;     // the new part glows a while, then rests
+        draw(now);
+        if (moving || glowing) raf = requestAnimationFrame(frame); else { running = false; draw(t0 + 1e9); }
+      }
+      function kick() { if (!running && visible && !dead) { running = true; raf = requestAnimationFrame(frame); } }
+      function down(e) { drag = { x: e.clientX, y: e.clientY, az: view.az, el: view.el }; box.classList.add("x3-grab"); if (box.setPointerCapture) try { box.setPointerCapture(e.pointerId); } catch (_) {} }
+      function move(e) { if (!drag) return; view.az = drag.az - (e.clientX - drag.x) * 0.35; view.el = clamp(drag.el + (e.clientY - drag.y) * 0.2, -10, 60); kick(); }
+      function up() { drag = null; box.classList.remove("x3-grab"); }
+      box.addEventListener("pointerdown", down); box.addEventListener("pointermove", move); box.addEventListener("pointerup", up); box.addEventListener("pointercancel", up);
+      offs.push(function () { box.removeEventListener("pointerdown", down); box.removeEventListener("pointermove", move); box.removeEventListener("pointerup", up); box.removeEventListener("pointercancel", up); });
+      var ro = window.ResizeObserver ? new ResizeObserver(size) : null; if (ro) { ro.observe(box); offs.push(function () { ro.disconnect(); }); }
+      offs.push(visibility(box, function (v) { visible = v; if (v) kick(); }));
+      api.set = apply; api.turn = function (d) { view.az += d; kick(); };
+      if (want) apply(want);
+      size();
+      box.classList.add("st3-ready"); still("live");
+    }).catch(function (e) { if (!dead) { still("load-failed"); if (window.console) console.warn("CURVE 35: 3D step view off (" + e.message + ")"); } });
+    return { set: function (m) { api.set(m); }, turn: function (d) { if (api.turn) api.turn(d); }, destroy: function () { dead = true; if (raf) cancelAnimationFrame(raf); offs.forEach(function (f) { f(); }); disposeAll(renderer, S); } };
+  }
+
+  window.Camera3D = { hero: hero, viewer: viewer, stepper: stepper };
 })();

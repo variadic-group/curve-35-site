@@ -1,0 +1,4221 @@
+{
+ "parts": [
+  {
+   "id": "body",
+   "key": "body",
+   "name": "Body",
+   "kind": "printed",
+   "colour": "black",
+   "hex": "#3A3632",
+   "grams": 63.06,
+   "time": "4h 52m 2s",
+   "does": "the dark box; the film lies on its curved rails",
+   "steps": [
+    "b1",
+    "b4",
+    "b7",
+    "b8",
+    "b9"
+   ],
+   "lessons": [
+    "l01",
+    "l03",
+    "l07",
+    "m01"
+   ],
+   "checks": [
+    "light",
+    "fit",
+    "interference",
+    "motion",
+    "print",
+    "strength",
+    "sight",
+    "film_path",
+    "focus"
+   ],
+   "offers": [
+    "starter-kit",
+    "camera-kit",
+    "single-part",
+    "class-pack",
+    "class-set-cameras",
+    "class-set-black-and-white",
+    "class-set-colour",
+    "class-set-print-it-yourself",
+    "the-files"
+   ],
+   "terms": [
+    "frame",
+    "light-trap",
+    "sights"
+   ],
+   "card": true
+  },
+  {
+   "id": "back",
+   "key": "back",
+   "name": "Back",
+   "kind": "printed",
+   "colour": "black",
+   "hex": "#9AA1A9",
+   "grams": 28.0,
+   "time": "2h 6m 16s",
+   "does": "closes the box; carries the frame wheel and the post the film turns round",
+   "steps": [
+    "b3",
+    "b4",
+    "f1",
+    "f5",
+    "o2"
+   ],
+   "lessons": [
+    "l07",
+    "m01",
+    "m02"
+   ],
+   "checks": [
+    "light",
+    "fit",
+    "interference",
+    "motion",
+    "print",
+    "snap",
+    "strength",
+    "film_path"
+   ],
+   "offers": [
+    "starter-kit",
+    "camera-kit",
+    "single-part",
+    "class-pack",
+    "class-set-cameras",
+    "class-set-black-and-white",
+    "class-set-colour",
+    "class-set-print-it-yourself",
+    "the-files"
+   ],
+   "terms": [
+    "light-trap",
+    "snap-fit"
+   ],
+   "card": true
+  },
+  {
+   "id": "front",
+   "key": "front",
+   "name": "Front plate",
+   "kind": "printed",
+   "colour": "orange",
+   "hex": "#E8641B",
+   "grams": 12.14,
+   "time": "57m 6s",
+   "does": "holds the lens, the shutter and the wheel; slides onto the body",
+   "steps": [
+    "b5",
+    "b6",
+    "b7",
+    "b8",
+    "b9",
+    "b10",
+    "h2"
+   ],
+   "lessons": [
+    "l04",
+    "m01",
+    "m02"
+   ],
+   "checks": [
+    "light",
+    "fit",
+    "motion",
+    "print",
+    "snap",
+    "fall",
+    "interference"
+   ],
+   "offers": [
+    "starter-kit",
+    "camera-kit",
+    "swap-pack",
+    "single-part",
+    "class-pack",
+    "class-set-cameras",
+    "class-set-black-and-white",
+    "class-set-colour",
+    "class-set-print-it-yourself",
+    "the-files"
+   ],
+   "terms": [
+    "snap-fit"
+   ],
+   "card": true
+  },
+  {
+   "id": "blade",
+   "key": "blade",
+   "name": "Shutter",
+   "kind": "printed",
+   "colour": "black",
+   "hex": "#1F9E92",
+   "grams": 1.63,
+   "time": "8m 33s",
+   "does": "swings across to let light in for an instant; the rocker on top is its button",
+   "steps": [
+    "b5",
+    "p3",
+    "h3"
+   ],
+   "lessons": [
+    "l05",
+    "l08",
+    "l09",
+    "m04"
+   ],
+   "checks": [
+    "light",
+    "fit",
+    "interference",
+    "motion",
+    "print",
+    "snap",
+    "exposure",
+    "strength"
+   ],
+   "offers": [
+    "starter-kit",
+    "camera-kit",
+    "spares-pack",
+    "single-part",
+    "class-pack",
+    "class-set-cameras",
+    "class-set-black-and-white",
+    "class-set-colour",
+    "class-set-print-it-yourself",
+    "the-files"
+   ],
+   "terms": [
+    "shutter",
+    "shutter-speed",
+    "time-picture",
+    "snap-fit"
+   ],
+   "card": true
+  },
+  {
+   "id": "wheel",
+   "key": "wheel",
+   "name": "Aperture wheel",
+   "kind": "printed",
+   "colour": "black",
+   "hex": "#F2C230",
+   "grams": 1.6,
+   "time": "9m 6s",
+   "does": "three holes: how much light",
+   "steps": [
+    "b6",
+    "p1",
+    "h3"
+   ],
+   "lessons": [
+    "l04",
+    "l08",
+    "l09"
+   ],
+   "checks": [
+    "fit",
+    "motion",
+    "interference",
+    "print",
+    "snap",
+    "exposure"
+   ],
+   "offers": [
+    "starter-kit",
+    "camera-kit",
+    "single-part",
+    "class-pack",
+    "class-set-cameras",
+    "class-set-black-and-white",
+    "class-set-colour",
+    "class-set-print-it-yourself",
+    "the-files"
+   ],
+   "terms": [
+    "aperture",
+    "f-number",
+    "snap-fit"
+   ],
+   "card": true
+  },
+  {
+   "id": "spool",
+   "key": "spool",
+   "name": "Spool",
+   "kind": "printed",
+   "colour": "red",
+   "hex": "#D7322B",
+   "grams": 7.64,
+   "time": "43m 55s",
+   "does": "the film is wound onto it first; its knob is the big red one",
+   "steps": [
+    "b1",
+    "f4",
+    "f6"
+   ],
+   "lessons": [
+    "l06",
+    "m04"
+   ],
+   "checks": [
+    "fit",
+    "motion",
+    "interference",
+    "print",
+    "film_path"
+   ],
+   "offers": [
+    "starter-kit",
+    "camera-kit",
+    "swap-pack",
+    "single-part",
+    "class-pack",
+    "class-set-cameras",
+    "class-set-black-and-white",
+    "class-set-colour",
+    "class-set-print-it-yourself",
+    "the-files"
+   ],
+   "terms": [
+    "winding-on"
+   ],
+   "card": true
+  },
+  {
+   "id": "knob",
+   "key": "knob",
+   "name": "Wind knob",
+   "kind": "printed",
+   "colour": "green",
+   "hex": "#3FA34D",
+   "grams": 1.89,
+   "time": "10m 52s",
+   "does": "the small green knob; winds each picture back into the film's shell",
+   "steps": [
+    "b2",
+    "f2",
+    "f3",
+    "p4",
+    "o1",
+    "o2"
+   ],
+   "lessons": [
+    "l06",
+    "m04"
+   ],
+   "checks": [
+    "fit",
+    "motion",
+    "interference",
+    "print",
+    "light",
+    "strength"
+   ],
+   "offers": [
+    "starter-kit",
+    "camera-kit",
+    "spares-pack",
+    "swap-pack",
+    "single-part",
+    "class-pack",
+    "class-set-cameras",
+    "class-set-black-and-white",
+    "class-set-colour",
+    "class-set-print-it-yourself",
+    "the-files"
+   ],
+   "terms": [
+    "winding-on"
+   ],
+   "card": true
+  },
+  {
+   "id": "roller",
+   "key": "roller",
+   "name": "Frame wheel",
+   "kind": "printed",
+   "colour": "blue, white arrow on top",
+   "hex": "#2F7FD8",
+   "grams": 1.32,
+   "time": "10m 43s",
+   "does": "turned by the film; the arrow on its blue dial goes round once for each picture",
+   "steps": [
+    "b3",
+    "f5",
+    "f6",
+    "p4"
+   ],
+   "lessons": [
+    "l06",
+    "m03"
+   ],
+   "checks": [
+    "fit",
+    "motion",
+    "interference",
+    "print",
+    "film_path"
+   ],
+   "offers": [
+    "starter-kit",
+    "camera-kit",
+    "single-part",
+    "class-pack",
+    "class-set-cameras",
+    "class-set-black-and-white",
+    "class-set-colour",
+    "class-set-print-it-yourself",
+    "the-files"
+   ],
+   "terms": [
+    "sprocket-holes",
+    "frame-wheel"
+   ],
+   "card": true
+  },
+  {
+   "id": "lens",
+   "key": "lens",
+   "name": "Lens",
+   "kind": "bought",
+   "colour": "clear",
+   "hex": "#5BB8E8",
+   "grams": null,
+   "time": null,
+   "does": "one plastic lens, 12 mm across; pressed in from the front",
+   "steps": [
+    "b10",
+    "h2"
+   ],
+   "lessons": [
+    "l02",
+    "l08",
+    "l09"
+   ],
+   "checks": [
+    "focus",
+    "light",
+    "fit"
+   ],
+   "offers": [
+    "starter-kit",
+    "camera-kit",
+    "lenses-three",
+    "class-pack",
+    "class-set-cameras",
+    "class-set-black-and-white",
+    "class-set-colour",
+    "class-set-print-it-yourself"
+   ],
+   "terms": [
+    "lens",
+    "focal-length",
+    "focus"
+   ],
+   "card": true
+  },
+  {
+   "id": "pinring",
+   "key": "pinring",
+   "name": "Pinhole ring and disc",
+   "kind": "printed",
+   "colour": "black",
+   "hex": "#3A3632",
+   "grams": null,
+   "time": null,
+   "does": "holds the pinhole disc flat in the lens pocket, instead of the lens",
+   "steps": [
+    "h1",
+    "h2"
+   ],
+   "lessons": [
+    "l01"
+   ],
+   "checks": [
+    "pinhole"
+   ],
+   "offers": [
+    "starter-kit",
+    "camera-kit",
+    "the-files"
+   ],
+   "terms": [
+    "pinhole"
+   ],
+   "card": true
+  },
+  {
+   "id": "pindisc",
+   "key": "pindisc",
+   "name": "Pinhole disc",
+   "kind": "bought",
+   "colour": null,
+   "hex": null,
+   "grams": null,
+   "time": null,
+   "does": "a thin metal disc with a 0.25 mm hole: laser-drilled in the kit, or a piece of drinks can and a pin",
+   "steps": [
+    "h1",
+    "h2"
+   ],
+   "lessons": [],
+   "checks": [
+    "pinhole"
+   ],
+   "offers": [
+    "starter-kit",
+    "camera-kit",
+    "pinhole-discs"
+   ],
+   "terms": [
+    "pinhole"
+   ],
+   "card": false
+  },
+  {
+   "id": "film",
+   "key": "cassette",
+   "name": "35 mm film",
+   "kind": "bought",
+   "colour": null,
+   "hex": "#E0A419",
+   "grams": null,
+   "time": null,
+   "does": "any 35 mm film in its standard shell",
+   "steps": [
+    "f2",
+    "f3",
+    "f4",
+    "f6",
+    "o1",
+    "o2"
+   ],
+   "lessons": [
+    "l03",
+    "l09",
+    "m03"
+   ],
+   "checks": [
+    "film_path",
+    "motion"
+   ],
+   "offers": [
+    "film-and-developing",
+    "three-rolls-three-codes",
+    "film-roll",
+    "black-and-white-pack",
+    "class-pack",
+    "class-set-black-and-white",
+    "class-set-colour"
+   ],
+   "terms": [
+    "film-speed",
+    "film-shell",
+    "frame",
+    "sprocket-holes",
+    "negative"
+   ],
+   "card": true
+  },
+  {
+   "id": "nearring",
+   "key": "nearring",
+   "name": "Near ring",
+   "kind": "optional",
+   "colour": "black",
+   "hex": null,
+   "grams": null,
+   "time": null,
+   "does": "a thin ring under the lens that sets it for 1.5 m, for close pictures and the lesson on focus",
+   "steps": [],
+   "lessons": [],
+   "checks": [
+    "focus"
+   ],
+   "offers": [
+    "near-ring"
+   ],
+   "terms": [
+    "focus"
+   ],
+   "card": false
+  },
+  {
+   "id": "fit_gauge",
+   "key": "fit-gauge",
+   "name": "Fit gauge",
+   "kind": "gauge",
+   "colour": null,
+   "hex": null,
+   "grams": null,
+   "time": null,
+   "does": "a comb of slots and a key: print it first, once per printer, to tune the fit",
+   "steps": [],
+   "lessons": [],
+   "checks": [
+    "fit"
+   ],
+   "offers": [
+    "the-files"
+   ],
+   "terms": [
+    "tolerance"
+   ],
+   "card": false
+  },
+  {
+   "id": "lens_gauge",
+   "key": "lens-gauge",
+   "name": "Lens gauge",
+   "kind": "gauge",
+   "colour": null,
+   "hex": null,
+   "grams": null,
+   "time": null,
+   "does": "checks a lens's size against the pocket before it is fitted",
+   "steps": [],
+   "lessons": [],
+   "checks": [
+    "focus"
+   ],
+   "offers": [
+    "the-files"
+   ],
+   "terms": [],
+   "card": false
+  },
+  {
+   "id": "test_slab",
+   "key": "test-slab",
+   "name": "Test slab",
+   "kind": "gauge",
+   "colour": null,
+   "hex": null,
+   "grams": 15.53,
+   "time": "1h 5m 56s",
+   "does": "a two-hour print of the front plate's finest details, to try a printer before the long parts",
+   "steps": [],
+   "lessons": [],
+   "checks": [
+    "print"
+   ],
+   "offers": [
+    "the-files"
+   ],
+   "terms": [],
+   "card": false
+  }
+ ],
+ "steps": [
+  {
+   "id": "b1",
+   "sec": "BUILD",
+   "n": 1,
+   "title": "Spool in",
+   "do": "Slide the spool, big red knob up, into the round chamber on the right (seen from behind).",
+   "check": "The big red knob sits on top of the camera and turns.",
+   "mistake": null,
+   "fix": "Its plain end goes into the slot in the floor, the knob's neck into the slot in the roof.",
+   "why": "The spool, its shaft and its knob are one piece, because this is the part you turn hardest. A collar on its neck rides in a pocket inside the roof: when the back is on, the knob cannot come out.",
+   "narration": "Build step one. Take the spool, the part with the big red knob. Slide it, knob up, into the round chamber on the right, seen from behind. Its plain end goes into the slot in the floor, and the knob's neck into the slot in the roof. Check it: the big red knob sits on top of the camera and turns. The spool, its shaft and its knob are one piece, because this is the part you turn hardest.",
+   "parts": [
+    {
+     "id": "body",
+     "n": 1
+    },
+    {
+     "id": "spool",
+     "n": 1
+    }
+   ],
+   "lesson": "l06",
+   "short": "b1",
+   "url": "https://curve35.com/b1",
+   "qr": {
+    "n": 29,
+    "d": "M2 2h7v1h-7zM10 2h1v1h-1zM12 2h1v1h-1zM14 2h1v1h-1zM16 2h1v1h-1zM20 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM12 3h1v1h-1zM14 3h3v1h-3zM18 3h1v1h-1zM20 3h1v1h-1zM26 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM10 4h3v1h-3zM14 4h2v1h-2zM18 4h1v1h-1zM20 4h1v1h-1zM22 4h3v1h-3zM26 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM11 5h1v1h-1zM13 5h1v1h-1zM15 5h2v1h-2zM20 5h1v1h-1zM22 5h3v1h-3zM26 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM11 6h4v1h-4zM16 6h1v1h-1zM20 6h1v1h-1zM22 6h3v1h-3zM26 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM10 7h1v1h-1zM13 7h2v1h-2zM16 7h1v1h-1zM20 7h1v1h-1zM26 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h7v1h-7zM11 9h4v1h-4zM16 9h3v1h-3zM2 10h1v1h-1zM4 10h1v1h-1zM8 10h2v1h-2zM11 10h1v1h-1zM16 10h1v1h-1zM18 10h1v1h-1zM21 10h1v1h-1zM24 10h1v1h-1zM26 10h1v1h-1zM2 11h5v1h-5zM11 11h3v1h-3zM15 11h1v1h-1zM17 11h1v1h-1zM19 11h3v1h-3zM23 11h1v1h-1zM25 11h2v1h-2zM3 12h2v1h-2zM8 12h1v1h-1zM11 12h3v1h-3zM17 12h1v1h-1zM20 12h1v1h-1zM23 12h2v1h-2zM26 12h1v1h-1zM3 13h3v1h-3zM9 13h1v1h-1zM11 13h3v1h-3zM16 13h1v1h-1zM18 13h2v1h-2zM23 13h1v1h-1zM3 14h3v1h-3zM7 14h2v1h-2zM10 14h5v1h-5zM17 14h1v1h-1zM20 14h2v1h-2zM26 14h1v1h-1zM3 15h2v1h-2zM9 15h1v1h-1zM11 15h2v1h-2zM14 15h1v1h-1zM17 15h1v1h-1zM19 15h3v1h-3zM25 15h2v1h-2zM2 16h3v1h-3zM6 16h3v1h-3zM10 16h2v1h-2zM14 16h1v1h-1zM16 16h2v1h-2zM19 16h2v1h-2zM23 16h2v1h-2zM26 16h1v1h-1zM6 17h2v1h-2zM9 17h1v1h-1zM12 17h3v1h-3zM17 17h1v1h-1zM20 17h4v1h-4zM2 18h3v1h-3zM8 18h2v1h-2zM11 18h1v1h-1zM16 18h7v1h-7zM25 18h1v1h-1zM10 19h1v1h-1zM16 19h3v1h-3zM22 19h1v1h-1zM26 19h1v1h-1zM2 20h7v1h-7zM10 20h1v1h-1zM13 20h1v1h-1zM15 20h2v1h-2zM18 20h1v1h-1zM20 20h1v1h-1zM22 20h1v1h-1zM26 20h1v1h-1zM2 21h1v1h-1zM8 21h1v1h-1zM16 21h1v1h-1zM18 21h1v1h-1zM22 21h1v1h-1zM26 21h1v1h-1zM2 22h1v1h-1zM4 22h3v1h-3zM8 22h1v1h-1zM11 22h1v1h-1zM13 22h10v1h-10zM26 22h1v1h-1zM2 23h1v1h-1zM4 23h3v1h-3zM8 23h1v1h-1zM14 23h1v1h-1zM17 23h1v1h-1zM19 23h1v1h-1zM22 23h1v1h-1zM24 23h2v1h-2zM2 24h1v1h-1zM4 24h3v1h-3zM8 24h1v1h-1zM10 24h1v1h-1zM12 24h1v1h-1zM14 24h3v1h-3zM18 24h1v1h-1zM21 24h3v1h-3zM25 24h2v1h-2zM2 25h1v1h-1zM8 25h1v1h-1zM12 25h3v1h-3zM18 25h2v1h-2zM21 25h2v1h-2zM2 26h7v1h-7zM10 26h1v1h-1zM14 26h3v1h-3zM18 26h2v1h-2zM23 26h1v1h-1zM26 26h1v1h-1z"
+   },
+   "img": "media/img/step_b1.webp",
+   "clip": "media/clips/b1.mp4",
+   "dur": 22.31,
+   "terms": [],
+   "model": {
+    "in": [
+     "body",
+     "spool"
+    ],
+    "new": [
+     "spool"
+    ],
+    "pose": {},
+    "az": 205,
+    "el": 24
+   }
+  },
+  {
+   "id": "b2",
+   "sec": "BUILD",
+   "n": 2,
+   "title": "Wind knob in",
+   "do": "Slide the small green knob into the slot on the left.",
+   "check": "It turns. It only comes out backwards.",
+   "mistake": null,
+   "fix": null,
+   "why": "This knob will turn the film's own spool. Its forked end fits over a bar inside the film.",
+   "narration": "Step two. Slide the small green knob into the slot on the left. Give it a turn. It turns, and it only comes out backwards. This knob will turn the film's own spool: its forked end fits over a bar inside the film. So the green knob winds each picture back into the film's shell, and the red knob is where the film starts.",
+   "parts": [
+    {
+     "id": "knob",
+     "n": 1
+    }
+   ],
+   "lesson": "l06",
+   "short": "b2",
+   "url": "https://curve35.com/b2",
+   "qr": {
+    "n": 29,
+    "d": "M2 2h7v1h-7zM10 2h2v1h-2zM16 2h1v1h-1zM20 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM10 3h1v1h-1zM18 3h1v1h-1zM20 3h1v1h-1zM26 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM10 4h2v1h-2zM14 4h3v1h-3zM18 4h1v1h-1zM20 4h1v1h-1zM22 4h3v1h-3zM26 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM12 5h2v1h-2zM15 5h1v1h-1zM18 5h1v1h-1zM20 5h1v1h-1zM22 5h3v1h-3zM26 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM10 6h4v1h-4zM15 6h2v1h-2zM18 6h1v1h-1zM20 6h1v1h-1zM22 6h3v1h-3zM26 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM12 7h1v1h-1zM16 7h1v1h-1zM18 7h1v1h-1zM20 7h1v1h-1zM26 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h7v1h-7zM15 9h1v1h-1zM17 9h2v1h-2zM2 10h1v1h-1zM5 10h7v1h-7zM13 10h2v1h-2zM18 10h2v1h-2zM22 10h1v1h-1zM24 10h3v1h-3zM2 11h3v1h-3zM7 11h1v1h-1zM9 11h2v1h-2zM12 11h2v1h-2zM15 11h5v1h-5zM21 11h5v1h-5zM3 12h4v1h-4zM8 12h1v1h-1zM10 12h1v1h-1zM14 12h2v1h-2zM17 12h2v1h-2zM20 12h2v1h-2zM23 12h1v1h-1zM26 12h1v1h-1zM2 13h1v1h-1zM4 13h3v1h-3zM9 13h3v1h-3zM13 13h1v1h-1zM16 13h1v1h-1zM20 13h1v1h-1zM23 13h4v1h-4zM4 14h6v1h-6zM11 14h1v1h-1zM14 14h1v1h-1zM17 14h1v1h-1zM20 14h2v1h-2zM26 14h1v1h-1zM2 15h1v1h-1zM6 15h1v1h-1zM9 15h1v1h-1zM11 15h2v1h-2zM15 15h3v1h-3zM19 15h1v1h-1zM22 15h1v1h-1zM25 15h1v1h-1zM2 16h8v1h-8zM11 16h4v1h-4zM17 16h1v1h-1zM20 16h1v1h-1zM22 16h5v1h-5zM2 17h1v1h-1zM4 17h2v1h-2zM7 17h1v1h-1zM11 17h1v1h-1zM13 17h1v1h-1zM16 17h3v1h-3zM21 17h1v1h-1zM23 17h2v1h-2zM26 17h1v1h-1zM2 18h1v1h-1zM6 18h1v1h-1zM8 18h1v1h-1zM10 18h2v1h-2zM15 18h8v1h-8zM24 18h2v1h-2zM10 19h5v1h-5zM16 19h3v1h-3zM22 19h1v1h-1zM24 19h2v1h-2zM2 20h7v1h-7zM10 20h2v1h-2zM13 20h1v1h-1zM16 20h1v1h-1zM18 20h1v1h-1zM20 20h1v1h-1zM22 20h1v1h-1zM26 20h1v1h-1zM2 21h1v1h-1zM8 21h1v1h-1zM10 21h1v1h-1zM14 21h3v1h-3zM18 21h1v1h-1zM22 21h1v1h-1zM2 22h1v1h-1zM4 22h3v1h-3zM8 22h1v1h-1zM10 22h3v1h-3zM14 22h2v1h-2zM17 22h6v1h-6zM25 22h2v1h-2zM2 23h1v1h-1zM4 23h3v1h-3zM8 23h1v1h-1zM10 23h1v1h-1zM12 23h1v1h-1zM16 23h5v1h-5zM25 23h2v1h-2zM2 24h1v1h-1zM4 24h3v1h-3zM8 24h1v1h-1zM11 24h1v1h-1zM14 24h1v1h-1zM16 24h1v1h-1zM22 24h5v1h-5zM2 25h1v1h-1zM8 25h1v1h-1zM12 25h1v1h-1zM20 25h3v1h-3zM24 25h3v1h-3zM2 26h7v1h-7zM10 26h3v1h-3zM14 26h3v1h-3zM18 26h2v1h-2zM23 26h1v1h-1zM26 26h1v1h-1z"
+   },
+   "img": "media/img/step_b2.webp",
+   "clip": "media/clips/b2.mp4",
+   "dur": 12.8,
+   "terms": [],
+   "model": {
+    "in": [
+     "body",
+     "spool",
+     "knob"
+    ],
+    "new": [
+     "knob"
+    ],
+    "pose": {},
+    "az": 205,
+    "el": 24
+   }
+  },
+  {
+   "id": "b3",
+   "sec": "BUILD",
+   "n": 3,
+   "title": "Frame wheel into the back",
+   "do": "Lay the back down, inside up. Hold the blue frame wheel with its dial just past the edge of the back. Lay its neck in the fork, then slide it toward the long round post until its teeth touch the end of the post.",
+   "check": "The wheel turns freely. It does not lift out of the fork.",
+   "mistake": "If it lifts out.",
+   "fix": "It was not slid home: slide it 3 mm toward the edge, press it down into the fork, slide it back.",
+   "why": "The film will turn this wheel: its eight teeth sit in the holes along the film's top edge, and one turn of the dial is one picture. Below the wheel, the film slides round the post.",
+   "narration": "Step three. Lay the back down, inside up. Hold the blue frame wheel with its dial just past the edge. Lay its neck in the fork, then slide it toward the long round post until its teeth touch the end of the post. The wheel turns freely, and it does not lift out. If it does lift out, it was not slid home: slide it toward the edge, press it down into the fork, and slide it back.",
+   "parts": [
+    {
+     "id": "back",
+     "n": 1
+    },
+    {
+     "id": "roller",
+     "n": 1
+    }
+   ],
+   "lesson": "l06",
+   "short": "b3",
+   "url": "https://curve35.com/b3",
+   "qr": {
+    "n": 29,
+    "d": "M2 2h7v1h-7zM10 2h1v1h-1zM16 2h1v1h-1zM20 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM10 3h2v1h-2zM13 3h1v1h-1zM18 3h1v1h-1zM20 3h1v1h-1zM26 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM10 4h1v1h-1zM12 4h2v1h-2zM15 4h2v1h-2zM18 4h1v1h-1zM20 4h1v1h-1zM22 4h3v1h-3zM26 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM11 5h2v1h-2zM15 5h1v1h-1zM18 5h1v1h-1zM20 5h1v1h-1zM22 5h3v1h-3zM26 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h2v1h-2zM15 6h2v1h-2zM18 6h1v1h-1zM20 6h1v1h-1zM22 6h3v1h-3zM26 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM11 7h1v1h-1zM13 7h1v1h-1zM16 7h1v1h-1zM18 7h1v1h-1zM20 7h1v1h-1zM26 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h7v1h-7zM11 9h5v1h-5zM17 9h2v1h-2zM2 10h1v1h-1zM5 10h8v1h-8zM14 10h1v1h-1zM18 10h2v1h-2zM22 10h1v1h-1zM24 10h3v1h-3zM2 11h1v1h-1zM4 11h1v1h-1zM9 11h5v1h-5zM15 11h5v1h-5zM21 11h5v1h-5zM6 12h1v1h-1zM8 12h3v1h-3zM14 12h2v1h-2zM17 12h2v1h-2zM20 12h2v1h-2zM23 12h1v1h-1zM26 12h1v1h-1zM9 13h1v1h-1zM11 13h2v1h-2zM16 13h1v1h-1zM20 13h1v1h-1zM23 13h4v1h-4zM3 14h1v1h-1zM5 14h1v1h-1zM8 14h3v1h-3zM12 14h3v1h-3zM17 14h1v1h-1zM20 14h2v1h-2zM26 14h1v1h-1zM2 15h1v1h-1zM6 15h1v1h-1zM9 15h2v1h-2zM15 15h3v1h-3zM19 15h1v1h-1zM22 15h1v1h-1zM25 15h1v1h-1zM2 16h2v1h-2zM5 16h2v1h-2zM8 16h2v1h-2zM11 16h1v1h-1zM13 16h2v1h-2zM17 16h1v1h-1zM20 16h1v1h-1zM22 16h5v1h-5zM2 17h1v1h-1zM4 17h1v1h-1zM7 17h1v1h-1zM9 17h1v1h-1zM13 17h1v1h-1zM16 17h3v1h-3zM21 17h1v1h-1zM23 17h2v1h-2zM26 17h1v1h-1zM2 18h1v1h-1zM6 18h1v1h-1zM8 18h1v1h-1zM10 18h1v1h-1zM12 18h1v1h-1zM15 18h8v1h-8zM24 18h2v1h-2zM10 19h1v1h-1zM13 19h2v1h-2zM16 19h3v1h-3zM22 19h1v1h-1zM24 19h2v1h-2zM2 20h7v1h-7zM10 20h2v1h-2zM13 20h1v1h-1zM16 20h1v1h-1zM18 20h1v1h-1zM20 20h1v1h-1zM22 20h1v1h-1zM26 20h1v1h-1zM2 21h1v1h-1zM8 21h1v1h-1zM10 21h1v1h-1zM12 21h1v1h-1zM14 21h2v1h-2zM18 21h1v1h-1zM22 21h1v1h-1zM2 22h1v1h-1zM4 22h3v1h-3zM8 22h1v1h-1zM10 22h1v1h-1zM14 22h2v1h-2zM17 22h6v1h-6zM25 22h2v1h-2zM2 23h1v1h-1zM4 23h3v1h-3zM8 23h1v1h-1zM10 23h2v1h-2zM16 23h5v1h-5zM25 23h2v1h-2zM2 24h1v1h-1zM4 24h3v1h-3zM8 24h1v1h-1zM12 24h1v1h-1zM14 24h1v1h-1zM16 24h1v1h-1zM22 24h5v1h-5zM2 25h1v1h-1zM8 25h1v1h-1zM12 25h1v1h-1zM20 25h3v1h-3zM24 25h3v1h-3zM2 26h7v1h-7zM10 26h1v1h-1zM14 26h3v1h-3zM18 26h2v1h-2zM23 26h1v1h-1zM26 26h1v1h-1z"
+   },
+   "img": "media/img/step_b3.webp",
+   "clip": "media/clips/b3.mp4",
+   "dur": 29.01,
+   "terms": [
+    "frame-wheel"
+   ],
+   "model": {
+    "in": [
+     "body",
+     "spool",
+     "knob",
+     "back",
+     "roller"
+    ],
+    "new": [
+     "back",
+     "roller"
+    ],
+    "pose": {
+     "back": [
+      0,
+      -40,
+      0
+     ],
+     "roller": [
+      0,
+      -40,
+      0
+     ]
+    },
+    "az": 205,
+    "el": 24
+   }
+  },
+  {
+   "id": "b4",
+   "sec": "BUILD",
+   "n": 4,
+   "title": "Close the dark box",
+   "do": "Press the back on until both ends click.",
+   "check": "Two clicks. The back does not pull off. Pinch the two pads and it does.",
+   "mistake": "If it will not close.",
+   "fix": "The frame wheel is not slid home or a knob is not fully in.",
+   "why": "A nub on a springy finger at each end comes up behind a bar on the body. A ridge all round the back sits in a groove: that keeps the light out. This is the dark box. Everything else goes on its front.",
+   "narration": "Step four. Press the back on until both ends click. Two clicks. Now try to pull it off: it stays. Pinch the two pads and it lets go. A nub on a springy finger at each end comes up behind a bar on the body, and a ridge all round the back sits in a groove to keep the light out. This is the dark box. Everything else goes on its front.",
+   "parts": [],
+   "lesson": "l07",
+   "short": "b4",
+   "url": "https://curve35.com/b4",
+   "qr": {
+    "n": 29,
+    "d": "M2 2h7v1h-7zM10 2h1v1h-1zM13 2h1v1h-1zM16 2h1v1h-1zM20 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM10 3h2v1h-2zM13 3h1v1h-1zM18 3h1v1h-1zM20 3h1v1h-1zM26 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM10 4h1v1h-1zM12 4h1v1h-1zM15 4h2v1h-2zM18 4h1v1h-1zM20 4h1v1h-1zM22 4h3v1h-3zM26 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM11 5h3v1h-3zM15 5h1v1h-1zM18 5h1v1h-1zM20 5h1v1h-1zM22 5h3v1h-3zM26 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM10 6h2v1h-2zM15 6h2v1h-2zM18 6h1v1h-1zM20 6h1v1h-1zM22 6h3v1h-3zM26 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM11 7h3v1h-3zM16 7h1v1h-1zM18 7h1v1h-1zM20 7h1v1h-1zM26 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h7v1h-7zM12 9h1v1h-1zM14 9h2v1h-2zM17 9h2v1h-2zM2 10h1v1h-1zM5 10h6v1h-6zM13 10h1v1h-1zM18 10h2v1h-2zM22 10h1v1h-1zM24 10h3v1h-3zM3 11h3v1h-3zM10 11h1v1h-1zM12 11h1v1h-1zM14 11h6v1h-6zM21 11h5v1h-5zM2 12h2v1h-2zM5 12h1v1h-1zM8 12h3v1h-3zM12 12h1v1h-1zM14 12h2v1h-2zM17 12h2v1h-2zM20 12h2v1h-2zM23 12h1v1h-1zM26 12h1v1h-1zM2 13h2v1h-2zM5 13h2v1h-2zM10 13h3v1h-3zM14 13h1v1h-1zM16 13h1v1h-1zM20 13h1v1h-1zM23 13h4v1h-4zM3 14h2v1h-2zM6 14h1v1h-1zM8 14h1v1h-1zM11 14h4v1h-4zM17 14h1v1h-1zM20 14h2v1h-2zM26 14h1v1h-1zM2 15h2v1h-2zM5 15h1v1h-1zM10 15h1v1h-1zM15 15h3v1h-3zM19 15h1v1h-1zM22 15h1v1h-1zM25 15h1v1h-1zM2 16h2v1h-2zM5 16h4v1h-4zM10 16h5v1h-5zM17 16h1v1h-1zM20 16h1v1h-1zM22 16h5v1h-5zM2 17h1v1h-1zM5 17h2v1h-2zM10 17h1v1h-1zM12 17h2v1h-2zM16 17h3v1h-3zM21 17h1v1h-1zM23 17h2v1h-2zM26 17h1v1h-1zM2 18h1v1h-1zM4 18h8v1h-8zM15 18h8v1h-8zM24 18h2v1h-2zM10 19h5v1h-5zM16 19h3v1h-3zM22 19h1v1h-1zM24 19h2v1h-2zM2 20h7v1h-7zM10 20h4v1h-4zM15 20h1v1h-1zM18 20h1v1h-1zM20 20h1v1h-1zM22 20h1v1h-1zM26 20h1v1h-1zM2 21h1v1h-1zM8 21h1v1h-1zM10 21h1v1h-1zM12 21h1v1h-1zM14 21h3v1h-3zM18 21h1v1h-1zM22 21h1v1h-1zM2 22h1v1h-1zM4 22h3v1h-3zM8 22h1v1h-1zM10 22h2v1h-2zM14 22h2v1h-2zM17 22h6v1h-6zM25 22h2v1h-2zM2 23h1v1h-1zM4 23h3v1h-3zM8 23h1v1h-1zM10 23h1v1h-1zM16 23h5v1h-5zM25 23h2v1h-2zM2 24h1v1h-1zM4 24h3v1h-3zM8 24h1v1h-1zM12 24h1v1h-1zM14 24h1v1h-1zM16 24h1v1h-1zM22 24h5v1h-5zM2 25h1v1h-1zM8 25h1v1h-1zM11 25h2v1h-2zM20 25h3v1h-3zM24 25h3v1h-3zM2 26h7v1h-7zM10 26h1v1h-1zM14 26h3v1h-3zM18 26h2v1h-2zM23 26h1v1h-1zM26 26h1v1h-1z"
+   },
+   "img": "media/img/step_b4.webp",
+   "clip": "media/clips/b4.mp4",
+   "dur": 20.8,
+   "terms": [
+    "light-trap",
+    "snap-fit"
+   ],
+   "model": {
+    "in": [
+     "body",
+     "spool",
+     "knob",
+     "back",
+     "roller"
+    ],
+    "new": [
+     "back",
+     "roller"
+    ],
+    "pose": {},
+    "az": 205,
+    "el": 24
+   }
+  },
+  {
+   "id": "b5",
+   "sec": "BUILD",
+   "n": 5,
+   "title": "Shutter onto its peg",
+   "do": "Lay the front plate face down. Drop the shutter onto the round peg near the top edge, with its rocker (the bar across its top) hanging over the edge.",
+   "check": "The rocker sits just outside the edge. The shutter swings and clicks.",
+   "mistake": "If it will not lie flat.",
+   "fix": "It is upside down: the rocker must stand up toward you.",
+   "why": "The peg is the shutter's pivot. The shutter's own rim is its spring: a tooth on the rim drops into three notches in the edge of the pocket it lies in.",
+   "narration": "Step five, and the front plate. Lay it face down. Drop the shutter onto the round peg near the top edge, with the rocker, the bar across its top, hanging over the edge. The rocker sits just outside the edge; the shutter swings and clicks. If it will not lie flat, it is upside down. The peg is the shutter's pivot, and the shutter's own rim is its spring.",
+   "parts": [
+    {
+     "id": "front",
+     "n": 1
+    },
+    {
+     "id": "blade",
+     "n": 1
+    }
+   ],
+   "lesson": "l05",
+   "short": "b5",
+   "url": "https://curve35.com/b5",
+   "qr": {
+    "n": 29,
+    "d": "M2 2h7v1h-7zM10 2h2v1h-2zM13 2h1v1h-1zM16 2h1v1h-1zM20 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM14 3h3v1h-3zM18 3h1v1h-1zM20 3h1v1h-1zM26 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM10 4h2v1h-2zM14 4h2v1h-2zM18 4h1v1h-1zM20 4h1v1h-1zM22 4h3v1h-3zM26 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM14 5h3v1h-3zM20 5h1v1h-1zM22 5h3v1h-3zM26 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM12 6h1v1h-1zM16 6h1v1h-1zM20 6h1v1h-1zM22 6h3v1h-3zM26 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM10 7h1v1h-1zM12 7h3v1h-3zM16 7h1v1h-1zM20 7h1v1h-1zM26 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h7v1h-7zM11 9h1v1h-1zM13 9h2v1h-2zM16 9h3v1h-3zM2 10h1v1h-1zM4 10h1v1h-1zM8 10h2v1h-2zM12 10h2v1h-2zM16 10h1v1h-1zM18 10h1v1h-1zM21 10h1v1h-1zM24 10h1v1h-1zM26 10h1v1h-1zM2 11h1v1h-1zM5 11h3v1h-3zM11 11h1v1h-1zM15 11h1v1h-1zM17 11h1v1h-1zM19 11h3v1h-3zM23 11h1v1h-1zM25 11h2v1h-2zM2 12h3v1h-3zM6 12h1v1h-1zM8 12h3v1h-3zM14 12h1v1h-1zM17 12h1v1h-1zM20 12h1v1h-1zM23 12h2v1h-2zM26 12h1v1h-1zM2 13h3v1h-3zM6 13h2v1h-2zM11 13h2v1h-2zM16 13h1v1h-1zM18 13h2v1h-2zM23 13h1v1h-1zM7 14h2v1h-2zM10 14h1v1h-1zM14 14h1v1h-1zM17 14h1v1h-1zM20 14h2v1h-2zM26 14h1v1h-1zM4 15h2v1h-2zM9 15h4v1h-4zM14 15h1v1h-1zM17 15h1v1h-1zM19 15h3v1h-3zM25 15h2v1h-2zM2 16h2v1h-2zM5 16h4v1h-4zM11 16h1v1h-1zM14 16h1v1h-1zM16 16h2v1h-2zM19 16h2v1h-2zM23 16h2v1h-2zM26 16h1v1h-1zM4 17h1v1h-1zM9 17h1v1h-1zM11 17h1v1h-1zM13 17h2v1h-2zM17 17h1v1h-1zM20 17h4v1h-4zM2 18h4v1h-4zM7 18h2v1h-2zM10 18h1v1h-1zM16 18h7v1h-7zM25 18h1v1h-1zM10 19h1v1h-1zM12 19h1v1h-1zM16 19h3v1h-3zM22 19h1v1h-1zM26 19h1v1h-1zM2 20h7v1h-7zM10 20h4v1h-4zM15 20h1v1h-1zM18 20h1v1h-1zM20 20h1v1h-1zM22 20h1v1h-1zM26 20h1v1h-1zM2 21h1v1h-1zM8 21h1v1h-1zM16 21h1v1h-1zM18 21h1v1h-1zM22 21h1v1h-1zM26 21h1v1h-1zM2 22h1v1h-1zM4 22h3v1h-3zM8 22h1v1h-1zM12 22h11v1h-11zM26 22h1v1h-1zM2 23h1v1h-1zM4 23h3v1h-3zM8 23h1v1h-1zM11 23h1v1h-1zM14 23h1v1h-1zM17 23h1v1h-1zM19 23h1v1h-1zM22 23h1v1h-1zM24 23h2v1h-2zM2 24h1v1h-1zM4 24h3v1h-3zM8 24h1v1h-1zM10 24h3v1h-3zM14 24h3v1h-3zM18 24h1v1h-1zM21 24h3v1h-3zM25 24h2v1h-2zM2 25h1v1h-1zM8 25h1v1h-1zM11 25h1v1h-1zM13 25h2v1h-2zM18 25h2v1h-2zM21 25h2v1h-2zM2 26h7v1h-7zM10 26h3v1h-3zM14 26h3v1h-3zM18 26h2v1h-2zM23 26h1v1h-1zM26 26h1v1h-1z"
+   },
+   "img": "media/img/step_b5.webp",
+   "clip": "media/clips/b5.mp4",
+   "dur": 24.41,
+   "terms": [
+    "shutter"
+   ],
+   "model": {
+    "in": [
+     "body",
+     "spool",
+     "knob",
+     "back",
+     "roller",
+     "front",
+     "blade"
+    ],
+    "new": [
+     "front",
+     "blade"
+    ],
+    "pose": {
+     "front": [
+      0,
+      52,
+      0
+     ],
+     "blade": [
+      0,
+      52,
+      0
+     ]
+    },
+    "az": -35,
+    "el": 22
+   }
+  },
+  {
+   "id": "b6",
+   "sec": "BUILD",
+   "n": 6,
+   "title": "Aperture wheel onto its peg",
+   "do": "Pick the plate up and hold it flat. Drop the wheel onto the other peg, handle down through the curved slot.",
+   "check": "The handle sticks out of the front. The wheel clicks into three places.",
+   "mistake": "If the wheel will not lie flat.",
+   "fix": "Its handle is not in the slot.",
+   "why": "The wheel carries three holes of different sizes. Its rim is a spring too.",
+   "narration": "Step six. Pick the plate up and hold it flat. Drop the aperture wheel onto the other peg, handle down through the curved slot. The handle sticks out of the front, and the wheel clicks into three places. If the wheel will not lie flat, its handle is not in the slot yet. The wheel carries three holes of different sizes, and its rim is a spring too.",
+   "parts": [
+    {
+     "id": "wheel",
+     "n": 1
+    }
+   ],
+   "lesson": "l04",
+   "short": "b6",
+   "url": "https://curve35.com/b6",
+   "qr": {
+    "n": 29,
+    "d": "M2 2h7v1h-7zM10 2h1v1h-1zM12 2h3v1h-3zM16 2h1v1h-1zM20 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM12 3h1v1h-1zM14 3h3v1h-3zM18 3h1v1h-1zM20 3h1v1h-1zM26 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM10 4h6v1h-6zM18 4h1v1h-1zM20 4h1v1h-1zM22 4h3v1h-3zM26 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM11 5h1v1h-1zM15 5h2v1h-2zM20 5h1v1h-1zM22 5h3v1h-3zM26 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM20 6h1v1h-1zM22 6h3v1h-3zM26 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM10 7h1v1h-1zM12 7h3v1h-3zM16 7h1v1h-1zM20 7h1v1h-1zM26 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h7v1h-7zM12 9h1v1h-1zM14 9h1v1h-1zM16 9h3v1h-3zM2 10h1v1h-1zM4 10h1v1h-1zM8 10h2v1h-2zM12 10h3v1h-3zM16 10h1v1h-1zM18 10h1v1h-1zM21 10h1v1h-1zM24 10h1v1h-1zM26 10h1v1h-1zM4 11h1v1h-1zM6 11h1v1h-1zM9 11h1v1h-1zM12 11h1v1h-1zM14 11h2v1h-2zM17 11h1v1h-1zM19 11h3v1h-3zM23 11h1v1h-1zM25 11h2v1h-2zM2 12h1v1h-1zM4 12h3v1h-3zM8 12h1v1h-1zM11 12h1v1h-1zM13 12h1v1h-1zM17 12h1v1h-1zM20 12h1v1h-1zM23 12h2v1h-2zM26 12h1v1h-1zM2 13h1v1h-1zM4 13h1v1h-1zM6 13h1v1h-1zM10 13h5v1h-5zM16 13h1v1h-1zM18 13h2v1h-2zM23 13h1v1h-1zM3 14h1v1h-1zM6 14h4v1h-4zM12 14h3v1h-3zM17 14h1v1h-1zM20 14h2v1h-2zM26 14h1v1h-1zM4 15h3v1h-3zM11 15h2v1h-2zM14 15h1v1h-1zM17 15h1v1h-1zM19 15h3v1h-3zM25 15h2v1h-2zM2 16h3v1h-3zM6 16h1v1h-1zM8 16h2v1h-2zM11 16h2v1h-2zM14 16h1v1h-1zM16 16h2v1h-2zM19 16h2v1h-2zM23 16h2v1h-2zM26 16h1v1h-1zM4 17h2v1h-2zM10 17h1v1h-1zM13 17h2v1h-2zM17 17h1v1h-1zM20 17h4v1h-4zM2 18h2v1h-2zM5 18h1v1h-1zM7 18h2v1h-2zM12 18h1v1h-1zM16 18h7v1h-7zM25 18h1v1h-1zM10 19h3v1h-3zM16 19h3v1h-3zM22 19h1v1h-1zM26 19h1v1h-1zM2 20h7v1h-7zM10 20h1v1h-1zM12 20h2v1h-2zM18 20h1v1h-1zM20 20h1v1h-1zM22 20h1v1h-1zM26 20h1v1h-1zM2 21h1v1h-1zM8 21h1v1h-1zM18 21h1v1h-1zM22 21h1v1h-1zM26 21h1v1h-1zM2 22h1v1h-1zM4 22h3v1h-3zM8 22h1v1h-1zM13 22h10v1h-10zM26 22h1v1h-1zM2 23h1v1h-1zM4 23h3v1h-3zM8 23h1v1h-1zM11 23h1v1h-1zM14 23h1v1h-1zM17 23h1v1h-1zM19 23h1v1h-1zM22 23h1v1h-1zM24 23h2v1h-2zM2 24h1v1h-1zM4 24h3v1h-3zM8 24h1v1h-1zM10 24h1v1h-1zM12 24h1v1h-1zM14 24h3v1h-3zM18 24h1v1h-1zM21 24h3v1h-3zM25 24h2v1h-2zM2 25h1v1h-1zM8 25h1v1h-1zM11 25h4v1h-4zM18 25h2v1h-2zM21 25h2v1h-2zM2 26h7v1h-7zM10 26h1v1h-1zM14 26h3v1h-3zM18 26h2v1h-2zM23 26h1v1h-1zM26 26h1v1h-1z"
+   },
+   "img": "media/img/step_b6.webp",
+   "clip": "media/clips/b6.mp4",
+   "dur": 16.51,
+   "terms": [
+    "aperture"
+   ],
+   "model": {
+    "in": [
+     "body",
+     "spool",
+     "knob",
+     "back",
+     "roller",
+     "front",
+     "blade",
+     "wheel"
+    ],
+    "new": [
+     "wheel"
+    ],
+    "pose": {
+     "front": [
+      0,
+      52,
+      0
+     ],
+     "blade": [
+      0,
+      52,
+      0
+     ],
+     "wheel": [
+      0,
+      52,
+      0
+     ]
+    },
+    "az": -35,
+    "el": 22
+   }
+  },
+  {
+   "id": "b7",
+   "sec": "BUILD",
+   "n": 7,
+   "title": "Camera onto the plate",
+   "do": "Keep the plate flat. Lower the camera onto it, front down, a little high and a little to one side, until its four pockets drop over the plate's four feet.",
+   "check": "The camera lies flat on the plate. Nothing rocks.",
+   "mistake": "If it rocks.",
+   "fix": "Move it about a few millimetres. The feet drop in at one place only.",
+   "why": "Each foot has a hook underneath and a lip on one side. Each pocket is open at one corner only: that is the way in, and the only way out.",
+   "narration": "Step seven. Keep the plate flat. Lower the camera onto it, front down, a little high and a little to one side, until its four pockets drop over the plate's four feet. The camera lies flat on the plate and nothing rocks. If it rocks, move it about a few millimetres: the feet drop in at one place only. Each pocket is open at one corner: that is the way in, and the only way out.",
+   "parts": [],
+   "lesson": "m02",
+   "short": "b7",
+   "url": "https://curve35.com/b7",
+   "qr": {
+    "n": 29,
+    "d": "M2 2h7v1h-7zM10 2h5v1h-5zM16 2h1v1h-1zM20 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM11 3h6v1h-6zM18 3h1v1h-1zM20 3h1v1h-1zM26 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM10 4h1v1h-1zM15 4h1v1h-1zM18 4h1v1h-1zM20 4h1v1h-1zM22 4h3v1h-3zM26 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM13 5h1v1h-1zM15 5h2v1h-2zM20 5h1v1h-1zM22 5h3v1h-3zM26 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM11 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM20 6h1v1h-1zM22 6h3v1h-3zM26 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM10 7h2v1h-2zM14 7h1v1h-1zM16 7h1v1h-1zM20 7h1v1h-1zM26 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h7v1h-7zM11 9h1v1h-1zM13 9h1v1h-1zM16 9h3v1h-3zM2 10h1v1h-1zM4 10h1v1h-1zM8 10h2v1h-2zM14 10h1v1h-1zM16 10h1v1h-1zM18 10h1v1h-1zM21 10h1v1h-1zM24 10h1v1h-1zM26 10h1v1h-1zM3 11h2v1h-2zM6 11h2v1h-2zM9 11h1v1h-1zM11 11h2v1h-2zM14 11h2v1h-2zM17 11h1v1h-1zM19 11h3v1h-3zM23 11h1v1h-1zM25 11h2v1h-2zM2 12h2v1h-2zM6 12h1v1h-1zM8 12h2v1h-2zM11 12h1v1h-1zM13 12h1v1h-1zM17 12h1v1h-1zM20 12h1v1h-1zM23 12h2v1h-2zM26 12h1v1h-1zM5 13h1v1h-1zM11 13h1v1h-1zM14 13h1v1h-1zM16 13h1v1h-1zM18 13h2v1h-2zM23 13h1v1h-1zM4 14h1v1h-1zM8 14h4v1h-4zM14 14h1v1h-1zM17 14h1v1h-1zM20 14h2v1h-2zM26 14h1v1h-1zM4 15h3v1h-3zM10 15h1v1h-1zM14 15h1v1h-1zM17 15h1v1h-1zM19 15h3v1h-3zM25 15h2v1h-2zM2 16h2v1h-2zM6 16h4v1h-4zM11 16h1v1h-1zM14 16h1v1h-1zM16 16h2v1h-2zM19 16h2v1h-2zM23 16h2v1h-2zM26 16h1v1h-1zM4 17h1v1h-1zM9 17h3v1h-3zM13 17h2v1h-2zM17 17h1v1h-1zM20 17h4v1h-4zM2 18h2v1h-2zM5 18h1v1h-1zM7 18h2v1h-2zM11 18h1v1h-1zM16 18h7v1h-7zM25 18h1v1h-1zM10 19h1v1h-1zM16 19h3v1h-3zM22 19h1v1h-1zM26 19h1v1h-1zM2 20h7v1h-7zM10 20h1v1h-1zM12 20h2v1h-2zM18 20h1v1h-1zM20 20h1v1h-1zM22 20h1v1h-1zM26 20h1v1h-1zM2 21h1v1h-1zM8 21h1v1h-1zM12 21h1v1h-1zM16 21h1v1h-1zM18 21h1v1h-1zM22 21h1v1h-1zM26 21h1v1h-1zM2 22h1v1h-1zM4 22h3v1h-3zM8 22h1v1h-1zM11 22h12v1h-12zM26 22h1v1h-1zM2 23h1v1h-1zM4 23h3v1h-3zM8 23h1v1h-1zM12 23h1v1h-1zM14 23h1v1h-1zM17 23h1v1h-1zM19 23h1v1h-1zM22 23h1v1h-1zM24 23h2v1h-2zM2 24h1v1h-1zM4 24h3v1h-3zM8 24h1v1h-1zM10 24h2v1h-2zM14 24h3v1h-3zM18 24h1v1h-1zM21 24h3v1h-3zM25 24h2v1h-2zM2 25h1v1h-1zM8 25h1v1h-1zM11 25h4v1h-4zM18 25h2v1h-2zM21 25h2v1h-2zM2 26h7v1h-7zM10 26h3v1h-3zM14 26h3v1h-3zM18 26h2v1h-2zM23 26h1v1h-1zM26 26h1v1h-1z"
+   },
+   "img": "media/img/step_b7.webp",
+   "clip": "media/clips/b7.mp4",
+   "dur": 23.4,
+   "terms": [],
+   "model": {
+    "in": [
+     "body",
+     "spool",
+     "knob",
+     "back",
+     "roller",
+     "front",
+     "blade",
+     "wheel"
+    ],
+    "new": [
+     "front",
+     "blade",
+     "wheel"
+    ],
+    "pose": {
+     "front": [
+      14,
+      0,
+      9
+     ],
+     "blade": [
+      14,
+      0,
+      9
+     ],
+     "wheel": [
+      14,
+      0,
+      9
+     ]
+    },
+    "az": -35,
+    "el": 22
+   }
+  },
+  {
+   "id": "b8",
+   "sec": "BUILD",
+   "n": 8,
+   "title": "Slide the plate across",
+   "do": "Pinch camera and plate together and turn them over. Slide the plate sideways until it stops.",
+   "check": "The point on the plate's top edge is in line with the middle line on top of the camera.",
+   "mistake": "If it will not slide.",
+   "fix": "It is not flat on the camera: go back one step.",
+   "why": "Now the lips on the feet are under the camera's skin. The plate can no longer be lifted off.",
+   "narration": "Step eight. Pinch camera and plate together and turn them over. Slide the plate sideways until it stops. The point on the plate's top edge now lines up with the middle line on top of the camera. If it will not slide, it is not flat on the camera, so go back one step. Now the lips on the feet are under the camera's skin, and the plate can no longer be lifted off.",
+   "parts": [],
+   "lesson": "m02",
+   "short": "b8",
+   "url": "https://curve35.com/b8",
+   "qr": {
+    "n": 29,
+    "d": "M2 2h7v1h-7zM10 2h1v1h-1zM13 2h2v1h-2zM16 2h1v1h-1zM20 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM12 3h2v1h-2zM15 3h2v1h-2zM18 3h1v1h-1zM20 3h1v1h-1zM26 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM10 4h4v1h-4zM15 4h1v1h-1zM18 4h1v1h-1zM20 4h1v1h-1zM22 4h3v1h-3zM26 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM14 5h3v1h-3zM20 5h1v1h-1zM22 5h3v1h-3zM26 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM11 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM20 6h1v1h-1zM22 6h3v1h-3zM26 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM10 7h1v1h-1zM12 7h1v1h-1zM16 7h1v1h-1zM20 7h1v1h-1zM26 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h7v1h-7zM12 9h1v1h-1zM16 9h3v1h-3zM2 10h1v1h-1zM4 10h1v1h-1zM8 10h2v1h-2zM12 10h3v1h-3zM16 10h1v1h-1zM18 10h1v1h-1zM21 10h1v1h-1zM24 10h1v1h-1zM26 10h1v1h-1zM2 11h2v1h-2zM5 11h3v1h-3zM9 11h1v1h-1zM11 11h1v1h-1zM13 11h1v1h-1zM15 11h1v1h-1zM17 11h1v1h-1zM19 11h3v1h-3zM23 11h1v1h-1zM25 11h2v1h-2zM3 12h2v1h-2zM6 12h6v1h-6zM17 12h1v1h-1zM20 12h1v1h-1zM23 12h2v1h-2zM26 12h1v1h-1zM6 13h2v1h-2zM13 13h2v1h-2zM16 13h1v1h-1zM18 13h2v1h-2zM23 13h1v1h-1zM2 14h1v1h-1zM4 14h3v1h-3zM8 14h1v1h-1zM10 14h1v1h-1zM12 14h1v1h-1zM14 14h1v1h-1zM17 14h1v1h-1zM20 14h2v1h-2zM26 14h1v1h-1zM3 15h1v1h-1zM9 15h1v1h-1zM14 15h1v1h-1zM17 15h1v1h-1zM19 15h3v1h-3zM25 15h2v1h-2zM2 16h4v1h-4zM8 16h1v1h-1zM12 16h1v1h-1zM14 16h1v1h-1zM16 16h2v1h-2zM19 16h2v1h-2zM23 16h2v1h-2zM26 16h1v1h-1zM4 17h1v1h-1zM9 17h1v1h-1zM11 17h1v1h-1zM13 17h2v1h-2zM17 17h1v1h-1zM20 17h4v1h-4zM2 18h3v1h-3zM6 18h1v1h-1zM8 18h4v1h-4zM16 18h7v1h-7zM25 18h1v1h-1zM10 19h1v1h-1zM12 19h1v1h-1zM15 19h4v1h-4zM22 19h1v1h-1zM26 19h1v1h-1zM2 20h7v1h-7zM10 20h1v1h-1zM12 20h2v1h-2zM15 20h2v1h-2zM18 20h1v1h-1zM20 20h1v1h-1zM22 20h1v1h-1zM26 20h1v1h-1zM2 21h1v1h-1zM8 21h1v1h-1zM11 21h2v1h-2zM18 21h1v1h-1zM22 21h1v1h-1zM26 21h1v1h-1zM2 22h1v1h-1zM4 22h3v1h-3zM8 22h1v1h-1zM13 22h10v1h-10zM26 22h1v1h-1zM2 23h1v1h-1zM4 23h3v1h-3zM8 23h1v1h-1zM11 23h2v1h-2zM14 23h1v1h-1zM17 23h1v1h-1zM19 23h1v1h-1zM22 23h1v1h-1zM24 23h2v1h-2zM2 24h1v1h-1zM4 24h3v1h-3zM8 24h1v1h-1zM10 24h1v1h-1zM12 24h1v1h-1zM14 24h3v1h-3zM18 24h1v1h-1zM21 24h3v1h-3zM25 24h2v1h-2zM2 25h1v1h-1zM8 25h1v1h-1zM12 25h3v1h-3zM18 25h2v1h-2zM21 25h2v1h-2zM2 26h7v1h-7zM10 26h1v1h-1zM12 26h1v1h-1zM14 26h3v1h-3zM18 26h2v1h-2zM23 26h1v1h-1zM26 26h1v1h-1z"
+   },
+   "img": "media/img/step_b8.webp",
+   "clip": "media/clips/b8.mp4",
+   "dur": 17.6,
+   "terms": [],
+   "model": {
+    "in": [
+     "body",
+     "spool",
+     "knob",
+     "back",
+     "roller",
+     "front",
+     "blade",
+     "wheel"
+    ],
+    "new": [
+     "front",
+     "blade",
+     "wheel"
+    ],
+    "pose": {
+     "front": [
+      0,
+      0,
+      9
+     ],
+     "blade": [
+      0,
+      0,
+      9
+     ],
+     "wheel": [
+      0,
+      0,
+      9
+     ]
+    },
+    "az": -35,
+    "el": 22
+   }
+  },
+  {
+   "id": "b9",
+   "sec": "BUILD",
+   "n": 9,
+   "title": "Slide the plate down",
+   "do": "Slide the plate down until it clicks.",
+   "check": "One click. Its top edge is level with the top of the camera.",
+   "mistake": "If there is no click.",
+   "fix": "Press the plate flat against the body while you slide.",
+   "why": "The hooks are home and a springy tongue has dropped behind a bump. To come off, the plate has to go up past the click, then sideways, then away: a knock cannot do all three.",
+   "narration": "Step nine. Slide the plate down until it clicks. One click, and its top edge is level with the top of the camera. No click? Press the plate flat against the body while you slide. The hooks are home and a springy tongue has dropped behind a bump. To come off, the plate has to go up past the click, then sideways, then away. A knock cannot do all three.",
+   "parts": [],
+   "lesson": "m02",
+   "short": "b9",
+   "url": "https://curve35.com/b9",
+   "qr": {
+    "n": 29,
+    "d": "M2 2h7v1h-7zM10 2h2v1h-2zM13 2h2v1h-2zM16 2h1v1h-1zM20 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM10 3h3v1h-3zM14 3h1v1h-1zM18 3h1v1h-1zM20 3h1v1h-1zM26 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM10 4h1v1h-1zM13 4h4v1h-4zM18 4h1v1h-1zM20 4h1v1h-1zM22 4h3v1h-3zM26 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM11 5h3v1h-3zM15 5h1v1h-1zM18 5h1v1h-1zM20 5h1v1h-1zM22 5h3v1h-3zM26 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h3v1h-3zM18 6h1v1h-1zM20 6h1v1h-1zM22 6h3v1h-3zM26 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM11 7h2v1h-2zM14 7h1v1h-1zM16 7h1v1h-1zM18 7h1v1h-1zM20 7h1v1h-1zM26 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h7v1h-7zM11 9h1v1h-1zM13 9h1v1h-1zM15 9h1v1h-1zM17 9h2v1h-2zM2 10h1v1h-1zM5 10h6v1h-6zM13 10h2v1h-2zM18 10h2v1h-2zM22 10h1v1h-1zM24 10h3v1h-3zM4 11h2v1h-2zM9 11h2v1h-2zM12 11h8v1h-8zM21 11h5v1h-5zM3 12h1v1h-1zM5 12h1v1h-1zM7 12h6v1h-6zM15 12h1v1h-1zM17 12h2v1h-2zM20 12h2v1h-2zM23 12h1v1h-1zM26 12h1v1h-1zM4 13h3v1h-3zM10 13h1v1h-1zM13 13h1v1h-1zM16 13h1v1h-1zM20 13h1v1h-1zM23 13h4v1h-4zM2 14h2v1h-2zM5 14h1v1h-1zM7 14h2v1h-2zM11 14h1v1h-1zM13 14h2v1h-2zM17 14h1v1h-1zM20 14h2v1h-2zM26 14h1v1h-1zM2 15h1v1h-1zM4 15h1v1h-1zM11 15h2v1h-2zM15 15h3v1h-3zM19 15h1v1h-1zM22 15h1v1h-1zM25 15h1v1h-1zM2 16h4v1h-4zM8 16h1v1h-1zM10 16h1v1h-1zM13 16h2v1h-2zM17 16h1v1h-1zM20 16h1v1h-1zM22 16h5v1h-5zM2 17h1v1h-1zM5 17h2v1h-2zM10 17h1v1h-1zM12 17h2v1h-2zM16 17h3v1h-3zM21 17h1v1h-1zM23 17h2v1h-2zM26 17h1v1h-1zM2 18h1v1h-1zM4 18h1v1h-1zM8 18h1v1h-1zM10 18h1v1h-1zM15 18h8v1h-8zM24 18h2v1h-2zM10 19h9v1h-9zM22 19h1v1h-1zM24 19h2v1h-2zM2 20h7v1h-7zM10 20h1v1h-1zM12 20h2v1h-2zM15 20h2v1h-2zM18 20h1v1h-1zM20 20h1v1h-1zM22 20h1v1h-1zM26 20h1v1h-1zM2 21h1v1h-1zM8 21h1v1h-1zM10 21h2v1h-2zM14 21h2v1h-2zM18 21h1v1h-1zM22 21h1v1h-1zM2 22h1v1h-1zM4 22h3v1h-3zM8 22h1v1h-1zM10 22h3v1h-3zM14 22h2v1h-2zM17 22h6v1h-6zM25 22h2v1h-2zM2 23h1v1h-1zM4 23h3v1h-3zM8 23h1v1h-1zM10 23h1v1h-1zM12 23h1v1h-1zM16 23h5v1h-5zM25 23h2v1h-2zM2 24h1v1h-1zM4 24h3v1h-3zM8 24h1v1h-1zM11 24h2v1h-2zM14 24h1v1h-1zM16 24h1v1h-1zM22 24h5v1h-5zM2 25h1v1h-1zM8 25h1v1h-1zM20 25h3v1h-3zM24 25h3v1h-3zM2 26h7v1h-7zM10 26h2v1h-2zM14 26h3v1h-3zM18 26h2v1h-2zM23 26h1v1h-1zM26 26h1v1h-1z"
+   },
+   "img": "media/img/step_b9.webp",
+   "clip": "media/clips/b9.mp4",
+   "dur": 18.0,
+   "terms": [
+    "snap-fit"
+   ],
+   "model": {
+    "in": [
+     "body",
+     "spool",
+     "knob",
+     "back",
+     "roller",
+     "front",
+     "blade",
+     "wheel"
+    ],
+    "new": [
+     "front",
+     "blade",
+     "wheel"
+    ],
+    "pose": {},
+    "az": -35,
+    "el": 22
+   }
+  },
+  {
+   "id": "b10",
+   "sec": "BUILD",
+   "n": 10,
+   "title": "Lens in",
+   "do": "Press the lens into the round pocket on the front, bulge outward, until it stops. (No lens? The pinhole ring goes here instead.)",
+   "check": "It sits level and stays in when you shake the camera.",
+   "mistake": "If it is loose or will not go in.",
+   "fix": "Tell whoever made the kit: the pocket is made for one size of lens.",
+   "why": "Three small ribs in the pocket squeeze the lens. Nothing else in the camera is held by a squeeze.",
+   "narration": "Step ten, the last one. Press the lens into the round pocket on the front, bulge outward, until it stops. It sits level and stays in when you shake the camera. Three small ribs in the pocket squeeze the lens; nothing else in the camera is held by a squeeze. If the lens is loose, or will not go in, tell whoever made the kit. Press the rocker: click. Slide the handle: three clicks. Done.",
+   "parts": [
+    {
+     "id": "lens",
+     "n": 1
+    }
+   ],
+   "lesson": "l02",
+   "short": "b10",
+   "url": "https://curve35.com/b10",
+   "qr": {
+    "n": 29,
+    "d": "M2 2h7v1h-7zM12 2h2v1h-2zM15 2h1v1h-1zM18 2h1v1h-1zM20 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM11 3h2v1h-2zM15 3h4v1h-4zM20 3h1v1h-1zM26 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM10 4h3v1h-3zM14 4h1v1h-1zM16 4h1v1h-1zM20 4h1v1h-1zM22 4h3v1h-3zM26 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM10 5h1v1h-1zM12 5h1v1h-1zM14 5h4v1h-4zM20 5h1v1h-1zM22 5h3v1h-3zM26 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM10 6h2v1h-2zM15 6h1v1h-1zM18 6h1v1h-1zM20 6h1v1h-1zM22 6h3v1h-3zM26 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM10 7h2v1h-2zM13 7h2v1h-2zM16 7h2v1h-2zM20 7h1v1h-1zM26 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h7v1h-7zM10 9h1v1h-1zM14 9h1v1h-1zM16 9h1v1h-1zM18 9h1v1h-1zM2 10h1v1h-1zM4 10h5v1h-5zM11 10h2v1h-2zM14 10h2v1h-2zM20 10h5v1h-5zM3 11h1v1h-1zM5 11h1v1h-1zM7 11h1v1h-1zM9 11h1v1h-1zM12 11h4v1h-4zM19 11h1v1h-1zM21 11h1v1h-1zM25 11h1v1h-1zM2 12h1v1h-1zM5 12h1v1h-1zM7 12h2v1h-2zM11 12h1v1h-1zM13 12h11v1h-11zM25 12h2v1h-2zM3 13h2v1h-2zM9 13h1v1h-1zM11 13h2v1h-2zM16 13h5v1h-5zM26 13h1v1h-1zM4 14h2v1h-2zM8 14h4v1h-4zM13 14h1v1h-1zM15 14h6v1h-6zM22 14h1v1h-1zM24 14h3v1h-3zM2 15h1v1h-1zM5 15h2v1h-2zM10 15h1v1h-1zM12 15h1v1h-1zM14 15h1v1h-1zM19 15h1v1h-1zM21 15h1v1h-1zM23 15h1v1h-1zM25 15h1v1h-1zM2 16h1v1h-1zM4 16h6v1h-6zM11 16h2v1h-2zM15 16h1v1h-1zM17 16h2v1h-2zM20 16h4v1h-4zM25 16h2v1h-2zM2 17h1v1h-1zM4 17h1v1h-1zM9 17h2v1h-2zM12 17h1v1h-1zM14 17h1v1h-1zM21 17h2v1h-2zM26 17h1v1h-1zM2 18h1v1h-1zM6 18h3v1h-3zM14 18h2v1h-2zM17 18h6v1h-6zM24 18h1v1h-1zM10 19h2v1h-2zM16 19h1v1h-1zM18 19h1v1h-1zM22 19h2v1h-2zM2 20h7v1h-7zM11 20h4v1h-4zM18 20h1v1h-1zM20 20h1v1h-1zM22 20h1v1h-1zM24 20h3v1h-3zM2 21h1v1h-1zM8 21h1v1h-1zM10 21h4v1h-4zM16 21h3v1h-3zM22 21h2v1h-2zM25 21h1v1h-1zM2 22h1v1h-1zM4 22h3v1h-3zM8 22h1v1h-1zM10 22h2v1h-2zM13 22h3v1h-3zM17 22h6v1h-6zM24 22h3v1h-3zM2 23h1v1h-1zM4 23h3v1h-3zM8 23h1v1h-1zM10 23h1v1h-1zM12 23h1v1h-1zM14 23h1v1h-1zM16 23h1v1h-1zM19 23h2v1h-2zM22 23h5v1h-5zM2 24h1v1h-1zM4 24h3v1h-3zM8 24h1v1h-1zM10 24h2v1h-2zM14 24h1v1h-1zM19 24h1v1h-1zM23 24h2v1h-2zM26 24h1v1h-1zM2 25h1v1h-1zM8 25h1v1h-1zM11 25h2v1h-2zM14 25h1v1h-1zM17 25h7v1h-7zM26 25h1v1h-1zM2 26h7v1h-7zM10 26h3v1h-3zM14 26h1v1h-1zM21 26h6v1h-6z"
+   },
+   "img": "media/img/step_b10.webp",
+   "clip": "media/clips/b10.mp4",
+   "dur": 15.7,
+   "terms": [
+    "lens"
+   ],
+   "model": {
+    "in": [
+     "body",
+     "spool",
+     "knob",
+     "back",
+     "roller",
+     "front",
+     "blade",
+     "wheel",
+     "lens"
+    ],
+    "new": [
+     "lens"
+    ],
+    "pose": {},
+    "az": -30,
+    "el": 18
+   }
+  },
+  {
+   "id": "f1",
+   "sec": "FILM IN",
+   "n": 1,
+   "title": "Open the back",
+   "do": "Pinch the two pads, top and bottom. Lift the back off.",
+   "check": "The frame wheel comes away with the back.",
+   "mistake": null,
+   "fix": null,
+   "why": "Do this in the shade, never in bright sun.",
+   "narration": "Loading the film. Find some shade first: never do this in bright sun. Pinch the two pads, top and bottom, and lift the back off. The blue frame wheel comes away with the back, so lay the back down somewhere safe, inside up. From here until the back is closed again, keep the film out of the sun. Next, the green knob goes into the film.",
+   "parts": [],
+   "lesson": "l07",
+   "short": "f1",
+   "url": "https://curve35.com/f1",
+   "qr": {
+    "n": 29,
+    "d": "M2 2h7v1h-7zM10 2h3v1h-3zM16 2h1v1h-1zM20 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM15 3h2v1h-2zM18 3h1v1h-1zM20 3h1v1h-1zM26 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM10 4h1v1h-1zM12 4h1v1h-1zM14 4h2v1h-2zM18 4h1v1h-1zM20 4h1v1h-1zM22 4h3v1h-3zM26 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM11 5h1v1h-1zM13 5h1v1h-1zM15 5h2v1h-2zM20 5h1v1h-1zM22 5h3v1h-3zM26 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM11 6h2v1h-2zM16 6h1v1h-1zM20 6h1v1h-1zM22 6h3v1h-3zM26 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM10 7h1v1h-1zM13 7h1v1h-1zM16 7h1v1h-1zM20 7h1v1h-1zM26 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h7v1h-7zM11 9h1v1h-1zM13 9h1v1h-1zM16 9h3v1h-3zM2 10h1v1h-1zM4 10h1v1h-1zM8 10h2v1h-2zM11 10h2v1h-2zM16 10h1v1h-1zM18 10h1v1h-1zM21 10h1v1h-1zM24 10h1v1h-1zM26 10h1v1h-1zM4 11h4v1h-4zM10 11h2v1h-2zM13 11h3v1h-3zM17 11h1v1h-1zM19 11h3v1h-3zM23 11h1v1h-1zM25 11h2v1h-2zM4 12h1v1h-1zM7 12h2v1h-2zM12 12h1v1h-1zM14 12h1v1h-1zM17 12h1v1h-1zM20 12h1v1h-1zM23 12h2v1h-2zM26 12h1v1h-1zM2 13h1v1h-1zM5 13h1v1h-1zM7 13h1v1h-1zM10 13h2v1h-2zM13 13h2v1h-2zM16 13h1v1h-1zM18 13h2v1h-2zM23 13h1v1h-1zM2 14h3v1h-3zM8 14h7v1h-7zM17 14h1v1h-1zM20 14h2v1h-2zM26 14h1v1h-1zM7 15h1v1h-1zM11 15h2v1h-2zM14 15h1v1h-1zM17 15h1v1h-1zM19 15h3v1h-3zM25 15h2v1h-2zM2 16h2v1h-2zM5 16h1v1h-1zM7 16h2v1h-2zM10 16h2v1h-2zM14 16h1v1h-1zM17 16h1v1h-1zM19 16h2v1h-2zM23 16h2v1h-2zM26 16h1v1h-1zM7 17h1v1h-1zM11 17h4v1h-4zM17 17h1v1h-1zM20 17h4v1h-4zM2 18h5v1h-5zM8 18h2v1h-2zM16 18h7v1h-7zM25 18h1v1h-1zM10 19h1v1h-1zM12 19h1v1h-1zM16 19h3v1h-3zM22 19h1v1h-1zM26 19h1v1h-1zM2 20h7v1h-7zM10 20h1v1h-1zM13 20h1v1h-1zM15 20h2v1h-2zM18 20h1v1h-1zM20 20h1v1h-1zM22 20h1v1h-1zM26 20h1v1h-1zM2 21h1v1h-1zM8 21h1v1h-1zM16 21h1v1h-1zM18 21h1v1h-1zM22 21h1v1h-1zM26 21h1v1h-1zM2 22h1v1h-1zM4 22h3v1h-3zM8 22h1v1h-1zM12 22h11v1h-11zM26 22h1v1h-1zM2 23h1v1h-1zM4 23h3v1h-3zM8 23h1v1h-1zM11 23h1v1h-1zM14 23h1v1h-1zM17 23h1v1h-1zM19 23h1v1h-1zM22 23h1v1h-1zM24 23h2v1h-2zM2 24h1v1h-1zM4 24h3v1h-3zM8 24h1v1h-1zM10 24h1v1h-1zM14 24h3v1h-3zM18 24h1v1h-1zM21 24h3v1h-3zM25 24h2v1h-2zM2 25h1v1h-1zM8 25h1v1h-1zM12 25h3v1h-3zM18 25h2v1h-2zM21 25h2v1h-2zM2 26h7v1h-7zM10 26h3v1h-3zM14 26h3v1h-3zM18 26h2v1h-2zM23 26h1v1h-1zM26 26h1v1h-1z"
+   },
+   "img": "media/img/step_f1.webp",
+   "clip": "media/clips/f1.mp4",
+   "dur": 9.92,
+   "terms": [],
+   "model": {
+    "in": [
+     "body",
+     "back",
+     "roller",
+     "spool",
+     "knob",
+     "front",
+     "blade",
+     "wheel",
+     "lens"
+    ],
+    "new": [],
+    "pose": {
+     "back": [
+      0,
+      -40,
+      0
+     ],
+     "roller": [
+      0,
+      -40,
+      0
+     ]
+    },
+    "az": 205,
+    "el": 24
+   }
+  },
+  {
+   "id": "f2",
+   "sec": "FILM IN",
+   "n": 2,
+   "title": "Knob into the film",
+   "do": "Slide the small green knob out. Push its forked end into the hollow end of the film.",
+   "check": "Turning the knob turns the spool inside the film.",
+   "mistake": "Wrong end?",
+   "fix": "The other end of the film has a peg sticking out.",
+   "why": "The fork straddles a bar inside the film's spool.",
+   "narration": "Slide the small green knob out of the camera. Push its forked end into the hollow end of the film. Now turn the knob: the spool inside the film turns with it. Wrong end? The other end of the film has a peg sticking out. The fork straddles a bar inside the film's spool, so from now on this knob turns the film's own spool.",
+   "parts": [
+    {
+     "id": "knob",
+     "n": 1
+    },
+    {
+     "id": "film",
+     "n": 1
+    }
+   ],
+   "lesson": "l06",
+   "short": "f2",
+   "url": "https://curve35.com/f2",
+   "qr": {
+    "n": 29,
+    "d": "M2 2h7v1h-7zM10 2h1v1h-1zM14 2h1v1h-1zM16 2h1v1h-1zM20 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM10 3h3v1h-3zM14 3h1v1h-1zM18 3h1v1h-1zM20 3h1v1h-1zM26 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM10 4h1v1h-1zM14 4h3v1h-3zM18 4h1v1h-1zM20 4h1v1h-1zM22 4h3v1h-3zM26 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM12 5h2v1h-2zM15 5h1v1h-1zM18 5h1v1h-1zM20 5h1v1h-1zM22 5h3v1h-3zM26 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM10 6h3v1h-3zM14 6h3v1h-3zM18 6h1v1h-1zM20 6h1v1h-1zM22 6h3v1h-3zM26 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM12 7h1v1h-1zM14 7h1v1h-1zM16 7h1v1h-1zM18 7h1v1h-1zM20 7h1v1h-1zM26 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h7v1h-7zM12 9h1v1h-1zM14 9h2v1h-2zM17 9h2v1h-2zM2 10h1v1h-1zM5 10h10v1h-10zM18 10h2v1h-2zM22 10h1v1h-1zM24 10h3v1h-3zM4 11h1v1h-1zM9 11h1v1h-1zM13 11h7v1h-7zM21 11h5v1h-5zM4 12h5v1h-5zM10 12h2v1h-2zM13 12h1v1h-1zM15 12h1v1h-1zM17 12h2v1h-2zM20 12h2v1h-2zM23 12h1v1h-1zM26 12h1v1h-1zM3 13h1v1h-1zM5 13h3v1h-3zM11 13h4v1h-4zM16 13h1v1h-1zM20 13h1v1h-1zM23 13h4v1h-4zM2 14h1v1h-1zM4 14h1v1h-1zM6 14h1v1h-1zM8 14h1v1h-1zM11 14h1v1h-1zM14 14h1v1h-1zM17 14h1v1h-1zM20 14h2v1h-2zM26 14h1v1h-1zM2 15h3v1h-3zM6 15h2v1h-2zM11 15h2v1h-2zM15 15h3v1h-3zM19 15h1v1h-1zM22 15h1v1h-1zM25 15h1v1h-1zM2 16h2v1h-2zM7 16h3v1h-3zM11 16h4v1h-4zM16 16h2v1h-2zM20 16h1v1h-1zM22 16h5v1h-5zM2 17h1v1h-1zM4 17h4v1h-4zM9 17h1v1h-1zM13 17h1v1h-1zM16 17h3v1h-3zM21 17h1v1h-1zM23 17h2v1h-2zM26 17h1v1h-1zM2 18h1v1h-1zM5 18h1v1h-1zM8 18h1v1h-1zM10 18h1v1h-1zM15 18h8v1h-8zM24 18h2v1h-2zM10 19h2v1h-2zM13 19h2v1h-2zM16 19h3v1h-3zM22 19h1v1h-1zM24 19h2v1h-2zM2 20h7v1h-7zM10 20h2v1h-2zM13 20h1v1h-1zM16 20h1v1h-1zM18 20h1v1h-1zM20 20h1v1h-1zM22 20h1v1h-1zM26 20h1v1h-1zM2 21h1v1h-1zM8 21h1v1h-1zM10 21h1v1h-1zM14 21h3v1h-3zM18 21h1v1h-1zM22 21h1v1h-1zM2 22h1v1h-1zM4 22h3v1h-3zM8 22h1v1h-1zM10 22h1v1h-1zM14 22h2v1h-2zM17 22h6v1h-6zM25 22h2v1h-2zM2 23h1v1h-1zM4 23h3v1h-3zM8 23h1v1h-1zM10 23h3v1h-3zM16 23h5v1h-5zM25 23h2v1h-2zM2 24h1v1h-1zM4 24h3v1h-3zM8 24h1v1h-1zM11 24h2v1h-2zM14 24h1v1h-1zM16 24h1v1h-1zM22 24h5v1h-5zM2 25h1v1h-1zM8 25h1v1h-1zM12 25h1v1h-1zM20 25h3v1h-3zM24 25h3v1h-3zM2 26h7v1h-7zM10 26h1v1h-1zM14 26h3v1h-3zM18 26h2v1h-2zM23 26h1v1h-1zM26 26h1v1h-1z"
+   },
+   "img": "media/img/step_f2.webp",
+   "clip": "media/clips/f2.mp4",
+   "dur": 12.42,
+   "terms": [
+    "film-shell"
+   ],
+   "model": {
+    "in": [
+     "body",
+     "back",
+     "roller",
+     "spool",
+     "knob",
+     "front",
+     "blade",
+     "wheel",
+     "lens"
+    ],
+    "new": [
+     "knob"
+    ],
+    "pose": {
+     "back": [
+      0,
+      -40,
+      0
+     ],
+     "roller": [
+      0,
+      -40,
+      0
+     ]
+    },
+    "az": 205,
+    "el": 24
+   }
+  },
+  {
+   "id": "f3",
+   "sec": "FILM IN",
+   "n": 3,
+   "title": "Film into its chamber",
+   "do": "Slide film and knob in together on the left, the film's lip pointing to the middle.",
+   "check": "The film sits flat in its chamber.",
+   "mistake": null,
+   "fix": null,
+   "why": null,
+   "narration": "Slide the film and the knob in together, on the left, with the film's lip pointing to the middle of the camera. Keep them together as they go in. The film sits flat in its chamber, and the green knob sits in its slot on top, just as it did before. If the film will not sit flat, lift it out and try again with the lip facing the middle.",
+   "parts": [],
+   "lesson": "l03",
+   "short": "f3",
+   "url": "https://curve35.com/f3",
+   "qr": {
+    "n": 29,
+    "d": "M2 2h7v1h-7zM10 2h2v1h-2zM14 2h1v1h-1zM16 2h1v1h-1zM20 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM10 3h1v1h-1zM12 3h3v1h-3zM18 3h1v1h-1zM20 3h1v1h-1zM26 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM10 4h4v1h-4zM15 4h2v1h-2zM18 4h1v1h-1zM20 4h1v1h-1zM22 4h3v1h-3zM26 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM11 5h2v1h-2zM15 5h1v1h-1zM18 5h1v1h-1zM20 5h1v1h-1zM22 5h3v1h-3zM26 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h3v1h-3zM18 6h1v1h-1zM20 6h1v1h-1zM22 6h3v1h-3zM26 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM11 7h1v1h-1zM13 7h2v1h-2zM16 7h1v1h-1zM18 7h1v1h-1zM20 7h1v1h-1zM26 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h7v1h-7zM11 9h1v1h-1zM13 9h1v1h-1zM15 9h1v1h-1zM17 9h2v1h-2zM2 10h1v1h-1zM5 10h7v1h-7zM14 10h1v1h-1zM18 10h2v1h-2zM22 10h1v1h-1zM24 10h3v1h-3zM3 11h2v1h-2zM7 11h1v1h-1zM9 11h1v1h-1zM11 11h1v1h-1zM13 11h7v1h-7zM21 11h5v1h-5zM3 12h1v1h-1zM6 12h6v1h-6zM13 12h1v1h-1zM15 12h1v1h-1zM17 12h2v1h-2zM20 12h2v1h-2zM23 12h1v1h-1zM26 12h1v1h-1zM2 13h3v1h-3zM7 13h1v1h-1zM10 13h2v1h-2zM14 13h1v1h-1zM16 13h1v1h-1zM20 13h1v1h-1zM23 13h4v1h-4zM2 14h2v1h-2zM7 14h2v1h-2zM10 14h1v1h-1zM12 14h3v1h-3zM17 14h1v1h-1zM20 14h2v1h-2zM26 14h1v1h-1zM2 15h3v1h-3zM6 15h2v1h-2zM10 15h1v1h-1zM15 15h3v1h-3zM19 15h1v1h-1zM22 15h1v1h-1zM25 15h1v1h-1zM2 16h3v1h-3zM8 16h2v1h-2zM11 16h1v1h-1zM13 16h2v1h-2zM16 16h2v1h-2zM20 16h1v1h-1zM22 16h5v1h-5zM2 17h1v1h-1zM4 17h1v1h-1zM6 17h2v1h-2zM11 17h1v1h-1zM13 17h1v1h-1zM16 17h3v1h-3zM21 17h1v1h-1zM23 17h2v1h-2zM26 17h1v1h-1zM2 18h1v1h-1zM5 18h1v1h-1zM8 18h1v1h-1zM10 18h3v1h-3zM15 18h8v1h-8zM24 18h2v1h-2zM10 19h1v1h-1zM12 19h3v1h-3zM16 19h3v1h-3zM22 19h1v1h-1zM24 19h2v1h-2zM2 20h7v1h-7zM10 20h2v1h-2zM13 20h1v1h-1zM16 20h1v1h-1zM18 20h1v1h-1zM20 20h1v1h-1zM22 20h1v1h-1zM26 20h1v1h-1zM2 21h1v1h-1zM8 21h1v1h-1zM10 21h1v1h-1zM12 21h1v1h-1zM14 21h2v1h-2zM18 21h1v1h-1zM22 21h1v1h-1zM2 22h1v1h-1zM4 22h3v1h-3zM8 22h1v1h-1zM10 22h3v1h-3zM14 22h2v1h-2zM17 22h6v1h-6zM25 22h2v1h-2zM2 23h1v1h-1zM4 23h3v1h-3zM8 23h1v1h-1zM10 23h1v1h-1zM16 23h5v1h-5zM25 23h2v1h-2zM2 24h1v1h-1zM4 24h3v1h-3zM8 24h1v1h-1zM14 24h1v1h-1zM16 24h1v1h-1zM22 24h5v1h-5zM2 25h1v1h-1zM8 25h1v1h-1zM12 25h1v1h-1zM20 25h3v1h-3zM24 25h3v1h-3zM2 26h7v1h-7zM10 26h3v1h-3zM14 26h3v1h-3zM18 26h2v1h-2zM23 26h1v1h-1zM26 26h1v1h-1z"
+   },
+   "img": "media/img/step_f3.webp",
+   "clip": "media/clips/f3.mp4",
+   "dur": 8.92,
+   "terms": [],
+   "model": {
+    "in": [
+     "body",
+     "back",
+     "roller",
+     "spool",
+     "knob",
+     "front",
+     "blade",
+     "wheel",
+     "lens"
+    ],
+    "new": [],
+    "pose": {
+     "back": [
+      0,
+      -40,
+      0
+     ],
+     "roller": [
+      0,
+      -40,
+      0
+     ]
+    },
+    "az": 205,
+    "el": 24
+   }
+  },
+  {
+   "id": "f4",
+   "sec": "FILM IN",
+   "n": 4,
+   "title": "Catch the film's tip",
+   "do": "Turn the big red knob until the slot in its spool faces you. Pull the film across and tuck its tip into the slot. Give the big red knob one turn.",
+   "check": "The film is caught. It lies over the two curved rails.",
+   "mistake": "If the tip slips out.",
+   "fix": "Tuck it deeper and turn again.",
+   "why": "The film lies on a curve around the lens. That curve is why one simple lens can be sharp from corner to corner.",
+   "narration": "Turn the big red knob until the slot in its spool faces you. Pull the film across and tuck its tip into the slot. Give the big red knob one turn. The film is caught, and it lies over the two curved rails. If the tip slips out, tuck it deeper and turn again. The film lies on a curve around the lens: that curve is why one simple lens can be sharp from corner to corner.",
+   "parts": [],
+   "lesson": "l03",
+   "short": "f4",
+   "url": "https://curve35.com/f4",
+   "qr": {
+    "n": 29,
+    "d": "M2 2h7v1h-7zM10 2h2v1h-2zM13 2h2v1h-2zM16 2h1v1h-1zM20 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM12 3h2v1h-2zM15 3h2v1h-2zM18 3h1v1h-1zM20 3h1v1h-1zM26 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM10 4h4v1h-4zM15 4h1v1h-1zM18 4h1v1h-1zM20 4h1v1h-1zM22 4h3v1h-3zM26 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM11 5h1v1h-1zM13 5h4v1h-4zM20 5h1v1h-1zM22 5h3v1h-3zM26 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM11 6h4v1h-4zM16 6h1v1h-1zM20 6h1v1h-1zM22 6h3v1h-3zM26 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM10 7h2v1h-2zM16 7h1v1h-1zM20 7h1v1h-1zM26 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h7v1h-7zM14 9h1v1h-1zM16 9h3v1h-3zM2 10h1v1h-1zM4 10h1v1h-1zM8 10h2v1h-2zM12 10h1v1h-1zM16 10h1v1h-1zM18 10h1v1h-1zM21 10h1v1h-1zM24 10h1v1h-1zM26 10h1v1h-1zM5 11h3v1h-3zM10 11h1v1h-1zM12 11h1v1h-1zM14 11h2v1h-2zM17 11h1v1h-1zM19 11h3v1h-3zM23 11h1v1h-1zM25 11h2v1h-2zM2 12h2v1h-2zM5 12h4v1h-4zM10 12h2v1h-2zM13 12h1v1h-1zM17 12h1v1h-1zM20 12h1v1h-1zM23 12h2v1h-2zM26 12h1v1h-1zM2 13h1v1h-1zM4 13h2v1h-2zM9 13h1v1h-1zM11 13h4v1h-4zM16 13h1v1h-1zM18 13h2v1h-2zM23 13h1v1h-1zM2 14h8v1h-8zM11 14h4v1h-4zM17 14h1v1h-1zM20 14h2v1h-2zM26 14h1v1h-1zM3 15h1v1h-1zM5 15h1v1h-1zM7 15h1v1h-1zM14 15h1v1h-1zM17 15h1v1h-1zM19 15h3v1h-3zM25 15h2v1h-2zM2 16h2v1h-2zM8 16h1v1h-1zM11 16h2v1h-2zM14 16h1v1h-1zM17 16h1v1h-1zM19 16h2v1h-2zM23 16h2v1h-2zM26 16h1v1h-1zM4 17h3v1h-3zM9 17h1v1h-1zM11 17h1v1h-1zM13 17h2v1h-2zM17 17h1v1h-1zM20 17h4v1h-4zM2 18h3v1h-3zM6 18h3v1h-3zM10 18h1v1h-1zM12 18h1v1h-1zM16 18h7v1h-7zM25 18h1v1h-1zM10 19h3v1h-3zM16 19h3v1h-3zM22 19h1v1h-1zM26 19h1v1h-1zM2 20h7v1h-7zM10 20h4v1h-4zM15 20h1v1h-1zM18 20h1v1h-1zM20 20h1v1h-1zM22 20h1v1h-1zM26 20h1v1h-1zM2 21h1v1h-1zM8 21h1v1h-1zM12 21h1v1h-1zM18 21h1v1h-1zM22 21h1v1h-1zM26 21h1v1h-1zM2 22h1v1h-1zM4 22h3v1h-3zM8 22h1v1h-1zM12 22h11v1h-11zM26 22h1v1h-1zM2 23h1v1h-1zM4 23h3v1h-3zM8 23h1v1h-1zM11 23h2v1h-2zM14 23h1v1h-1zM17 23h1v1h-1zM19 23h1v1h-1zM22 23h1v1h-1zM24 23h2v1h-2zM2 24h1v1h-1zM4 24h3v1h-3zM8 24h1v1h-1zM10 24h1v1h-1zM12 24h1v1h-1zM14 24h3v1h-3zM18 24h1v1h-1zM21 24h3v1h-3zM25 24h2v1h-2zM2 25h1v1h-1zM8 25h1v1h-1zM11 25h1v1h-1zM13 25h2v1h-2zM18 25h2v1h-2zM21 25h2v1h-2zM2 26h7v1h-7zM10 26h3v1h-3zM14 26h3v1h-3zM18 26h2v1h-2zM23 26h1v1h-1zM26 26h1v1h-1z"
+   },
+   "img": "media/img/step_f4.webp",
+   "clip": "media/clips/f4.mp4",
+   "dur": 20.91,
+   "terms": [],
+   "model": {
+    "in": [
+     "body",
+     "back",
+     "roller",
+     "spool",
+     "knob",
+     "front",
+     "blade",
+     "wheel",
+     "lens"
+    ],
+    "new": [],
+    "pose": {
+     "back": [
+      0,
+      -40,
+      0
+     ],
+     "roller": [
+      0,
+      -40,
+      0
+     ]
+    },
+    "az": 205,
+    "el": 24
+   }
+  },
+  {
+   "id": "f5",
+   "sec": "FILM IN",
+   "n": 5,
+   "title": "Close the back",
+   "do": "Close the back.",
+   "check": "Two clicks. Keep it shut until the film is out.",
+   "mistake": null,
+   "fix": null,
+   "why": "The frame wheel's teeth press on the film's top edge. If they are not in the holes yet, the first turn of the knob drops them in.",
+   "narration": "Close the back. Press until you hear two clicks, one at each end. Keep it shut until the film is out again. The frame wheel's teeth press on the film's top edge. If they are not in the film's holes yet, do not worry: the first turn of the knob drops them in. From now on, the film is in the dark.",
+   "parts": [],
+   "lesson": "l07",
+   "short": "f5",
+   "url": "https://curve35.com/f5",
+   "qr": {
+    "n": 29,
+    "d": "M2 2h7v1h-7zM10 2h1v1h-1zM12 2h1v1h-1zM14 2h2v1h-2zM18 2h1v1h-1zM20 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM10 3h4v1h-4zM15 3h1v1h-1zM18 3h1v1h-1zM20 3h1v1h-1zM26 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM11 4h1v1h-1zM13 4h1v1h-1zM15 4h4v1h-4zM20 4h1v1h-1zM22 4h3v1h-3zM26 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM10 5h2v1h-2zM15 5h3v1h-3zM20 5h1v1h-1zM22 5h3v1h-3zM26 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM11 6h1v1h-1zM13 6h1v1h-1zM15 6h4v1h-4zM20 6h1v1h-1zM22 6h3v1h-3zM26 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM13 7h1v1h-1zM15 7h2v1h-2zM18 7h1v1h-1zM20 7h1v1h-1zM26 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h7v1h-7zM10 9h3v1h-3zM17 9h2v1h-2zM2 10h1v1h-1zM4 10h2v1h-2zM7 10h3v1h-3zM11 10h1v1h-1zM14 10h1v1h-1zM17 10h2v1h-2zM20 10h1v1h-1zM23 10h1v1h-1zM25 10h2v1h-2zM2 11h2v1h-2zM6 11h1v1h-1zM10 11h1v1h-1zM12 11h1v1h-1zM15 11h1v1h-1zM19 11h1v1h-1zM21 11h1v1h-1zM25 11h1v1h-1zM3 12h3v1h-3zM7 12h2v1h-2zM10 12h1v1h-1zM12 12h4v1h-4zM18 12h1v1h-1zM21 12h1v1h-1zM3 13h1v1h-1zM10 13h3v1h-3zM14 13h3v1h-3zM19 13h1v1h-1zM21 13h1v1h-1zM23 13h2v1h-2zM2 14h7v1h-7zM12 14h9v1h-9zM22 14h1v1h-1zM24 14h3v1h-3zM3 15h3v1h-3zM11 15h4v1h-4zM16 15h2v1h-2zM20 15h3v1h-3zM26 15h1v1h-1zM3 16h1v1h-1zM5 16h1v1h-1zM8 16h1v1h-1zM10 16h1v1h-1zM13 16h1v1h-1zM16 16h1v1h-1zM22 16h1v1h-1zM24 16h2v1h-2zM2 17h1v1h-1zM4 17h3v1h-3zM11 17h1v1h-1zM13 17h1v1h-1zM21 17h2v1h-2zM26 17h1v1h-1zM4 18h2v1h-2zM7 18h4v1h-4zM12 18h1v1h-1zM14 18h3v1h-3zM18 18h9v1h-9zM10 19h1v1h-1zM12 19h1v1h-1zM15 19h4v1h-4zM22 19h1v1h-1zM24 19h1v1h-1zM26 19h1v1h-1zM2 20h7v1h-7zM10 20h2v1h-2zM16 20h1v1h-1zM18 20h1v1h-1zM20 20h1v1h-1zM22 20h1v1h-1zM24 20h3v1h-3zM2 21h1v1h-1zM8 21h1v1h-1zM10 21h1v1h-1zM13 21h1v1h-1zM18 21h1v1h-1zM22 21h1v1h-1zM25 21h2v1h-2zM2 22h1v1h-1zM4 22h3v1h-3zM8 22h1v1h-1zM15 22h1v1h-1zM18 22h6v1h-6zM25 22h1v1h-1zM2 23h1v1h-1zM4 23h3v1h-3zM8 23h1v1h-1zM10 23h2v1h-2zM19 23h2v1h-2zM22 23h5v1h-5zM2 24h1v1h-1zM4 24h3v1h-3zM8 24h1v1h-1zM10 24h1v1h-1zM12 24h1v1h-1zM16 24h2v1h-2zM20 24h1v1h-1zM22 24h1v1h-1zM24 24h2v1h-2zM2 25h1v1h-1zM8 25h1v1h-1zM11 25h5v1h-5zM19 25h1v1h-1zM22 25h1v1h-1zM24 25h1v1h-1zM2 26h7v1h-7zM10 26h1v1h-1zM12 26h3v1h-3zM21 26h6v1h-6z"
+   },
+   "img": "media/img/step_f5.webp",
+   "clip": "media/clips/f5.mp4",
+   "dur": 14.1,
+   "terms": [
+    "light-trap"
+   ],
+   "model": {
+    "in": [
+     "body",
+     "back",
+     "roller",
+     "spool",
+     "knob",
+     "front",
+     "blade",
+     "wheel",
+     "lens"
+    ],
+    "new": [],
+    "pose": {},
+    "az": 205,
+    "el": 24
+   }
+  },
+  {
+   "id": "f6",
+   "sec": "FILM IN",
+   "n": 6,
+   "title": "Wind the film out",
+   "do": "Turn the big red knob the way the picture shows until it stops: about 25 turns for a film of 24 pictures, about 33 for 36. Then leave it alone.",
+   "check": "While you turn, the arrow on the blue dial goes round and round: the film is moving.",
+   "mistake": "If the arrow does not move.",
+   "fix": "Open the back in the shade and tuck the film in again. When the knob stops, stop: never force it.",
+   "why": "The knob's teeth lean one way: your fingers catch when you turn it the right way and slip the other way. You have wound the whole film out of its shell. Every picture you take will be wound back into the shell, where light cannot reach it.",
+   "narration": "Turn the big red knob the way the picture shows until it stops: about 25 turns for a film of 24 pictures, about 33 for 36. While you turn, the arrow on the blue dial goes round and round: the film is moving. If the arrow does not move, open the back in the shade and tuck the film in again. When the knob stops, stop. Every picture you take will be wound back into the shell, where light cannot reach it.",
+   "parts": [],
+   "lesson": "l06",
+   "short": "f6",
+   "url": "https://curve35.com/f6",
+   "qr": {
+    "n": 29,
+    "d": "M2 2h7v1h-7zM12 2h1v1h-1zM15 2h3v1h-3zM20 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM10 3h1v1h-1zM13 3h1v1h-1zM16 3h3v1h-3zM20 3h1v1h-1zM26 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM11 4h2v1h-2zM14 4h1v1h-1zM17 4h2v1h-2zM20 4h1v1h-1zM22 4h3v1h-3zM26 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM13 5h1v1h-1zM16 5h2v1h-2zM20 5h1v1h-1zM22 5h3v1h-3zM26 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM10 6h2v1h-2zM15 6h3v1h-3zM20 6h1v1h-1zM22 6h3v1h-3zM26 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM11 7h2v1h-2zM15 7h3v1h-3zM20 7h1v1h-1zM26 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h7v1h-7zM11 9h1v1h-1zM13 9h1v1h-1zM15 9h2v1h-2zM18 9h1v1h-1zM2 10h1v1h-1zM4 10h1v1h-1zM6 10h1v1h-1zM8 10h1v1h-1zM11 10h1v1h-1zM14 10h5v1h-5zM22 10h1v1h-1zM25 10h1v1h-1zM2 11h1v1h-1zM4 11h3v1h-3zM10 11h2v1h-2zM13 11h1v1h-1zM20 11h1v1h-1zM26 11h1v1h-1zM2 12h1v1h-1zM4 12h1v1h-1zM6 12h1v1h-1zM8 12h2v1h-2zM11 12h1v1h-1zM13 12h3v1h-3zM19 12h3v1h-3zM24 12h3v1h-3zM5 13h2v1h-2zM15 13h4v1h-4zM21 13h1v1h-1zM25 13h1v1h-1zM2 14h1v1h-1zM6 14h4v1h-4zM11 14h2v1h-2zM14 14h2v1h-2zM19 14h2v1h-2zM23 14h1v1h-1zM25 14h2v1h-2zM6 15h1v1h-1zM12 15h4v1h-4zM20 15h1v1h-1zM23 15h1v1h-1zM26 15h1v1h-1zM2 16h1v1h-1zM7 16h2v1h-2zM12 16h4v1h-4zM20 16h2v1h-2zM24 16h3v1h-3zM3 17h2v1h-2zM6 17h2v1h-2zM10 17h1v1h-1zM14 17h2v1h-2zM19 17h2v1h-2zM22 17h1v1h-1zM25 17h1v1h-1zM2 18h1v1h-1zM5 18h2v1h-2zM8 18h2v1h-2zM12 18h2v1h-2zM15 18h2v1h-2zM18 18h6v1h-6zM10 19h1v1h-1zM13 19h1v1h-1zM15 19h2v1h-2zM18 19h1v1h-1zM22 19h2v1h-2zM25 19h2v1h-2zM2 20h7v1h-7zM11 20h2v1h-2zM15 20h1v1h-1zM17 20h2v1h-2zM20 20h1v1h-1zM22 20h2v1h-2zM25 20h2v1h-2zM2 21h1v1h-1zM8 21h1v1h-1zM11 21h1v1h-1zM13 21h1v1h-1zM15 21h1v1h-1zM17 21h2v1h-2zM22 21h2v1h-2zM25 21h2v1h-2zM2 22h1v1h-1zM4 22h3v1h-3zM8 22h1v1h-1zM10 22h1v1h-1zM12 22h1v1h-1zM14 22h1v1h-1zM16 22h1v1h-1zM18 22h6v1h-6zM25 22h2v1h-2zM2 23h1v1h-1zM4 23h3v1h-3zM8 23h1v1h-1zM11 23h1v1h-1zM13 23h3v1h-3zM21 23h4v1h-4zM2 24h1v1h-1zM4 24h3v1h-3zM8 24h1v1h-1zM10 24h2v1h-2zM13 24h2v1h-2zM16 24h4v1h-4zM22 24h1v1h-1zM26 24h1v1h-1zM2 25h1v1h-1zM8 25h1v1h-1zM12 25h1v1h-1zM14 25h2v1h-2zM17 25h2v1h-2zM22 25h2v1h-2zM25 25h1v1h-1zM2 26h7v1h-7zM10 26h1v1h-1zM12 26h3v1h-3zM16 26h3v1h-3zM21 26h1v1h-1zM25 26h2v1h-2z"
+   },
+   "img": "media/img/step_f6.webp",
+   "clip": "media/clips/f6.mp4",
+   "dur": 30.8,
+   "terms": [
+    "winding-on"
+   ],
+   "model": {
+    "in": [
+     "body",
+     "back",
+     "roller",
+     "spool",
+     "knob",
+     "front",
+     "blade",
+     "wheel",
+     "lens"
+    ],
+    "new": [],
+    "pose": {},
+    "az": 205,
+    "el": 24
+   }
+  },
+  {
+   "id": "p1",
+   "sec": "PHOTOS",
+   "n": 1,
+   "title": "Pick a dot",
+   "do": "Slide the handle on the front to a dot. The chart shows which one, for your film and the light.",
+   "check": "It clicks at each dot.",
+   "mistake": null,
+   "fix": null,
+   "why": "The dot shows the size of the hole behind it. Each dot lets in about twice the light of the one before. When even the largest is too small for a snap, take a time picture.",
+   "narration": "Taking a picture, step one. Slide the handle on the front to a dot. The chart shows which one, for your film and the light. It clicks at each dot. The dot shows the size of the hole behind it, and each dot lets in about twice the light of the one before. When even the largest dot is too small for a snap, take a time picture instead.",
+   "parts": [],
+   "lesson": "l04",
+   "short": "p1",
+   "url": "https://curve35.com/p1",
+   "qr": {
+    "n": 29,
+    "d": "M2 2h7v1h-7zM10 2h1v1h-1zM16 2h1v1h-1zM20 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM11 3h3v1h-3zM15 3h2v1h-2zM18 3h1v1h-1zM20 3h1v1h-1zM26 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM10 4h3v1h-3zM15 4h1v1h-1zM18 4h1v1h-1zM20 4h1v1h-1zM22 4h3v1h-3zM26 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM12 5h1v1h-1zM15 5h2v1h-2zM20 5h1v1h-1zM22 5h3v1h-3zM26 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM12 6h1v1h-1zM16 6h1v1h-1zM20 6h1v1h-1zM22 6h3v1h-3zM26 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM10 7h1v1h-1zM12 7h1v1h-1zM14 7h1v1h-1zM16 7h1v1h-1zM20 7h1v1h-1zM26 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h7v1h-7zM13 9h1v1h-1zM16 9h3v1h-3zM2 10h1v1h-1zM4 10h1v1h-1zM8 10h2v1h-2zM11 10h4v1h-4zM16 10h1v1h-1zM18 10h1v1h-1zM21 10h1v1h-1zM24 10h1v1h-1zM26 10h1v1h-1zM2 11h1v1h-1zM10 11h2v1h-2zM13 11h3v1h-3zM17 11h1v1h-1zM19 11h3v1h-3zM23 11h1v1h-1zM25 11h2v1h-2zM3 12h1v1h-1zM6 12h4v1h-4zM12 12h3v1h-3zM17 12h1v1h-1zM20 12h1v1h-1zM23 12h2v1h-2zM26 12h1v1h-1zM2 13h3v1h-3zM6 13h1v1h-1zM9 13h2v1h-2zM12 13h1v1h-1zM16 13h1v1h-1zM18 13h2v1h-2zM23 13h1v1h-1zM2 14h2v1h-2zM5 14h1v1h-1zM7 14h3v1h-3zM13 14h2v1h-2zM17 14h1v1h-1zM20 14h2v1h-2zM26 14h1v1h-1zM3 15h3v1h-3zM9 15h3v1h-3zM14 15h1v1h-1zM16 15h2v1h-2zM19 15h3v1h-3zM25 15h2v1h-2zM2 16h3v1h-3zM7 16h3v1h-3zM11 16h1v1h-1zM14 16h4v1h-4zM19 16h2v1h-2zM23 16h2v1h-2zM26 16h1v1h-1zM4 17h2v1h-2zM9 17h1v1h-1zM12 17h3v1h-3zM17 17h1v1h-1zM20 17h4v1h-4zM2 18h8v1h-8zM12 18h1v1h-1zM16 18h7v1h-7zM25 18h1v1h-1zM10 19h1v1h-1zM12 19h1v1h-1zM16 19h3v1h-3zM22 19h1v1h-1zM26 19h1v1h-1zM2 20h7v1h-7zM10 20h2v1h-2zM13 20h1v1h-1zM15 20h2v1h-2zM18 20h1v1h-1zM20 20h1v1h-1zM22 20h1v1h-1zM26 20h1v1h-1zM2 21h1v1h-1zM8 21h1v1h-1zM12 21h1v1h-1zM16 21h1v1h-1zM18 21h1v1h-1zM22 21h1v1h-1zM26 21h1v1h-1zM2 22h1v1h-1zM4 22h3v1h-3zM8 22h1v1h-1zM11 22h1v1h-1zM13 22h10v1h-10zM26 22h1v1h-1zM2 23h1v1h-1zM4 23h3v1h-3zM8 23h1v1h-1zM12 23h1v1h-1zM14 23h1v1h-1zM17 23h1v1h-1zM19 23h1v1h-1zM22 23h1v1h-1zM24 23h2v1h-2zM2 24h1v1h-1zM4 24h3v1h-3zM8 24h1v1h-1zM10 24h1v1h-1zM14 24h3v1h-3zM18 24h1v1h-1zM21 24h3v1h-3zM25 24h2v1h-2zM2 25h1v1h-1zM8 25h1v1h-1zM12 25h3v1h-3zM18 25h2v1h-2zM21 25h2v1h-2zM2 26h7v1h-7zM10 26h2v1h-2zM14 26h3v1h-3zM18 26h2v1h-2zM23 26h1v1h-1zM26 26h1v1h-1z"
+   },
+   "img": "media/img/step_p1.webp",
+   "clip": "media/clips/p1.mp4",
+   "dur": 19.41,
+   "terms": [
+    "aperture",
+    "exposure"
+   ],
+   "model": {
+    "in": [
+     "body",
+     "back",
+     "roller",
+     "spool",
+     "knob",
+     "front",
+     "blade",
+     "wheel",
+     "lens"
+    ],
+    "new": [],
+    "pose": {},
+    "az": -35,
+    "el": 22
+   }
+  },
+  {
+   "id": "p2",
+   "sec": "PHOTOS",
+   "n": 2,
+   "title": "Aim",
+   "do": "Aim along the middle line on top: from the edge of the pad at the back to the point at the front. The picture fits between the two outer lines.",
+   "check": "Stand at least two big steps away from what you are photographing.",
+   "mistake": null,
+   "fix": null,
+   "why": "Nearer than that and the picture is not sharp: the focus is fixed.",
+   "narration": "Step two: aim. Look along the middle line on top, from the edge of the pad at the back to the point at the front. The picture fits between the two outer lines. Stand at least two big steps away from what you are photographing. Nearer than that and the picture is not sharp, because the focus is fixed. Put what matters in the middle: it is sharpest there.",
+   "parts": [],
+   "lesson": "l08",
+   "short": "p2",
+   "url": "https://curve35.com/p2",
+   "qr": {
+    "n": 29,
+    "d": "M2 2h7v1h-7zM10 2h3v1h-3zM14 2h1v1h-1zM16 2h1v1h-1zM20 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM13 3h1v1h-1zM15 3h2v1h-2zM18 3h1v1h-1zM20 3h1v1h-1zM26 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM10 4h2v1h-2zM13 4h1v1h-1zM15 4h1v1h-1zM18 4h1v1h-1zM20 4h1v1h-1zM22 4h3v1h-3zM26 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM11 5h2v1h-2zM14 5h3v1h-3zM20 5h1v1h-1zM22 5h3v1h-3zM26 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM20 6h1v1h-1zM22 6h3v1h-3zM26 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM10 7h1v1h-1zM12 7h1v1h-1zM14 7h1v1h-1zM16 7h1v1h-1zM20 7h1v1h-1zM26 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h7v1h-7zM11 9h2v1h-2zM16 9h3v1h-3zM2 10h1v1h-1zM4 10h1v1h-1zM8 10h2v1h-2zM11 10h3v1h-3zM16 10h1v1h-1zM18 10h1v1h-1zM21 10h1v1h-1zM24 10h1v1h-1zM26 10h1v1h-1zM4 11h2v1h-2zM7 11h1v1h-1zM9 11h2v1h-2zM12 11h2v1h-2zM15 11h1v1h-1zM17 11h1v1h-1zM19 11h3v1h-3zM23 11h1v1h-1zM25 11h2v1h-2zM5 12h4v1h-4zM10 12h3v1h-3zM17 12h1v1h-1zM20 12h1v1h-1zM23 12h2v1h-2zM26 12h1v1h-1zM2 13h1v1h-1zM4 13h1v1h-1zM6 13h2v1h-2zM9 13h1v1h-1zM12 13h3v1h-3zM16 13h1v1h-1zM18 13h2v1h-2zM23 13h1v1h-1zM2 14h1v1h-1zM5 14h4v1h-4zM10 14h1v1h-1zM12 14h1v1h-1zM14 14h1v1h-1zM17 14h1v1h-1zM20 14h2v1h-2zM26 14h1v1h-1zM3 15h4v1h-4zM11 15h1v1h-1zM14 15h1v1h-1zM16 15h2v1h-2zM19 15h3v1h-3zM25 15h2v1h-2zM2 16h2v1h-2zM5 16h1v1h-1zM8 16h1v1h-1zM11 16h2v1h-2zM14 16h4v1h-4zM19 16h2v1h-2zM23 16h2v1h-2zM26 16h1v1h-1zM4 17h1v1h-1zM10 17h5v1h-5zM17 17h1v1h-1zM20 17h4v1h-4zM2 18h2v1h-2zM5 18h6v1h-6zM16 18h7v1h-7zM25 18h1v1h-1zM10 19h3v1h-3zM16 19h3v1h-3zM22 19h1v1h-1zM26 19h1v1h-1zM2 20h7v1h-7zM10 20h1v1h-1zM13 20h1v1h-1zM16 20h1v1h-1zM18 20h1v1h-1zM20 20h1v1h-1zM22 20h1v1h-1zM26 20h1v1h-1zM2 21h1v1h-1zM8 21h1v1h-1zM12 21h1v1h-1zM18 21h1v1h-1zM22 21h1v1h-1zM26 21h1v1h-1zM2 22h1v1h-1zM4 22h3v1h-3zM8 22h1v1h-1zM11 22h12v1h-12zM26 22h1v1h-1zM2 23h1v1h-1zM4 23h3v1h-3zM8 23h1v1h-1zM12 23h1v1h-1zM14 23h1v1h-1zM17 23h1v1h-1zM19 23h1v1h-1zM22 23h1v1h-1zM24 23h2v1h-2zM2 24h1v1h-1zM4 24h3v1h-3zM8 24h1v1h-1zM10 24h2v1h-2zM14 24h3v1h-3zM18 24h1v1h-1zM21 24h3v1h-3zM25 24h2v1h-2zM2 25h1v1h-1zM8 25h1v1h-1zM13 25h2v1h-2zM18 25h2v1h-2zM21 25h2v1h-2zM2 26h7v1h-7zM10 26h1v1h-1zM12 26h1v1h-1zM14 26h3v1h-3zM18 26h2v1h-2zM23 26h1v1h-1zM26 26h1v1h-1z"
+   },
+   "img": "media/img/step_p2.webp",
+   "clip": "media/clips/p2.mp4",
+   "dur": 17.81,
+   "terms": [
+    "focus",
+    "sights"
+   ],
+   "model": {
+    "in": [
+     "body",
+     "back",
+     "roller",
+     "spool",
+     "knob",
+     "front",
+     "blade",
+     "wheel",
+     "lens"
+    ],
+    "new": [],
+    "pose": {},
+    "az": -35,
+    "el": 22
+   }
+  },
+  {
+   "id": "p3",
+   "sec": "PHOTOS",
+   "n": 3,
+   "title": "Press the rocker",
+   "do": "Hold still. Press the raised side of the rocker flat, in one quick press.",
+   "check": "One click. Now the other side is up: that is the side to press next time.",
+   "mistake": "If the rocker stops level.",
+   "fix": "The shutter is open: press it on down. (That picture will be too bright.)",
+   "why": "A window in the shutter passes the hole as it swings. A quick press lets light in for about one three-hundredth of a second. A slow press lets in more.",
+   "narration": "Step three. Hold still. Press the raised side of the rocker flat, in one quick press. One click. Now the other side is up: that is the side to press next time. If the rocker stops level, the shutter is open, so press it on down. A window in the shutter passes the hole as it swings: a quick press lets light in for about a three-hundredth of a second.",
+   "parts": [],
+   "lesson": "l05",
+   "short": "p3",
+   "url": "https://curve35.com/p3",
+   "qr": {
+    "n": 29,
+    "d": "M2 2h7v1h-7zM10 2h1v1h-1zM12 2h1v1h-1zM14 2h1v1h-1zM16 2h1v1h-1zM20 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM10 3h1v1h-1zM14 3h1v1h-1zM18 3h1v1h-1zM20 3h1v1h-1zM26 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM10 4h1v1h-1zM12 4h5v1h-5zM18 4h1v1h-1zM20 4h1v1h-1zM22 4h3v1h-3zM26 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM13 5h1v1h-1zM15 5h1v1h-1zM18 5h1v1h-1zM20 5h1v1h-1zM22 5h3v1h-3zM26 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM10 6h3v1h-3zM14 6h3v1h-3zM18 6h1v1h-1zM20 6h1v1h-1zM22 6h3v1h-3zM26 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM11 7h2v1h-2zM16 7h1v1h-1zM18 7h1v1h-1zM20 7h1v1h-1zM26 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h7v1h-7zM13 9h1v1h-1zM15 9h1v1h-1zM17 9h2v1h-2zM2 10h1v1h-1zM5 10h7v1h-7zM13 10h1v1h-1zM18 10h2v1h-2zM22 10h1v1h-1zM24 10h3v1h-3zM2 11h2v1h-2zM5 11h2v1h-2zM9 11h1v1h-1zM11 11h1v1h-1zM13 11h7v1h-7zM21 11h5v1h-5zM4 12h1v1h-1zM7 12h2v1h-2zM10 12h2v1h-2zM15 12h1v1h-1zM17 12h2v1h-2zM20 12h2v1h-2zM23 12h1v1h-1zM26 12h1v1h-1zM2 13h1v1h-1zM5 13h2v1h-2zM9 13h2v1h-2zM12 13h2v1h-2zM16 13h1v1h-1zM20 13h1v1h-1zM23 13h4v1h-4zM2 14h4v1h-4zM8 14h1v1h-1zM11 14h1v1h-1zM13 14h2v1h-2zM17 14h1v1h-1zM20 14h2v1h-2zM26 14h1v1h-1zM2 15h1v1h-1zM5 15h2v1h-2zM9 15h1v1h-1zM12 15h1v1h-1zM15 15h1v1h-1zM17 15h1v1h-1zM19 15h1v1h-1zM22 15h1v1h-1zM25 15h1v1h-1zM2 16h2v1h-2zM5 16h1v1h-1zM8 16h1v1h-1zM10 16h2v1h-2zM13 16h3v1h-3zM17 16h1v1h-1zM20 16h1v1h-1zM22 16h5v1h-5zM2 17h1v1h-1zM5 17h2v1h-2zM9 17h1v1h-1zM13 17h1v1h-1zM16 17h3v1h-3zM21 17h1v1h-1zM23 17h2v1h-2zM26 17h1v1h-1zM2 18h1v1h-1zM5 18h1v1h-1zM7 18h2v1h-2zM10 18h2v1h-2zM15 18h8v1h-8zM24 18h2v1h-2zM10 19h1v1h-1zM12 19h3v1h-3zM16 19h3v1h-3zM22 19h1v1h-1zM24 19h2v1h-2zM2 20h7v1h-7zM10 20h1v1h-1zM13 20h1v1h-1zM16 20h1v1h-1zM18 20h1v1h-1zM20 20h1v1h-1zM22 20h1v1h-1zM26 20h1v1h-1zM2 21h1v1h-1zM8 21h1v1h-1zM10 21h1v1h-1zM14 21h2v1h-2zM18 21h1v1h-1zM22 21h1v1h-1zM2 22h1v1h-1zM4 22h3v1h-3zM8 22h1v1h-1zM10 22h1v1h-1zM14 22h2v1h-2zM17 22h6v1h-6zM25 22h2v1h-2zM2 23h1v1h-1zM4 23h3v1h-3zM8 23h1v1h-1zM10 23h3v1h-3zM16 23h5v1h-5zM25 23h2v1h-2zM2 24h1v1h-1zM4 24h3v1h-3zM8 24h1v1h-1zM14 24h1v1h-1zM16 24h1v1h-1zM22 24h5v1h-5zM2 25h1v1h-1zM8 25h1v1h-1zM12 25h1v1h-1zM20 25h3v1h-3zM24 25h3v1h-3zM2 26h7v1h-7zM10 26h2v1h-2zM14 26h3v1h-3zM18 26h2v1h-2zM23 26h1v1h-1zM26 26h1v1h-1z"
+   },
+   "img": "media/img/step_p3.webp",
+   "clip": "media/clips/p3.mp4",
+   "dur": 20.01,
+   "terms": [
+    "shutter",
+    "exposure"
+   ],
+   "model": {
+    "in": [
+     "body",
+     "back",
+     "roller",
+     "spool",
+     "knob",
+     "front",
+     "blade",
+     "wheel",
+     "lens"
+    ],
+    "new": [],
+    "pose": {},
+    "az": -35,
+    "el": 22
+   }
+  },
+  {
+   "id": "p4",
+   "sec": "PHOTOS",
+   "n": 4,
+   "title": "Wind on",
+   "do": "Turn the small green knob the way the picture shows until the arrow on the blue dial has gone once round. Keep your other hand off the big red knob.",
+   "check": "The arrow points at its mark on the body again.",
+   "mistake": "If the knob is stiff.",
+   "fix": "Stop and take your hand off the big red knob. Never force it.",
+   "why": "One turn of the dial is one picture's length of film, wound back into the shell.",
+   "narration": "Step four: wind on. Turn the small green knob the way the picture shows until the arrow on the blue dial has gone once round. Keep your other hand off the big red knob. The arrow points at its mark on the body again. If the knob is stiff, stop and take your hand off the red knob: never force it. One turn of the dial is one picture's length of film.",
+   "parts": [],
+   "lesson": "l06",
+   "short": "p4",
+   "url": "https://curve35.com/p4",
+   "qr": {
+    "n": 29,
+    "d": "M2 2h7v1h-7zM10 2h1v1h-1zM12 2h3v1h-3zM16 2h1v1h-1zM20 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM10 3h1v1h-1zM14 3h1v1h-1zM18 3h1v1h-1zM20 3h1v1h-1zM26 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM10 4h1v1h-1zM12 4h1v1h-1zM14 4h3v1h-3zM18 4h1v1h-1zM20 4h1v1h-1zM22 4h3v1h-3zM26 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM15 5h1v1h-1zM18 5h1v1h-1zM20 5h1v1h-1zM22 5h3v1h-3zM26 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM10 6h1v1h-1zM13 6h4v1h-4zM18 6h1v1h-1zM20 6h1v1h-1zM22 6h3v1h-3zM26 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM11 7h1v1h-1zM16 7h1v1h-1zM18 7h1v1h-1zM20 7h1v1h-1zM26 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h7v1h-7zM11 9h1v1h-1zM15 9h1v1h-1zM17 9h2v1h-2zM2 10h1v1h-1zM5 10h6v1h-6zM12 10h1v1h-1zM14 10h1v1h-1zM18 10h2v1h-2zM22 10h1v1h-1zM24 10h3v1h-3zM6 11h1v1h-1zM15 11h5v1h-5zM21 11h5v1h-5zM2 12h7v1h-7zM10 12h3v1h-3zM15 12h1v1h-1zM17 12h2v1h-2zM20 12h2v1h-2zM23 12h1v1h-1zM26 12h1v1h-1zM3 13h1v1h-1zM12 13h3v1h-3zM16 13h1v1h-1zM20 13h1v1h-1zM23 13h4v1h-4zM2 14h2v1h-2zM6 14h1v1h-1zM8 14h3v1h-3zM13 14h2v1h-2zM17 14h1v1h-1zM20 14h2v1h-2zM26 14h1v1h-1zM2 15h2v1h-2zM12 15h1v1h-1zM15 15h1v1h-1zM17 15h1v1h-1zM19 15h1v1h-1zM22 15h1v1h-1zM25 15h1v1h-1zM2 16h2v1h-2zM5 16h1v1h-1zM7 16h3v1h-3zM11 16h5v1h-5zM17 16h1v1h-1zM20 16h1v1h-1zM22 16h5v1h-5zM2 17h1v1h-1zM4 17h1v1h-1zM7 17h1v1h-1zM10 17h1v1h-1zM12 17h2v1h-2zM16 17h3v1h-3zM21 17h1v1h-1zM23 17h2v1h-2zM26 17h1v1h-1zM2 18h1v1h-1zM4 18h1v1h-1zM8 18h3v1h-3zM12 18h1v1h-1zM15 18h8v1h-8zM24 18h2v1h-2zM10 19h2v1h-2zM13 19h2v1h-2zM16 19h3v1h-3zM22 19h1v1h-1zM24 19h2v1h-2zM2 20h7v1h-7zM10 20h1v1h-1zM12 20h2v1h-2zM15 20h1v1h-1zM18 20h1v1h-1zM20 20h1v1h-1zM22 20h1v1h-1zM26 20h1v1h-1zM2 21h1v1h-1zM8 21h1v1h-1zM10 21h1v1h-1zM14 21h3v1h-3zM18 21h1v1h-1zM22 21h1v1h-1zM2 22h1v1h-1zM4 22h3v1h-3zM8 22h1v1h-1zM10 22h2v1h-2zM14 22h2v1h-2zM17 22h6v1h-6zM25 22h2v1h-2zM2 23h1v1h-1zM4 23h3v1h-3zM8 23h1v1h-1zM10 23h1v1h-1zM12 23h1v1h-1zM16 23h5v1h-5zM25 23h2v1h-2zM2 24h1v1h-1zM4 24h3v1h-3zM8 24h1v1h-1zM14 24h1v1h-1zM16 24h1v1h-1zM22 24h5v1h-5zM2 25h1v1h-1zM8 25h1v1h-1zM11 25h2v1h-2zM20 25h3v1h-3zM24 25h3v1h-3zM2 26h7v1h-7zM10 26h2v1h-2zM14 26h3v1h-3zM18 26h2v1h-2zM23 26h1v1h-1zM26 26h1v1h-1z"
+   },
+   "img": "media/img/step_p4.webp",
+   "clip": "media/clips/p4.mp4",
+   "dur": 17.71,
+   "terms": [
+    "frame-wheel",
+    "winding-on"
+   ],
+   "model": {
+    "in": [
+     "body",
+     "back",
+     "roller",
+     "spool",
+     "knob",
+     "front",
+     "blade",
+     "wheel",
+     "lens"
+    ],
+    "new": [],
+    "pose": {},
+    "az": -35,
+    "el": 22
+   }
+  },
+  {
+   "id": "o1",
+   "sec": "FILM OUT",
+   "n": 1,
+   "title": "Wind it all back",
+   "do": "After the last picture, keep turning the small green knob until the arrow on the dial stops moving. Then three more turns.",
+   "check": "The arrow no longer moves: all the film is back in its shell.",
+   "mistake": null,
+   "fix": null,
+   "why": null,
+   "narration": "The film is finished. After the last picture, keep turning the small green knob until the arrow on the dial stops moving. Then give it three more turns. The arrow no longer moves: all the film is back in its shell, in the dark. Only now is it safe to open the back. If the arrow is still moving, keep winding; never open the back before it stops.",
+   "parts": [],
+   "lesson": "l06",
+   "short": "o1",
+   "url": "https://curve35.com/o1",
+   "qr": {
+    "n": 29,
+    "d": "M2 2h7v1h-7zM10 2h1v1h-1zM14 2h1v1h-1zM16 2h1v1h-1zM20 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM12 3h2v1h-2zM15 3h2v1h-2zM18 3h1v1h-1zM20 3h1v1h-1zM26 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM10 4h1v1h-1zM13 4h3v1h-3zM18 4h1v1h-1zM20 4h1v1h-1zM22 4h3v1h-3zM26 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM12 5h5v1h-5zM20 5h1v1h-1zM22 5h3v1h-3zM26 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM11 6h1v1h-1zM13 6h2v1h-2zM16 6h1v1h-1zM20 6h1v1h-1zM22 6h3v1h-3zM26 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM10 7h5v1h-5zM16 7h1v1h-1zM20 7h1v1h-1zM26 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h7v1h-7zM16 9h3v1h-3zM2 10h1v1h-1zM4 10h1v1h-1zM8 10h2v1h-2zM11 10h2v1h-2zM14 10h1v1h-1zM16 10h1v1h-1zM18 10h1v1h-1zM21 10h1v1h-1zM24 10h1v1h-1zM26 10h1v1h-1zM3 11h2v1h-2zM10 11h2v1h-2zM15 11h1v1h-1zM17 11h1v1h-1zM19 11h3v1h-3zM23 11h1v1h-1zM25 11h2v1h-2zM3 12h1v1h-1zM6 12h1v1h-1zM8 12h2v1h-2zM11 12h1v1h-1zM13 12h2v1h-2zM17 12h1v1h-1zM20 12h1v1h-1zM23 12h2v1h-2zM26 12h1v1h-1zM2 13h2v1h-2zM5 13h2v1h-2zM9 13h2v1h-2zM14 13h1v1h-1zM16 13h1v1h-1zM18 13h2v1h-2zM23 13h1v1h-1zM2 14h1v1h-1zM4 14h2v1h-2zM8 14h1v1h-1zM10 14h2v1h-2zM14 14h1v1h-1zM17 14h1v1h-1zM20 14h2v1h-2zM26 14h1v1h-1zM6 15h2v1h-2zM9 15h1v1h-1zM12 15h1v1h-1zM14 15h2v1h-2zM17 15h1v1h-1zM19 15h3v1h-3zM25 15h2v1h-2zM2 16h3v1h-3zM7 16h2v1h-2zM10 16h3v1h-3zM14 16h1v1h-1zM17 16h1v1h-1zM19 16h2v1h-2zM23 16h2v1h-2zM26 16h1v1h-1zM4 17h2v1h-2zM10 17h1v1h-1zM13 17h2v1h-2zM16 17h2v1h-2zM20 17h4v1h-4zM2 18h2v1h-2zM6 18h3v1h-3zM12 18h1v1h-1zM16 18h7v1h-7zM25 18h1v1h-1zM10 19h2v1h-2zM16 19h3v1h-3zM22 19h1v1h-1zM26 19h1v1h-1zM2 20h7v1h-7zM10 20h1v1h-1zM13 20h1v1h-1zM15 20h2v1h-2zM18 20h1v1h-1zM20 20h1v1h-1zM22 20h1v1h-1zM26 20h1v1h-1zM2 21h1v1h-1zM8 21h1v1h-1zM16 21h1v1h-1zM18 21h1v1h-1zM22 21h1v1h-1zM26 21h1v1h-1zM2 22h1v1h-1zM4 22h3v1h-3zM8 22h1v1h-1zM11 22h12v1h-12zM26 22h1v1h-1zM2 23h1v1h-1zM4 23h3v1h-3zM8 23h1v1h-1zM11 23h2v1h-2zM14 23h1v1h-1zM17 23h1v1h-1zM19 23h1v1h-1zM22 23h1v1h-1zM24 23h2v1h-2zM2 24h1v1h-1zM4 24h3v1h-3zM8 24h1v1h-1zM10 24h2v1h-2zM14 24h3v1h-3zM18 24h1v1h-1zM21 24h3v1h-3zM25 24h2v1h-2zM2 25h1v1h-1zM8 25h1v1h-1zM11 25h4v1h-4zM18 25h2v1h-2zM21 25h2v1h-2zM2 26h7v1h-7zM10 26h1v1h-1zM14 26h3v1h-3zM18 26h2v1h-2zM23 26h1v1h-1zM26 26h1v1h-1z"
+   },
+   "img": "media/img/step_o1.webp",
+   "clip": "media/clips/o1.mp4",
+   "dur": 13.12,
+   "terms": [
+    "film-shell",
+    "winding-on"
+   ],
+   "model": {
+    "in": [
+     "body",
+     "back",
+     "roller",
+     "spool",
+     "knob",
+     "front",
+     "blade",
+     "wheel",
+     "lens"
+    ],
+    "new": [],
+    "pose": {},
+    "az": 205,
+    "el": 24
+   }
+  },
+  {
+   "id": "o2",
+   "sec": "FILM OUT",
+   "n": 2,
+   "title": "Take the film out",
+   "do": "Open the back. Slide the film out with its knob and pull the knob off. Send it off with your developing card, or take it to any photo lab.",
+   "check": "The film's tip is inside the shell, or just peeping out.",
+   "mistake": null,
+   "fix": null,
+   "why": "Any lab that develops 35 mm film can do it.",
+   "narration": "Open the back. Slide the film out with its knob and pull the knob off. The film's tip is inside the shell, or just peeping out. Send the film off with your developing card, or take it to any photo lab: any lab that develops 35 millimetre film can do it. Ask for scans, and keep the negatives. They are the originals.",
+   "parts": [],
+   "lesson": "l03",
+   "short": "o2",
+   "url": "https://curve35.com/o2",
+   "qr": {
+    "n": 29,
+    "d": "M2 2h7v1h-7zM10 2h3v1h-3zM16 2h1v1h-1zM20 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM10 3h1v1h-1zM13 3h2v1h-2zM18 3h1v1h-1zM20 3h1v1h-1zM26 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM10 4h1v1h-1zM12 4h5v1h-5zM18 4h1v1h-1zM20 4h1v1h-1zM22 4h3v1h-3zM26 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM11 5h1v1h-1zM13 5h3v1h-3zM18 5h1v1h-1zM20 5h1v1h-1zM22 5h3v1h-3zM26 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM10 6h2v1h-2zM13 6h1v1h-1zM15 6h2v1h-2zM18 6h1v1h-1zM20 6h1v1h-1zM22 6h3v1h-3zM26 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM11 7h1v1h-1zM16 7h1v1h-1zM18 7h1v1h-1zM20 7h1v1h-1zM26 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h7v1h-7zM11 9h5v1h-5zM17 9h2v1h-2zM2 10h1v1h-1zM5 10h9v1h-9zM18 10h2v1h-2zM22 10h1v1h-1zM24 10h3v1h-3zM3 11h5v1h-5zM9 11h1v1h-1zM15 11h5v1h-5zM21 11h5v1h-5zM3 12h1v1h-1zM5 12h1v1h-1zM8 12h3v1h-3zM12 12h1v1h-1zM15 12h1v1h-1zM17 12h2v1h-2zM20 12h2v1h-2zM23 12h1v1h-1zM26 12h1v1h-1zM5 13h1v1h-1zM9 13h1v1h-1zM12 13h1v1h-1zM14 13h1v1h-1zM16 13h1v1h-1zM20 13h1v1h-1zM23 13h4v1h-4zM2 14h5v1h-5zM8 14h2v1h-2zM11 14h4v1h-4zM17 14h1v1h-1zM20 14h2v1h-2zM26 14h1v1h-1zM2 15h3v1h-3zM7 15h1v1h-1zM9 15h1v1h-1zM12 15h1v1h-1zM16 15h2v1h-2zM19 15h1v1h-1zM22 15h1v1h-1zM25 15h1v1h-1zM2 16h4v1h-4zM7 16h3v1h-3zM11 16h1v1h-1zM13 16h2v1h-2zM16 16h2v1h-2zM20 16h1v1h-1zM22 16h5v1h-5zM2 17h1v1h-1zM6 17h1v1h-1zM9 17h5v1h-5zM17 17h2v1h-2zM21 17h1v1h-1zM23 17h2v1h-2zM26 17h1v1h-1zM2 18h1v1h-1zM4 18h1v1h-1zM7 18h4v1h-4zM12 18h1v1h-1zM15 18h8v1h-8zM24 18h2v1h-2zM10 19h1v1h-1zM12 19h3v1h-3zM16 19h3v1h-3zM22 19h1v1h-1zM24 19h2v1h-2zM2 20h7v1h-7zM10 20h2v1h-2zM13 20h1v1h-1zM16 20h1v1h-1zM18 20h1v1h-1zM20 20h1v1h-1zM22 20h1v1h-1zM26 20h1v1h-1zM2 21h1v1h-1zM8 21h1v1h-1zM10 21h1v1h-1zM14 21h3v1h-3zM18 21h1v1h-1zM22 21h1v1h-1zM2 22h1v1h-1zM4 22h3v1h-3zM8 22h1v1h-1zM10 22h2v1h-2zM14 22h2v1h-2zM17 22h6v1h-6zM25 22h2v1h-2zM2 23h1v1h-1zM4 23h3v1h-3zM8 23h1v1h-1zM10 23h2v1h-2zM16 23h5v1h-5zM25 23h2v1h-2zM2 24h1v1h-1zM4 24h3v1h-3zM8 24h1v1h-1zM12 24h1v1h-1zM14 24h1v1h-1zM16 24h1v1h-1zM22 24h5v1h-5zM2 25h1v1h-1zM8 25h1v1h-1zM11 25h2v1h-2zM20 25h3v1h-3zM24 25h3v1h-3zM2 26h7v1h-7zM10 26h3v1h-3zM14 26h3v1h-3zM18 26h2v1h-2zM23 26h1v1h-1zM26 26h1v1h-1z"
+   },
+   "img": "media/img/step_o2.webp",
+   "clip": "media/clips/o2.mp4",
+   "dur": 17.22,
+   "terms": [
+    "film-shell",
+    "negative",
+    "developing"
+   ],
+   "model": {
+    "in": [
+     "body",
+     "back",
+     "roller",
+     "spool",
+     "knob",
+     "front",
+     "blade",
+     "wheel",
+     "lens"
+    ],
+    "new": [],
+    "pose": {
+     "back": [
+      0,
+      -40,
+      0
+     ],
+     "roller": [
+      0,
+      -40,
+      0
+     ]
+    },
+    "az": 205,
+    "el": 24
+   }
+  },
+  {
+   "id": "h1",
+   "sec": "THE HOLE",
+   "n": 1,
+   "title": "Get or make the disc",
+   "do": "Take the pinhole disc from the bag, or make one. Ask an adult to cut a square about 10 mm across from a clean drinks can with kitchen scissors, and to snip off its four corners. Lay it on card, press a pin into the middle to make a dent, then push just until the tip comes through.",
+   "check": "Hold it up to a lamp: one tiny round point of light, no tear.",
+   "mistake": "A tear, or a hole you can see without the lamp.",
+   "fix": "Make another. The edges of can metal are sharp: hold it by its flat sides.",
+   "why": "The best hole for this camera is a quarter of a millimetre across: only the very tip of a pin. Lesson 1 shows why. No heating, no knives: scissors, a pin and a piece of card.",
+   "narration": "The pinhole experiment. Take the pinhole disc from the bag, or make one. To make one, ask an adult to cut a square about 10 mm across from a clean drinks can with kitchen scissors, and to snip off its corners. Lay it on card, press a pin into the middle, then push just until the tip comes through. Hold it up to a lamp: you should see one tiny round point of light.",
+   "parts": [
+    {
+     "id": "pinring",
+     "n": 1
+    },
+    {
+     "id": "pindisc",
+     "n": 1
+    }
+   ],
+   "lesson": "l01",
+   "short": "h1",
+   "url": "https://curve35.com/h1",
+   "qr": {
+    "n": 29,
+    "d": "M2 2h7v1h-7zM10 2h5v1h-5zM16 2h1v1h-1zM20 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM11 3h2v1h-2zM14 3h3v1h-3zM18 3h1v1h-1zM20 3h1v1h-1zM26 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM10 4h1v1h-1zM13 4h3v1h-3zM18 4h1v1h-1zM20 4h1v1h-1zM22 4h3v1h-3zM26 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM11 5h1v1h-1zM13 5h4v1h-4zM20 5h1v1h-1zM22 5h3v1h-3zM26 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM16 6h1v1h-1zM20 6h1v1h-1zM22 6h3v1h-3zM26 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM10 7h2v1h-2zM13 7h2v1h-2zM16 7h1v1h-1zM20 7h1v1h-1zM26 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h7v1h-7zM12 9h3v1h-3zM16 9h3v1h-3zM2 10h1v1h-1zM4 10h1v1h-1zM8 10h2v1h-2zM12 10h2v1h-2zM16 10h1v1h-1zM18 10h1v1h-1zM21 10h1v1h-1zM24 10h1v1h-1zM26 10h1v1h-1zM2 11h3v1h-3zM6 11h2v1h-2zM9 11h1v1h-1zM11 11h2v1h-2zM14 11h2v1h-2zM17 11h1v1h-1zM19 11h3v1h-3zM23 11h1v1h-1zM25 11h2v1h-2zM5 12h1v1h-1zM8 12h2v1h-2zM13 12h2v1h-2zM17 12h1v1h-1zM20 12h1v1h-1zM23 12h2v1h-2zM26 12h1v1h-1zM2 13h3v1h-3zM6 13h1v1h-1zM13 13h1v1h-1zM16 13h1v1h-1zM18 13h2v1h-2zM23 13h1v1h-1zM3 14h1v1h-1zM6 14h1v1h-1zM8 14h1v1h-1zM11 14h2v1h-2zM14 14h1v1h-1zM17 14h1v1h-1zM20 14h2v1h-2zM26 14h1v1h-1zM3 15h4v1h-4zM9 15h2v1h-2zM12 15h1v1h-1zM14 15h2v1h-2zM17 15h1v1h-1zM19 15h3v1h-3zM25 15h2v1h-2zM2 16h5v1h-5zM8 16h1v1h-1zM11 16h1v1h-1zM14 16h4v1h-4zM19 16h2v1h-2zM23 16h2v1h-2zM26 16h1v1h-1zM4 17h1v1h-1zM7 17h1v1h-1zM9 17h3v1h-3zM13 17h2v1h-2zM17 17h1v1h-1zM20 17h4v1h-4zM2 18h2v1h-2zM5 18h1v1h-1zM7 18h3v1h-3zM11 18h2v1h-2zM16 18h7v1h-7zM25 18h1v1h-1zM10 19h1v1h-1zM12 19h1v1h-1zM16 19h3v1h-3zM22 19h1v1h-1zM26 19h1v1h-1zM2 20h7v1h-7zM10 20h1v1h-1zM13 20h1v1h-1zM15 20h2v1h-2zM18 20h1v1h-1zM20 20h1v1h-1zM22 20h1v1h-1zM26 20h1v1h-1zM2 21h1v1h-1zM8 21h1v1h-1zM11 21h1v1h-1zM16 21h1v1h-1zM18 21h1v1h-1zM22 21h1v1h-1zM26 21h1v1h-1zM2 22h1v1h-1zM4 22h3v1h-3zM8 22h1v1h-1zM12 22h11v1h-11zM26 22h1v1h-1zM2 23h1v1h-1zM4 23h3v1h-3zM8 23h1v1h-1zM11 23h2v1h-2zM14 23h1v1h-1zM17 23h1v1h-1zM19 23h1v1h-1zM22 23h1v1h-1zM24 23h2v1h-2zM2 24h1v1h-1zM4 24h3v1h-3zM8 24h1v1h-1zM10 24h2v1h-2zM14 24h3v1h-3zM18 24h1v1h-1zM21 24h3v1h-3zM25 24h2v1h-2zM2 25h1v1h-1zM8 25h1v1h-1zM13 25h2v1h-2zM18 25h2v1h-2zM21 25h2v1h-2zM2 26h7v1h-7zM10 26h2v1h-2zM14 26h3v1h-3zM18 26h2v1h-2zM23 26h1v1h-1zM26 26h1v1h-1z"
+   },
+   "img": "media/img/step_h1.webp",
+   "clip": null,
+   "dur": null,
+   "terms": [
+    "pinhole"
+   ],
+   "model": {
+    "in": [
+     "body",
+     "back",
+     "roller",
+     "spool",
+     "knob",
+     "front",
+     "blade",
+     "wheel",
+     "pinring"
+    ],
+    "new": [
+     "pinring"
+    ],
+    "pose": {
+     "pinring": [
+      0,
+      40,
+      0
+     ]
+    },
+    "az": -35,
+    "el": 22
+   }
+  },
+  {
+   "id": "h2",
+   "sec": "THE HOLE",
+   "n": 2,
+   "title": "Disc and ring in",
+   "do": "Leave the lens out (or push it out from behind with the front plate off). Lay the disc flat in the round pocket, hole in the middle, and press the pinhole ring in on top of it until it stops.",
+   "check": "The disc covers the hole in the floor of the pocket all round. The ring stands a little proud and does not wobble.",
+   "mistake": "If the disc will not lie flat in the pocket.",
+   "fix": "Snip its corners a little more.",
+   "why": "Same plate, same pocket: with the lens it is a lens camera; with the disc and ring it is a pinhole camera. To change back, lift the ring out with a fingernail and tip the disc out.",
+   "narration": "Leave the lens out. Lay the disc flat in the round pocket, hole in the middle, and press the pinhole ring in on top of it until it stops. The disc covers the hole in the floor of the pocket all round. The ring stands a little proud and does not wobble. Same plate, same pocket: with the disc and ring it is a pinhole camera. To change back, lift the ring out with a fingernail.",
+   "parts": [],
+   "lesson": "l01",
+   "short": "h2",
+   "url": "https://curve35.com/h2",
+   "qr": {
+    "n": 29,
+    "d": "M2 2h7v1h-7zM10 2h1v1h-1zM13 2h1v1h-1zM16 2h1v1h-1zM20 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM14 3h3v1h-3zM18 3h1v1h-1zM20 3h1v1h-1zM26 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM10 4h1v1h-1zM12 4h1v1h-1zM14 4h2v1h-2zM18 4h1v1h-1zM20 4h1v1h-1zM22 4h3v1h-3zM26 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM13 5h1v1h-1zM15 5h2v1h-2zM20 5h1v1h-1zM22 5h3v1h-3zM26 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM20 6h1v1h-1zM22 6h3v1h-3zM26 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM10 7h2v1h-2zM13 7h2v1h-2zM16 7h1v1h-1zM20 7h1v1h-1zM26 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h7v1h-7zM11 9h1v1h-1zM14 9h1v1h-1zM16 9h3v1h-3zM2 10h1v1h-1zM4 10h1v1h-1zM8 10h2v1h-2zM12 10h3v1h-3zM16 10h1v1h-1zM18 10h1v1h-1zM21 10h1v1h-1zM24 10h1v1h-1zM26 10h1v1h-1zM3 11h1v1h-1zM5 11h2v1h-2zM15 11h1v1h-1zM17 11h1v1h-1zM19 11h3v1h-3zM23 11h1v1h-1zM25 11h2v1h-2zM3 12h1v1h-1zM8 12h1v1h-1zM10 12h2v1h-2zM17 12h1v1h-1zM20 12h1v1h-1zM23 12h2v1h-2zM26 12h1v1h-1zM2 13h1v1h-1zM4 13h1v1h-1zM6 13h2v1h-2zM10 13h1v1h-1zM14 13h1v1h-1zM16 13h1v1h-1zM18 13h2v1h-2zM23 13h1v1h-1zM8 14h4v1h-4zM13 14h2v1h-2zM17 14h1v1h-1zM20 14h2v1h-2zM26 14h1v1h-1zM3 15h3v1h-3zM12 15h1v1h-1zM14 15h2v1h-2zM17 15h1v1h-1zM19 15h3v1h-3zM25 15h2v1h-2zM2 16h2v1h-2zM6 16h4v1h-4zM11 16h2v1h-2zM14 16h4v1h-4zM19 16h2v1h-2zM23 16h2v1h-2zM26 16h1v1h-1zM4 17h2v1h-2zM7 17h1v1h-1zM13 17h2v1h-2zM17 17h1v1h-1zM20 17h4v1h-4zM2 18h4v1h-4zM7 18h5v1h-5zM16 18h7v1h-7zM25 18h1v1h-1zM10 19h3v1h-3zM16 19h3v1h-3zM22 19h1v1h-1zM26 19h1v1h-1zM2 20h7v1h-7zM10 20h2v1h-2zM13 20h1v1h-1zM16 20h1v1h-1zM18 20h1v1h-1zM20 20h1v1h-1zM22 20h1v1h-1zM26 20h1v1h-1zM2 21h1v1h-1zM8 21h1v1h-1zM11 21h1v1h-1zM18 21h1v1h-1zM22 21h1v1h-1zM26 21h1v1h-1zM2 22h1v1h-1zM4 22h3v1h-3zM8 22h1v1h-1zM13 22h10v1h-10zM26 22h1v1h-1zM2 23h1v1h-1zM4 23h3v1h-3zM8 23h1v1h-1zM11 23h2v1h-2zM14 23h1v1h-1zM17 23h1v1h-1zM19 23h1v1h-1zM22 23h1v1h-1zM24 23h2v1h-2zM2 24h1v1h-1zM4 24h3v1h-3zM8 24h1v1h-1zM10 24h1v1h-1zM14 24h3v1h-3zM18 24h1v1h-1zM21 24h3v1h-3zM25 24h2v1h-2zM2 25h1v1h-1zM8 25h1v1h-1zM12 25h3v1h-3zM18 25h2v1h-2zM21 25h2v1h-2zM2 26h7v1h-7zM10 26h1v1h-1zM12 26h1v1h-1zM14 26h3v1h-3zM18 26h2v1h-2zM23 26h1v1h-1zM26 26h1v1h-1z"
+   },
+   "img": "media/img/step_h2.webp",
+   "clip": null,
+   "dur": null,
+   "terms": [
+    "pinhole"
+   ],
+   "model": {
+    "in": [
+     "body",
+     "back",
+     "roller",
+     "spool",
+     "knob",
+     "front",
+     "blade",
+     "wheel",
+     "pinring"
+    ],
+    "new": [
+     "pinring"
+    ],
+    "pose": {},
+    "az": -35,
+    "el": 22
+   }
+  },
+  {
+   "id": "h3",
+   "sec": "THE HOLE",
+   "n": 3,
+   "title": "Take a pinhole picture",
+   "do": "Set the large dot. Stand the camera on something steady. Hold the rocker level to open it, count, press it down. Then wind on.",
+   "check": "ISO 400 film. Sun: open and shut. Cloud: count 1. Shade: 3. Indoors by a window: 40.",
+   "mistake": "Nothing on the film.",
+   "fix": "Count longer next time.",
+   "why": "The pinhole lets in about 150 times less light than the large dot, so a picture is counted, not snapped. It is sharp at every distance, and a little soft everywhere.",
+   "narration": "Set the large dot. Stand the camera on something steady. Hold the rocker level to open it, count, then press it down, and wind on. With ISO 400 film: in sun, open and shut. Cloud, count 1. Shade, count 3. Indoors by a window, count 40. The pinhole lets in about 150 times less light than the large dot, so a pinhole picture is counted, not snapped.",
+   "parts": [],
+   "lesson": "l01",
+   "short": "h3",
+   "url": "https://curve35.com/h3",
+   "qr": {
+    "n": 29,
+    "d": "M2 2h7v1h-7zM10 2h2v1h-2zM13 2h1v1h-1zM16 2h1v1h-1zM20 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM13 3h4v1h-4zM18 3h1v1h-1zM20 3h1v1h-1zM26 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM10 4h2v1h-2zM13 4h1v1h-1zM15 4h1v1h-1zM18 4h1v1h-1zM20 4h1v1h-1zM22 4h3v1h-3zM26 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM11 5h1v1h-1zM15 5h2v1h-2zM20 5h1v1h-1zM22 5h3v1h-3zM26 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM11 6h2v1h-2zM14 6h1v1h-1zM16 6h1v1h-1zM20 6h1v1h-1zM22 6h3v1h-3zM26 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM10 7h1v1h-1zM12 7h1v1h-1zM14 7h1v1h-1zM16 7h1v1h-1zM20 7h1v1h-1zM26 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h7v1h-7zM12 9h2v1h-2zM16 9h3v1h-3zM2 10h1v1h-1zM4 10h1v1h-1zM8 10h2v1h-2zM14 10h1v1h-1zM16 10h1v1h-1zM18 10h1v1h-1zM21 10h1v1h-1zM24 10h1v1h-1zM26 10h1v1h-1zM5 11h3v1h-3zM11 11h1v1h-1zM15 11h1v1h-1zM17 11h1v1h-1zM19 11h3v1h-3zM23 11h1v1h-1zM25 11h2v1h-2zM4 12h2v1h-2zM8 12h4v1h-4zM17 12h1v1h-1zM20 12h1v1h-1zM23 12h2v1h-2zM26 12h1v1h-1zM5 13h1v1h-1zM7 13h1v1h-1zM12 13h3v1h-3zM16 13h1v1h-1zM18 13h2v1h-2zM23 13h1v1h-1zM3 14h2v1h-2zM6 14h4v1h-4zM12 14h1v1h-1zM14 14h1v1h-1zM17 14h1v1h-1zM20 14h2v1h-2zM26 14h1v1h-1zM3 15h3v1h-3zM10 15h2v1h-2zM14 15h2v1h-2zM17 15h1v1h-1zM19 15h3v1h-3zM25 15h2v1h-2zM2 16h3v1h-3zM6 16h1v1h-1zM8 16h2v1h-2zM11 16h1v1h-1zM14 16h4v1h-4zM19 16h2v1h-2zM23 16h2v1h-2zM26 16h1v1h-1zM4 17h1v1h-1zM7 17h1v1h-1zM9 17h1v1h-1zM11 17h1v1h-1zM13 17h2v1h-2zM17 17h1v1h-1zM20 17h4v1h-4zM2 18h4v1h-4zM7 18h4v1h-4zM12 18h1v1h-1zM16 18h7v1h-7zM25 18h1v1h-1zM10 19h1v1h-1zM16 19h3v1h-3zM22 19h1v1h-1zM26 19h1v1h-1zM2 20h7v1h-7zM10 20h2v1h-2zM13 20h1v1h-1zM16 20h1v1h-1zM18 20h1v1h-1zM20 20h1v1h-1zM22 20h1v1h-1zM26 20h1v1h-1zM2 21h1v1h-1zM8 21h1v1h-1zM11 21h2v1h-2zM16 21h1v1h-1zM18 21h1v1h-1zM22 21h1v1h-1zM26 21h1v1h-1zM2 22h1v1h-1zM4 22h3v1h-3zM8 22h1v1h-1zM11 22h12v1h-12zM26 22h1v1h-1zM2 23h1v1h-1zM4 23h3v1h-3zM8 23h1v1h-1zM14 23h1v1h-1zM17 23h1v1h-1zM19 23h1v1h-1zM22 23h1v1h-1zM24 23h2v1h-2zM2 24h1v1h-1zM4 24h3v1h-3zM8 24h1v1h-1zM10 24h3v1h-3zM14 24h3v1h-3zM18 24h1v1h-1zM21 24h3v1h-3zM25 24h2v1h-2zM2 25h1v1h-1zM8 25h1v1h-1zM12 25h3v1h-3zM18 25h2v1h-2zM21 25h2v1h-2zM2 26h7v1h-7zM10 26h2v1h-2zM14 26h3v1h-3zM18 26h2v1h-2zM23 26h1v1h-1zM26 26h1v1h-1z"
+   },
+   "img": "media/img/step_h3.webp",
+   "clip": null,
+   "dur": null,
+   "terms": [
+    "pinhole",
+    "time-picture"
+   ],
+   "model": {
+    "in": [
+     "body",
+     "back",
+     "roller",
+     "spool",
+     "knob",
+     "front",
+     "blade",
+     "wheel",
+     "pinring"
+    ],
+    "new": [],
+    "pose": {},
+    "az": -35,
+    "el": 22
+   }
+  }
+ ],
+ "lessons": {
+  "l01": {
+   "route": "lesson-1",
+   "num": "1",
+   "title": "The pinhole",
+   "shelf": "main",
+   "parts": [
+    "pinring",
+    "body"
+   ],
+   "steps": [
+    "h1",
+    "h2",
+    "h3"
+   ],
+   "facts": [
+    "pin_distance",
+    "pin_best_mm",
+    "pin_best_f",
+    "pin_kit_mm",
+    "pin_kit_f",
+    "pin_lit_large",
+    "pin_count_sun",
+    "pin_count_cloud",
+    "pin_count_shade",
+    "pin_count_indoors",
+    "pin_vs_large_dot"
+   ],
+   "terms": [
+    "f-number",
+    "pinhole",
+    "time-picture"
+   ]
+  },
+  "l02": {
+   "route": "lesson-2",
+   "num": "2",
+   "title": "The lens",
+   "shelf": "main",
+   "parts": [
+    "lens"
+   ],
+   "steps": [
+    "b10"
+   ],
+   "facts": [
+    "focal_length",
+    "lens_diameter",
+    "film_curve_radius",
+    "focus_distance",
+    "pin_vs_large_dot"
+   ],
+   "terms": [
+    "lens",
+    "focal-length",
+    "focus"
+   ]
+  },
+  "l03": {
+   "route": "lesson-3",
+   "num": "3",
+   "title": "Film",
+   "shelf": "main",
+   "parts": [
+    "film",
+    "body"
+   ],
+   "steps": [
+    "f3",
+    "f4",
+    "o2"
+   ],
+   "facts": [
+    "picture_size",
+    "kit_film_iso",
+    "kit_film_pictures",
+    "shutter_speed"
+   ],
+   "terms": [
+    "film-speed",
+    "film-shell",
+    "negative",
+    "developing"
+   ]
+  },
+  "l04": {
+   "route": "lesson-4",
+   "num": "4",
+   "title": "Aperture",
+   "shelf": "main",
+   "parts": [
+    "wheel",
+    "front"
+   ],
+   "steps": [
+    "b6",
+    "p1"
+   ],
+   "facts": [
+    "dot_small_mm",
+    "dot_middle_mm",
+    "dot_large_mm",
+    "f_small",
+    "f_middle",
+    "f_large",
+    "dot_full_sun",
+    "dot_hazy_sun",
+    "dot_bright_cloud"
+   ],
+   "terms": [
+    "aperture",
+    "f-number",
+    "exposure",
+    "film-speed"
+   ]
+  },
+  "l05": {
+   "route": "lesson-5",
+   "num": "5",
+   "title": "The shutter",
+   "shelf": "main",
+   "parts": [
+    "blade"
+   ],
+   "steps": [
+    "b5",
+    "p3"
+   ],
+   "facts": [
+    "shutter_speed",
+    "rocker_click"
+   ],
+   "terms": [
+    "shutter",
+    "shutter-speed",
+    "exposure",
+    "time-picture"
+   ]
+  },
+  "l06": {
+   "route": "lesson-6",
+   "num": "6",
+   "title": "Winding on",
+   "shelf": "main",
+   "parts": [
+    "roller",
+    "spool",
+    "knob"
+   ],
+   "steps": [
+    "b1",
+    "b2",
+    "b3",
+    "f2",
+    "f6",
+    "p4",
+    "o1"
+   ],
+   "facts": [
+    "sprocket_pitch",
+    "holes_per_picture",
+    "picture_advance",
+    "frame_wheel_teeth",
+    "wind_turns_24",
+    "wind_turns_36"
+   ],
+   "terms": [
+    "frame",
+    "sprocket-holes",
+    "frame-wheel",
+    "winding-on"
+   ]
+  },
+  "l07": {
+   "route": "lesson-7",
+   "num": "7",
+   "title": "Light traps",
+   "shelf": "main",
+   "parts": [
+    "body",
+    "back"
+   ],
+   "steps": [
+    "b4",
+    "f1",
+    "f5"
+   ],
+   "facts": [
+    "light_cases",
+    "light_rays",
+    "light_rays_in"
+   ],
+   "terms": [
+    "film-shell",
+    "light-trap"
+   ]
+  },
+  "l08": {
+   "route": "lesson-8",
+   "num": "8",
+   "title": "Aiming and framing",
+   "shelf": "main",
+   "parts": [
+    "lens",
+    "wheel",
+    "blade"
+   ],
+   "steps": [
+    "p1",
+    "p2",
+    "p3"
+   ],
+   "facts": [
+    "two_big_steps",
+    "dot_full_sun"
+   ],
+   "terms": [
+    "focus",
+    "frame",
+    "sights"
+   ]
+  },
+  "l09": {
+   "route": "lesson-9",
+   "num": "9",
+   "title": "Your phone's camera",
+   "shelf": "main",
+   "parts": [
+    "lens",
+    "blade",
+    "wheel",
+    "film"
+   ],
+   "steps": [
+    "p1"
+   ],
+   "facts": [
+    "focal_length",
+    "f_small",
+    "f_large",
+    "shutter_speed"
+   ],
+   "terms": [
+    "aperture",
+    "f-number",
+    "shutter",
+    "lens",
+    "focal-length",
+    "exposure"
+   ]
+  },
+  "m01": {
+   "route": "maker-1",
+   "num": "M1",
+   "title": "Printing",
+   "shelf": "maker",
+   "parts": [
+    "body",
+    "back",
+    "front"
+   ],
+   "steps": [],
+   "facts": [
+    "layer_height",
+    "print_hours",
+    "plastic_grams",
+    "body_print_time"
+   ],
+   "terms": [
+    "layer",
+    "support",
+    "tolerance"
+   ]
+  },
+  "m02": {
+   "route": "maker-2",
+   "num": "M2",
+   "title": "Snap fits",
+   "shelf": "maker",
+   "parts": [
+    "front",
+    "back"
+   ],
+   "steps": [
+    "b4",
+    "b7",
+    "b8",
+    "b9"
+   ],
+   "facts": [
+    "rocker_click",
+    "dot_click",
+    "back_push",
+    "plate_push_low",
+    "plate_push_high",
+    "fall_off_1m"
+   ],
+   "terms": [
+    "snap-fit"
+   ]
+  },
+  "m03": {
+   "route": "maker-3",
+   "num": "M3",
+   "title": "Testing",
+   "shelf": "maker",
+   "parts": [
+    "roller",
+    "film"
+   ],
+   "steps": [],
+   "facts": [
+    "light_rays",
+    "motion_positions",
+    "fit_printers",
+    "fall_off_1m"
+   ],
+   "terms": [
+    "tolerance"
+   ]
+  },
+  "m04": {
+   "route": "maker-4",
+   "num": "M4",
+   "title": "Ergonomics",
+   "shelf": "maker",
+   "parts": [
+    "blade",
+    "knob",
+    "spool"
+   ],
+   "steps": [
+    "p1",
+    "p2",
+    "p3"
+   ],
+   "facts": [
+    "rocker_click",
+    "dot_click",
+    "camera_size"
+   ],
+   "terms": [
+    "sights"
+   ]
+  }
+ },
+ "facts": [
+  {
+   "id": "pieces",
+   "say": "9",
+   "sentence": "The camera is 9 pieces you put together: 8 printed parts and one lens.",
+   "checks": [],
+   "lessons": [],
+   "basis": "Counted from the parts list."
+  },
+  {
+   "id": "printed_parts",
+   "say": "8",
+   "sentence": "Eight of the nine pieces are printed.",
+   "checks": [],
+   "lessons": [],
+   "basis": "Counted from the parts list."
+  },
+  {
+   "id": "tools_needed",
+   "say": "no tools, no glue",
+   "sentence": "It goes together with no tools, no glue and no screws.",
+   "checks": [],
+   "lessons": [],
+   "basis": "Set by design; no test measures it."
+  },
+  {
+   "id": "age_min",
+   "say": "14+",
+   "sentence": "CURVE 35 is for ages 14 and up; younger builders can build it with an adult.",
+   "checks": [],
+   "lessons": [],
+   "basis": "Set by design; no test measures it."
+  },
+  {
+   "id": "camera_size",
+   "say": "127 x 41 x 70 mm",
+   "sentence": "The built camera is about 127 mm wide, 41 mm deep and 70 mm tall.",
+   "checks": [
+    "interference"
+   ],
+   "lessons": [
+    "m04"
+   ],
+   "basis": null
+  },
+  {
+   "id": "plastic_grams",
+   "say": "117 g",
+   "sentence": "One camera's eight printed parts use about 117 g of plastic.",
+   "checks": [
+    "print"
+   ],
+   "lessons": [
+    "m01"
+   ],
+   "basis": null
+  },
+  {
+   "id": "print_hours",
+   "say": "9.3 hours",
+   "sentence": "Printing one camera's parts takes about 9.3 hours.",
+   "checks": [
+    "print"
+   ],
+   "lessons": [
+    "m01"
+   ],
+   "basis": null
+  },
+  {
+   "id": "body_print_time",
+   "say": "4h 52m 2s",
+   "sentence": "The body, the longest print, takes 4 hours 52 minutes.",
+   "checks": [
+    "print"
+   ],
+   "lessons": [
+    "m01"
+   ],
+   "basis": null
+  },
+  {
+   "id": "front_print_time",
+   "say": "57m 6s",
+   "sentence": "The front plate takes 57 minutes to print.",
+   "checks": [
+    "print"
+   ],
+   "lessons": [],
+   "basis": null
+  },
+  {
+   "id": "layer_height",
+   "say": "0.2 mm",
+   "sentence": "Every part prints with 0.2 mm layers and no supports.",
+   "checks": [
+    "print"
+   ],
+   "lessons": [
+    "m01"
+   ],
+   "basis": null
+  },
+  {
+   "id": "picture_size",
+   "say": "36 x 24 mm",
+   "sentence": "Each picture is 36 x 24 mm, the standard 35 mm frame.",
+   "checks": [],
+   "lessons": [
+    "l03"
+   ],
+   "basis": "Measured from the design (the CAD file)."
+  },
+  {
+   "id": "film_curve_radius",
+   "say": "32 mm",
+   "sentence": "The film lies on a curve of 32 mm radius centred on the lens; that curve is the name.",
+   "checks": [],
+   "lessons": [
+    "l02"
+   ],
+   "basis": "Measured from the design (the CAD file)."
+  },
+  {
+   "id": "kit_film_iso",
+   "say": "ISO 400",
+   "sentence": "The film in the starter kit is ISO 400 colour film.",
+   "checks": [],
+   "lessons": [
+    "l03"
+   ],
+   "basis": "What comes in the kit."
+  },
+  {
+   "id": "kit_film_pictures",
+   "say": "24",
+   "sentence": "The roll in the starter kit takes 24 pictures.",
+   "checks": [],
+   "lessons": [
+    "l03"
+   ],
+   "basis": "What comes in the kit."
+  },
+  {
+   "id": "sprocket_pitch",
+   "say": "4.75 mm",
+   "sentence": "The holes along the film's edge are 4.75 mm apart.",
+   "checks": [],
+   "lessons": [
+    "l06"
+   ],
+   "basis": "The 35 mm film standard."
+  },
+  {
+   "id": "holes_per_picture",
+   "say": "8",
+   "sentence": "Eight of the film's holes make one picture.",
+   "checks": [],
+   "lessons": [
+    "l06"
+   ],
+   "basis": "Measured from the design (the CAD file)."
+  },
+  {
+   "id": "picture_advance",
+   "say": "38 mm",
+   "sentence": "One picture is 38 mm of film, 8 holes.",
+   "checks": [],
+   "lessons": [
+    "l06"
+   ],
+   "basis": "Worked out from the other numbers."
+  },
+  {
+   "id": "frame_wheel_teeth",
+   "say": "8",
+   "sentence": "The blue frame wheel has eight teeth and turns once per picture.",
+   "checks": [],
+   "lessons": [
+    "l06"
+   ],
+   "basis": "Measured from the design (the CAD file)."
+  },
+  {
+   "id": "wind_turns_36",
+   "say": "33",
+   "sentence": "Winding a 36-picture film out of its shell takes about 33 turns of the big red knob.",
+   "checks": [
+    "motion"
+   ],
+   "lessons": [
+    "l06"
+   ],
+   "basis": null
+  },
+  {
+   "id": "wind_turns_24",
+   "say": "25",
+   "sentence": "A 24-picture film takes about 25 turns to wind out.",
+   "checks": [],
+   "lessons": [
+    "l06"
+   ],
+   "basis": "Set by design; no test measures it."
+  },
+  {
+   "id": "focal_length",
+   "say": "32 mm",
+   "sentence": "The lens is one piece of plastic with a focal length of 32 mm.",
+   "checks": [
+    "focus"
+   ],
+   "lessons": [
+    "l02",
+    "l09"
+   ],
+   "basis": null
+  },
+  {
+   "id": "lens_diameter",
+   "say": "12 mm",
+   "sentence": "The lens is 12 mm across and is pressed in from the front.",
+   "checks": [],
+   "lessons": [
+    "l02"
+   ],
+   "basis": "Measured from the design (the CAD file)."
+  },
+  {
+   "id": "focus_distance",
+   "say": "3.7 m",
+   "sentence": "The focus is fixed, set for 3.7 m.",
+   "checks": [
+    "focus"
+   ],
+   "lessons": [
+    "l02"
+   ],
+   "basis": null
+  },
+  {
+   "id": "dot_small_mm",
+   "say": "1.96 mm",
+   "sentence": "The small dot is a hole 1.96 mm across (typical printer).",
+   "checks": [],
+   "lessons": [
+    "l04"
+   ],
+   "basis": "Worked out from the other numbers."
+  },
+  {
+   "id": "dot_middle_mm",
+   "say": "2.88 mm",
+   "sentence": "The middle dot is a hole 2.88 mm across.",
+   "checks": [],
+   "lessons": [
+    "l04"
+   ],
+   "basis": "Worked out from the other numbers."
+  },
+  {
+   "id": "dot_large_mm",
+   "say": "3.34 mm",
+   "sentence": "The large dot is a hole 3.34 mm across.",
+   "checks": [],
+   "lessons": [
+    "l04"
+   ],
+   "basis": "Worked out from the other numbers."
+  },
+  {
+   "id": "f_small",
+   "say": "f/16",
+   "sentence": "The small dot is f/16 (f/16.4 exactly).",
+   "checks": [
+    "exposure"
+   ],
+   "lessons": [
+    "l04",
+    "l09"
+   ],
+   "basis": null
+  },
+  {
+   "id": "f_middle",
+   "say": "f/11",
+   "sentence": "The middle dot is f/11; it lets in twice the light of the small dot.",
+   "checks": [
+    "exposure"
+   ],
+   "lessons": [
+    "l04"
+   ],
+   "basis": null
+  },
+  {
+   "id": "f_large",
+   "say": "f/9.5",
+   "sentence": "The large dot is f/9.5 (f/9.6 exactly); it adds about a third more light than the middle dot.",
+   "checks": [
+    "exposure"
+   ],
+   "lessons": [
+    "l04",
+    "l09"
+   ],
+   "basis": null
+  },
+  {
+   "id": "shutter_speed",
+   "say": "about 1/322 s",
+   "sentence": "The shutter has one speed, about 1/322 s, and stays open while the rocker is held at its middle click.",
+   "checks": [
+    "exposure"
+   ],
+   "lessons": [
+    "l03",
+    "l05",
+    "l09"
+   ],
+   "basis": null
+  },
+  {
+   "id": "guide_near_small",
+   "say": "1.3 m",
+   "sentence": "The printed guide's how-far strip starts the small dot's sharp zone at 1.3 m (a stricter measure than the postcard).",
+   "checks": [
+    "exposure"
+   ],
+   "lessons": [],
+   "basis": null
+  },
+  {
+   "id": "two_big_steps",
+   "say": "2 m",
+   "sentence": "Stand two big steps (2 m) or more from what you photograph; nearer is soft because the focus is fixed.",
+   "checks": [
+    "exposure"
+   ],
+   "lessons": [
+    "l08"
+   ],
+   "basis": null
+  },
+  {
+   "id": "dot_full_sun",
+   "say": "small",
+   "sentence": "ISO 400 film in full sun, hard shadows: the small dot.",
+   "checks": [
+    "exposure"
+   ],
+   "lessons": [
+    "l04",
+    "l08"
+   ],
+   "basis": null
+  },
+  {
+   "id": "dot_hazy_sun",
+   "say": "middle",
+   "sentence": "Hazy sun, soft shadows: the middle dot.",
+   "checks": [
+    "exposure"
+   ],
+   "lessons": [
+    "l04"
+   ],
+   "basis": null
+  },
+  {
+   "id": "dot_bright_cloud",
+   "say": "large",
+   "sentence": "Bright cloud, no shadows: the large dot.",
+   "checks": [
+    "exposure"
+   ],
+   "lessons": [
+    "l04"
+   ],
+   "basis": null
+  },
+  {
+   "id": "time_counts_iso400",
+   "say": "by a window 1, lamps on 5, dim room 20",
+   "sentence": "A time picture with the lens on ISO 400 film, small dot - count 1 by a window, 5 with the lamps on, 20 in a dim room.",
+   "checks": [],
+   "lessons": [],
+   "basis": "Set by design; no test measures it."
+  },
+  {
+   "id": "time_counts_iso200",
+   "say": "by a window 2, lamps on 10, dim room 40",
+   "sentence": "On ISO 200 film, twice as long.",
+   "checks": [],
+   "lessons": [],
+   "basis": "Worked out from the other numbers."
+  },
+  {
+   "id": "time_counts_iso100",
+   "say": "by a window 4, lamps on 20, dim room 80",
+   "sentence": "On ISO 100 film, four times as long.",
+   "checks": [],
+   "lessons": [],
+   "basis": "Worked out from the other numbers."
+  },
+  {
+   "id": "pin_distance",
+   "say": "28.9 mm",
+   "sentence": "The pinhole disc lies on the lens seat, 28.9 mm from the film.",
+   "checks": [
+    "pinhole"
+   ],
+   "lessons": [
+    "l01"
+   ],
+   "basis": null
+  },
+  {
+   "id": "pin_best_mm",
+   "say": "0.24 mm",
+   "sentence": "The best pinhole for this camera is 0.24 mm across.",
+   "checks": [
+    "pinhole"
+   ],
+   "lessons": [
+    "l01"
+   ],
+   "basis": null
+  },
+  {
+   "id": "pin_best_f",
+   "say": "f/121",
+   "sentence": "The best hole works at about f/121.",
+   "checks": [
+    "pinhole"
+   ],
+   "lessons": [
+    "l01"
+   ],
+   "basis": null
+  },
+  {
+   "id": "pin_kit_mm",
+   "say": "0.25 mm",
+   "sentence": "The kit's disc has a laser-drilled hole 0.25 mm across.",
+   "checks": [
+    "pinhole"
+   ],
+   "lessons": [
+    "l01"
+   ],
+   "basis": null
+  },
+  {
+   "id": "pin_kit_f",
+   "say": "f/116",
+   "sentence": "The kit's 0.25 mm hole is f/116.",
+   "checks": [
+    "pinhole"
+   ],
+   "lessons": [
+    "l01"
+   ],
+   "basis": null
+  },
+  {
+   "id": "pin_blur",
+   "say": "0.29 mm",
+   "sentence": "A pinhole picture is soft everywhere, blurred by about 0.29 mm.",
+   "checks": [
+    "pinhole"
+   ],
+   "lessons": [],
+   "basis": null
+  },
+  {
+   "id": "disc_diameter",
+   "say": "10.5 mm",
+   "sentence": "The kit's pinhole disc is 10.5 mm across.",
+   "checks": [
+    "pinhole"
+   ],
+   "lessons": [],
+   "basis": null
+  },
+  {
+   "id": "pin_lit_large",
+   "say": "85 %",
+   "sentence": "At the large dot 85 % of the picture is lit by the pinhole.",
+   "checks": [
+    "pinhole"
+   ],
+   "lessons": [
+    "l01"
+   ],
+   "basis": null
+  },
+  {
+   "id": "pin_lit_large_off",
+   "say": "81 %",
+   "sentence": "With the hole 0.5 mm off centre, 81 %.",
+   "checks": [
+    "pinhole"
+   ],
+   "lessons": [],
+   "basis": null
+  },
+  {
+   "id": "pin_lit_middle",
+   "say": "74 %",
+   "sentence": "At the middle dot, 74 %.",
+   "checks": [
+    "pinhole"
+   ],
+   "lessons": [],
+   "basis": null
+  },
+  {
+   "id": "pin_lit_small",
+   "say": "47 %",
+   "sentence": "At the small dot, 47 %.",
+   "checks": [
+    "pinhole"
+   ],
+   "lessons": [],
+   "basis": null
+  },
+  {
+   "id": "pin_ends_stops",
+   "say": "0.35 stops darker",
+   "sentence": "The ends of a pinhole picture are 0.35 stops darker than the middle.",
+   "checks": [
+    "pinhole"
+   ],
+   "lessons": [],
+   "basis": null
+  },
+  {
+   "id": "pin_corner_stops",
+   "say": "0.8 stops darker",
+   "sentence": "The corners are 0.8 stops darker.",
+   "checks": [
+    "pinhole"
+   ],
+   "lessons": [],
+   "basis": null
+  },
+  {
+   "id": "pin_count_sun",
+   "say": "open and shut",
+   "sentence": "Pinhole, ISO 400 film, full sun - open and shut.",
+   "checks": [
+    "pinhole"
+   ],
+   "lessons": [
+    "l01"
+   ],
+   "basis": null
+  },
+  {
+   "id": "pin_count_cloud",
+   "say": "1",
+   "sentence": "Pinhole, ISO 400, bright cloud - count 1.",
+   "checks": [
+    "pinhole"
+   ],
+   "lessons": [
+    "l01"
+   ],
+   "basis": null
+  },
+  {
+   "id": "pin_count_shade",
+   "say": "3",
+   "sentence": "Pinhole, ISO 400, shade - count 3.",
+   "checks": [
+    "pinhole"
+   ],
+   "lessons": [
+    "l01"
+   ],
+   "basis": null
+  },
+  {
+   "id": "pin_count_indoors",
+   "say": "40",
+   "sentence": "Pinhole, ISO 400, indoors by a window - count 40.",
+   "checks": [
+    "pinhole"
+   ],
+   "lessons": [
+    "l01"
+   ],
+   "basis": null
+  },
+  {
+   "id": "pin_counts_iso200",
+   "say": "open, shut; 2; 8; 90",
+   "sentence": "Pinhole on ISO 200 film - open and shut, 2, 8, 90.",
+   "checks": [],
+   "lessons": [],
+   "basis": "Set by design; no test measures it."
+  },
+  {
+   "id": "pin_counts_iso100",
+   "say": "1; 3; 15; 4 min",
+   "sentence": "Pinhole on ISO 100 film - 1, 3, 15, 4 minutes.",
+   "checks": [],
+   "lessons": [],
+   "basis": "Set by design; no test measures it."
+  },
+  {
+   "id": "pin_vs_large_dot",
+   "say": "150",
+   "sentence": "The pinhole lets in about 150 times less light than the large dot, so a picture is counted, not snapped.",
+   "checks": [
+    "pinhole"
+   ],
+   "lessons": [
+    "l01",
+    "l02"
+   ],
+   "basis": null
+  },
+  {
+   "id": "light_cases",
+   "say": "21",
+   "sentence": "The closed camera was tested for light in 21 cases.",
+   "checks": [
+    "light"
+   ],
+   "lessons": [
+    "l07"
+   ],
+   "basis": null
+  },
+  {
+   "id": "light_rays",
+   "say": "69 million",
+   "sentence": "69 million rays were traced into the closed camera.",
+   "checks": [
+    "light",
+    "sound"
+   ],
+   "lessons": [
+    "l07",
+    "m03"
+   ],
+   "basis": null
+  },
+  {
+   "id": "light_rays_in",
+   "say": "none",
+   "sentence": "None of them reached the film.",
+   "checks": [
+    "light"
+   ],
+   "lessons": [
+    "l07"
+   ],
+   "basis": null
+  },
+  {
+   "id": "motion_positions",
+   "say": "1,865",
+   "sentence": "Every moving part was stepped through 1,865 positions with a perforated film in place; nothing collides.",
+   "checks": [
+    "motion",
+    "sound"
+   ],
+   "lessons": [
+    "m03"
+   ],
+   "basis": null
+  },
+  {
+   "id": "fit_printers",
+   "say": "5",
+   "sentence": "Every joint was rebuilt as five different printers would print it, from 0.15 mm thin to 0.25 mm fat; nothing binds.",
+   "checks": [
+    "fit"
+   ],
+   "lessons": [
+    "m03"
+   ],
+   "basis": null
+  },
+  {
+   "id": "rocker_click",
+   "say": "2.3 N",
+   "sentence": "The rocker clicks at about 2.3 N.",
+   "checks": [
+    "snap",
+    "sound"
+   ],
+   "lessons": [
+    "l05",
+    "m02",
+    "m04"
+   ],
+   "basis": null
+  },
+  {
+   "id": "dot_click",
+   "say": "2.4 N",
+   "sentence": "Each dot clicks at about 2.4 N.",
+   "checks": [
+    "snap",
+    "sound"
+   ],
+   "lessons": [
+    "m02",
+    "m04"
+   ],
+   "basis": null
+  },
+  {
+   "id": "back_push",
+   "say": "0.6 N",
+   "sentence": "The back presses on with about 0.6 N.",
+   "checks": [
+    "snap"
+   ],
+   "lessons": [
+    "m02"
+   ],
+   "basis": null
+  },
+  {
+   "id": "plate_push_low",
+   "say": "3",
+   "sentence": "The front plate clicks home with about 3 N on smooth plastic...",
+   "checks": [
+    "snap"
+   ],
+   "lessons": [
+    "m02"
+   ],
+   "basis": null
+  },
+  {
+   "id": "plate_push_high",
+   "say": "5 N",
+   "sentence": "... and about 5 N on rough plastic: the hardest push in the build.",
+   "checks": [
+    "snap"
+   ],
+   "lessons": [
+    "m02"
+   ],
+   "basis": null
+  },
+  {
+   "id": "fall_off_1m",
+   "say": "7 %",
+   "sentence": "Dropped from 1 m, the front plate comes off in about 7 falls in 100 (typical printer, by a simple fall model).",
+   "checks": [
+    "fall"
+   ],
+   "lessons": [
+    "m02",
+    "m03"
+   ],
+   "basis": null
+  },
+  {
+   "id": "lessons_main",
+   "say": "9",
+   "sentence": "Nine lessons, one per piece of the camera.",
+   "checks": [],
+   "lessons": [],
+   "basis": "Worked out from the other numbers."
+  },
+  {
+   "id": "lessons_maker",
+   "say": "4",
+   "sentence": "Four maker lessons on how it was designed to print.",
+   "checks": [],
+   "lessons": [],
+   "basis": "Worked out from the other numbers."
+  },
+  {
+   "id": "build_steps",
+   "say": "10",
+   "sentence": "Ten build steps.",
+   "checks": [],
+   "lessons": [],
+   "basis": "Worked out from the other numbers."
+  },
+  {
+   "id": "guide_pages",
+   "say": "16",
+   "sentence": "The printed build guide is 16 small pages.",
+   "checks": [],
+   "lessons": [],
+   "basis": "Worked out from the other numbers."
+  }
+ ],
+ "checks": [
+  {
+   "id": "light",
+   "name": "Light",
+   "question": "Does light get in?",
+   "proves": "With the back on and the shutter shut, no straight or bounced path lets daylight reach the film.",
+   "headline": "21 closed-camera cases, 69 million rays: none reach the film.",
+   "facts": [
+    "light_cases",
+    "light_rays",
+    "light_rays_in"
+   ],
+   "parts": [
+    "body",
+    "back",
+    "front",
+    "blade",
+    "knob",
+    "lens"
+   ]
+  },
+  {
+   "id": "fit",
+   "name": "Fit",
+   "question": "Do the parts fit on a real printer?",
+   "proves": "Every joint still goes together, turns and holds when printed thinner or fatter than drawn.",
+   "headline": "Every joint rebuilt on 5 printers, walls 0.15 mm thin to 0.25 mm fat: nothing binds, every hold remains.",
+   "facts": [
+    "fit_printers"
+   ],
+   "parts": [
+    "body",
+    "back",
+    "front",
+    "blade",
+    "wheel",
+    "spool",
+    "knob",
+    "roller",
+    "lens",
+    "fit_gauge"
+   ]
+  },
+  {
+   "id": "interference",
+   "name": "Overlap",
+   "question": "Do any two parts share space at rest or on the way in and out?",
+   "proves": "Every pair of parts, in every shutter and aperture state, is apart.",
+   "headline": "No two parts overlap in any of the four states; every way in and out is free.",
+   "facts": [
+    "camera_size"
+   ],
+   "parts": [
+    "body",
+    "back",
+    "front",
+    "blade",
+    "wheel",
+    "spool",
+    "knob",
+    "roller"
+   ]
+  },
+  {
+   "id": "motion",
+   "name": "Motion",
+   "question": "Do the parts collide as they move?",
+   "proves": "Every moving part can travel its whole way, with a perforated film in place, without touching what it must not.",
+   "headline": "1,865 positions stepped, with a film in place: nothing collides.",
+   "facts": [
+    "motion_positions",
+    "wind_turns_36"
+   ],
+   "parts": [
+    "body",
+    "back",
+    "front",
+    "blade",
+    "wheel",
+    "spool",
+    "knob",
+    "roller",
+    "film"
+   ]
+  },
+  {
+   "id": "print",
+   "name": "Print",
+   "question": "Will it print without supports, on an ordinary printer?",
+   "proves": "Every part stands on the bed, has no thin or free-standing feature left unexplained, and slices cleanly.",
+   "headline": "Yes: 9.3 hours and 117 g of plastic for one camera, 0.2 mm layers, no supports.",
+   "facts": [
+    "print_hours",
+    "plastic_grams",
+    "layer_height",
+    "body_print_time",
+    "front_print_time"
+   ],
+   "parts": [
+    "body",
+    "back",
+    "front",
+    "blade",
+    "wheel",
+    "spool",
+    "knob",
+    "roller",
+    "test_slab"
+   ]
+  },
+  {
+   "id": "snap",
+   "name": "Snap and click",
+   "question": "How does every click and latch feel?",
+   "proves": "Each click is firm enough to feel and light enough for a hand, from the finite-element springs and the cam shapes.",
+   "headline": "Rocker 2.3 N, dot 2.4 N, back 0.6 N, front plate 3 to 5 N: nothing needs more than about 5 N.",
+   "facts": [
+    "rocker_click",
+    "dot_click",
+    "back_push",
+    "plate_push_low",
+    "plate_push_high"
+   ],
+   "parts": [
+    "back",
+    "front",
+    "blade",
+    "wheel"
+   ]
+  },
+  {
+   "id": "strength",
+   "name": "Strength",
+   "question": "Will the springs and latches bend without breaking?",
+   "proves": "The parts that flex stay under the plastic's strain limit in use.",
+   "headline": "Latch fingers, the shutter's rim and the frame wheel's teeth stay under their strain limits; the wind knob is the part that breaks first if the other knob is held.",
+   "facts": [],
+   "parts": [
+    "body",
+    "back",
+    "blade",
+    "knob"
+   ]
+  },
+  {
+   "id": "fall",
+   "name": "Fall",
+   "question": "Does the front plate stay on in a fall?",
+   "proves": "The two-move front plate survives most drops; a knock cannot do up, sideways and away at once.",
+   "headline": "From 1 m, typical printer: the front plate comes off in 7 % of falls.",
+   "facts": [
+    "fall_off_1m"
+   ],
+   "parts": [
+    "front"
+   ]
+  },
+  {
+   "id": "focus",
+   "name": "Focus",
+   "question": "Is the picture sharp?",
+   "proves": "The lens, traced at each dot, makes the middle of the picture sharp on a postcard from near to far.",
+   "headline": "Set for 3.7 m; sharp from 1.3 m with the small dot, and at any dot from 2 m (two big steps); softer toward the ends.",
+   "facts": [
+    "focus_distance",
+    "focal_length"
+   ],
+   "parts": [
+    "body",
+    "lens",
+    "nearring",
+    "lens_gauge"
+   ]
+  },
+  {
+   "id": "exposure",
+   "name": "Exposure",
+   "question": "Which dot for which light, and how much does printer error matter?",
+   "proves": "Printer error in the holes and the shutter's spring stays inside what the film forgives.",
+   "headline": "Dots f/16, f/11, f/9.5; shutter about 1/322 s; ISO 400: sun small, hazy middle, cloud large.",
+   "facts": [
+    "f_small",
+    "f_middle",
+    "f_large",
+    "shutter_speed",
+    "dot_full_sun",
+    "dot_hazy_sun",
+    "dot_bright_cloud",
+    "two_big_steps",
+    "guide_near_small"
+   ],
+   "parts": [
+    "blade",
+    "wheel"
+   ]
+  },
+  {
+   "id": "pinhole",
+   "name": "Pinhole",
+   "question": "How big should the hole be, and how long to count?",
+   "proves": "The kit's disc is close to the best hole, covers the port on every printer, and the counts expose the film.",
+   "headline": "Disc 0.25 mm at 28.9 mm (f/116); 85 % of the picture lit at the large dot; ISO 400: sun open and shut, cloud 1, shade 3, indoors 40.",
+   "facts": [
+    "pin_distance",
+    "pin_best_mm",
+    "pin_best_f",
+    "pin_kit_mm",
+    "pin_kit_f",
+    "pin_blur",
+    "disc_diameter",
+    "pin_lit_large",
+    "pin_lit_large_off",
+    "pin_lit_middle",
+    "pin_lit_small",
+    "pin_ends_stops",
+    "pin_corner_stops",
+    "pin_count_sun",
+    "pin_count_cloud",
+    "pin_count_shade",
+    "pin_count_indoors",
+    "pin_vs_large_dot"
+   ],
+   "parts": [
+    "pinring",
+    "pindisc"
+   ]
+  },
+  {
+   "id": "film_path",
+   "name": "Film path",
+   "question": "What touches the film, and what does the turn behind the gate cost?",
+   "proves": "Nothing but the rails and the post touch the film's face, and the winding pull stays within what a hand and the film take.",
+   "headline": "Only the rails' margins and the post's band touch the film; the picture area is never touched.",
+   "facts": [],
+   "parts": [
+    "body",
+    "back",
+    "spool",
+    "roller",
+    "film"
+   ]
+  },
+  {
+   "id": "sight",
+   "name": "Sight",
+   "question": "Is the line of sight over the top free?",
+   "proves": "The aiming marks are not blocked by the rocker in either shutter state.",
+   "headline": "The line over the notch and the blade's top is free in both shutter states.",
+   "facts": [],
+   "parts": [
+    "body"
+   ]
+  },
+  {
+   "id": "sound",
+   "name": "Is it sound?",
+   "question": "Taken together, should the design work, and what only a print can show?",
+   "proves": "One page of the model's own numbers, regenerated from the results above.",
+   "headline": "Nothing printed yet; nine things only a printed camera can show (SOUND.md).",
+   "facts": [
+    "rocker_click",
+    "dot_click",
+    "light_rays",
+    "motion_positions"
+   ],
+   "parts": []
+  }
+ ],
+ "terms": [
+  {
+   "id": "aperture",
+   "term": "aperture",
+   "says": "dot",
+   "means": "The opening that sets how much light gets through; on this camera, one of three holes in the wheel.",
+   "taught": [
+    "l04",
+    "l09"
+   ],
+   "parts": [
+    "wheel"
+   ],
+   "steps": [
+    "b6",
+    "p1"
+   ]
+  },
+  {
+   "id": "f-number",
+   "term": "f-number",
+   "says": null,
+   "means": "The focal length divided by the width of the hole; each step up the row 8, 11, 16 lets in half the light.",
+   "taught": [
+    "l04",
+    "l01",
+    "l09"
+   ],
+   "parts": [
+    "wheel"
+   ],
+   "steps": []
+  },
+  {
+   "id": "shutter",
+   "term": "shutter",
+   "says": "rocker",
+   "means": "The part that opens for an instant to let light onto the film; here a plastic blade on a peg, pressed by the rocker.",
+   "taught": [
+    "l05",
+    "l09"
+   ],
+   "parts": [
+    "blade"
+   ],
+   "steps": [
+    "b5",
+    "p3"
+   ]
+  },
+  {
+   "id": "shutter-speed",
+   "term": "shutter speed",
+   "says": null,
+   "means": "How long the shutter stays open; this one has a single speed, about a three-hundredth of a second.",
+   "taught": [
+    "l05"
+   ],
+   "parts": [
+    "blade"
+   ],
+   "steps": []
+  },
+  {
+   "id": "pinhole",
+   "term": "pinhole",
+   "says": null,
+   "means": "A tiny hole that makes a picture without a lens, because light travels in straight lines.",
+   "taught": [
+    "l01"
+   ],
+   "parts": [
+    "pindisc",
+    "pinring"
+   ],
+   "steps": [
+    "h1",
+    "h2",
+    "h3"
+   ]
+  },
+  {
+   "id": "lens",
+   "term": "lens",
+   "says": null,
+   "means": "A shaped piece of clear plastic or glass that bends the light from each point of a scene back to one point.",
+   "taught": [
+    "l02",
+    "l09"
+   ],
+   "parts": [
+    "lens"
+   ],
+   "steps": [
+    "b10"
+   ]
+  },
+  {
+   "id": "focal-length",
+   "term": "focal length",
+   "says": null,
+   "means": "How far behind a lens a distant scene comes sharp; this lens is 32 mm.",
+   "taught": [
+    "l02",
+    "l09"
+   ],
+   "parts": [
+    "lens"
+   ],
+   "steps": []
+  },
+  {
+   "id": "focus",
+   "term": "focus",
+   "says": null,
+   "means": "Where the lens makes the picture sharp; fixed on this camera, set for 3.7 m.",
+   "taught": [
+    "l02",
+    "l08"
+   ],
+   "parts": [
+    "lens",
+    "nearring"
+   ],
+   "steps": [
+    "p2"
+   ]
+  },
+  {
+   "id": "exposure",
+   "term": "exposure",
+   "says": null,
+   "means": "How much light the film gets for one picture: the size of the hole times how long it is open.",
+   "taught": [
+    "l04",
+    "l05",
+    "l09"
+   ],
+   "parts": [],
+   "steps": [
+    "p1",
+    "p3"
+   ]
+  },
+  {
+   "id": "time-picture",
+   "term": "time picture",
+   "says": null,
+   "means": "A picture where the shutter is held open and you count, for light too dim for a snap.",
+   "taught": [
+    "l05",
+    "l01"
+   ],
+   "parts": [
+    "blade"
+   ],
+   "steps": [
+    "h3"
+   ]
+  },
+  {
+   "id": "film-speed",
+   "term": "film speed",
+   "says": "ISO",
+   "means": "How quickly a film reacts to light; ISO 400 needs half the light of ISO 200.",
+   "taught": [
+    "l03",
+    "l04"
+   ],
+   "parts": [
+    "film"
+   ],
+   "steps": []
+  },
+  {
+   "id": "film-shell",
+   "term": "film shell",
+   "says": "the film's shell",
+   "means": "The light-tight metal can the film comes in (a cassette); the film is wound back into it after every picture.",
+   "taught": [
+    "l03",
+    "l07"
+   ],
+   "parts": [
+    "film"
+   ],
+   "steps": [
+    "f2",
+    "o1",
+    "o2"
+   ]
+  },
+  {
+   "id": "frame",
+   "term": "frame",
+   "says": null,
+   "means": "One picture's piece of film, 36 x 24 mm, and the window it is exposed through.",
+   "taught": [
+    "l06",
+    "l08"
+   ],
+   "parts": [
+    "body",
+    "film"
+   ],
+   "steps": []
+  },
+  {
+   "id": "sprocket-holes",
+   "term": "sprocket holes",
+   "says": null,
+   "means": "The row of holes along each edge of 35 mm film, 4.75 mm apart; eight make one picture.",
+   "taught": [
+    "l06"
+   ],
+   "parts": [
+    "film",
+    "roller"
+   ],
+   "steps": []
+  },
+  {
+   "id": "frame-wheel",
+   "term": "frame wheel",
+   "says": null,
+   "means": "The blue wheel whose eight teeth sit in the film's holes, so its dial goes round once per picture.",
+   "taught": [
+    "l06"
+   ],
+   "parts": [
+    "roller"
+   ],
+   "steps": [
+    "b3",
+    "p4"
+   ]
+  },
+  {
+   "id": "winding-on",
+   "term": "winding on",
+   "says": null,
+   "means": "Moving the film one picture along after each picture; here the green knob winds it back into its shell.",
+   "taught": [
+    "l06"
+   ],
+   "parts": [
+    "knob",
+    "spool"
+   ],
+   "steps": [
+    "f6",
+    "p4",
+    "o1"
+   ]
+  },
+  {
+   "id": "light-trap",
+   "term": "light trap",
+   "says": null,
+   "means": "A bent path at a gap that air can pass but light cannot, because light travels in straight lines.",
+   "taught": [
+    "l07"
+   ],
+   "parts": [
+    "back",
+    "body"
+   ],
+   "steps": [
+    "b4",
+    "f5"
+   ]
+  },
+  {
+   "id": "negative",
+   "term": "negative",
+   "says": null,
+   "means": "The developed film, light and dark swapped; it is the original from which scans and prints are made.",
+   "taught": [
+    "l03"
+   ],
+   "parts": [
+    "film"
+   ],
+   "steps": [
+    "o2"
+   ]
+  },
+  {
+   "id": "developing",
+   "term": "developing",
+   "says": null,
+   "means": "The chemical baths that turn the hidden change in exposed film into a picture you can see.",
+   "taught": [
+    "l03"
+   ],
+   "parts": [],
+   "steps": [
+    "o2"
+   ]
+  },
+  {
+   "id": "snap-fit",
+   "term": "snap fit",
+   "says": null,
+   "means": "A joint held by a spring made from the part's own plastic, that clicks into place with no screw or glue.",
+   "taught": [
+    "m02"
+   ],
+   "parts": [
+    "front",
+    "back",
+    "blade",
+    "wheel"
+   ],
+   "steps": [
+    "b4",
+    "b9"
+   ]
+  },
+  {
+   "id": "layer",
+   "term": "layer",
+   "says": null,
+   "means": "One slice of a print, laid down as hot lines of plastic; these parts print in 0.2 mm layers.",
+   "taught": [
+    "m01"
+   ],
+   "parts": [],
+   "steps": []
+  },
+  {
+   "id": "support",
+   "term": "support",
+   "says": null,
+   "means": "Extra plastic a printer adds under parts that hang in the air; none of these parts need any.",
+   "taught": [
+    "m01"
+   ],
+   "parts": [],
+   "steps": []
+  },
+  {
+   "id": "tolerance",
+   "term": "tolerance",
+   "says": null,
+   "means": "How far a printed size may be from the drawn one and still work; every joint here is checked from too thin to too fat.",
+   "taught": [
+    "m01",
+    "m03"
+   ],
+   "parts": [
+    "fit_gauge"
+   ],
+   "steps": []
+  },
+  {
+   "id": "sights",
+   "term": "sights",
+   "says": null,
+   "means": "The two marks on top of the camera you aim along; the picture fits between the outer lines.",
+   "taught": [
+    "l08",
+    "m04"
+   ],
+   "parts": [
+    "body"
+   ],
+   "steps": [
+    "p2"
+   ]
+  }
+ ],
+ "offers": [
+  {
+   "id": "starter-kit",
+   "name": "Starter kit",
+   "price": "$49",
+   "group": "kits",
+   "parts": [
+    "body",
+    "back",
+    "front",
+    "blade",
+    "wheel",
+    "spool",
+    "knob",
+    "roller",
+    "lens",
+    "pinring",
+    "pindisc"
+   ],
+   "lessons": [
+    "l01",
+    "l02",
+    "l03",
+    "l04",
+    "l05",
+    "l06",
+    "l07",
+    "l08",
+    "l09"
+   ],
+   "programs": [
+    "homeschool",
+    "summer",
+    "workshop"
+   ],
+   "home": "store"
+  },
+  {
+   "id": "camera-kit",
+   "name": "Camera kit",
+   "price": "$29",
+   "group": "kits",
+   "parts": [
+    "body",
+    "back",
+    "front",
+    "blade",
+    "wheel",
+    "spool",
+    "knob",
+    "roller",
+    "lens",
+    "pinring",
+    "pindisc"
+   ],
+   "lessons": [
+    "l01",
+    "l02",
+    "l03",
+    "l04",
+    "l05",
+    "l06",
+    "l07",
+    "l08",
+    "l09"
+   ],
+   "programs": [
+    "summer",
+    "workshop"
+   ],
+   "home": "store"
+  },
+  {
+   "id": "film-and-developing",
+   "name": "Film and developing",
+   "price": "$24",
+   "group": "film",
+   "parts": [
+    "film"
+   ],
+   "lessons": [
+    "l03",
+    "l08"
+   ],
+   "programs": [],
+   "home": "store"
+  },
+  {
+   "id": "three-rolls-three-codes",
+   "name": "Three rolls and three codes",
+   "price": "$66",
+   "group": "film",
+   "parts": [
+    "film"
+   ],
+   "lessons": [
+    "l03",
+    "l08"
+   ],
+   "programs": [],
+   "home": "store"
+  },
+  {
+   "id": "film-roll",
+   "name": "Film, one roll",
+   "price": "$10",
+   "group": "film",
+   "parts": [
+    "film"
+   ],
+   "lessons": [
+    "l03"
+   ],
+   "programs": [],
+   "home": "store"
+  },
+  {
+   "id": "developing-code",
+   "name": "Developing code",
+   "price": "$15",
+   "group": "film",
+   "parts": [],
+   "lessons": [
+    "l03"
+   ],
+   "programs": [],
+   "home": "store"
+  },
+  {
+   "id": "negatives-back",
+   "name": "Negatives back",
+   "price": "$5",
+   "group": "film",
+   "parts": [],
+   "lessons": [
+    "l03"
+   ],
+   "programs": [],
+   "home": "store"
+  },
+  {
+   "id": "small-prints",
+   "name": "A set of small prints",
+   "price": "$7",
+   "group": "film",
+   "parts": [],
+   "lessons": [
+    "l08"
+   ],
+   "programs": [],
+   "home": "store"
+  },
+  {
+   "id": "proof-sheet",
+   "name": "The proof sheet",
+   "price": "$9",
+   "group": "film",
+   "parts": [],
+   "lessons": [],
+   "programs": [],
+   "home": "store"
+  },
+  {
+   "id": "black-and-white-pack",
+   "name": "Black-and-white pack",
+   "price": "Ask by email",
+   "group": "film",
+   "parts": [
+    "film"
+   ],
+   "lessons": [
+    "l03"
+   ],
+   "programs": [],
+   "home": "store"
+  },
+  {
+   "id": "spares-pack",
+   "name": "Spares pack",
+   "price": "$5",
+   "group": "parts",
+   "parts": [
+    "blade",
+    "knob"
+   ],
+   "lessons": [
+    "l05",
+    "l06"
+   ],
+   "programs": [],
+   "home": "store"
+  },
+  {
+   "id": "lenses-three",
+   "name": "Lenses, three",
+   "price": "$5",
+   "group": "parts",
+   "parts": [
+    "lens"
+   ],
+   "lessons": [
+    "l02"
+   ],
+   "programs": [
+    "workshop"
+   ],
+   "home": "store"
+  },
+  {
+   "id": "near-ring",
+   "name": "Near ring",
+   "price": "Ask by email",
+   "group": "parts",
+   "parts": [
+    "nearring"
+   ],
+   "lessons": [
+    "l02",
+    "l08"
+   ],
+   "programs": [],
+   "home": "store"
+  },
+  {
+   "id": "pinhole-discs",
+   "name": "Pinhole discs, five",
+   "price": "Ask by email",
+   "group": "parts",
+   "parts": [
+    "pindisc"
+   ],
+   "lessons": [
+    "l01"
+   ],
+   "programs": [],
+   "home": "store"
+  },
+  {
+   "id": "swap-pack",
+   "name": "Colour pack",
+   "price": "$6",
+   "group": "parts",
+   "parts": [
+    "front",
+    "spool",
+    "knob"
+   ],
+   "lessons": [],
+   "programs": [],
+   "home": "store"
+  },
+  {
+   "id": "sticker-sheet",
+   "name": "Sticker sheet",
+   "price": "$4",
+   "group": "parts",
+   "parts": [],
+   "lessons": [
+    "l04",
+    "l08"
+   ],
+   "programs": [],
+   "home": "store"
+  },
+  {
+   "id": "film-can",
+   "name": "Film can, printed",
+   "price": "$3",
+   "group": "parts",
+   "parts": [],
+   "lessons": [],
+   "programs": [],
+   "home": "store"
+  },
+  {
+   "id": "single-part",
+   "name": "Any single part",
+   "price": "$3 to $8",
+   "group": "parts",
+   "parts": [
+    "body",
+    "back",
+    "front",
+    "blade",
+    "wheel",
+    "spool",
+    "knob",
+    "roller"
+   ],
+   "lessons": [],
+   "programs": [],
+   "home": "store"
+  },
+  {
+   "id": "class-pack",
+   "name": "Class pack",
+   "price": "$690 ($23 a student)",
+   "group": "class",
+   "parts": [
+    "body",
+    "back",
+    "front",
+    "blade",
+    "wheel",
+    "spool",
+    "knob",
+    "roller",
+    "lens",
+    "film"
+   ],
+   "lessons": [
+    "l01",
+    "l02",
+    "l03",
+    "l04",
+    "l05",
+    "l06",
+    "l07",
+    "l08",
+    "l09"
+   ],
+   "programs": [
+    "classroom"
+   ],
+   "home": "programs"
+  },
+  {
+   "id": "class-set-cameras",
+   "name": "Class set: cameras only",
+   "price": "$540 ($18 a student)",
+   "group": "class",
+   "parts": [
+    "body",
+    "back",
+    "front",
+    "blade",
+    "wheel",
+    "spool",
+    "knob",
+    "roller",
+    "lens"
+   ],
+   "lessons": [],
+   "programs": [
+    "classroom"
+   ],
+   "home": "programs"
+  },
+  {
+   "id": "class-set-black-and-white",
+   "name": "Class set with black-and-white film",
+   "price": "$780 ($26 a student)",
+   "group": "class",
+   "parts": [
+    "body",
+    "back",
+    "front",
+    "blade",
+    "wheel",
+    "spool",
+    "knob",
+    "roller",
+    "lens",
+    "film"
+   ],
+   "lessons": [],
+   "programs": [
+    "classroom"
+   ],
+   "home": "programs"
+  },
+  {
+   "id": "class-set-colour",
+   "name": "Class set with colour film and developing",
+   "price": "$1,170 ($39 a student)",
+   "group": "class",
+   "parts": [
+    "body",
+    "back",
+    "front",
+    "blade",
+    "wheel",
+    "spool",
+    "knob",
+    "roller",
+    "lens",
+    "film"
+   ],
+   "lessons": [],
+   "programs": [
+    "classroom"
+   ],
+   "home": "programs"
+  },
+  {
+   "id": "class-set-print-it-yourself",
+   "name": "Print it yourself",
+   "price": "$149 ($5 a student, plus about $2 of plastic)",
+   "group": "class",
+   "parts": [
+    "body",
+    "back",
+    "front",
+    "blade",
+    "wheel",
+    "spool",
+    "knob",
+    "roller",
+    "lens"
+   ],
+   "lessons": [],
+   "programs": [
+    "classroom"
+   ],
+   "home": "programs"
+  },
+  {
+   "id": "the-files",
+   "name": "The files",
+   "price": "free",
+   "group": "free",
+   "parts": [
+    "body",
+    "back",
+    "front",
+    "blade",
+    "wheel",
+    "spool",
+    "knob",
+    "roller",
+    "pinring",
+    "fit_gauge",
+    "lens_gauge",
+    "test_slab"
+   ],
+   "lessons": [],
+   "programs": [
+    "workshop"
+   ],
+   "home": "store"
+  }
+ ],
+ "programs": [
+  {
+   "id": "homeschool",
+   "name": "Homeschool",
+   "offers": [
+    "starter-kit"
+   ]
+  },
+  {
+   "id": "classroom",
+   "name": "Classroom elective",
+   "offers": [
+    "class-pack",
+    "class-set-cameras",
+    "class-set-black-and-white",
+    "class-set-colour",
+    "class-set-print-it-yourself"
+   ]
+  },
+  {
+   "id": "summer",
+   "name": "Summer program",
+   "offers": [
+    "starter-kit",
+    "camera-kit"
+   ]
+  },
+  {
+   "id": "workshop",
+   "name": "Weekend maker workshop",
+   "offers": [
+    "starter-kit",
+    "camera-kit",
+    "the-files",
+    "lenses-three"
+   ]
+  }
+ ],
+ "ways": [
+  {
+   "id": "print-free",
+   "title": "Print it free",
+   "for": "Anyone with a printer: makers, libraries, makerspaces, schools that print their own.",
+   "what": "Every print file (8 parts, about 9.3 hours of printing), the OpenSCAD source, the gauges, the guides, the 9 lessons and 4 maker lessons, and the films. Add one lens and you have the camera.",
+   "products": [
+    "the-files"
+   ],
+   "programs": [],
+   "route": "files",
+   "contact": null,
+   "licence": "Designs, guides, lessons and films: CC BY-NC-SA 4.0. Site code and tools: MIT."
+  },
+  {
+   "id": "kit-direct",
+   "title": "Kit direct",
+   "for": "People who would rather not pay with time: the kit, film and developing, posted to you.",
+   "what": "The camera kit (9 pieces, no tools, no glue, a 16-page build guide for its 10 build steps) or the starter kit, and the add-ons that click in. Orders by email for now; we reply within one business day with a payment link.",
+   "products": [
+    "starter-kit",
+    "camera-kit",
+    "film-and-developing",
+    "three-rolls-three-codes",
+    "film-roll",
+    "developing-code",
+    "negatives-back",
+    "small-prints",
+    "proof-sheet",
+    "black-and-white-pack",
+    "spares-pack",
+    "lenses-three",
+    "near-ring",
+    "pinhole-discs",
+    "swap-pack",
+    "sticker-sheet",
+    "film-can",
+    "single-part"
+   ],
+   "programs": [],
+   "route": "store",
+   "contact": "hello",
+   "licence": null
+  },
+  {
+   "id": "wholesale",
+   "title": "Wholesale and programs",
+   "for": "Shops, schools, homeschool groups, camps, libraries and makerspaces.",
+   "what": "Class sets of 8, 16 or 24 kits, case packs for shops, and four ready-made programs. By quote.",
+   "products": [
+    "class-pack",
+    "class-set-cameras",
+    "class-set-black-and-white",
+    "class-set-colour",
+    "class-set-print-it-yourself"
+   ],
+   "programs": [
+    "homeschool",
+    "classroom",
+    "summer",
+    "workshop"
+   ],
+   "route": "programs",
+   "contact": "schools",
+   "licence": null
+  }
+ ]
+}

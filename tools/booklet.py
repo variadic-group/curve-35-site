@@ -1,5 +1,5 @@
 """The kit booklet: what is in the bag, build, film in, take pictures, film out.  Pictures first, very few words.
-Half-letter landscape pages (8.5 x 5.5 in), 20 of them: print as a booklet, fold, staple.  NAME is the only place the product name lives."""
+Half-letter landscape pages (8.5 x 5.5 in), 16 of them: print as a booklet, fold, staple.  The name, the company and the numbers come from the canon (canon/*.yaml)."""
 import os, json, math
 from reportlab.lib import colors
 from reportlab.pdfgen import canvas
@@ -7,7 +7,9 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib.utils import ImageReader, simpleSplit
 from PIL import Image, ImageChops
-NAME = "CURVE 35"; MODEL = "ONE-135 v2.16"; PREV = "v2.15"; TAG = "Build your own film camera"
+import sys; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); import canon                # names, facts, company: canon/*.yaml
+CN = canon.load(); CO = CN["company"]; FACT = lambda i: CN["fact"][i]
+NAME = CO["product"]["name"]; MODEL = CO["product"]["model"]; PREV = "v2.15"; TAG = CO["product"]["tagline"]; AGES = CO["ages"]
 F = "/usr/share/fonts/truetype/liberation/LiberationSans-"
 for n, f in (("LS", "Regular"), ("LSB", "Bold")): pdfmetrics.registerFont(TTFont(n, F + f + ".ttf"))
 W, H = 612, 396; M = 22
@@ -21,11 +23,11 @@ def trim(name, pad=14):
     im.crop((max(box[0] - pad, 0), max(box[1] - pad, 0), min(box[2] + pad, im.width), min(box[3] + pad, im.height))).save(out); return out
 def fit(c, path, x, y, w, h):
     iw, ih = Image.open(path).size; s = min(w / iw, h / ih); c.drawImage(ImageReader(path), x + (w - iw * s) / 2, y + (h - ih * s) / 2, iw * s, ih * s); return (x + (w - iw * s) / 2, y + (h - ih * s) / 2, iw * s, ih * s)
-PARTS = [('body', 'body'), ('spool', 'spool'), ('knob', 'wind knob'), ('roller', 'frame wheel'), ('back', 'back'), ('front', 'front plate'), ('blade', 'shutter'), ('wheel', 'aperture wheel')]
+PARTS = [(k, CN["part"][k]["name"]) for k in CN["build_order"] if CN["part"][k]["kind"] == "printed"]      # numbered in the order they go in
 NUM = {p[0]: i + 1 for i, p in enumerate(PARTS)}; THUMB = {**{p[0]: "p_" + p[0] for p in PARTS}, "lens": "lens", "cassette": "cassette", "plate1": "p_plate1", "slide1": "p_slide1", "pinring": "p_pinring", "pindisc": "p_pindisc"}
 # QR codes: short links on curve35.com (site/build.py SHORT writes them to dist/_redirects as 302s to the page's routes).
 # segno, error level M, a quiet zone of 2 modules on a white ground, the code itself at least 15 mm.  Every path used is listed in build/booklet/qr_paths.json for the check.
-SITE = "curve35.com"; QR_USED = []
+SITE = CO["product"]["domain"]; QR_USED = []
 def qr(c, path, x, y, size, label=True, fs=6.6):
     """The code with its quiet zone, bottom-left corner at (x, y); size: the code alone, in points (15 mm = 42.5 pt).  The short address under it.  Returns the outer width."""
     import segno
@@ -76,8 +78,8 @@ EXPO = json.load(open("build/exposure.json"))["coverage"]; LIGHTS = [("full sun"
 DOT = {"small": 2.6, "middle": 4.4, "large": 6.4}
 def which(iso, light):
     d = EXPO[iso][light]; t = d["typical"]; return ("T", 0.0) if t < -1.0 else (d["hole"], t)          # the model's stops over or under on a typical printer; more than one stop under is too dark for a snap
-TIMES = {"100": (4, 20, 80), "200": (2, 10, 40), "400": (1, 5, 20)}; ROOMS = ("by a window", "room lights on", "dim room")      # small dot; they lean long on purpose
-PINS = {"100": ("1", "3", "15", "4 min"), "200": ("open, shut", "2", "8", "90"), "400": ("open, shut", "1", "3", "40")}; PINL = ("full sun", "cloud", "shade", "indoors")   # v2.16: tools/pinhole.py, the 0.25 mm disc at 28.9 mm (f/116), with the film's slowing on long exposures; rounded long
+TIMES = {"100": tuple(FACT("time_counts_iso100")["value"]), "200": tuple(FACT("time_counts_iso200")["value"]), "400": tuple(FACT("time_counts_iso400")["value"])}; ROOMS = ("by a window", "room lights on", "dim room")      # small dot; they lean long on purpose
+PINS = {"100": tuple(FACT("pin_counts_iso100")["value"]), "200": tuple(FACT("pin_counts_iso200")["value"]), "400": (FACT("pin_count_sun")["say_round"],) + tuple(str(FACT(f"pin_count_{k}")["value"]) for k in ("cloud", "shade", "indoors"))}; PINL = ("full sun", "cloud", "shade", "indoors")   # v2.16: tools/pinhole.py, the 0.25 mm disc at 28.9 mm (f/116), with the film's slowing on long exposures; rounded long
 def chart(c, x0, ytop, cw=42, rh=44, lab=44, fs=8, k=1.0, isos=None):
     IS = isos or ISOS
     for j, (L, ic, nm) in enumerate(LIGHTS):
@@ -123,15 +125,15 @@ def two(c, sec, page, a, b):
         if s: step(c, x=M + i * (w + 18), y=M + 4, w=w, h=h, col=SEC[sec], **s)
     c.showPage()
 def build():
-    c = canvas.Canvas("build/booklet/_master.pdf", pagesize=(W, H)); c.setTitle(f"{NAME} kit booklet"); c.setAuthor("Variadic Group LLC")
+    c = canvas.Canvas("build/booklet/_master.pdf", pagesize=(W, H)); c.setTitle(f"{NAME} kit booklet"); c.setAuthor(CO["company"]["name"])
     # 1 cover
     c.setFillColor(colors.HexColor("#fff4e6")); c.rect(0, 0, W, H, fill=1, stroke=0); c.setFillColor(SEC["BUILD"]); c.rect(0, H - 86, W, 86, fill=1, stroke=0)
     c.setFillColor(colors.white); c.setFont("LSB", 46); c.drawString(M + 6, H - 60, NAME); c.setFont("LS", 15); c.drawString(M + 8, H - 79, TAG)
     fit(c, trim("hero"), 150, 6, W - 170, H - 100); x = M + 6
     c.setFillColor(INK); c.setFont("LSB", 11); c.drawString(M + 6, 238, "Start here"); c.setFillColor(GREY); c.setFont("LS", 8); c.drawString(M + 6, 227, "every step as a film")
     qr(c, "start", M + 6, 148, 62, fs=7.5)
-    for s in ("9 pieces", "no tools", "no glue"): c.setFillColor(INK); pill(c, x, 104 - 0, s, INK, 11); x += 0; c.translate(0, -24)
-    c.translate(0, 72); c.setFillColor(GREY); c.setFont("LS", 8.5); c.drawString(M + 6, 28, "takes 35 mm film"); c.drawString(M + 6, 16, "ages 14 and up"); c.showPage()
+    for s in (FACT("pieces")["say"] + " pieces", "no tools", "no glue"): c.setFillColor(INK); pill(c, x, 104 - 0, s, INK, 11); x += 0; c.translate(0, -24)
+    c.translate(0, 72); c.setFillColor(GREY); c.setFont("LS", 8.5); c.drawString(M + 6, 28, "takes 35 mm film"); c.drawString(M + 6, 16, "ages " + AGES); c.showPage()
     # 2 in the bag
     tag(c, "BUILD", 2); c.setFillColor(INK); c.setFont("LSB", 20); c.drawString(M + 78, H - M - 14, "In the bag")
     cw = (W - 2 * M) / 5; chh = 132
@@ -186,7 +188,7 @@ def build():
         fit(c, trim("hero_back"), M + w + 18, M + 44, w, h - 80); c.setFillColor(SEC["BUILD"]); c.setFont("LSB", 24); c.drawCentredString(M + w + 18 + w / 2, M + 22, "Done!"); c.setFillColor(INK); c.setFont("LS", 10); c.drawCentredString(M + w + 18 + w / 2, M + 8, "Press the rocker: click.  Slide the handle: three clicks.")
     spread("BUILD", by("BUILD"))
     # done, and how it works: one page.  The one explainer in the box
-    import manual; manual.how_picture(); FO = json.load(open("build/exposure.json")); ST3 = FO["printers"]["typical"]["stops"]; FN = ["%g" % min((8, 9.5, 11, 13, 16, 19, 22), key=lambda n: abs(n - 32.0 / q["hole_mm"])) for q in ST3]
+    import manual; manual.how_picture()
     tag(c, "BUILD", page[0]); fit(c, trim("hero_back"), M, M + 74, w, h - 124); c.setFillColor(SEC["BUILD"]); c.setFont("LSB", 30); c.drawCentredString(M + w / 2, M + 46, "Done!"); c.setFillColor(INK); c.setFont("LS", 10); c.drawCentredString(M + w / 2, M + 28, "Press the rocker: click.  Slide the handle: three clicks.")
     xr = M + w + 18; c.setFillColor(SEC["KNOW"]); c.setFont("LSB", 15); c.drawString(xr, H - M - 14, "How it works"); c.setFillColor(GREY); c.setFont("LS", 8.5); c.drawString(xr + 100, H - M - 14, "from above, cut through the middle")
     fit(c, "build/booklet/how.png", xr - 4, M + 148, w + 8, h - 166); y = M + 136
@@ -225,7 +227,7 @@ def build():
     # back cover: the numbers, six things to remember, who made it, and two codes: help and the lessons
     c.setFillColor(colors.HexColor("#fff4e6")); c.rect(0, 0, W, H, fill=1, stroke=0); xl = M + 6; c.setFillColor(SEC["BUILD"]); c.setFont("LSB", 22); c.drawString(xl, H - M - 20, NAME)
     c.setFillColor(INK); c.setFont("LSB", 12); c.drawString(xl, H - M - 54, "The numbers"); y = H - M - 72
-    for k, v in (("Lens", "32 mm, one piece of plastic"), ("Focus", "fixed: sharp from 2 m"), ("Holes", "about f/%s, f/%s, f/%s" % tuple(FN)), ("Shutter", "about 1/300 s, or held open"), ("Film", "any 35 mm; the dots are for ISO 400"), ("Picture", "36 x 24 mm")):
+    for k, v in CN["panels"]["booklet_numbers"]:
         c.setFillColor(GREY); c.setFont("LS", 9.5); c.drawString(xl, y, k); c.setFillColor(INK); c.drawString(xl + 50, y, v); y -= 14
     xr = M + w + 26; c.setFillColor(INK); c.setFont("LSB", 12); c.drawString(xr, H - M - 54, "Good to know"); y = H - M - 72
     for tx in ("Load and unload in the shade, never in the sun.", "Press the rocker, then wind. Every time.", "Put what matters in the middle: it is sharpest there.", "Never force a knob. If one is stiff, stop and look.", "If the back comes open, the pictures already taken are safe in the film's shell.", "Keep the camera out of hot cars: the plastic softens."):
@@ -233,12 +235,13 @@ def build():
         for ln in simpleSplit(tx, "LS", 9.5, w - 30): c.drawString(xr + 12, y, ln); y -= 12
         y -= 4
     c.setFillColor(GREY); c.setFont("LS", 8); lines = []                     # who made it, bottom up, kept inside the left column
-    for tx in ("Made by Variadic Group LLC, 2108 N St #18255, Sacramento, CA 95816.", "curve35.com  \u00b7  support@curve35.com  \u00b7  (209) 528-9554",
-               "This guide: CC BY-NC-SA 4.0. Credit: CURVE 35 by Variadic Group LLC, curve35.com. CURVE 35 and its logos are trademarks. Want to sell kits? hello@curve35.com",
+    K, E, LI = CO["company"], CO["email"], CO["licence"]
+    for tx in (f"Made by {K['name']}, {K['address']}.", f"{SITE}  \u00b7  {E['support']}  \u00b7  {K['phone']}",
+               f"This guide: {LI['designs']}. Credit: {LI['credit']}. {LI['trademark']} Want to sell kits? {E['hello']}",
                f"{MODEL}   batch: ________"): lines += simpleSplit(tx, "LS", 8, w - 4)
     for k, ln in enumerate(reversed(lines)): c.drawString(xl, M + 4 + 10 * k, ln)
     c.setFillColor(INK); c.setFont("LSB", 9)
-    for k, ln in enumerate(reversed(simpleSplit("Ages 14 and up.  Contains small parts: keep away from children under 3.", "LSB", 9, w - 4))): c.drawString(xl, M + 10 + 10 * len(lines) + 11 * k, ln)
+    for k, ln in enumerate(reversed(simpleSplit(f"Ages {AGES}.  Contains small parts: keep away from children under 3.", "LSB", 9, w - 4))): c.drawString(xl, M + 10 + 10 * len(lines) + 11 * k, ln)
     xq = M + w + 26
     for k, (path, hd, sub) in enumerate((("help", "Stuck?", "fixes for every step"), ("lessons", "How it works", "nine free lessons"))):
         xx = xq + k * 140; c.setFillColor(INK); c.setFont("LSB", 10); c.drawString(xx, M + 92, hd); c.setFillColor(GREY); c.setFont("LS", 7.6); c.drawString(xx, M + 82, sub); qr(c, path, xx, M + 12, 56, fs=7)
@@ -257,13 +260,13 @@ def build():
     from pypdf import PdfReader, PdfWriter
     rd = PdfReader("build/booklet/_master.pdf")
     for name, pages in (("build/CURVE-35_kit_booklet.pdf", range(0, NKIT)), ("build/old/CURVE-35_first_picture_retired.pdf", range(NKIT, len(rd.pages)))):
-        wr = PdfWriter(); [wr.add_page(rd.pages[k]) for k in pages]; wr.add_metadata({"/Title": f"{NAME} " + ("kit booklet" if "kit" in name else "first picture"), "/Author": "Variadic Group LLC"}); wr.write(name)
+        wr = PdfWriter(); [wr.add_page(rd.pages[k]) for k in pages]; wr.add_metadata({"/Title": f"{NAME} " + ("kit booklet" if "kit" in name else "first picture"), "/Author": CO["company"]["name"]}); wr.write(name)
     json.dump(QR_USED, open("build/booklet/qr_paths.json", "w"), indent=1)
     print("kit booklet:", NKIT, "pages; first picture:", len(rd.pages) - NKIT, "pages")
 def light_chart():
     """One letter page for the wall or the camera bag: which dot, and how long."""
     from reportlab.lib.pagesizes import letter
-    PW, PH = letter; c = canvas.Canvas("build/CURVE-35_light_chart.pdf", pagesize=letter); c.setTitle(f"{NAME} light chart"); c.setAuthor("Variadic Group LLC"); x0 = 54; TW = PW - 2 * x0
+    PW, PH = letter; c = canvas.Canvas("build/CURVE-35_light_chart.pdf", pagesize=letter); c.setTitle(f"{NAME} light chart"); c.setAuthor(CO["company"]["name"]); x0 = 54; TW = PW - 2 * x0
     c.setFillColor(SEC["BUILD"]); c.rect(0, PH - 74, PW, 74, fill=1, stroke=0); c.setFillColor(colors.white); c.setFont("LSB", 30); c.drawString(x0, PH - 48, f"{NAME} light chart"); c.setFont("LS", 12); c.drawString(x0, PH - 65, "which dot, and how long")
     c.setFillColor(INK); c.setFont("LSB", 15); c.drawString(x0, 694, "1. A snap: press the rocker"); c.setFillColor(GREY); c.setFont("LS", 10); c.drawString(x0 + 214, 694, "Find your film's ISO on its box. Look at the sky. Stand 2 m or more away.")
     yb = chart(c, x0, 684, cw=74, rh=46, lab=60, fs=9.5, k=1.2); legend(c, x0 + 60, yb - 18, 10); c.setFillColor(GREY); c.setFont("LS", 9.5)
@@ -279,14 +282,14 @@ def light_chart():
                f"Every number comes from the camera's own model ({MODEL}), typical printer. Start here, and write down what you used: curve35.com/help."):
         for ln in simpleSplit(tx, "LS", 9, TW - 4): c.drawString(x0 + 2, yy, ln); yy -= 11.2
         yy -= 3
-    c.setFillColor(GREY); c.setFont("LS", 8); c.drawString(x0, 16, f"{NAME}  {MODEL}  Variadic Group LLC"); c.showPage(); c.save()
+    c.setFillColor(GREY); c.setFont("LS", 8); c.drawString(x0, 16, f"{NAME}  {MODEL}  {CO['company']['name']}"); c.showPage(); c.save()
 def card():
     """The card in the bag, the size of a business card (3.5 x 2 in), two sides: what it is, and where the rest lives.  Cheap to print; it is also what gets handed to a friend."""
-    CWd, CHt = 252, 144; c = canvas.Canvas("build/CURVE-35_card.pdf", pagesize=(CWd, CHt)); c.setTitle(f"{NAME} card"); c.setAuthor("Variadic Group LLC")
+    CWd, CHt = 252, 144; c = canvas.Canvas("build/CURVE-35_card.pdf", pagesize=(CWd, CHt)); c.setTitle(f"{NAME} card"); c.setAuthor(CO["company"]["name"])
     c.setFillColor(colors.HexColor("#fff4e6")); c.rect(0, 0, CWd, CHt, fill=1, stroke=0); c.setFillColor(SEC["BUILD"]); c.rect(0, CHt - 44, CWd, 44, fill=1, stroke=0); c.setFillColor(colors.white); c.setFont("LSB", 24); c.drawString(12, CHt - 28, NAME); c.setFont("LS", 8.5); c.drawString(13, CHt - 39, TAG)
     fit(c, trim("hero"), 96, 4, 150, 96); c.setFillColor(INK); x = 12
     for i, tx in enumerate(("a real 35 mm camera", "you build it yourself", "no tools, no glue")): c.setFont("LS", 8.5); c.drawString(12, 78 - 12 * i, tx)
-    c.setFillColor(GREY); c.setFont("LS", 7); c.drawString(12, 12, "ages 14 and up"); c.showPage()
+    c.setFillColor(GREY); c.setFont("LS", 7); c.drawString(12, 12, "ages " + AGES); c.showPage()
     c.setFillColor(colors.white); c.rect(0, 0, CWd, CHt, fill=1, stroke=0); c.setFillColor(INK); c.setFont("LSB", 13); c.drawString(12, CHt - 22, "Start here"); qr(c, "start", CWd - 78, CHt - 76, 56, fs=6.4); c.setFillColor(INK); c.setFont("LS", 8.5)
     for i, tx in enumerate(("every step as a short film", "the full light chart", "your first picture, with a hole", "how and why it works")): c.setFillColor(SEC["PHOTOS"]); c.circle(15, CHt - 37 - 12 * i, 2, fill=1, stroke=0); c.setFillColor(INK); c.drawString(22, CHt - 40 - 12 * i, tx)
     c.setFillColor(BOX); c.setStrokeColor(BOXL); c.setLineWidth(0.7); c.roundRect(10, 8, CWd - 20, 44, 6, fill=1, stroke=1); c.setStrokeColor(INK); c.setLineWidth(0.8)

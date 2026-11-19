@@ -58,6 +58,124 @@
   var SECNAME = { "BUILD": "Build", "FILM IN": "Film in", "PHOTOS": "Photos", "FILM OUT": "Film out", "THE HOLE": "Pinhole experiment" };
   var SECBAR = { "BUILD": "BUILD", "FILM IN": "FILM IN", "PHOTOS": "PHOTOS", "FILM OUT": "FILM OUT", "THE HOLE": "PINHOLE" };
 
+  // ------------------------------------------------------------------ the canon as a graph (site/build.py build_graph): every cross-link on the site comes from here
+  var GR = C.graph || { parts: [], steps: [], lessons: {}, facts: [], checks: [], terms: [], offers: [], programs: [], ways: [] };
+  var VID = C.video || null;
+  var GP = {}, GPK = {}, GS = {}, GF = {}, GC = {}, GT = {}, GO = {}, GPG = {};
+  GR.parts.forEach(function (p) { GP[p.id] = p; GPK[p.key] = p; });
+  GR.steps.forEach(function (s, i) { s.i = i; GS[s.id] = s; });
+  GR.facts.forEach(function (f) { GF[f.id] = f; });
+  GR.checks.forEach(function (c) { GC[c.id] = c; });
+  GR.terms.forEach(function (t) { GT[t.id] = t; });
+  GR.offers.forEach(function (o) { GO[o.id] = o; });
+  GR.programs.forEach(function (g) { GPG[g.id] = g; });
+  function rid(id) { return String(id).replace(/_/g, "-"); }
+  var FACT_BY_RID = {}, CHECK_BY_RID = {}; GR.facts.forEach(function (f) { FACT_BY_RID[rid(f.id)] = f; }); GR.checks.forEach(function (c) { CHECK_BY_RID[rid(c.id)] = c; });
+  var LINK = {     // id -> [href, label]
+    part: function (id) { var p = GP[id]; return p ? ["#part-" + p.key, p.name] : null; },
+    step: function (id) { var s = GS[id]; return s ? ["#build-" + id, (SECNAME[s.sec] || s.sec) + " " + s.n + ": " + s.title] : null; },
+    lesson: function (id) { var L = GR.lessons[id]; return L ? ["#" + L.route, (L.shelf === "maker" ? "Maker lesson " : "Lesson ") + L.num + ": " + L.title] : null; },
+    term: function (id) { var t = GT[id]; return t ? ["#glossary-" + id, t.term] : null; },
+    fact: function (id) { var f = GF[id]; return f ? ["#fact-" + rid(id), f.say] : null; },
+    check: function (id) { var c = GC[id]; return c ? ["#check-" + rid(id), c.name] : null; },
+    offer: function (id) { var o = GO[id]; return o ? ["#offer-" + id, o.name] : null; },
+    program: function (id) { var g = GPG[id]; return g ? ["#program-" + id, g.name] : null; }
+  };
+  function xchips(kind, ids, label) {
+    var items = (ids || []).map(function (id) { return LINK[kind](id); }).filter(Boolean);
+    if (!items.length) return "";
+    return '<ul class="xchips xc-' + kind + '"' + (label ? ' aria-label="' + esc(label) + '"' : "") + ">" + items.map(function (x) { return '<li><a href="' + x[0] + '">' + esc(x[1]) + "</a></li>"; }).join("") + "</ul>";
+  }
+  function xrow(name, kind, ids) { var c = xchips(kind, ids, name); return c ? '<div class="xrow"><dt>' + esc(name) + "</dt><dd>" + c + "</dd></div>" : ""; }
+  // a small "Related" block at the end of a page: links from the canon graph, at most eight, none twice
+  function relatedBlock(items) {
+    var seenH = {}, out = [];
+    items.forEach(function (x) { if (x && !seenH[x[0]] && out.length < 8) { seenH[x[0]] = 1; out.push(x); } });
+    if (!out.length) return "";
+    return '<aside class="related" aria-labelledby="rel-h"><div class="wrap"><h2 id="rel-h">Related</h2><ul>' + out.map(function (x) { return '<li><a href="' + x[0] + '"><span class="rel-k">' + esc(x[2] || "") + "</span>" + esc(x[1]) + "</a></li>"; }).join("") + "</ul></div></aside>";
+  }
+  function rel(kind, id, tag) { var x = LINK[kind](id); return x ? [x[0], x[1], tag] : null; }
+  function relPage(h, label, tag) { return ["#" + h, label, tag || "Page"]; }
+  function relatedFor(h, L) {
+    var r = [];
+    if (L) {
+      var G0 = GR.lessons[L.id] || { parts: [], steps: [], terms: [] };
+      G0.steps.slice(0, 2).forEach(function (s) { r.push(rel("step", s, "Build step")); });
+      G0.terms.slice(0, 2).forEach(function (t) { r.push(rel("term", t, "Word")); });
+      Object.keys(GR.lessons).forEach(function (o) { if (o !== L.id && GR.lessons[o].parts.some(function (p) { return G0.parts.indexOf(p) >= 0; })) r.push(rel("lesson", o, "Same part")); });
+      r.push(relPage("facts", "The camera in numbers", "Facts"));
+      return r;
+    }
+    if (h === "build") {
+      var s = GS[BUILD_AT] || GR.steps[0];
+      if (s) { if (s.lesson) r.push(rel("lesson", s.lesson, "Lesson")); s.parts.forEach(function (p) { r.push(rel("part", p.id, "Part")); }); s.terms.forEach(function (t) { r.push(rel("term", t, "Word")); }); }
+      return r.concat([relPage("parts", "Every part, in one table"), relPage("help", "Help: something not right?"), relPage("glossary", "Glossary")]);
+    }
+    var M = {
+      parts: [relPage("build", "The build guide"), relPage("glossary", "Glossary"), relPage("facts", "Facts and checks"), rel("offer", "single-part", "Shop"), rel("offer", "spares-pack", "Shop"), rel("offer", "the-files", "Free")],
+      glossary: GR.terms.length ? [rel("lesson", "l01", "Lesson"), rel("lesson", "l04", "Lesson"), relPage("facts", "Facts and checks"), relPage("parts", "The parts")] : [],
+      facts: [relPage("open-files", "Open files"), relPage("glossary", "Glossary"), relPage("parts", "The parts"), rel("lesson", "m03", "Maker lesson")],
+      store: [relPage("parts", "The parts"), relPage("build", "The build guide"), relPage("programs", "Wholesale and programs"), relPage("files", "Print it free")].concat(GR.programs.slice(0, 2).map(function (g) { return rel("program", g.id, "Program"); })),
+      programs: [relPage("teachers", "For teachers"), relPage("store", "Get the kit")].concat(GR.programs.length ? (GPG.classroom || GR.programs[0]).offers.slice(0, 3).map(function (o) { return rel("offer", o, "Wholesale"); }) : []),
+      start: [rel("step", "b1", "Build step"), relPage("parts", "The parts"), rel("lesson", "l01", "Lesson"), relPage("help", "Help")],
+      files: [relPage("parts", "The parts"), rel("lesson", "m01", "Maker lesson"), rel("check", "print", "Check"), rel("check", "fit", "Check"), rel("offer", "lenses-three", "Shop")],
+      lessons: [relPage("glossary", "Glossary"), relPage("facts", "Facts and checks"), relPage("parts", "The parts"), relPage("teachers", "For teachers")],
+      teachers: [relPage("programs", "Wholesale and programs"), relPage("glossary", "Glossary"), relPage("facts", "Facts and checks"), rel("lesson", "l01", "Lesson")],
+      opensource: [relPage("files", "Download the files"), relPage("facts", "Facts and checks"), rel("lesson", "m01", "Maker lesson"), rel("offer", "the-files", "Free")],
+      help: [relPage("build", "The build guide"), relPage("parts", "The parts"), rel("step", "b8", "Build step"), rel("offer", "spares-pack", "Shop")],
+      builds: [relPage("open-files", "Open files"), relPage("files", "The files"), rel("lesson", "m02", "Maker lesson")]
+    };
+    return M[h] || [];
+  }
+
+  // ---- glossary words in running text: underlined, a tooltip with the meaning, a link to the word (and from there to where it is taught)
+  var GL_N = 0;
+  var GL_SKIP = "a,button,h1,h2,h3,h4,summary,label,svg,figure,code,script,style,select,option,textarea,input,.glw,.xchips,.related,[role=tooltip]";
+  function glossTip(t) {
+    var where = t.taught.map(function (l) { var L = GR.lessons[l]; return L ? (L.shelf === "maker" ? "Maker lesson " : "Lesson ") + L.num : ""; }).filter(Boolean);
+    return t.means + (where.length ? " Taught in " + where.join(", ") + "." : "");
+  }
+  function glossarize(root, ids) {
+    if (!root || !GR.terms.length) return;
+    var done = {}; $$(".glw[data-term]", root).forEach(function (w) { done[w.getAttribute("data-term")] = 1; });
+    var terms = (ids || GR.terms.map(function (t) { return t.id; })).map(function (id) { return GT[id]; }).filter(function (t) { return t && !done[t.id]; });
+    terms.sort(function (a, b) { return b.term.length - a.term.length; });
+    if (!terms.length) return;
+    var blocks = $$("p, li, dd, td", root).filter(function (el) { return !el.closest(GL_SKIP); });
+    terms.forEach(function (t) {
+      var rx = new RegExp("\\b(" + t.term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/ /g, "\\s+") + ")(s|es)?\\b", "i");
+      for (var b = 0; b < blocks.length; b++) {
+        var w = document.createTreeWalker(blocks[b], NodeFilter.SHOW_TEXT, null), n, hit = false;
+        while ((n = w.nextNode())) {
+          if (n.parentNode.closest(GL_SKIP)) continue;
+          var m = rx.exec(n.nodeValue); if (!m) continue;
+          var after = n.splitText(m.index); after.splitText(m[0].length);
+          var id = "gt-" + (++GL_N), wrap = document.createElement("span"); wrap.className = "glw"; wrap.setAttribute("data-term", t.id);
+          wrap.innerHTML = '<a class="gl" href="#glossary-' + t.id + '" aria-describedby="' + id + '">' + esc(m[0]) + '</a><span class="gl-tip" role="tooltip" id="' + id + '">' + esc(glossTip(t)) + "</span>";
+          after.parentNode.replaceChild(wrap, after); hit = true; break;
+        }
+        if (hit) break;
+      }
+    });
+  }
+  // a tooltip can be put away with Escape (WCAG 1.4.13) and comes back on the next hover or focus
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") $$(".glw").forEach(function (w) { w.classList.add("glw-off"); }); });
+  document.addEventListener("pointerover", function (e) { var w = e.target.closest && e.target.closest(".glw"); if (w) w.classList.remove("glw-off"); });
+  document.addEventListener("focusin", function (e) { var w = e.target.closest && e.target.closest(".glw"); if (w) w.classList.remove("glw-off"); });
+
+  // ---- three ways in: the owner's positioning (canon/offers.yaml 'ways').  Open and free to print; the kit sells convenience; wholesale for groups
+  function waysStrip(here) {
+    var W = {}; GR.ways.forEach(function (w) { W[w.id] = w; });
+    var free = W["print-free"], kit = W["kit-direct"], whole = W.wholesale;
+    function card(cls, h, p, acts) { return '<li class="way ' + cls + '"><h2 class="way-h">' + h + "</h2><p>" + p + '</p><p class="way-a">' + acts + "</p></li>"; }
+    var q = mailto(MAIL.schools, "CURVE 35 wholesale quote", "Hello,\n\nWe'd like a wholesale quote.\n\nWho we are (shop, school, makerspace):\nHow many kits:\nWhen:\nShip to (city and country):\n\nAnything else:\n");
+    return '<ul class="ways" aria-label="Three ways in">' +
+      (free ? card("w-free", "Print it free", "Every file, the source and the lessons. Open, under " + '<a href="#open-files">' + esc("CC BY-NC-SA") + "</a>. Add one lens.", '<a class="btn small" href="#files">Get the files</a>') : "") +
+      (kit ? card("w-kit", "Buy the kit", "Skip the printing and the hunt for parts. Printed, checked, posted, with film if you like.", here === "store" ? '<a class="btn small main" href="#offer-starter-kit" data-go="p-starter-kit">See the kits</a><a class="btn small" href="#spares" data-go="p-extras">Add-ons</a>' : '<a class="btn small main" href="#store">See the kits</a>') : "") +
+      (whole ? card("w-whole", "Wholesale and programs", "Shops, schools and makerspaces: class sets, case packs and four ready-made programs, by quote.", here === "programs" ? '<a class="btn small main" href="#wholesale" data-go="wholesale">Wholesale terms</a><a class="btn small" href="' + esc(q) + '">Email for a quote</a>' : '<a class="btn small" href="#programs">Programs</a><a class="btn small" href="' + esc(q) + '">Email for a quote</a>') : "") + "</ul>";
+  }
+
+
   // ------------------------------------------------------------------ lessons: both shelves, by route
   var ROUTE = {};
   LESSONS.forEach(function (L, i) { L.shelfList = LESSONS; L.i = i; ROUTE[L.route] = L; });
@@ -68,25 +186,12 @@
   var FILE = {}; FILES.parts.forEach(function (f) { FILE[f.key] = f; });
   var GPART = {}; G.parts.concat(G.extras || []).forEach(function (p) { GPART[p.key] = p; });
   // every part, with the colour it is printed in (a soft tint of it sits behind its picture)
-  var PARTS = [
-    { key: "body", name: "Body", hex: "#3A3632", lesson: 1, step: "b1", line: "The dark box. The film rides its curved rails." },
-    { key: "spool", name: "Spool", hex: "#D7322B", lesson: 6, step: "b1", line: "The big red knob. The film winds onto it." },
-    { key: "knob", name: "Wind knob", hex: "#3FA34D", lesson: 6, step: "b2", line: "The small green knob. Winds the film back." },
-    { key: "roller", name: "Frame wheel", hex: "#2F7FD8", lesson: 6, step: "b3", line: "One turn of the arrow is one picture." },
-    { key: "back", name: "Back", hex: "#9AA1A9", lesson: 7, step: "b3", line: "Closes the box. Clicks on at both ends." },
-    { key: "front", name: "Front plate", hex: "#E8641B", lesson: 4, step: "b5", line: "Holds the lens, the shutter and the dots." },
-    { key: "blade", name: "Shutter", hex: "#1F9E92", lesson: 5, step: "b5", line: "Open for about 1/300 of a second." },
-    { key: "wheel", name: "Aperture wheel", hex: "#F2C230", lesson: 4, step: "b6", line: "Small, middle or large hole." },
-    { key: "lens", name: "Lens", hex: "#5BB8E8", lesson: 2, step: "b10", line: "12 mm across, 32 mm focal length. Not printed." }
-  ];
-  var BONUS = [
-    { key: "pinring", name: "Pinhole ring and disc", hex: "#3A3632", lesson: 1, step: "h2", line: "A metal disc with a pinhole, held in the lens pocket by a printed ring, in place of the lens. In the kit, or make the disc from a can." },
-    { key: "cassette", name: "35 mm film", hex: "#E0A419", lesson: 3, step: "f2", line: "Any 35 mm film in its normal shell." }
-  ];
+  var CARDS = G.cards || { parts: [], bonus: [], lesson_parts: {} };     // canon/parts.yaml ('card') and canon/lessons.yaml ('parts'), by way of site/build.py
+  var PARTS = CARDS.parts;
+  var BONUS = CARDS.bonus;
   var ALLPARTS = PARTS.concat(BONUS), PART = {}; ALLPARTS.forEach(function (p, i) { p.i = i; PART[p.key] = p; });
   function partImg(key) { return (FILE[key] && FILE[key].img) || (GPART[key] && GPART[key].img) || (key === "cassette" ? PIC.cassette : key === "lens" ? PIC.lens : null) || ("media/img/part_" + key + ".webp"); }
-  var LESSON_PARTS = { l01: ["pinring", "body"], l02: ["lens"], l03: ["cassette", "body"], l04: ["wheel", "front"], l05: ["blade"], l06: ["roller", "spool", "knob"], l07: ["body", "back"],
-    l08: ["lens", "wheel", "blade"], l09: ["lens", "blade", "wheel", "cassette"], m01: ["body", "back", "front"], m02: ["front", "back"], m03: ["roller", "cassette"], m04: ["blade", "knob", "spool"] };
+  var LESSON_PARTS = CARDS.lesson_parts;
   // a simple row of renders with names (no cards)
   function partsRow(keys, link) {
     return '<ul class="prow">' + keys.map(function (k) {
@@ -105,7 +210,9 @@
   });
 
   // ------------------------------------------------------------------ basket (this browser only; nothing is sent until the reader sends the email)
-  var MAIL = { hello: "hello@curve35.com", support: "support@curve35.com", schools: "schools@curve35.com" };
+  var META = C.meta || {};                  // canon/company.yaml, by way of site/build.py
+  var MAIL = META.email || {};
+  function mailLink(m) { return '<a href="mailto:' + esc(m) + '">' + esc(m) + "</a>"; }
   function mailto(to, subject, body) { return "mailto:" + to + "?subject=" + encodeURIComponent(subject) + (body ? "&body=" + encodeURIComponent(body) : ""); }
   var KEY = "curve35-basket", memory = {};
   function loadBasket() { try { var b = JSON.parse(localStorage.getItem(KEY) || "{}"); return b && typeof b === "object" ? b : {}; } catch (e) { return memory; } }
@@ -246,7 +353,7 @@
     if (!stats.length && p.key === "cassette") stats = [["Pictures", "24 or 36"], ["Size", "35 mm"]];
     return '<li class="pt" id="part-' + p.key + '" tabindex="-1">' + band + pic + '<h3 class="pt-name">' + esc(p.name) + "</h3><p>" + esc(p.line) + "</p>" +
       (stats.length ? '<dl class="pt-stats">' + stats.map(function (x) { return "<div><dt>" + x[0] + "</dt><dd>" + x[1] + "</dd></div>"; }).join("") + "</dl>" : "") +
-      (L ? '<p class="pt-links"><a class="pill" href="#' + L.route + '" style="' + cvars(lcol(L)) + '">Lesson ' + esc(L.num) + '<span class="sr-only">: ' + esc(L.title) + "</span></a></p>" : "") + "</li>";
+      (L ? '<p class="pt-links"><a class="pill" href="#' + L.route + '" style="' + cvars(lcol(L)) + '">Lesson ' + esc(L.num) + '<span class="sr-only">: ' + esc(L.title) + "</span></a></p>" : "") + (GPK[p.key] ? partMore(GPK[p.key], false) : "") + "</li>";
   }
 
   // ------------------------------------------------------------------ pages
@@ -255,8 +362,8 @@
   // ---- home (v9): short, and lessons early.
   //      v10: hero (yellow, the camera in 3D) > problem (ink) > four buyer facts > 4 steps (four pictures, one style) > lesson titles > the camera viewer
   //      > one card for the kit > open source, builds, teachers (one line each) > last call (tangerine)
-  var REPO = "https://github.com/variadic-group/curve-35-site";
-  var CC = "https://creativecommons.org/licenses/by-nc-sa/4.0/";
+  var REPO = META.repo;
+  var CC = META.licence_url;
   function lessonRow() {      // v10: compact, titles only
     return '<ol class="lrow lrow-t" role="list">' + LESSONS.map(function (L) {
       return '<li><a class="lr" href="#' + L.route + '" style="' + cvars(lcol(L)) + '"><span class="lr-n" aria-hidden="true">' + esc(L.num) + '</span><span class="lr-t"><span class="sr-only">' + lessonName(L) + ": </span>" + esc(L.title) + "</span></a></li>";
@@ -301,7 +408,8 @@
       '<li class="m3-g"><a href="#open-files"><strong>Open files</strong><span>Every part is code. Read it, change it, print it.</span></a></li>' +
       '<li class="m3-p"><a href="#builds"><strong>Builds and remixes</strong><span>Built one or changed one? Show us.</span></a></li>' +
       '<li class="m3-b"><a href="#teachers"><strong>For teachers</strong><span>A 50-minute plan and slides for every lesson. Free.</span></a></li>' +
-      '<li class="m3-y"><a href="#programs"><strong>Programs</strong><span>Homeschool, a class, a summer week or a weekend workshop.</span></a></li></ul></div></section>' +
+      '<li class="m3-y"><a href="#programs"><strong>Programs</strong><span>Homeschool, a class, a summer week or a weekend workshop.</span></a></li></ul>' +
+      '<p class="m3-line"><a href="#files">Print it free</a>, <a href="#store">buy the kit</a> to skip the work, or <a href="#wholesale">buy wholesale</a> for a shop, school or makerspace.</p></div></section>' +
       // LAST CALL
       '<section class="final" aria-labelledby="fn-h"><div class="wrap final-in"><div><h2 id="fn-h">Build a camera this week.</h2><p class="final-win">' + (sp ? esc(sp) + ": t" : "T") + 'he camera, a roll of film and its developing.</p></div>' +
       '<div class="final-act"><a class="btn ink big" href="#store">Get the kit</a><a class="btn big" href="#files">Get the free files</a></div></div></section></div>';
@@ -408,7 +516,9 @@
     var list = L.shelfList, prev = list[L.i - 1], next = list[L.i + 1];
     if (L.shelf === "main" && L.rich) next = null;      // the lesson page ends with its own "next"
     var Sk = PROD["starter-kit"];
-    return '<div class="lesson-foot"><aside class="kitline" aria-label="The parts in this lesson"><p>In your camera</p>' + partsRow(LESSON_PARTS[L.id] || [], true) +
+    var X = GR.lessons[L.id], conn = X ? '<aside class="lconn" aria-labelledby="lc-h-' + L.id + '"><h2 id="lc-h-' + L.id + '">This lesson, linked</h2><dl class="xdl">' +
+      xrow("Build steps", "step", X.steps) + xrow("Parts", "part", X.parts) + xrow("Numbers", "fact", X.facts) + xrow("Words", "term", X.terms) + "</dl></aside>" : "";
+    return '<div class="lesson-foot">' + conn + '<aside class="kitline" aria-label="The parts in this lesson"><p>In your camera</p>' + partsRow(LESSON_PARTS[L.id] || [], true) +
       '<p class="kit-loop">Every part here comes in the kit. <a class="btn small main" href="#store">Get the kit' + (Sk ? " " + money(Sk.price_usd) : "") + '</a><a class="btn small" href="#files">Print it free</a></p></aside>' +
       '<nav class="pager" aria-label="Other lessons">' + (prev ? '<a href="#' + prev.route + '"><span>' + lessonName(prev) + "</span><strong>" + esc(prev.title) + "</strong></a>" : '<a href="' + (L.shelf === "maker" ? "#files" : "#lessons") + '"><span>Back to</span><strong>All lessons</strong></a>') +
       (next ? '<a class="next" href="#' + next.route + '"><span>' + lessonName(next) + "</span><strong>" + esc(next.title) + "</strong></a>" : (L.shelf === "main" && !list[L.i + 1] ? '<a class="next" href="#files" data-makers><span>For makers</span><strong>Made by a printer</strong></a>' : "")) + "</nav></div>";
@@ -441,9 +551,13 @@
     if (!(L.rich && window.CURVE && typeof window.CURVE.renderLesson === "function")) { fallback(); return; }
     var ctx = { id: L.id, shelf: L.shelf, media: L, data: "data/lessons/" + L.id + ".json", lessons: LESSONS, makers: "#makers", parts: LESSON_PARTS[L.id] || [],
                 reducedMotion: reduced(), section: (teach ? "teach" : section) || undefined, teach: !!teach, go: function (hash) { location.hash = hash; } };
+    var busy = false, tmr = 0;
+    function words() { busy = true; try { glossarize(el); } catch (e) { /* the words stay plain */ } busy = false; }
+    var mo = window.MutationObserver ? new MutationObserver(function () { if (busy) return; clearTimeout(tmr); tmr = setTimeout(words, 150); }) : null;
+    if (mo) { mo.observe(el, { childList: true, subtree: true }); cleanup.push(function () { mo.disconnect(); clearTimeout(tmr); }); }
     try {
       var h = window.CURVE.renderLesson(L.n, el, ctx);      // 1 ... 9, or "m1" ... "m4" with ctx.data naming the file
-      var kill = function (x) { if (x && typeof x.destroy === "function") cleanup.push(function () { x.destroy(); }); };
+      var kill = function (x) { if (x && typeof x.destroy === "function") cleanup.push(function () { x.destroy(); }); words(); };
       if (h && typeof h.then === "function") h.then(kill, fallback); else kill(h);
     } catch (e) { fallback(); }
   }
@@ -496,12 +610,15 @@
   // ---- the parts: collectable cards, one per piece, two bonus cards, then where to get a new one
   pages.parts = function () {
     return '<div class="wrap parts-page"><div class="pagehead"><ul class="stks" aria-label="In short"><li class="stk stk-b">9 pieces</li><li class="stk stk-y">+ 2 extras</li></ul><h1>Meet the parts.</h1>' +
-      '<p class="lead">Eight printed, one lens. Each card shows what the part does and which lesson explains it.</p></div>' +
+      '<p class="lead">Eight printed, one lens. Each card shows what the part does and which lesson explains it; open it for its steps, checks and where to get it.</p>' +
+      '<p class="path-links"><a class="btn small" href="#parts-table" data-go="ptable">Every part, in one table</a><a class="btn small" href="#build">The build guide</a><a class="btn small" href="#glossary">Glossary</a></p></div>' +
       '<ol class="pts full" role="list">' + PARTS.map(function (p, i) { return partCard(p, true, i + 1, PARTS.length); }).join("") + BONUS.map(function (p) { return partCard(p, true, 0); }).join("") + "</ol>" +
+      moreParts() + partsTable() + '<div class="parts-after">' +
       '<div class="duo"><section class="duo-card t-sun" aria-labelledby="lo-h"><h2 id="lo-h">Lost one? Broke one?</h2><p>Get a spares pack, or print a new one from the files.</p><p class="path-links"><a class="btn main small" href="#spares">Spares and extras</a><a class="btn small" href="#files">The files</a></p></section>' +
-      '<section class="duo-card t-tang" aria-labelledby="co-h"><h2 id="co-h">Want new colours?</h2><p>The colour pack swaps the front plate and both knobs. Or print your own.</p><p class="path-links"><a class="btn main small" href="#spares">Colour pack</a><a class="btn small" href="#builds">Remix ideas</a></p></section></div></div>';
+      '<section class="duo-card t-tang" aria-labelledby="co-h"><h2 id="co-h">Want new colours?</h2><p>The colour pack swaps the front plate and both knobs. Or print your own.</p><p class="path-links"><a class="btn main small" href="#spares">Colour pack</a><a class="btn small" href="#builds">Remix ideas</a></p></section></div></div></div>';
   };
   pages.parts.title = "The parts";
+  pages.parts.after = function () { wireSort(view); };
   pages.parts.wide = true;
 
   // ---- the build guide, with its own bar
@@ -512,79 +629,260 @@
     return '<div class="tablewrap whichdot"><table><caption>Which dot, for ISO ' + esc(W.iso) + " film</caption><thead><tr><th scope=\"col\">The light</th><th scope=\"col\">The dot</th></tr></thead><tbody>" +
       W.rows.map(function (r) { var on = (r[1].match(/^(small|middle|large) dot$/) || [])[1]; return "<tr><td>" + esc(r[0]) + "</td><td>" + (on ? dots(on) : "") + esc(r[1]) + "</td></tr>"; }).join("") + "</tbody></table></div>";
   }
-  function stepHTML(s) {
-    var keys = s.parts.map(function (p) { return p.key; }).filter(function (k) { return PART[k]; });
-    var parts = s.parts.length ? '<ul class="parts" aria-label="Parts for this step">' + s.parts.map(function (p) {
-      var inner = img(p.img, "", ' width="40" height="30"') + esc(p.n + "x " + p.name);
-      return "<li>" + (PART[p.key] ? '<a href="#part-' + p.key + '">' + inner + "</a>" : inner) + "</li>"; }).join("") + "</ul>" : "";
-    var ls = []; keys.forEach(function (k) { var n = PART[k].lesson; if (ls.indexOf(n) < 0) ls.push(n); });
-    var media = s.clip ? '<figure><video controls preload="none" playsinline width="640" height="480"' + (s.img ? ' poster="' + esc(s.img) + '"' : "") + ' aria-label="Film of ' + esc(s.name) + '"><source src="' + esc(s.clip) + '" type="video/mp4"></video></figure>'
-      : (s.img ? "<figure>" + img(s.img, s.name + ": " + s.do, ' width="960" height="720"') + "</figure>" : "");
-    return '<article class="step" id="step-' + s.code + '" tabindex="-1" aria-labelledby="h-' + s.code + '"><div>' +
-      '<h3 class="label" id="h-' + s.code + '"><span class="sn">' + s.n + '</span><span class="sec">' + esc(SECBAR[s.sec] || s.sec) + "</span></h3><p class=\"do\">" + esc(s.do) + "</p>" +
-      '<p class="check"><span class="ck" aria-hidden="true">&#10003;</span><span class="sr-only">Check: </span>' + esc(s.check) + "</p>" + parts + (s.code === "p1" ? whichDot() : "") +
-      (ls.length ? '<p class="step-learn">Why this shape? ' + ls.map(function (n) { var L = LESSONS[n - 1]; return L ? '<a href="#' + L.route + '">Lesson ' + L.num + ": " + esc(L.title) + "</a>" : ""; }).join(", ") + "</p>" : "") +
-      (s.ifnot ? "<details><summary>If not</summary><p>" + esc(s.ifnot) + ' <a href="#help">More help</a></p></details>' : "") +
-      (s.why ? "<details><summary>Why</summary><p>" + esc(s.why) + "</p></details>" : "") +
-      "</div>" + media + "</article>";
+  // ---- the build guide (v2.16): one step at a time.  The camera in 3D as it stands after the step (the new part glows and flies in), the words,
+  //      "you know it's right when", the common mistake and its fix, the parts, the lesson, the step's film and narration, its short link and QR code.
+  //      A rail of tick boxes (kept in this browser), arrow keys for the next and the last step, the whole film with a chapter per step,
+  //      and which steps need which part.  Everything from the canon (C.graph) and, when it is there, the narrated video (C.video).
+  var BUILD_AT = null, BUILDER = null;
+  var DONE_KEY = "curve35-build-done";
+  function doneMap() { var d = store(DONE_KEY); return d && typeof d === "object" ? d : {}; }
+  function firstUndone() { var d = doneMap(); for (var i = 0; i < GR.steps.length; i++) if (!d[GR.steps[i].id]) return GR.steps[i].id; return GR.steps.length ? GR.steps[0].id : null; }
+  function vsec(id) { return VID && VID.sections && VID.sections[id] || null; }
+  var BLOB = {}; function vttBlob(key, text) { if (!text) return ""; if (!BLOB[key]) { try { BLOB[key] = URL.createObjectURL(new Blob([text], { type: "text/vtt" })); } catch (e) { BLOB[key] = ""; } } return BLOB[key]; }
+  function stepCount(s) { return GR.steps.filter(function (x) { return x.sec === s.sec; }).length; }
+  function qrSvg(q, label) { return q ? '<svg class="qr" viewBox="0 0 ' + q.n + " " + q.n + '" role="img" aria-label="' + esc(label) + '" shape-rendering="crispEdges"><rect width="' + q.n + '" height="' + q.n + '" fill="#fff"/><path d="' + q.d + '" fill="#17140F"/></svg>' : ""; }
+  function railHTML() {
+    var d = doneMap(), n = GR.steps.filter(function (s) { return d[s.id]; }).length;
+    var secs = G.sections.filter(function (sec) { return sec.steps.length; });
+    return '<nav class="rail" aria-label="Steps of the build guide"><div class="rail-top"><p class="rail-n" id="rail-n" aria-live="polite">' + n + " of " + GR.steps.length + " steps done</p>" +
+      '<p class="rail-keys">Arrow keys: last and next step</p></div><div class="rail-secs">' + secs.map(function (sec) {
+        return '<div class="rail-sec sec-' + sec.letter + '"><p class="rail-h">' + esc(SECNAME[sec.key] || sec.key) + '</p><ol class="rail-steps">' + sec.steps.map(function (c) {
+          var s = GS[c]; if (!s) return "";
+          return '<li data-step="' + c + '"><a href="#build-' + c + '" aria-label="' + esc((SECNAME[s.sec] || s.sec) + " " + s.n + ": " + s.title) + '">' + s.n + '</a><input type="checkbox" id="rd-' + c + '" data-done="' + c + '"' + (d[c] ? " checked" : "") + '><label for="rd-' + c + '"><span class="sr-only">Done: ' + esc((SECNAME[s.sec] || s.sec) + " " + s.n) + "</span></label></li>";
+        }).join("") + "</ol></div>";
+      }).join("") + "</div></nav>";
+  }
+  function stepText(s) {
+    var L = s.lesson && GR.lessons[s.lesson], G0 = STEP[s.id] || {}, V = vsec(s.id), d = doneMap();
+    var i = s.i, prev = GR.steps[i - 1], next = GR.steps[i + 1];
+    var parts = s.parts.length ? '<ul class="st-parts" aria-label="Parts used">' + s.parts.map(function (p) {
+      var P0 = GP[p.id]; if (!P0) return "";
+      return '<li><a href="#part-' + P0.key + '">' + img(partImg(P0.key), "", ' width="40" height="30"') + "<span>" + (p.n > 1 ? p.n + " &times; " : "") + esc(P0.name) + "</span></a></li>"; }).join("") + "</ul>" : '<p class="st-none">No new parts: this step moves what is already there.</p>';
+    var clip = (V && V.clip) || s.clip;
+    var film = clip ? '<figure class="st-film"><video controls preload="none" playsinline width="640" height="480"' + (s.img ? ' poster="' + esc(s.img) + '"' : "") + ' aria-label="Film of ' + esc(s.title) + '"><source src="' + esc(clip) + '" type="video/mp4">' +
+      (V && V.vtt ? '<track kind="captions" srclang="en" label="English" src="' + vttBlob("s-" + s.id, V.vtt) + '" default>' : "") + "</video></figure>" : "";
+    var chap = VID && VID.src && V && V.start != null ? '<button type="button" class="btn small" data-seek="' + V.start + '">Watch it in the whole film</button>' :
+      (!VID && G.film && (G.film.chapters || []).some(function (c) { return c.code === s.id; }) ? '<button type="button" class="btn small" data-seek="' + G.film.chapters.filter(function (c) { return c.code === s.id; })[0].t + '">Watch it in the whole film</button>' : "");
+    var narr = s.narration ? '<details class="st-narr"' + (V && V.audio ? " open" : "") + "><summary>Narration</summary>" + (V && V.audio ? '<audio controls preload="none" src="' + esc(V.audio) + '" aria-label="Narration of ' + esc(s.title) + '"></audio>' : "") + "<p>" + esc(s.narration) + "</p></details>" : "";
+    var vlinks = V && V.links && V.links.length ? '<p class="st-vlinks">' + V.links.filter(function (h) { return /^#[a-z0-9-]+$/.test(h); }).map(function (h) { return '<a href="' + h + '">' + esc(h.slice(1).replace(/-/g, " ")) + "</a>"; }).join(" ") + "</p>" : "";
+    var short = s.url ? s.url.replace(/^https:\/\//, "") : "";
+    return '<div class="st-text">' +
+      '<p class="st-eye"><span class="tag">' + esc(SECBAR[s.sec] || s.sec) + "</span> Step " + s.n + " of " + stepCount(s) + "</p>" +
+      '<h2 id="st-h" tabindex="-1">' + esc(s.title) + "</h2>" +
+      '<p class="st-do">' + esc(s.do) + "</p>" +
+      '<div class="st-ok"><p class="st-lab">You know it\'s right when&hellip;</p><p>' + esc(s.check) + "</p></div>" +
+      (s.fix ? '<div class="st-mis"><p class="st-lab">' + (s.mistake ? "Common mistake" : "Tip") + "</p>" + (s.mistake ? "<p><strong>" + esc(s.mistake) + "</strong></p>" : "") + "<p>" + (s.mistake ? '<span class="st-fix">Fix:</span> ' : "") + esc(s.fix) + "</p></div>" : "") +
+      (s.id === "p1" ? whichDot() : "") +
+      '<h3 class="st-sub">Parts</h3>' + parts +
+      (L ? '<p class="st-les"><span class="st-lab">The lesson behind it</span><a href="#' + L.route + '">' + esc((L.shelf === "maker" ? "Maker lesson " : "Lesson ") + L.num + ": " + L.title) + "</a></p>" : "") +
+      (s.terms.length ? '<p class="st-words"><span class="st-lab">Words</span>' + xchips("term", s.terms, "Words in this step") + "</p>" : "") +
+      (s.why ? '<details class="st-why"><summary>Why it is this shape</summary><p>' + esc(s.why) + "</p></details>" : "") +
+      '<p class="st-done"><input type="checkbox" id="sd-' + s.id + '" data-done="' + s.id + '"' + (d[s.id] ? " checked" : "") + '><label for="sd-' + s.id + '">I have done this step</label></p>' +
+      '<nav class="st-pn" aria-label="Last and next step">' + (prev ? '<a class="btn" href="#build-' + prev.id + '" rel="prev"><span aria-hidden="true">&larr;</span> ' + esc((SECBAR[prev.sec] || prev.sec) + " " + prev.n) + "</a>" : "<span></span>") +
+      (next ? '<a class="btn main" href="#build-' + next.id + '" rel="next">' + esc((SECBAR[next.sec] || next.sec) + " " + next.n) + ' <span aria-hidden="true">&rarr;</span></a>' : '<a class="btn main" href="#lessons">On to the lessons</a>') + "</nav></div>" +
+      '<div class="st-media">' + film + '<div class="st-media-row">' + chap + "</div>" + narr + vlinks +
+      (s.qr ? '<div class="st-short">' + qrSvg(s.qr, "QR code for " + short) + '<p><span class="st-lab">Short link</span><a href="#build-' + s.id + '">' + esc(short) + "</a><span class=\"note\">Scan it from the printed guide to land here.</span></p></div>" : "") + "</div>";
+  }
+  function newLine(s) {
+    var m = s.model || {}, nw = (m.new || []).map(function (k) { return GP[k] ? GP[k].name : k; });
+    return nw.length ? "Glowing: " + nw.join(", ") + ". Faint: not in yet." : "Nothing new: the camera as it stands after this step.";
+  }
+  function stepPanel(id) {
+    var s = GS[id] || GR.steps[0]; if (!s) return "";
+    return '<section class="stepper" id="stepper" aria-labelledby="st-h"><div class="st-stage-col"><div class="st3" id="st3">' + img(s.img, (s.title || "") + ": " + (s.do || ""), ' class="st3-still" width="960" height="720"').replace(' class="r"', "") + "</div>" +
+      '<div class="st3-bar"><button type="button" class="x3-turn" data-turn3="-40" aria-label="Turn the camera left"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><p class="st3-cap" id="st3-cap">' + esc(newLine(s)) + '</p><button type="button" class="x3-turn" data-turn3="40" aria-label="Turn the camera right"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div>' +
+      '<div class="st-body" id="st-body">' + stepText(s) + "</div></section>";
+  }
+  function theatre() {       // "Watch the build": the narrated video when site/data/video.json is there, else the assembly film; a chapter per step
+    var src, dur, poster, chs = [], vtt = "";
+    if (VID && VID.src) {
+      src = VID.src; dur = VID.dur; poster = VID.poster || (G.film && G.film.poster);
+      chs = Object.keys(VID.sections).map(function (k) { var x = VID.sections[k]; return { t: x.start, title: x.title, code: GS[k] ? k : null }; }).filter(function (c) { return c.t != null; }).sort(function (a, b) { return a.t - b.t; });
+      vtt = VID.vtt ? vttBlob("full", VID.vtt) : "";
+    } else if (G.film) { src = G.film.src; dur = G.film.dur; poster = G.film.poster; chs = (G.film.chapters || []).map(function (c) { return { t: c.t, title: GS[c.code] ? (SECNAME[GS[c.code].sec] || "") + " " + GS[c.code].n + ": " + GS[c.code].title : c.title, code: c.code }; }); }
+    if (!src) return "";
+    return '<section class="theatre" id="step-film" tabindex="-1" aria-labelledby="th-h"><div class="wrap"><div class="th-head"><h2 id="th-h">Watch the build</h2><p>' + (VID && VID.src ? "The whole build, narrated" : "Every step end to end") + (dur ? ", " + mmss(dur) : "") + ". Pick a chapter to jump to its step.</p></div>" +
+      '<div class="th-grid"><figure class="th-film"><video id="wholefilm" controls preload="none" playsinline' + (poster ? ' poster="' + esc(poster) + '"' : "") + '><source src="' + esc(src) + '" type="video/mp4">' + (vtt ? '<track kind="captions" srclang="en" label="English" src="' + vtt + '" default>' : "") + "</video></figure>" +
+      (chs.length ? '<ol class="chap th-chap" aria-label="Chapters">' + chs.map(function (ch) { return '<li><button type="button" data-t="' + ch.t + '"' + (ch.code ? ' data-code="' + ch.code + '"' : "") + '><span class="tm">' + mmss(ch.t) + "</span>" + esc(ch.title) + "</button></li>"; }).join("") + "</ol>" : "") + "</div></div></section>";
+  }
+  function depMatrix() {      // which steps need which parts: a part is fitted (filled) or handled again (ring) at a step
+    var parts = GR.parts.filter(function (p) { return p.steps.length; }), steps = GR.steps;
+    var fitted = {}; steps.forEach(function (s) { s.parts.forEach(function (p) { fitted[p.id + "|" + s.id] = 1; }); });
+    return '<section class="deps" id="deps" aria-labelledby="dp-h"><h2 id="dp-h">Which steps need which parts</h2><p class="lead">A filled dot: the part goes in at that step. A ring: the step uses it again.</p>' +
+      '<div class="tablewrap deps-wrap" tabindex="0" role="region" aria-label="Parts and steps"><table class="deps-t"><thead><tr><th scope="col">Part</th>' + steps.map(function (s) {
+        return '<th scope="col" class="dsec-' + s.sec.replace(/ /g, "").toLowerCase() + '"><a href="#build-' + s.id + '" aria-label="' + esc((SECNAME[s.sec] || s.sec) + " " + s.n + ": " + s.title) + '">' + esc(s.id) + "</a></th>"; }).join("") + "</tr></thead><tbody>" +
+      parts.map(function (p) {
+        return '<tr><th scope="row"><a href="#part-' + p.key + '"><span class="sw" style="background:' + esc(p.hex || "#ccc") + '" aria-hidden="true"></span>' + esc(p.name) + "</a></th>" + steps.map(function (s) {
+          var f = fitted[p.id + "|" + s.id], u = p.steps.indexOf(s.id) >= 0;
+          return "<td>" + (f ? '<span class="dot-f" aria-hidden="true"></span><span class="sr-only">goes in</span>' : u ? '<span class="dot-u" aria-hidden="true"></span><span class="sr-only">used</span>' : "") + "</td>";
+        }).join("") + "</tr>";
+      }).join("") + "</tbody></table></div></section>";
   }
   pages.build = function () {
-    var secs = G.sections.filter(function (sec) { return sec.steps.length; });
-    var bar = '<nav class="chapbar" aria-label="Sections and steps of the build guide"><div class="chapbar-in"><div class="cb-row"><span class="cb-now">Build guide</span><ol class="cb-strip tabs-sec">' +
-      secs.map(function (sec) { return '<li><a href="#build-' + sec.steps[0] + '" data-sec="sec-' + sec.letter + '">' + esc(SECBAR[sec.key] || sec.key) + "</a></li>"; }).join("") +
-      (G.film ? '<li><a href="#build-film" data-sec="step-film">FILM</a></li>' : "") + '</ol></div><ol class="cb-secs cb-steps" id="cb-steps"></ol></div></nav>';
-    var BLURB = { "BUILD": "Steps 1 to 4 make the dark box. Steps 5 to 10 put the front plate on.", "FILM IN": "Do these in the shade.",
-      "PHOTOS": "For every picture: choose a dot, aim, press, wind.", "FILM OUT": "Then the film goes to a lab.", "THE HOLE": "The pinhole experiment, for lesson 1: a picture with no lens, through a pinhole in a thin metal disc." };
-    var body = secs.map(function (sec) {
-      return '<section class="guidesec sec-' + sec.letter + '" id="sec-' + sec.letter + '" aria-labelledby="sh-' + sec.letter + '"><h2 id="sh-' + sec.letter + '"><span class="tag">' + esc(SECBAR[sec.key] || sec.key) + "</span>" + esc(SECNAME[sec.key] || sec.key) + "</h2><p>" + esc(BLURB[sec.key] || sec.blurb) + "</p>" +
-        sec.steps.map(function (c) { return STEP[c] ? stepHTML(STEP[c]) : ""; }).join("") + "</section>";
-    }).join("");
-    var F = G.film, film = "";
-    if (F) {
-      film = '<section class="guidesec" id="step-film" tabindex="-1" aria-labelledby="h-film"><h2 id="h-film">The whole film</h2><p>Every step end to end, ' + mmss(F.dur) + ".</p>" +
-        '<figure class="film"><video id="wholefilm" controls preload="none" playsinline' + (F.poster ? ' poster="' + esc(F.poster) + '"' : "") + '><source src="' + esc(F.src) + '" type="video/mp4"></video></figure>' +
-        (F.chapters.length ? '<ol class="chap">' + F.chapters.map(function (ch) { return '<li><button type="button" data-t="' + ch.t + '"><span class="tm">' + mmss(ch.t) + "</span>" + esc(ch.title) + "</button></li>"; }).join("") + "</ol>" : "") + "</section>";
-    }
+    BUILD_AT = BUILD_AT && GS[BUILD_AT] ? BUILD_AT : firstUndone();
     var nums = (C.numbers || []).map(function (x) { return "<dt>" + esc(x.k) + "</dt><dd>" + esc(x.v) + "</dd>"; }).join("");
-    return bar + '<div class="wrap guide-page"><div class="pagehead">' + CHIPS + "<h1>The build guide</h1>" +
-      '<p class="lead">Ten steps to build, six to load film, four for every picture, two to take it out.</p></div>' +
-      partsRow(PARTS.map(function (p) { return p.key; }), true) +
-      '<p class="kitbar">No pieces yet? <a href="#store">Get the kit</a> or <a href="#files">print your own</a>.</p>' +
-      body + film + guidesBlock(false) + '<h2>The camera in numbers</h2><dl class="facts">' + nums + "</dl></div>";
+    var watch = (VID && VID.src) || G.film ? '<a class="btn" href="#build-film">Watch the build</a>' : "";
+    return '<div class="wrap guide-page"><div class="pagehead">' + CHIPS + "<h1>The build guide</h1>" +
+      '<p class="lead">Ten steps to build, six to load film, four for every picture, two to take it out. One at a time.</p>' +
+      '<p class="path-links">' + watch + '<a class="btn" href="#parts">Every part</a><a class="btn" href="#help">Help</a></p></div>' +
+      railHTML() + stepPanel(BUILD_AT) +
+      '<p class="kitbar">No pieces yet? <a href="#files">Print them free</a>, or <a href="#store">buy the kit</a> and skip the printing.</p></div>' +
+      theatre() + '<div class="wrap guide-page">' + depMatrix() + guidesBlock(false) + '<h2>The camera in numbers</h2><dl class="facts">' + nums + '</dl><p><a href="#facts">Every number, and the check that proves it</a></p></div>';
   };
   pages.build.title = "The build guide";
   pages.build.wide = true;
+  function buildGo(id, focus) {        // show one step without drawing the page again (the 3D view stays)
+    var s = GS[id]; if (!s) return;
+    BUILD_AT = id;
+    var body = document.getElementById("st-body"); if (!body) return;
+    body.innerHTML = stepText(s);
+    var st = document.getElementById("st3"), still = st && $(".st3-still", st);
+    if (still && s.img) { still.src = s.img; still.alt = s.title + ": " + s.do; }
+    var cap = document.getElementById("st3-cap"); if (cap) cap.textContent = newLine(s);
+    if (BUILDER) BUILDER.set(s.model);
+    $$(".rail li[data-step]").forEach(function (li) { var a = $("a", li); if (li.getAttribute("data-step") === id) { a.setAttribute("aria-current", "step"); intoStrip(a); } else a.removeAttribute("aria-current"); });
+    wireStep();
+    var r = $(".related"); if (r) r.outerHTML = relatedBlock(relatedFor("build"));
+    document.title = (SECNAME[s.sec] || s.sec) + " " + s.n + ": " + s.title + ": CURVE 35";
+    if (focus) { var h = document.getElementById("st-h"), box = document.getElementById("stepper"); if (box) box.scrollIntoView({ behavior: "auto", block: "start" }); if (h) h.focus({ preventScroll: true }); announce((SECNAME[s.sec] || s.sec) + " step " + s.n + ": " + s.title); }
+  }
+  function setDone(id, v) {
+    var d = doneMap(); if (v) d[id] = 1; else delete d[id]; store(DONE_KEY, d);
+    $$('[data-done="' + id + '"]').forEach(function (b) { b.checked = !!v; });
+    var n = GR.steps.filter(function (s) { return d[s.id]; }).length, el = document.getElementById("rail-n"); if (el) el.textContent = n + " of " + GR.steps.length + " steps done";
+  }
+  function wireStep() {
+    $$("#st-body [data-done]").forEach(function (b) { b.addEventListener("change", function () { setDone(b.getAttribute("data-done"), b.checked); }); });
+    $$("#st-body [data-seek]").forEach(function (b) { b.addEventListener("click", function () { var v = document.getElementById("wholefilm"); if (!v) return; var f = document.getElementById("step-film"); if (f) f.scrollIntoView({ behavior: reduced() ? "auto" : "smooth", block: "start" }); v.currentTime = Number(b.getAttribute("data-seek")); v.play().catch(function () {}); v.focus({ preventScroll: true }); }); });
+  }
   pages.build.after = function () {
     wireDownloads();
+    $$(".rail [data-done]").forEach(function (b) { b.addEventListener("change", function () { setDone(b.getAttribute("data-done"), b.checked); }); });
+    var st = document.getElementById("st3");
+    if (st && window.Camera3D && window.Camera3D.stepper && C.model3d) { BUILDER = window.Camera3D.stepper(st, C.model3d); cleanup.push(function () { if (BUILDER) BUILDER.destroy(); BUILDER = null; }); }
+    $$("[data-turn3]").forEach(function (b) { b.addEventListener("click", function () { if (BUILDER) BUILDER.turn(Number(b.getAttribute("data-turn3"))); }); });
+    buildGo(BUILD_AT, false);
+    function onKey(e) {
+      if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey || e.defaultPrevented) return;
+      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+      var t = e.target; if (t && t.closest && t.closest("input,textarea,select,video,audio,[contenteditable],.tablewrap,.x3-range")) return;
+      var s = GS[BUILD_AT]; if (!s) return;
+      var o = GR.steps[s.i + (e.key === "ArrowRight" ? 1 : -1)]; if (!o) return;
+      e.preventDefault(); location.hash = "build-" + o.id;
+    }
+    document.addEventListener("keydown", onKey); cleanup.push(function () { document.removeEventListener("keydown", onKey); });
     var v = document.getElementById("wholefilm");
-    $$(".chap button").forEach(function (b) { b.addEventListener("click", function () { if (!v) return; v.currentTime = Number(b.dataset.t); v.play().catch(function () {}); }); });
+    $$(".th-chap button").forEach(function (b) { b.addEventListener("click", function () { if (!v) return; v.currentTime = Number(b.dataset.t); v.play().catch(function () {}); }); });
     if (v) v.addEventListener("timeupdate", function () {
-      var bs = $$(".chap button"), on = null;
+      var bs = $$(".th-chap button"), on = null;
       bs.forEach(function (b) { if (Number(b.dataset.t) <= v.currentTime + 0.2) on = b; });
       bs.forEach(function (b) { b.setAttribute("aria-current", b === on ? "true" : "false"); });
     });
-    var secs = G.sections.filter(function (sec) { return sec.steps.length; }), box = $("#cb-steps"), shown = null;
-    function showSteps(letter) {
-      if (letter === shown) return; shown = letter;
-      var sec = secs.filter(function (s) { return s.letter === letter; })[0];
-      box.innerHTML = sec ? '<li class="cb-lab" aria-hidden="true">' + esc(SECBAR[sec.key]) + "</li>" + sec.steps.map(function (c) { return STEP[c] ? '<li><a href="#build-' + c + '" data-step="step-' + c + '" aria-label="' + esc(STEP[c].name) + '">' + STEP[c].n + "</a></li>" : ""; }).join("") : "";
-    }
-    showSteps(secs.length ? secs[0].letter : null);
-    if (!window.IntersectionObserver) return;
-    var tabs = $$(".tabs-sec a"), stepEls = $$(".step"), state = {};
-    var io = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { state[e.target.id] = e.isIntersecting; });
-      var on = null; stepEls.forEach(function (el) { if (!on && state[el.id]) on = el; });
-      var secEl = on ? on.closest(".guidesec") : null;
-      if (!on) { var f = document.getElementById("step-film"); if (f && state["step-film"]) secEl = f; }
-      if (!secEl) return;
-      tabs.forEach(function (a) { if (a.getAttribute("data-sec") === secEl.id) a.setAttribute("aria-current", "location"); else a.removeAttribute("aria-current"); });
-      if (secEl.id.indexOf("sec-") === 0) showSteps(secEl.id.slice(4));
-      $$("#cb-steps a").forEach(function (a) { if (on && a.getAttribute("data-step") === on.id) { a.setAttribute("aria-current", "step"); intoStrip(a); } else a.removeAttribute("aria-current"); });
-    }, { rootMargin: "-130px 0px -50% 0px" });
-    stepEls.forEach(function (el) { io.observe(el); }); var f = document.getElementById("step-film"); if (f) io.observe(f);
-    cleanup.push(function () { io.disconnect(); });
   };
+
+  // ---- the parts: every part in one sortable table (from the canon), and each card opens to its steps, lessons, checks and where to get it
+  function partMore(p, open) {
+    return '<details class="pt-more"' + (open ? " open" : "") + "><summary>Steps, checks, where to get it</summary><dl class=\"xdl\">" +
+      xrow("Steps", "step", p.steps) + xrow("Lessons", "lesson", p.lessons) + xrow("Checked by", "check", p.checks) + xrow("Words", "term", p.terms) + xrow("Comes in", "offer", p.offers) + "</dl></details>";
+  }
+  var KIND = { printed: "Printed", bought: "Bought", optional: "Printed, optional", gauge: "Printed, a gauge" };
+  function secs(t) { if (!t) return null; var m = String(t).match(/(?:(\d+)h)?\s*(?:(\d+)m)?\s*(?:(\d+)s)?/); return m ? (Number(m[1] || 0) * 3600 + Number(m[2] || 0) * 60 + Number(m[3] || 0)) : null; }
+  function partsTable() {
+    var rows = GR.parts.map(function (p) {
+      var t = secs(p.time);
+      return '<tr data-k="' + esc(p.key) + '"><th scope="row" data-v="' + esc(p.name.toLowerCase()) + '"><a href="#part-' + p.key + '">' + esc(p.name) + "</a></th>" +
+        '<td data-v="' + esc(p.kind) + '">' + esc(KIND[p.kind] || p.kind) + "</td>" +
+        '<td data-v="' + esc(p.colour) + '"><span class="sw" style="background:' + esc(p.hex || "#fff") + '" aria-hidden="true"></span>' + esc(p.colour) + "</td>" +
+        '<td class="num" data-v="' + (p.grams == null ? -1 : p.grams) + '">' + (p.grams == null ? '<span class="quiet">&ndash;</span>' : esc(Math.round(p.grams * 10) / 10) + " g") + "</td>" +
+        '<td class="num" data-v="' + (t == null ? -1 : t) + '">' + (t == null ? '<span class="quiet">&ndash;</span>' : esc(p.time.replace(/ \d+s$/, ""))) + "</td>" +
+        '<td data-v="' + p.steps.length + '">' + (p.steps.length ? p.steps.map(function (s) { return '<a href="#build-' + s + '">' + esc(s) + "</a>"; }).join(" ") : '<span class="quiet">&ndash;</span>') + "</td>" +
+        '<td data-v="' + p.lessons.length + '">' + (p.lessons.length ? p.lessons.map(function (l) { var L = GR.lessons[l]; return L ? '<a href="#' + L.route + '" title="' + esc(L.title) + '">' + esc(L.num) + '<span class="sr-only">: ' + esc(L.title) + "</span></a>" : ""; }).join(" ") : '<span class="quiet">&ndash;</span>') + "</td></tr>";
+    }).join("");
+    var cols = [["Part", "text"], ["Printed or bought", "text"], ["Colour", "text"], ["Grams", "num"], ["Print time", "num"], ["Steps", "num"], ["Lessons", "num"]];
+    return '<section class="ptable" id="ptable" aria-labelledby="pt-h"><h2 id="pt-h">Every part, in one table</h2><p class="lead">Sort by any column. Print times and grams are from the slicer, for one camera.</p>' +
+      '<div class="tablewrap" tabindex="0" role="region" aria-label="Every part"><table class="sortable"><caption class="sr-only">Every part: printed or bought, colour, grams, print time, the steps and lessons it belongs to. Column buttons sort.</caption><thead><tr>' +
+      cols.map(function (c, i) { return '<th scope="col"' + (i === 0 ? ' aria-sort="none"' : "") + ' data-type="' + c[1] + '"><button type="button" data-col="' + i + '">' + esc(c[0]) + '<span class="sort-i" aria-hidden="true"></span></button></th>'; }).join("") +
+      "</tr></thead><tbody>" + rows + "</tbody></table></div></section>";
+  }
+  function wireSort(root) {
+    $$("table.sortable", root).forEach(function (t) {
+      var ths = $$("thead th", t);
+      $$("thead button", t).forEach(function (b) {
+        b.addEventListener("click", function () {
+          var i = Number(b.dataset.col), th = ths[i], dir = th.getAttribute("aria-sort") === "ascending" ? "descending" : "ascending", num = th.dataset.type === "num";
+          ths.forEach(function (x) { x.removeAttribute("aria-sort"); }); th.setAttribute("aria-sort", dir);
+          var tb = $("tbody", t), rows = $$("tr", tb);
+          rows.sort(function (a, c) {
+            var x = a.children[i].getAttribute("data-v"), y = c.children[i].getAttribute("data-v");
+            var r = num ? Number(x) - Number(y) : String(x).localeCompare(String(y));
+            return dir === "ascending" ? r : -r;
+          }).forEach(function (r) { tb.appendChild(r); });
+          announce("Sorted by " + b.textContent + ", " + dir);
+        });
+      });
+    });
+  }
+  function moreParts() {     // the parts with no card: the pinhole disc, the near ring, the gauges
+    var rest = GR.parts.filter(function (p) { return !PART[p.key]; });
+    if (!rest.length) return "";
+    return '<section class="mparts" aria-labelledby="mp-h"><h2 id="mp-h">And the small ones</h2><ul class="mp-list">' + rest.map(function (p) {
+      return '<li id="part-' + p.key + '" tabindex="-1"><h3>' + esc(p.name) + ' <span class="mp-k">' + esc(KIND[p.kind] || p.kind) + "</span></h3><p>" + esc(p.does[0].toUpperCase() + p.does.slice(1)) + ".</p>" + partMore(p, false) + "</li>";
+    }).join("") + "</ul></section>";
+  }
+
+  // ---- the glossary: every word, what it means here, where it is taught, and the parts and steps it is about
+  pages.glossary = function () {
+    var terms = GR.terms.slice().sort(function (a, b) { return a.term.localeCompare(b.term); });
+    return '<div class="wrap gloss-page"><div class="pagehead"><h1>Glossary</h1><p class="lead">The camera words in the lessons and the guide: what each means on this camera, and where it is taught.</p></div>' +
+      '<ul class="az" aria-label="Words">' + terms.map(function (t) { return '<li><a href="#glossary-' + t.id + '" data-go="term-' + t.id + '">' + esc(t.term) + "</a></li>"; }).join("") + "</ul>" +
+      '<ol class="terms" role="list">' + terms.map(function (t) {
+        return '<li class="term" id="term-' + t.id + '" tabindex="-1"><h2>' + esc(t.term) + (t.says ? ' <span class="t-says">on the camera: the ' + esc(t.says) + "</span>" : "") + "</h2><p>" + esc(t.means) + '</p><dl class="xdl">' +
+          xrow("Taught in", "lesson", t.taught) + xrow("Parts", "part", t.parts) + xrow("Steps", "step", t.steps) + "</dl></li>";
+      }).join("") + "</ol></div>";
+  };
+  pages.glossary.title = "Glossary";
+  pages.glossary.wide = true;
+
+  // ---- facts: every public number in a plain sentence, and the check that proves it.  No prices, costs or suppliers: those are not facts about the camera
+  pages.facts = function () {
+    return '<div class="wrap facts-page"><div class="pagehead"><h1>The camera in numbers</h1><p class="lead">Every number on this site, in a sentence, and the check that proves it. Each check is a program that tested the design before anything was printed.</p></div>' +
+      '<section aria-labelledby="ck-h"><h2 id="ck-h">The checks</h2><ul class="checks">' + GR.checks.map(function (c) {
+        return '<li id="c-' + rid(c.id) + '" tabindex="-1"><h3>' + esc(c.name) + '</h3><p class="ck-q">' + esc(c.question) + '</p><p class="ck-h">' + esc(c.headline) + "</p><p>" + esc(c.proves) + '</p><dl class="xdl">' +
+          xrow("Numbers", "fact", c.facts) + xrow("Parts", "part", c.parts) + "</dl></li>";
+      }).join("") + "</ul></section>" +
+      '<section aria-labelledby="fn-h2"><h2 id="fn-h2">Every number</h2><ol class="factlist" role="list">' + GR.facts.map(function (f) {
+        return '<li id="f-' + rid(f.id) + '" tabindex="-1"><p class="fl-say">' + esc(f.say) + '</p><p class="fl-s">' + esc(f.sentence) + '</p><p class="fl-by">' +
+          (f.checks.length ? '<span class="st-lab">Proved by</span>' + xchips("check", f.checks) : '<span class="st-lab">Where it comes from</span>' + esc(f.basis || "")) + "</p>" +
+          (f.lessons.length ? '<p class="fl-by"><span class="st-lab">Taught in</span>' + xchips("lesson", f.lessons) + "</p>" : "") + "</li>";
+      }).join("") + "</ol></section></div>";
+  };
+  pages.facts.title = "The camera in numbers";
+  pages.facts.wide = true;
+
+  // ---- wholesale on Programs: who, minimums, lead time, contact, and the class sets (each one a target for links to it)
+  function wholesaleBlock() {
+    var cls = GR.offers.filter(function (o) { return o.group === "class"; });
+    var q = mailto(MAIL.schools, "CURVE 35 wholesale quote", "Hello,\n\nWe'd like a wholesale quote.\n\nWho we are (shop, school, makerspace):\nHow many kits:\nWhen:\nShip to (city and country):\n\nAnything else:\n");
+    return '<section class="whole" id="wholesale" tabindex="-1" aria-labelledby="wh-h"><h2 id="wh-h">Wholesale</h2><p class="lead">For shops, schools and makerspaces. Tell us how many and when; we reply with a quote.</p>' +
+      '<dl class="wh-terms"><div><dt>Who</dt><dd>Shops, schools, homeschool groups, camps, libraries, makerspaces</dd></div><div><dt>Minimums</dt><dd>Ask us</dd></div><div><dt>Lead time</dt><dd>Ask us</dd></div>' +
+      "<div><dt>Contact</dt><dd>" + mailLink(MAIL.schools) + (MAIL.hello && MAIL.hello !== MAIL.schools ? " (shops: " + mailLink(MAIL.hello) + ")" : "") + "</dd></div></dl>" +
+      '<p class="path-links"><a class="btn main" href="' + esc(q) + '">Email for a wholesale quote</a></p>' +
+      (cls.length ? '<div class="tablewrap" tabindex="0" role="region" aria-label="Class sets"><table class="wh-sets"><caption>Class sets</caption><thead><tr><th scope="col">Set</th><th scope="col">What is in it</th><th scope="col">Price</th><th scope="col">Programs</th></tr></thead><tbody>' + cls.map(function (o) {
+        var p = PROD[o.id] || {};
+        return '<tr id="p-' + o.id + '" tabindex="-1"><th scope="row">' + esc(o.name) + "</th><td>" + esc((p.contents || []).join("; ")) + '</td><td class="tnum">' + esc(o.price || "") + "</td><td>" + (xchips("program", o.programs) || '<span class="quiet">&ndash;</span>') + "</td></tr>";
+      }).join("") + "</tbody></table></div>" : "") + "</section>";
+  }
+  // ---- the rest of the shop, in one list: everything the cards above do not show (each one a target for links to it)
+  function priceList(shown) {
+    var rest = GR.offers.filter(function (o) { return o.home === "store" && !shown[o.id]; });
+    if (!rest.length) return "";
+    return '<section class="plist" aria-labelledby="pl-h2"><h2 id="pl-h2">Everything else in the shop</h2><div class="tablewrap" tabindex="0" role="region" aria-label="Everything else in the shop"><table><thead><tr><th scope="col">Item</th><th scope="col">What it is</th><th scope="col">Price</th><th scope="col"><span class="sr-only">Add or ask</span></th></tr></thead><tbody>' +
+      rest.map(function (o) {
+        var p = PROD[o.id] || {};
+        var act = p.basket ? addBtn(p, "small", "Add") : '<a class="btn small" href="' + esc(mailto(MAIL.hello, "CURVE 35: " + o.name)) + '">Ask<span class="sr-only"> about ' + esc(o.name) + "</span></a>";
+        return '<tr id="p-' + o.id + '" tabindex="-1"><th scope="row">' + esc(o.name) + "</th><td>" + esc(p.for || (p.contents || [])[0] || "") + (o.parts.length ? xchips("part", o.parts) : "") + '</td><td class="tnum">' + esc(o.price || "") + "</td><td>" + act + "</td></tr>";
+      }).join("") + "</tbody></table></div></section>";
+  }
 
   // ---- for teachers: the mission side.  Free plans, slides and teacher views; class sets and the four packages are on Programs
   pages.teachers = function () {
@@ -605,39 +903,14 @@
       '<p class="t-mk"><strong>Shop class or club with printers?</strong> Four <a href="#makers">maker lessons</a> cover printing, snap fits, testing and fit to the hand.</p>' +
       '<section class="sets" aria-labelledby="cs-h"><h2 id="cs-h">Class sets and programs</h2><p class="lead">Class sets of 8, 16 or 24 kits, and four ready-made plans: homeschool, a classroom elective, a summer week and a weekend workshop.</p>' +
       '<ul class="pg-mini">' + PROGRAMS.map(function (g) { return '<li class="t-' + g.tone + '"><a href="#programs" data-focus="pg-' + g.id + '"><strong>' + esc(g.name) + "</strong><span>" + esc(g.when) + "</span></a></li>"; }).join("") + "</ul>" +
-      '<p class="path-links"><a class="btn main" href="#programs">See the programs</a><a class="btn" href="' + esc(mailto(MAIL.schools, "CURVE 35 for my class")) + '">Email schools@curve35.com</a></p></section>' +
+      '<p class="path-links"><a class="btn main" href="#programs">See the programs</a><a class="btn" href="' + esc(mailto(MAIL.schools, "CURVE 35 for my class")) + '">Email ' + esc(MAIL.schools) + '</a></p></section>' +
       '<p class="after-line">Have printers? Print the parts from the <a href="#files">free files</a> and add lenses: <a href="#spares">three for $5</a>.</p></div></div>';
   };
   pages.teachers.title = "For teachers";
   pages.teachers.wide = true;
 
   // ---- programs: four ready-made ways to teach with the camera.  Kits at the store's prices; class sets by quote (schools@).
-  var PROGRAMS = [
-    { id: "homeschool", tone: "sun", name: "Homeschool", when: "4 weeks, 2 sessions a week",
-      who: "A family or a small homeschool group, ages 14 and up.",
-      kits: "1 to 3 kits", price: "kits",
-      inc: ["1 to 3 starter kits: the camera, a roll of film and its developing", "The nine lessons, one per piece of the camera", "The final roll: 24 frames that use every lesson, and a rubric to grade it"],
-      plan: [["Week 1", "Build the camera. Lesson 1, the pinhole, and the pinhole experiment."], ["Week 2", "Lessons 2 and 3: the lens and film. Load the film."], ["Week 3", "Lessons 4 to 6: aperture, the shutter, winding on. Start the final roll."],
-             ["Week 4", "Lessons 7 to 9: light traps, aiming, your phone's camera. Finish the roll and send it off; grade it when the scans come back."]] },
-    { id: "classroom", tone: "sky", name: "Classroom elective", when: "A 9-week unit",
-      who: "A science, photography, design or technology class.",
-      kits: "Class sets of 8, 16 or 24 kits", price: "quote",
-      inc: ["A class set of 8, 16 or 24 kits", "The nine lessons as 50-minute periods: plans, slides and teacher mode", "A quiz in every lesson", "The final roll as the graded project, with its rubric"],
-      plan: [["Week 1", "Build the cameras. Lesson 1, the pinhole."], ["Weeks 2 to 6", "One lesson a week: the lens, film, aperture, the shutter, winding on."],
-             ["Weeks 7 and 8", "Light traps, then aiming and framing. Load and shoot the final roll."], ["Week 9", "Your phone's camera. The scans come back: grade the final roll."]] },
-    { id: "summer", tone: "mint", name: "Summer program", when: "1 week, 5 half-days",
-      who: "A camp, a summer school or a library program.",
-      kits: "One kit per student", price: "kits",
-      inc: ["One kit per student", "The lessons, slides and quizzes, cut to a week", "The final roll, shot over two days"],
-      plan: [["Day 1", "Build. Lesson 1, the pinhole."], ["Day 2", "Shoot. Lessons 2 to 4, then the first half of the final roll."], ["Day 3", "Shoot. Lessons 5 to 8, then the rest of the roll."],
-             ["Day 4", "Develop: a lab with same-day developing, or a darkroom if you have one. Lesson 9."], ["Day 5", "Show: a wall of prints, and each student grades their own roll."]] },
-    { id: "workshop", tone: "tang", name: "Weekend maker workshop", when: "A Saturday, a Sunday, and a review",
-      who: "Makerspaces and libraries. Bring a printer and the files are free.",
-      kits: "One kit per maker, or print the parts", price: "kits",
-      inc: ["One kit per maker, or the free print files and a lens each", "The four maker lessons: printing, snap fits, testing, fit to the hand", "The final roll, and a review when the prints are back"],
-      plan: [["Saturday", "Build. Lessons 1 and 2, the pinhole and the lens. Load the film."], ["Sunday", "Shoot. Lessons 4, 5 and 8: aperture, the shutter, aiming. Shoot the final roll."],
-             ["When the prints are back", "Review: everyone brings their prints and grades six frames with the rubric."]] }
-  ];
+  var PROGRAMS = C.programs || [];          // canon/offers.yaml
   function programQuote(g) {
     return mailto(MAIL.schools, "CURVE 35 quote: " + g.name,
       "Hello,\n\nWe'd like a quote for the " + g.name.toLowerCase() + " program.\n\nWho it's for (school, group or family):\nNumber of students:\nKits wanted:\nDates:\nShip to (city and state):\n\nAnything else:\n");
@@ -646,16 +919,17 @@
     var S = PROD["starter-kit"], K = PROD["camera-kit"];
     var kitPrice = (S ? "Starter kit " + price(S) : "") + (S && K ? " &middot; " : "") + (K ? "Camera kit " + price(K) : "");
     return '<div class="programs"><section class="pg-plate" aria-labelledby="pg-h1"><div class="wrap"><div class="pagehead"><p class="kick">Programs</p><h1 id="pg-h1">Teach it at home, in a class, in a week or a weekend.</h1>' +
-      '<p class="lead">Four ready-made plans for 14 and up. Each one: who it is for, what is included, the schedule.</p>' +
-      '<p class="pg-free"><strong>Included free:</strong> the lessons, simulations, slides, quizzes, teacher mode and the printable guide.</p></div></div></section>' +
+      '<p class="lead">Four ready-made plans for 14 and up. Each one: who it is for, what is included, the schedule.</p>' + waysStrip("programs") +
+      '<p class="pg-free"><strong>Included free:</strong> ' + esc(C.programs_free) + '.</p></div></div></section>' +
       '<div class="wrap"><ol class="pg-list" role="list">' + PROGRAMS.map(function (g) {
         var cost = g.price === "quote" ? '<span class="pg-p">Ask for a quote</span>' : '<span class="pg-p">' + kitPrice + "</span>";
         return '<li class="pg t-' + g.tone + '" id="pg-' + g.id + '" tabindex="-1"><div class="pg-head"><h2>' + esc(g.name) + '</h2><p class="pg-when">' + esc(g.when) + "</p></div>" +
           '<div class="pg-body"><div><h3>Who it is for</h3><p>' + esc(g.who) + "</p><h3>What is included</h3><ul>" + g.inc.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul></div>" +
           '<div><h3>The schedule</h3><dl class="pg-plan">' + g.plan.map(function (r) { return "<div><dt>" + esc(r[0]) + "</dt><dd>" + esc(r[1]) + "</dd></div>"; }).join("") + "</dl></div></div>" +
+          (GPG[g.id] && GPG[g.id].offers.length ? '<p class="pg-offers"><span class="st-lab">Bought as</span>' + xchips("offer", GPG[g.id].offers) + "</p>" : "") +
           '<p class="pg-buy"><span class="pg-kits">' + esc(g.kits) + "</span>" + cost + '<a class="btn main" href="' + esc(programQuote(g)) + '">Get a quote<span class="sr-only">: ' + esc(g.name) + "</span></a></p></li>";
-      }).join("") + "</ol>" +
-      '<p class="after-line">Quotes and questions go to <a href="mailto:schools@curve35.com">schools@curve35.com</a>. The free plans and slides for each lesson are on <a href="#teachers">For teachers</a>.</p></div></div>';
+      }).join("") + "</ol>" + wholesaleBlock() +
+      '<p class="after-line">Quotes and questions go to ' + mailLink(MAIL.schools) + '. The free plans and slides for each lesson are on <a href="#teachers">For teachers</a>.</p></div></div>';
   };
   pages.programs.title = "Programs";
   pages.programs.wide = true;
@@ -679,8 +953,8 @@
       '<li class="t-tang"><h3>The code</h3><p>This site and the tools that tested the camera: light, fit, motion and printing.</p></li></ul>' +
       '<section class="lic" id="licence" tabindex="-1" aria-labelledby="lic-h"><h2 class="t-h" id="lic-h">What you can do with it</h2><div class="lic-grid">' +
       '<div class="lic-card t-mint"><h3>Yes</h3><ul><li>Print it, for yourself, a class or a club.</li><li>Change it and remix it.</li><li>Teach with it: the lessons, slides and films too.</li><li>Share what you made, under the same licence.</li></ul></div>' +
-      '<div class="lic-card t-pink"><h3>Ask first</h3><ul><li>Selling kits, prints or copies needs our permission.</li><li>The CURVE 35 name and logos are trademarks: not part of the licence.</li></ul><p><strong>Want to sell kits?</strong> Email <a href="mailto:hello@curve35.com">hello@curve35.com</a>.</p></div>' +
-      '<div class="lic-card t-sun"><h3>Give credit like this</h3><p class="lic-credit">CURVE 35 by Variadic Group LLC, curve35.com</p><p>Designs, guides, lessons and films: <a href="' + CC + '" rel="license noopener">CC BY-NC-SA 4.0</a>. The site code and the tools: MIT.</p></div></div></section>' +
+      '<div class="lic-card t-pink"><h3>Ask first</h3><ul><li>Selling kits, prints or copies needs our permission.</li><li>The CURVE 35 name and logos are trademarks: not part of the licence.</li></ul><p><strong>Want to sell kits?</strong> Email ' + mailLink(MAIL.hello) + '.</p></div>' +
+      '<div class="lic-card t-sun"><h3>Give credit like this</h3><p class="lic-credit">' + esc(META.credit) + '</p><p>Designs, guides, lessons and films: <a href="' + CC + '" rel="license noopener">' + esc(META.licence_designs) + '</a>. The site code and the tools: MIT.</p></div></div></section>' +
       '<h2 class="t-h">Make a remix</h2><ol class="loop">' +
       '<li><span class="s-n" aria-hidden="true">1</span><h3>Get the files</h3><p>Download the source and the print files, or fork the code.</p></li>' +
       '<li><span class="s-n" aria-hidden="true">2</span><h3>Change one thing</h3><p>A colour, a knob, a ring. The <a href="#makers">maker lessons</a> explain every shape.</p></li>' +
@@ -696,13 +970,11 @@
       '<div class="search" role="search"><label class="sr-only" for="q">Search the help</label><input id="q" type="search" placeholder="For example: knob, back, blank, streaks" autocomplete="off"><p class="note" id="hits" aria-live="polite"></p></div>' +
       '<h2>Common problems</h2><ul class="trouble" id="trouble"></ul><h2>Step by step</h2><ul class="trouble" id="atstep"></ul>' + contactBlock() + "</div>";
   };
-  function contactBlock() {
+  function contactBlock() {           // canon/company.yaml: who to write to, the phone, the post
     return '<section class="contact" id="contact" tabindex="-1" aria-labelledby="ct-h"><h2 id="ct-h">Contact</h2><p>Still stuck, or something to ask? Write to the address that fits.</p><dl class="ct-list">' +
-      '<div><dt><a href="mailto:support@curve35.com">support@curve35.com</a></dt><dd>Builds and orders: a part that will not fit, a missing piece, where your order is.</dd></div>' +
-      '<div><dt><a href="mailto:schools@curve35.com">schools@curve35.com</a></dt><dd>Classes, homeschool and <a href="#programs">programs</a>: quotes for class sets, plans, dates.</dd></div>' +
-      '<div><dt><a href="mailto:hello@curve35.com">hello@curve35.com</a></dt><dd>Everything else: orders by email, photos of your build, selling kits, the press.</dd></div>' +
-      '<div><dt><a href="tel:+12095289554">(209) 528-9554</a></dt><dd>Voicemail. Leave your name, your number and what it is about.</dd></div>' +
-      '<div><dt>By post</dt><dd>Variadic Group LLC, 2108 N St #18255, Sacramento, CA 95816</dd></div></dl></section>';
+      (META.contact || []).map(function (c) { return "<div><dt>" + mailLink(c.email) + "</dt><dd>" + c.html + "</dd></div>"; }).join("") +
+      '<div><dt><a href="tel:' + esc(META.tel) + '">' + esc(META.phone) + "</a></dt><dd>" + esc(META.phone_note) + "</dd></div>" +
+      "<div><dt>By post</dt><dd>" + esc(META.company) + ", " + esc(META.address) + "</dd></div></dl></section>";
   }
   pages.help.title = "Help";
   pages.help.after = function () {
@@ -851,7 +1123,7 @@
   }
   pages.builds = function () {
     if (!inClaude()) return '<div class="wrap builds">' + buildsHead() +
-      '<div class="builds-soon"><div><h2>Send us yours.</h2><p>Email a photo to <a href="mailto:hello@curve35.com">hello@curve35.com</a> or tag <strong>#curve35</strong>. Your camera, your remix, your first roll: say which, and the name to show with it.</p>' +
+      '<div class="builds-soon"><div><h2>Send us yours.</h2><p>Email a photo to ' + mailLink(MAIL.hello) + ' or tag <strong>#curve35</strong>. Your camera, your remix, your first roll: say which, and the name to show with it.</p>' +
       '<p class="path-links"><a class="btn main" href="' + esc(mailto(MAIL.hello, "My CURVE 35 build", "Hello,\n\nHere is my CURVE 35 (photo attached).\n\nIt's a: build / remix / first roll\nName to show with it (first name or a nickname):\nWhat I did:\n")) + '">Email a photo</a><a class="btn" href="#build">Build one</a></p></div>' +
       '<div class="soon-pic">' + img(PIC.hero, "The CURVE 35 camera: a black body, an orange front plate with a round lens, a red knob and a green knob on top", ' width="1200" height="900"') + "</div></div>" + buildIdeas() + "</div>";
     return '<div class="wrap builds">' + buildsHead() +
@@ -938,24 +1210,25 @@
   function xcard(e, tone) {
     var p = PROD[e[0]]; if (!p) return "";
     var inKit = e[0] === "pinhole-discs";
-    return '<li class="xcard t-' + tone + '"><span class="xc-pic">' + (e[2] || img(e[1], "", ' width="520" height="390"')) + '</span><h3>' + esc(inKit ? "Pinhole set" : p.name) + "</h3><p>" + esc(e[3]) + "</p>" +
+    return '<li class="xcard t-' + tone + '" id="p-' + esc(e[0]) + '" tabindex="-1"><span class="xc-pic">' + (e[2] || img(e[1], "", ' width="520" height="390"')) + '</span><h3>' + esc(inKit ? "Pinhole set" : p.name) + "</h3><p>" + esc(e[3]) + "</p>" +
       '<p class="xc-buy">' + (inKit ? '<span class="xc-in">In every kit</span>' : '<span class="tnum">' + price(p) + "</span>" + addBtn(p, "small", "Add")) + "</p></li>";
   }
   pages.store = function () {
-    var S = PROD["starter-kit"], K = PROD["camera-kit"];
+    var S = PROD["starter-kit"], K = PROD["camera-kit"], SHOWN = { "starter-kit": 1, "camera-kit": 1, "the-files": 1 };
+    FILM_X.concat(PART_X).forEach(function (e) { if (PROD[e[0]]) SHOWN[e[0]] = 1; });
     var faq = [
       ["Is it hard to build?", "No. Ten steps, no tools. Each step has a short film and a check. The firmest push is about 5 newtons: one thumb."],
       ["Do I need a 3D printer?", "No. The kits come printed. Have a printer? The files are free."],
       ["Where does the film get developed?", "The starter kit includes developing and scans for one roll, sent by email. Any lab that develops 35 mm film can do it too."],
       ["What age is it for?", "14 and up. Younger builders can build it with an adult."],
-      ["Can I use it in a class?", "Yes. Every lesson has a 50-minute plan and slides, free. Class sets of 8, 16 or 24 kits: see Programs, or email schools@curve35.com for a quote."]
+      ["Can I use it in a class?", "Yes. Every lesson has a 50-minute plan and slides, free. Class sets of 8, 16 or 24 kits: see Programs, or email " + MAIL.schools + " for a quote."]
     ];
     function box(pic, svg, a, b) { return "<li>" + thumb(pic, svg) + "<span><strong>" + esc(a) + "</strong>" + esc(b) + "</span></li>"; }
     function kcard(id, tone, name, sub, pic, alt, p, rows, act) {
       return '<li class="kcard t-' + tone + '" id="p-' + id + '" tabindex="-1"><div class="kc-pic">' + img(pic, alt, ' width="1000" height="750"') + "</div><h2>" + esc(name) + '</h2><p class="pc-sub">' + esc(sub) + "</p>" +
         '<ul class="kc-list">' + rows.map(function (r) { return "<li>" + esc(r) + "</li>"; }).join("") + '</ul><p class="kc-learn"><a href="#build">Build guide</a><a href="#lessons">9 lessons</a></p><p class="kc-buy"><span class="pc-price tnum">' + esc(p) + "</span>" + act + "</p></li>";
     }
-    return '<div class="store"><section class="store-plate" aria-labelledby="sp-h1"><div class="wrap"><div class="pagehead"><h1 id="sp-h1">Get the kit</h1><p class="lead">One camera, three ways in. Then add-ons that click in.</p>' + CHIPS + "</div>" +
+    return '<div class="store"><section class="store-plate" aria-labelledby="sp-h1"><div class="wrap"><div class="pagehead"><h1 id="sp-h1">Get the kit</h1><p class="lead">The camera is open: print it free. Buy the kit to skip the work. Shops and schools buy wholesale.</p>' + CHIPS + "</div>" + waysStrip("store") +
       (S ? '<section class="kstar" id="p-starter-kit" tabindex="-1" aria-labelledby="ks-h"><div class="ks-pic"><div class="frame">' + img(PIC.hero, "The CURVE 35 camera: a black body, an orange front plate with a round lens, a red knob and a green knob on top", ' width="1200" height="900"') + "</div>" +
         '<span class="ks-stk">' + stk("Real film", "o") + "</span></div>" +
         '<div class="ks-t"><p class="tag">Start here</p><h2 id="ks-h">The starter kit</h2><p class="pc-sub">The camera, a roll of film and the developing. Everything for your first roll.</p>' +
@@ -968,8 +1241,9 @@
       "</ul>" +
       '<section class="extras" id="p-extras" tabindex="-1" aria-labelledby="ex-h"><h2 id="ex-h">Add-ons that click in</h2><p class="lead">Every one fits every kit.</p><ul class="xgrid">' + PART_X.map(function (e) { return xcard(e, "sky"); }).join("") + "</ul>" +
       '<h2 class="ex2">Film and developing</h2><p class="lead">ISO 400 colour film. Developing comes back as scans, by email.</p><ul class="xgrid">' + FILM_X.map(function (e) { return xcard(e, "sun"); }).join("") + "</ul></section>" +
+      priceList(SHOWN) +
       '<section class="faq" aria-labelledby="faq-h"><h2 id="faq-h">Questions</h2>' + faq.map(function (q) { return "<details><summary>" + esc(q[0]) + "</summary><p>" + esc(q[1]) + "</p></details>"; }).join("") + "</section>" +
-      '<p class="after-line">Buying for a class, a homeschool or a workshop? <a href="#programs">See the programs</a>. Questions about an order? <a href="mailto:support@curve35.com">support@curve35.com</a>.</p></div>' +
+      '<p class="after-line">Buying for a shop, a class or a makerspace? <a href="#wholesale">Wholesale and programs</a>. Questions about an order? ' + mailLink(MAIL.support) + '.</p></div>' +
       (S ? '<section class="final" aria-labelledby="sf-h"><div class="wrap final-in"><div><h2 id="sf-h">Build a camera this week.</h2><p class="final-price">' + price(S) + '</p></div><ul class="final-list"><li>Starter kit: camera, film, developing</li><li>One afternoon to build</li><li>Nine lessons, free</li></ul><div class="final-act">' + addBtn(S, "ink big") + "</div></div></section>" : "") + "</div>";
   };
   pages.store.title = "Get the kit";
@@ -1004,15 +1278,28 @@
       h = teach ? "teach-" + L.num : L.route;
     }
     if (h === "makers") { h = "files"; focusId = "makers"; if (current === "files") { goTo("makers", true); return; } }
-    if ((m = h.match(/^build-([a-z]\d+|film)$/))) {
-      nav = "build"; focusId = "step-" + m[1];
-      if (current === "build" && document.getElementById(focusId)) { goTo(focusId, true); return; }
+    if ((m = h.match(/^build-([a-z]\d+|film)$/)) && (m[1] === "film" || GS[m[1]])) {
+      nav = "build";
+      if (m[1] === "film") { focusId = "step-film"; if (current === "build" && document.getElementById(focusId)) { goTo(focusId, true); return; } }
+      else { if (current === "build" && document.getElementById("stepper")) { buildGo(m[1], true); return; } BUILD_AT = m[1]; focusId = "stepper"; }
       h = "build";
+    }
+    if (h === "build") nav = "build";
+    var X = [[/^glossary-([a-z0-9-]+)$/, "glossary", function (k) { return GT[k] && "term-" + k; }], [/^fact-([a-z0-9-]+)$/, "facts", function (k) { return FACT_BY_RID[k] && "f-" + k; }],
+             [/^check-([a-z0-9-]+)$/, "facts", function (k) { return CHECK_BY_RID[k] && "c-" + k; }], [/^program-([a-z0-9-]+)$/, "programs", function (k) { return GPG[k] && "pg-" + k; }],
+             [/^offer-([a-z0-9-]+)$/, null, function (k) { return GO[k] && "p-" + k; }], [/^(wholesale)$/, "programs", function () { return "wholesale"; }], [/^(parts-table)$/, "parts", function () { return "ptable"; }]];
+    for (var xi = 0; xi < X.length; xi++) {
+      var xm = h.match(X[xi][0]), xid = xm && X[xi][2](xm[1]);
+      if (!xid) continue;
+      var pg = X[xi][1] || (GO[xm[1]].home === "programs" ? "programs" : "store");
+      nav = pg; focusId = xid;
+      if (current === pg && document.getElementById(xid)) { goTo(xid, true); return; }
+      h = pg; break;
     }
     if (h === "final-roll") { nav = "lessons"; focusId = "final-roll"; if (current === "lessons") { goTo(focusId, true); return; } h = "lessons"; }
     if (h === "contact") { nav = "help"; focusId = "contact"; if (current === "help") { goTo(focusId, true); return; } h = "help"; }
     if (h === "spares") { nav = "store"; focusId = "p-extras"; if (current === "store") { goTo(focusId, true); return; } h = "store"; }
-    if ((m = h.match(/^part-([a-z]+)$/)) && PART[m[1]]) {
+    if ((m = h.match(/^part-([a-z-]+)$/)) && (PART[m[1]] || GPK[m[1]])) {
       nav = "parts"; focusId = "part-" + m[1];
       if (current === "parts") { goTo(focusId, true); return; }
       h = "parts";
@@ -1030,7 +1317,7 @@
     pendingFocus = null;
     current = h;
     view.className = (wide || L ? "is-wide" : "") + " route-" + (L ? "lesson" : h.replace(/[^a-z0-9-]/g, ""));
-    view.innerHTML = html;
+    view.innerHTML = html + (h === "home" ? "" : relatedBlock(relatedFor(h, L)));
     document.title = (title ? title + ": " : "") + "CURVE 35";
     $$(".nav a, #nav-more a").forEach(function (a) { if (a.dataset.nav === nav) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); });
     if (after) after();
@@ -1040,9 +1327,10 @@
   }
   function goTo(id, smooth) {
     var el = document.getElementById(id); if (!el) return;
-    $$(".here").forEach(function (s) { s.classList.remove("here"); }); if (el.classList.contains("step") || /^part-/.test(id)) el.classList.add("here");
+    $$(".here").forEach(function (s) { s.classList.remove("here"); }); if (el.classList.contains("step") || /^(part|term|f|c|p|pg)-/.test(id)) el.classList.add("here");
+    var dd = el.closest && el.closest("details"); if (dd) dd.open = true;
     el.focus({ preventScroll: true });
-    el.scrollIntoView({ behavior: reduced() || !smooth ? "auto" : "smooth", block: /^part-/.test(id) ? "center" : "start" });
+    el.scrollIntoView({ behavior: reduced() || !smooth ? "auto" : "smooth", block: /^(part|term|f|p)-/.test(id) ? "center" : "start" });
   }
   window.addEventListener("hashchange", render);
   $(".skip").addEventListener("click", function (e) { e.preventDefault(); view.focus(); view.scrollIntoView(); });
