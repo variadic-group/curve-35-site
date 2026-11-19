@@ -274,8 +274,8 @@
   // ------------------------------------------------------------------ pieces shared by pages
   // ---- the camera viewer: a full-width stage; a slider (and five stage buttons) takes it apart, dragging turns it.  camera3d.js draws it.
   var X3_CAPS = [
-    ["Closed", "Nine pieces, one camera. Slide to take it apart."],
-    ["1 The dark box", "Body and back. 69 million light rays traced at it: none got in."],
+    ["Closed", "Everything clicked shut. Slide to take it apart."],
+    ["1 The dark box", "Body and back. They keep the light off the film."],
     ["2 The film path", "Red spool, green knob, blue frame wheel. One turn, one picture."],
     ["3 The front plate", "The shutter, and the wheel with three holes."],
     ["4 The lens, or a pinhole", "A 12 mm lens presses in. Or the pinhole disc and ring, in the same pocket."]
@@ -344,59 +344,90 @@
   // ------------------------------------------------------------------ pages
   var pages = {};
 
-  // ---- home (v9): short, and lessons early.
-  //      v10: hero (yellow, the camera in 3D) > problem (ink) > four buyer facts > 4 steps (four pictures, one style) > lesson titles > the camera viewer
-  //      > one card for the kit > open source, builds, teachers (one line each) > last call (tangerine)
+  // ---- home (v11): a short pitch, then the way back in for owners.
+  //      hero > "Already have one?" bar > what's in the box (the one kit block) > how it works (4 steps) > lesson carousel
+  //      > four facts (none repeated elsewhere on the page) > the camera viewer > one strip of links > last call
   var REPO = META.repo;
   var CC = META.licence_url;
-  function lessonRow() {      // v10: compact, titles only
-    return '<ol class="lrow lrow-t" role="list">' + LESSONS.map(function (L) {
-      return '<li><a class="lr" href="#' + L.route + '" style="' + cvars(lcol(L)) + '"><span class="lr-n" aria-hidden="true">' + esc(L.num) + '</span><span class="lr-t"><span class="sr-only">' + lessonName(L) + ": </span>" + esc(L.title) + "</span></a></li>";
-    }).join("") + "</ol>";
+  function factSay(id, fb) { var f = GF[id]; return String(f && f.say != null ? f.say : fb).replace(/^about /, ""); }
+  // the lessons as a swipeable row of colourful tiles: the diagram on white, the number, the title and the hook question
+  function lessonCarousel() {
+    var arrow = function (d) { return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="' + (d < 0 ? "M15 5l-7 7 7 7" : "M9 5l7 7-7 7") + '"/></svg>'; };
+    return '<div class="lcar"><ol class="lcar-track" id="lcar" role="list" tabindex="0" aria-label="The nine lessons: scroll sideways">' + LESSONS.map(function (L) {
+      var F = figSvg(L.fig), R = L.render;
+      return '<li><a class="ltile" href="#' + L.route + '" style="' + cvars(lcol(L)) + '"><span class="lt-n" aria-hidden="true">' + esc(L.num) + "</span>" +
+        '<span class="lt-t"><span class="sr-only">' + lessonName(L) + ": </span>" + esc(L.title) + '</span><span class="lt-q">' + esc(L.question) + "</span>" +
+        '<span class="lt-pic" aria-hidden="true">' + (F || (R ? img(R.src, "", ' width="900" height="675"') : "")) + "</span></a></li>";
+    }).join("") + "</ol>" +
+      '<div class="lcar-nav"><button type="button" class="lcar-b" data-dir="-1" aria-controls="lcar" aria-label="Earlier lessons">' + arrow(-1) + '</button><button type="button" class="lcar-b" data-dir="1" aria-controls="lcar" aria-label="Later lessons">' + arrow(1) + "</button></div></div>";
+  }
+  function mountCarousel() {
+    var t = document.getElementById("lcar"); if (!t) return;
+    var bs = $$(".lcar-b");
+    function step() { var li = t.querySelector("li"); return li ? li.getBoundingClientRect().width + 20 : 300; }
+    function go(d) { t.scrollBy({ left: d * step(), behavior: reduced() ? "auto" : "smooth" }); }
+    function ends() { var max = t.scrollWidth - t.clientWidth - 4; bs[0].disabled = t.scrollLeft <= 4; bs[1].disabled = t.scrollLeft >= max; }
+    bs.forEach(function (b) { b.addEventListener("click", function () { go(Number(b.dataset.dir)); }); });
+    t.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight" || e.key === "ArrowLeft") { e.preventDefault(); go(e.key === "ArrowRight" ? 1 : -1); }
+    });
+    // a tile reached by Tab comes fully into view
+    t.addEventListener("focusin", function (e) { var li = e.target.closest && e.target.closest("li"); if (li && li.scrollIntoView) li.scrollIntoView({ block: "nearest", inline: "nearest", behavior: reduced() ? "auto" : "smooth" }); });
+    t.addEventListener("scroll", ends, { passive: true }); window.addEventListener("resize", ends); cleanup.push(function () { window.removeEventListener("resize", ends); });
+    ends();
   }
   pages.home = function () {
     var S = PROD["starter-kit"] || {}, sp = S.price_usd != null ? money(S.price_usd) : "";
     var heroAlt = "The CURVE 35 camera: a black body, an orange front plate with a round lens, a red knob and a green knob on top";
+    var watch = (VID && VID.src) || G.film;
+    // what is in the starter kit, from its canon contents (offers.yaml): short, one line each
+    var kitList = ["Every piece of the camera, plus 2 spares", "A pinhole ring and disc", "The printed build guide", "1 roll of colour film: " + factSay("kit_film_iso", "ISO 400") + ", " + factSay("kit_film_pictures", "24") + " pictures", "Developing and scans for that roll"];
+    var dots = [factSay("f_small", "f/16"), factSay("f_middle", "f/11"), factSay("f_large", "f/9.5")];
     return '<div class="home">' +
       // HERO
       '<section class="hero" aria-labelledby="hero-h"><div class="wrap hero-in"><div class="hero-text">' +
       '<ul class="hero-stks" aria-label="In short"><li class="stk stk-w">' + esc(String(C.pieces || 9)) + ' pieces</li><li class="stk stk-g">No tools</li><li class="stk stk-b">No glue</li></ul>' +
       '<h1 id="hero-h">Build a real film camera. <span class="hl">Then find out how it works.</span></h1>' +
-      '<p class="lead">Nine pieces click together. Load 35 mm film and take real pictures.</p>' +
+      '<p class="lead">A 35 mm film camera you build from nine pieces, and learn from.</p>' +
       '<div class="ctas"><a class="btn main big" href="#store">Get the kit</a><a class="btn big" href="#files">Get the free files</a></div></div>' +
       '<div class="hero-pic"><span class="hero-stk" aria-hidden="true"><span class="stk stk-o">Real film!</span></span><div class="frame h3d" id="h3d">' + img(PIC.hero, heroAlt, ' class="h3d-still" width="1200" height="900" fetchpriority="high" loading="eager"').replace(' class="r"', "").replace(' loading="lazy"', "") + "</div></div></div></section>" +
-      // PROBLEM
-      '<section class="problem" aria-labelledby="pb-h"><div class="wrap problem-in"><div><h2 id="pb-h">Every camera is a sealed box.</h2><p class="lead">Phones too. You press a button, a picture appears, and you never learn how it was made.</p></div>' +
-      '<div class="vs"><div class="vs-card vs-phone"><span class="vs-q" aria-hidden="true">?</span><strong>Sealed</strong><span>You press. It decides.</span></div><span class="vs-x" aria-hidden="true">vs</span>' +
-      '<div class="vs-card">' + img(PIC.l4 || PIC.section, "The camera with its back off and a roll of film lying across the curved rails inside", ' width="900" height="675"') + "<strong>CURVE 35</strong><span>Every part in the open.</span></div></div></div></section>" +
-      // THE FACTS A BUYER WANTS (v10): four plain numbers, all from the docs
-      '<section class="guide" aria-labelledby="gd-h"><div class="wrap"><h2 id="gd-h">A camera you can open.</h2>' +
-      '<dl class="bns"><div class="bn-y"><dt>9</dt><dd>pieces, lens included</dd></div><div class="bn-b"><dt>0</dt><dd>tools, glue or screws</dd></div>' +
-      '<div class="bn-g"><dt>1</dt><dd>afternoon to build</dd></div><div class="bn-o"><dt>24</dt><dd>pictures on the roll in the kit</dd></div></dl></div></section>' +
-      // 4 STEPS: four pictures drawn from the model, one size, one style
-      '<section class="plan" aria-labelledby="pl-h"><div class="wrap"><h2 id="pl-h">From box to pictures.</h2><ol class="steps4">' +
-      '<li><span class="s-n" aria-hidden="true">1</span>' + img(PIC.plan_parts, "The loose parts laid out: black body, grey back, orange front plate, teal shutter, yellow wheel, red spool, green knob, blue frame wheel, lens, pinhole ring and disc, and a roll of film", ' width="1200" height="900"') + '<h3><a href="#store">Get the parts</a></h3><p>Nine pieces, the pinhole set and a roll of film.</p></li>' +
-      '<li><span class="s-n" aria-hidden="true">2</span>' + img(PIC.plan_build, "The orange front plate held above the black body, with an arrow showing it sliding down into place", ' width="1200" height="900"') + '<h3><a href="#build">Build it</a></h3><p>Ten steps, no tools. Each part clicks in.</p></li>' +
-      '<li><span class="s-n" aria-hidden="true">3</span>' + img(PIC.plan_shoot, "The camera seen from behind, aimed at a person waving next to a tree in the sun, with the edges of the picture marked", ' width="1200" height="900"') + '<h3><a href="#build-p1">Shoot a roll</a></h3><p>Take it outside. 24 pictures on real film.</p></li>' +
-      '<li><span class="s-n" aria-hidden="true">4</span>' + img(PIC.plan_learn, "A lesson diagram: light from the top and the foot of a tree crosses in a small hole and lands upside down on the film", ' width="1200" height="900"') + '<h3><a href="#lessons">Learn how it works</a></h3><p>Nine short lessons, one per piece.</p></li></ol></div></section>' +
-      // LESSONS: titles only, one link
-      '<section class="learn" aria-labelledby="ln-h"><div class="wrap"><div class="learn-head"><h2 id="ln-h">Nine lessons. One piece each.</h2>' +
-      '<a class="btn" href="#lessons">All lessons</a></div>' + lessonRow() + "</div></section>" +
+      // ALREADY HAVE ONE? the way back for owners
+      '<nav class="owners" aria-labelledby="ow-h"><div class="wrap owners-in"><h2 id="ow-h">Already have one?</h2><ul>' +
+      '<li><a href="#build"><span class="ow-i ow-y" aria-hidden="true">1</span>Build guide</a></li>' +
+      '<li><a href="#lessons"><span class="ow-i ow-g" aria-hidden="true">?</span>Lessons</a></li>' +
+      (watch ? '<li><a href="#build-film"><span class="ow-i ow-o" aria-hidden="true">&#9654;</span>Watch the build</a></li>' : "") +
+      '<li><a href="#files"><span class="ow-i ow-b" aria-hidden="true">&darr;</span>Files</a></li>' +
+      '<li><a href="#help"><span class="ow-i ow-w" aria-hidden="true">!</span>Help</a></li></ul></div></nav>' +
+      // WHAT'S IN THE BOX: the one kit block on the page
+      '<section class="kitbox" aria-labelledby="kb-h"><div class="wrap kitbox-in"><div class="kb-pic frame">' + img(PIC.plan_parts, "Everything in the box laid out: black body, grey back, orange front plate, teal shutter, yellow wheel, red spool, green knob, blue frame wheel, lens, pinhole ring and disc, and a roll of film", ' width="1200" height="900"') + "</div>" +
+      '<div class="kb-t"><p class="kb-k">What&rsquo;s in the box</p><h2 id="kb-h">The starter kit' + (sp ? ' <span class="kb-price tnum">' + esc(sp) + "</span>" : "") + "</h2>" +
+      '<ul class="kb-list">' + kitList.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>" +
+      '<a class="btn main big" href="#store">Get the kit</a></div></div></section>' +
+      // HOW IT WORKS: four pictures, one line each
+      '<section class="plan" aria-labelledby="pl-h"><div class="wrap"><h2 id="pl-h">How it works.</h2><ol class="steps4">' +
+      '<li><span class="s-n" aria-hidden="true">1</span>' + img(PIC.booklet, "The CURVE 35 build guide on top of the box", ' width="640" height="414"') + '<h3><a href="#start">Open the box</a></h3><p>The pieces and a guide, nothing else.</p></li>' +
+      '<li><span class="s-n" aria-hidden="true">2</span>' + img(PIC.plan_build, "The orange front plate held above the black body, with an arrow showing it sliding down into place", ' width="1200" height="900"') + '<h3><a href="#build">Build it</a></h3><p>Each part clicks in. No tools.</p></li>' +
+      '<li><span class="s-n" aria-hidden="true">3</span>' + img(PIC.plan_shoot, "The camera seen from behind, aimed at a person waving next to a tree in the sun, with the edges of the picture marked", ' width="1200" height="900"') + '<h3><a href="#build-p1">Shoot a roll</a></h3><p>Take it outside on real film.</p></li>' +
+      '<li><span class="s-n" aria-hidden="true">4</span>' + img(PIC.plan_learn, "A lesson diagram: light from the top and the foot of a tree crosses in a small hole and lands upside down on the film", ' width="1200" height="900"') + '<h3><a href="#lessons">Learn how it works</a></h3><p>One short lesson per piece.</p></li></ol></div></section>' +
+      // LESSONS: a carousel of colourful tiles
+      '<section class="learn" aria-labelledby="ln-h"><div class="wrap"><div class="learn-head"><h2 id="ln-h">Nine lessons. Nine questions.</h2>' +
+      '<a class="btn" href="#lessons">All lessons</a></div>' + lessonCarousel() + "</div></section>" +
+      // FOUR FACTS: each one said nowhere else on this page (canon/facts.yaml)
+      '<section class="guide" aria-labelledby="gd-h"><div class="wrap"><h2 id="gd-h">Small camera, big numbers.</h2>' +
+      '<dl class="bns"><div class="bn-y"><dt>' + esc(factSay("shutter_speed", "1/322 s")) + "</dt><dd>how long the shutter stays open</dd></div>" +
+      '<div class="bn-b"><dt class="bn-sm">' + dots.map(esc).join(" &middot; ") + "</dt><dd>three dots on one wheel set how much light gets in</dd></div>" +
+      '<div class="bn-g"><dt>' + esc(factSay("light_rays", "69 million")) + "</dt><dd>light rays traced at the closed camera. None got in.</dd></div>" +
+      '<div class="bn-o"><dt>' + esc(factSay("print_hours", "9.3 hours")) + "</dt><dd>to print every part on your own 3D printer</dd></div></dl></div></section>" +
       // THE CAMERA VIEWER
       explodeSection() +
-      // OPEN SOURCE, BUILDS, TEACHERS: one line each
-      '<section class="more3" aria-label="More"><div class="wrap"><ul class="m3">' +
-      '<li class="m3-g"><a href="#open-files"><strong>Open files</strong><span>Every part is code. Read it, change it, print it.</span></a></li>' +
-      '<li class="m3-p"><a href="#builds"><strong>Builds and remixes</strong><span>Built one or changed one? Show us.</span></a></li>' +
-      '<li class="m3-b"><a href="#teachers"><strong>For teachers</strong><span>A 50-minute plan and slides for every lesson. Free.</span></a></li>' +
-      '<li class="m3-y"><a href="#programs"><strong>Programs</strong><span>Homeschool, a class, a summer week or a weekend workshop.</span></a></li></ul>' +
-      "</div></section>" +
+      // PROGRAMS, OPEN FILES, BUILDS: one line
+      '<nav class="strip1" aria-label="More"><div class="wrap"><p><a href="#programs">Programs for classes</a><a href="#open-files">Open files</a><a href="#builds">Builds and remixes</a><a href="#teachers">For teachers</a></p></div></nav>' +
       // LAST CALL
-      '<section class="final" aria-labelledby="fn-h"><div class="wrap final-in"><div><h2 id="fn-h">Build a camera this week.</h2><p class="final-win">' + (sp ? esc(sp) + ": t" : "T") + 'he camera, a roll of film and its developing. Or print it free.</p></div>' +
+      '<section class="final" aria-labelledby="fn-h"><div class="wrap final-in"><div><h2 id="fn-h">Build a camera this week.</h2><p class="final-win">Or print it free.</p></div>' +
       '<div class="final-act"><a class="btn ink big" href="#store">Get the kit</a><a class="btn big" href="#files">Get the free files</a></div></div></section></div>';
   };
   pages.home.title = "";
-  pages.home.after = function () { mountHero(); mountExplode(); addButtons(); };
+  pages.home.after = function () { mountHero(); mountCarousel(); mountExplode(); addButtons(); };
   pages.home.wide = true;
 
   // ---- the lessons (v10): both shelves on one page, with a filter by topic; each card: its diagram, the topic, the question, the time and what you do.
@@ -405,15 +436,14 @@
   function teacherMode(v) { try { if (v === undefined) return localStorage.getItem(TEACH_KEY) === "1"; localStorage.setItem(TEACH_KEY, v ? "1" : "0"); } catch (e) { return false; } return v; }
   var TOPICS = [["light", "Light"], ["mechanism", "Mechanism"], ["pictures", "Taking pictures"], ["making", "Making"]];
   var TOPIC_NAME = {}; TOPICS.forEach(function (t) { TOPIC_NAME[t[0]] = t[1]; });
-  function lessonCard(L) {
-    var F = figSvg(L.fig), S = seen();
-    var time = (L.minutes ? L.minutes + "-minute lesson" : "") + (L.duration_s ? (L.minutes ? " &middot; " : "") + minutes(L.duration_s) : "");
-    return '<li data-topic="' + esc(L.topic || "") + '"><article class="lc" style="' + cvars(lcol(L), 0.86) + '">' +
-      (F ? '<span class="lc-fig" aria-hidden="true">' + F + "</span>" : "") +
+  function lessonCard(L) {      // v11: a colourful tile, as on home: number and topic, title, the hook question, the diagram on white
+    var F = figSvg(L.fig), S = seen(), R = L.render;
+    var time = (L.minutes ? L.minutes + " min lesson" : "") + (L.duration_s ? (L.minutes ? " &middot; " : "") + minutes(L.duration_s) : "");
+    return '<li data-topic="' + esc(L.topic || "") + '"><article class="lc" style="' + cvars(lcol(L)) + '">' +
       '<p class="lc-top"><span class="lc-n" aria-hidden="true">' + esc(L.num) + '</span><span class="lc-k">' + esc(TOPIC_NAME[L.topic] || "") + "</span>" + (S[L.id] ? '<span class="lc-seen">opened</span>' : "") + "</p>" +
       '<h3><a href="#' + L.route + '"><span class="sr-only">' + lessonName(L) + ": </span>" + esc(L.title) + "</a></h3>" +
       '<p class="lc-q">' + esc(L.question) + "</p>" +
-      (L.doing && L.doing.length ? '<p class="lc-do"><strong>You\'ll</strong> ' + L.doing.map(function (d) { return esc(d.charAt(0).toLowerCase() + d.slice(1)); }).join("; ") + "</p>" : "") +
+      (F || R ? '<span class="lc-fig" aria-hidden="true">' + (F || img(R.src, "", ' width="900" height="675"')) + "</span>" : "") +
       (time ? '<p class="lc-time">' + time + "</p>" : "") +
       '<p class="lc-teach"><a href="#' + L.route + '-teach">Plan<span class="sr-only">, ' + lessonName(L) + '</span></a><a href="#' + L.route + '-slides">Slides<span class="sr-only">, ' + lessonName(L) + "</span></a></p>" +
       "</article></li>";
@@ -467,7 +497,7 @@
       '<button type="button" class="tswitch" role="switch" aria-checked="' + on + '"><span class="sw" aria-hidden="true"><i></i></span>Teacher mode</button></div></div></section>' +
       '<div class="wrap"><p class="sr-only" id="lf-say" aria-live="polite"></p>' +
       '<h2 class="lg-h" id="lg-main">How a camera works</h2><ol class="lcards" role="list" aria-labelledby="lg-main">' + LESSONS.map(lessonCard).join("") + "</ol>" +
-      '<h2 class="lg-h" id="lg-make">For makers</h2><ol class="lcards" role="list" aria-labelledby="lg-make">' + MAKERS.map(lessonCard).join("") + "</ol></div>" + finalRoll() + "</div>";
+      '<h2 class="lg-h" id="lg-make">For makers</h2><ol class="lcards lc-make" role="list" aria-labelledby="lg-make">' + MAKERS.map(lessonCard).join("") + "</ol></div>" + finalRoll() + "</div>";
   };
   pages.lessons.title = "Lessons";
   pages.lessons.wide = true;
@@ -1188,12 +1218,6 @@
     ["spares-pack", "media/img/part_blade.webp", null, "A shutter and a wind knob", "b5", 5],
     ["lenses-three", PIC.lens, null, "Three lenses in a bag", "b10", 2],
     ["sticker-sheet", null, SVG_STK, "A name label, which-dot stickers and shapes in the kit's colours", "p1", 4]];
-  function xcard(e, tone) {
-    var p = PROD[e[0]]; if (!p) return "";
-    var inKit = e[0] === "pinhole-discs";
-    return '<li class="xcard t-' + tone + '" id="p-' + esc(e[0]) + '" tabindex="-1"><span class="xc-pic">' + (e[2] || img(e[1], "", ' width="520" height="390"')) + '</span><h3>' + esc(inKit ? "Pinhole set" : p.name) + "</h3><p>" + esc(e[3]) + "</p>" +
-      '<p class="xc-buy">' + (inKit ? '<span class="xc-in">In every kit</span>' : '<span class="tnum">' + price(p) + "</span>" + addBtn(p, "small", "Add")) + "</p></li>";
-  }
   pages.store = function () {
     var S = PROD["starter-kit"], K = PROD["camera-kit"], SHOWN = { "starter-kit": 1, "camera-kit": 1, "the-files": 1 };
     FILM_X.concat(PART_X).forEach(function (e) { if (PROD[e[0]]) SHOWN[e[0]] = 1; });
@@ -1205,26 +1229,26 @@
       ["Can I use it in a class?", "Yes. Every lesson has a 50-minute plan and slides, free. Class sets of 8, 16 or 24 kits: see Programs, or email " + MAIL.schools + " for a quote."]
     ];
     function box(pic, svg, a, b) { return "<li>" + thumb(pic, svg) + "<span><strong>" + esc(a) + "</strong>" + esc(b) + "</span></li>"; }
-    function kcard(id, tone, name, sub, pic, alt, p, rows, act) {
-      return '<li class="kcard t-' + tone + '" id="p-' + id + '" tabindex="-1"><div class="kc-pic">' + img(pic, alt, ' width="1000" height="750"') + "</div><h2>" + esc(name) + '</h2><p class="pc-sub">' + esc(sub) + "</p>" +
-        '<ul class="kc-list">' + rows.map(function (r) { return "<li>" + esc(r) + "</li>"; }).join("") + '</ul><p class="kc-learn"><a href="#build">Build guide</a><a href="#lessons">9 lessons</a></p><p class="kc-buy"><span class="pc-price tnum">' + esc(p) + "</span>" + act + "</p></li>";
+    // a compact row: picture, name and one line, price, one button
+    function xrow2(e) {
+      var p = PROD[e[0]]; if (!p) return "";
+      var inKit = e[0] === "pinhole-discs";
+      return '<li class="srow" id="p-' + esc(e[0]) + '" tabindex="-1"><span class="sr-pic" aria-hidden="true">' + (e[2] || img(e[1], "", ' width="520" height="390"')) + '</span><span class="sr-t"><strong>' + esc(inKit ? "Pinhole set" : p.name) + "</strong><span>" + esc(e[3]) + '</span></span><span class="sr-buy">' + (inKit ? '<span class="xc-in">In every kit</span>' : '<span class="tnum">' + price(p) + "</span>" + addBtn(p, "small", "Add")) + "</span></li>";
     }
-    return '<div class="store"><section class="store-plate" aria-labelledby="sp-h1"><div class="wrap"><div class="pagehead"><h1 id="sp-h1">Get the kit</h1></div>' + waysStrip("store") +
-      (S ? '<section class="kstar" id="p-starter-kit" tabindex="-1" aria-labelledby="ks-h"><div class="ks-pic"><div class="frame">' + img(PIC.hero, "The CURVE 35 camera: a black body, an orange front plate with a round lens, a red knob and a green knob on top", ' width="1200" height="900"') + "</div>" +
+    return '<div class="store"><section class="store-plate" aria-labelledby="sp-h1"><div class="wrap"><div class="pagehead"><h1 id="sp-h1">Get the kit</h1></div>' +
+      (S ? '<section class="kstar" id="p-starter-kit" tabindex="-1" aria-labelledby="ks-h"><div class="ks-pic"><div class="frame">' + img(PIC.plan_parts, "Everything in the starter kit laid out: black body, grey back, orange front plate, teal shutter, yellow wheel, red spool, green knob, blue frame wheel, lens, pinhole ring and disc, and a roll of film", ' width="1200" height="900"') + "</div>" +
         '<span class="ks-stk">' + stk("Real film", "o") + "</span></div>" +
         '<div class="ks-t"><h2 id="ks-h">The starter kit</h2><p class="pc-sub">The camera, a roll of film and the developing. Everything for your first roll.</p>' +
         '<ul class="ks-in">' + box(PIC.hero, null, "9 pieces to build", "+ 2 spares") + box(PIC.cassette, null, "1 roll of colour film", "ISO 400, 24 pictures") + box(null, SVG_SCAN, "Developing and scans", "for that roll, by email") + box("media/img/part_pinring.webp", null, "Pinhole set", "ring and disc, for lesson 1") + "</ul>" +
-        '<p class="kc-learn"><a href="#build">Build guide</a><a href="#lessons">9 lessons</a><a href="#start">What to do first</a></p>' +
-        '<p class="kc-buy"><span class="pc-price tnum">' + price(S) + "</span>" + addBtn(S, "main big") + "</p></div></section>" : "") + "</div></section>" +
-      '<div class="wrap"><ul class="kits2">' +
-      (K ? kcard("camera-kit", "sky", "Camera kit", "Got film? The same camera, without the roll and the developing.", PIC.hero_back, "The camera from the back", price(K), ["9 pieces + 2 spares", "Pinhole set", "The printed guide", "Takes any 35 mm film"], addBtn(K, "main")) : "") +
-      kcard("the-files", "mint", "Print it yourself", "Got a 3D printer? The files are free. You add one lens.", PIC.p_front, "The orange front plate, as it comes off the printer", "Free", ["8 print files, no supports", "The OpenSCAD source", "Lenses: 3 for $5"], '<a class="btn main" href="#files">Get the free files</a>') +
-      "</ul>" +
-      '<section class="extras" id="p-extras" tabindex="-1" aria-labelledby="ex-h"><h2 id="ex-h">Add-ons that click in</h2><p class="lead">Every one fits every kit.</p><ul class="xgrid">' + PART_X.map(function (e) { return xcard(e, "sky"); }).join("") + "</ul>" +
-      '<h2 class="ex2">Film and developing</h2><p class="lead">ISO 400 colour film. Developing comes back as scans, by email.</p><ul class="xgrid">' + FILM_X.map(function (e) { return xcard(e, "sun"); }).join("") + "</ul></section>" +
+        '<p class="kc-buy"><span class="pc-price tnum">' + price(S) + "</span>" + addBtn(S, "main big") + "</p></div></section>" : "") +
+      (K ? '<section class="kcam" id="p-camera-kit" tabindex="-1" aria-labelledby="kc-h"><div class="kcam-pic">' + img(PIC.hero_back, "The camera from the back", ' width="1000" height="750"') + '</div><div class="kcam-t"><h2 id="kc-h">Camera kit</h2><p>Got film? The same camera, pinhole set and guide, without the roll and the developing.</p></div>' +
+        '<p class="kc-buy"><span class="pc-price tnum">' + price(K) + "</span>" + addBtn(K, "main") + "</p></section>" : "") + "</div></section>" +
+      '<div class="wrap"><section class="extras" id="p-extras" tabindex="-1" aria-labelledby="ex-h"><h2 id="ex-h">Film and developing</h2><ul class="srows">' + FILM_X.map(xrow2).join("") + "</ul>" +
+      '<h2 class="ex2">Spares and extras</h2><ul class="srows">' + PART_X.map(xrow2).join("") + "</ul></section>" +
       priceList(SHOWN) +
       '<section class="faq" aria-labelledby="faq-h"><h2 id="faq-h">Questions</h2>' + faq.map(function (q) { return "<details><summary>" + esc(q[0]) + "</summary><p>" + esc(q[1]) + "</p></details>"; }).join("") + "</section>" +
-      '<p class="after-line">Buying for a shop, a class or a makerspace? <a href="#wholesale">Wholesale and programs</a>. Questions about an order? ' + mailLink(MAIL.support) + '.</p></div>' +
+      '<ul class="store-more"><li><a href="#files">Have a printer? The files are free &rarr;</a></li><li><a href="#programs">Classes and shops: programs and wholesale &rarr;</a></li></ul>' +
+      '<p class="after-line">Questions about an order? ' + mailLink(MAIL.support) + '.</p></div>' +
       (S ? '<section class="final" aria-labelledby="sf-h"><div class="wrap final-in"><div><h2 id="sf-h">Build a camera this week.</h2><p class="final-price">' + price(S) + '</p></div><ul class="final-list"><li>Starter kit: camera, film, developing</li><li>One afternoon to build</li><li>Nine lessons, free</li></ul><div class="final-act">' + addBtn(S, "ink big") + "</div></div></section>" : "") + "</div>";
   };
   pages.store.title = "Get the kit";
