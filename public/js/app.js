@@ -224,8 +224,32 @@
           '<div class="lsub"><span class="tnum">' + money(i.p.price_usd * i.q) + '</span><button type="button" class="linkbtn" data-del="' + i.p.id + '">Remove</button></div></li>';
       }).join("") + "</ul>" +
       '<p class="tot"><span>Total</span><span class="tnum">' + money(total) + '</span></p><p class="note">Before postage and tax.</p>' +
-      '<a class="btn main wide-btn" id="checkout" href="' + esc(orderMail(items, total)) + '">Order by email</a>' +
-      '<p class="note order-note">We reply within one business day with a payment link.</p>';
+      (PAY.state === "on"
+        ? '<button type="button" class="btn main wide-btn" id="pay">Checkout</button>' +
+          '<p class="note order-note" id="pay-note">Card payment by Stripe. Postage and tax are shown before you pay.</p>' +
+          '<p class="note"><a id="checkout" href="' + esc(orderMail(items, total)) + '">Or order by email</a></p>'
+        : '<a class="btn main wide-btn" id="checkout" href="' + esc(orderMail(items, total)) + '">Order by email</a>' +
+          '<p class="note order-note">We reply within one business day with a payment link.</p>');
+  }
+  // Card checkout.  The site's Worker (/api/checkout) turns the basket into a Stripe page when it is switched on.  It is asked once, when the basket
+  // first opens.  Until it says yes, and wherever there is no Worker (the site opened from a file), the order goes by email.  Prices are the Worker's, not ours.
+  var PAY = { state: "?" };
+  function askPay(done) {
+    if (PAY.state !== "?") return done();
+    if (!/^https?:$/.test(location.protocol) || !window.fetch) { PAY.state = "off"; return done(); }
+    PAY.state = "asking";
+    fetch("/api/checkout", { headers: { accept: "application/json" } })
+      .then(function (r) { return r.ok ? r.json() : { on: false }; })
+      .then(function (d) { PAY.state = d && d.on === true ? "on" : "off"; }, function () { PAY.state = "off"; })
+      .then(done);
+  }
+  function pay(btn) {
+    var note = $("#pay-note"), items = basketItems().map(function (i) { return { id: i.p.id, q: i.q }; });
+    function failed() { btn.disabled = false; btn.textContent = "Checkout"; if (note) note.textContent = "The card page did not open. Try again, or order by email below."; announce("The card page did not open."); }
+    btn.disabled = true; btn.textContent = "One moment";
+    fetch("/api/checkout", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ items: items }) })
+      .then(function (r) { return r.json().then(function (d) { return r.ok && d && typeof d.url === "string" && /^https:\/\/checkout\.stripe\.com\//.test(d.url) ? d.url : null; }); })
+      .then(function (url) { if (url) location.assign(url); else failed(); }, failed);
   }
   // the order, written out for an email to hello@: one line per item, the total, and room for a name and an address
   function orderMail(items, total) {
@@ -241,6 +265,7 @@
     $$("#basket-body [data-dec]").forEach(function (b) { b.onclick = function () { var q = (loadBasket()[b.dataset.dec] || 0) - 1; set(b.dataset.dec, q, q > 0 ? '[data-dec="' + b.dataset.dec + '"]' : "#basket-x"); }; });
     $$("#basket-body [data-del]").forEach(function (b) { b.onclick = function () { set(b.dataset.del, 0, "#basket-x"); announce("Removed."); }; });
     $$("#basket-body [data-close]").forEach(function (a) { a.onclick = function () { closeBasket(); }; });
+    var pb = $("#pay"); if (pb) pb.onclick = function () { pay(pb); };
     if (focusSel) { var el = $(focusSel); if (el) el.focus(); }
   }
   var lastFocus = null;
@@ -248,6 +273,7 @@
     lastFocus = document.activeElement; drawBasket();
     if (dlg.showModal) { if (!dlg.open) dlg.showModal(); } else dlg.setAttribute("open", "");
     $("#basket-x").focus();
+    if (PAY.state === "?") askPay(function () { if (PAY.state === "on" && dlg.open) drawBasket(); });
   }
   function closeBasket() { if (dlg.close) dlg.close(); else dlg.removeAttribute("open"); }
   dlg.addEventListener("close", function () { if (lastFocus && lastFocus.focus) lastFocus.focus(); });
@@ -295,6 +321,7 @@
   }
   function mountExplode() {
     var s = document.getElementById("inside"); if (!s || !window.Camera3D || !C.model3d) return;
+    if (window.getComputedStyle(s).display === "none") return;                    // hidden on a phone's home page (site.css, v12)
     var h = window.Camera3D.viewer(s, C.model3d); cleanup.push(function () { h.destroy(); });
   }
   function mountHero() {
@@ -344,9 +371,10 @@
   // ------------------------------------------------------------------ pages
   var pages = {};
 
-  // ---- home (v11): a short pitch, then the way back in for owners.
-  //      hero > "Already have one?" bar > what's in the box (the one kit block) > how it works (4 steps) > lesson carousel
+  // ---- home (v12): a short pitch.  The way back in for owners is the menu (Start here, Build guide, Lessons, Files, Help).
+  //      hero > what's in the box (the one kit block) > how it works (4 steps) > lesson carousel
   //      > four facts (none repeated elsewhere on the page) > the camera viewer > one strip of links > last call
+  //      On a phone (site.css, v12): the camera sits above the buttons, and the viewer and the strip of links are left out.
   var REPO = META.repo;
   var CC = META.licence_url;
   function factSay(id, fb) { var f = GF[id]; return String(f && f.say != null ? f.say : fb).replace(/^about /, ""); }
@@ -379,9 +407,8 @@
   pages.home = function () {
     var S = PROD["starter-kit"] || {}, sp = S.price_usd != null ? money(S.price_usd) : "";
     var heroAlt = "The CURVE 35 camera: a black body, an orange front plate with a round lens, a red knob and a green knob on top";
-    var watch = (VID && VID.src) || G.film;
     // what is in the starter kit, from its canon contents (offers.yaml): short, one line each
-    var kitList = ["Every piece of the camera, plus 2 spares", "A pinhole ring and disc", "The printed build guide", "1 roll of colour film: " + factSay("kit_film_iso", "ISO 400") + ", " + factSay("kit_film_pictures", "24") + " pictures", "Developing and scans for that roll"];
+    var kitList = ["Every piece of the camera, plus 2 spares", "A pinhole ring and disc", "The printed build guide", "A roll of colour film (" + factSay("kit_film_pictures", "24") + " pictures), with developing and scans"];
     var dots = [factSay("f_small", "f/16"), factSay("f_middle", "f/11"), factSay("f_large", "f/9.5")];
     return '<div class="home">' +
       // HERO
@@ -389,15 +416,8 @@
       '<ul class="hero-stks" aria-label="In short"><li class="stk stk-w">' + esc(String(C.pieces || 9)) + ' pieces</li><li class="stk stk-g">No tools</li><li class="stk stk-b">No glue</li></ul>' +
       '<h1 id="hero-h">Build a real film camera. <span class="hl">Then find out how it works.</span></h1>' +
       '<p class="lead">A 35 mm film camera you build from nine pieces, and learn from.</p>' +
-      '<div class="ctas"><a class="btn main big" href="#store">Get the kit</a><a class="btn big" href="#files">Get the free files</a></div></div>' +
+      '<div class="ctas"><a class="btn main big" href="#store">Get the kit</a><a class="btn big alt" href="#files">Get the free files</a></div></div>' +
       '<div class="hero-pic"><span class="hero-stk" aria-hidden="true"><span class="stk stk-o">Real film!</span></span><div class="frame h3d" id="h3d">' + img(PIC.hero, heroAlt, ' class="h3d-still" width="1200" height="900" fetchpriority="high" loading="eager"').replace(' class="r"', "").replace(' loading="lazy"', "") + "</div></div></div></section>" +
-      // ALREADY HAVE ONE? the way back for owners
-      '<nav class="owners" aria-labelledby="ow-h"><div class="wrap owners-in"><h2 id="ow-h">Already have one?</h2><ul>' +
-      '<li><a href="#build"><span class="ow-i ow-y" aria-hidden="true">1</span>Build guide</a></li>' +
-      '<li><a href="#lessons"><span class="ow-i ow-g" aria-hidden="true">?</span>Lessons</a></li>' +
-      (watch ? '<li><a href="#build-film"><span class="ow-i ow-o" aria-hidden="true">&#9654;</span>Watch the build</a></li>' : "") +
-      '<li><a href="#files"><span class="ow-i ow-b" aria-hidden="true">&darr;</span>Files</a></li>' +
-      '<li><a href="#help"><span class="ow-i ow-w" aria-hidden="true">!</span>Help</a></li></ul></div></nav>' +
       // WHAT'S IN THE BOX: the one kit block on the page
       '<section class="kitbox" aria-labelledby="kb-h"><div class="wrap kitbox-in"><div class="kb-pic frame">' + img(PIC.plan_parts, "Everything in the box laid out: black body, grey back, orange front plate, teal shutter, yellow wheel, red spool, green knob, blue frame wheel, lens, pinhole ring and disc, and a roll of film", ' width="1200" height="900"') + "</div>" +
       '<div class="kb-t"><p class="kb-k">What&rsquo;s in the box</p><h2 id="kb-h">The starter kit' + (sp ? ' <span class="kb-price tnum">' + esc(sp) + "</span>" : "") + "</h2>" +
@@ -424,7 +444,7 @@
       '<nav class="strip1" aria-label="More"><div class="wrap"><p><a href="#programs">Programs for classes</a><a href="#open-files">Open files</a><a href="#builds">Builds and remixes</a><a href="#teachers">For teachers</a></p></div></nav>' +
       // LAST CALL
       '<section class="final" aria-labelledby="fn-h"><div class="wrap final-in"><div><h2 id="fn-h">Build a camera this week.</h2><p class="final-win">Or print it free.</p></div>' +
-      '<div class="final-act"><a class="btn ink big" href="#store">Get the kit</a><a class="btn big" href="#files">Get the free files</a></div></div></section></div>';
+      '<div class="final-act"><a class="btn ink big" href="#store">Get the kit</a><a class="btn big alt" href="#files">Get the free files</a></div></div></section></div>';
   };
   pages.home.title = "";
   pages.home.after = function () { mountHero(); mountCarousel(); mountExplode(); addButtons(); };
@@ -988,6 +1008,14 @@
       "<div><dt>By post</dt><dd>" + esc(META.company) + ", " + esc(META.address) + "</dd></div></dl></section>";
   }
   pages.help.title = "Help";
+  // ---- thanks: where Stripe sends a paid order back to (worker/checkout.js: success_url).  The basket is emptied on the way in (see below).
+  pages.thanks = function () {
+    return '<div class="page"><h1>Thank you.</h1><p class="lead">Your order is in.</p>' +
+      "<p>Stripe has sent a receipt to your email. We will write again when your parcel is on its way.</p>" +
+      "<p>A question about it? " + mailLink(MAIL.support) + "</p>" +
+      '<p class="ctas"><a class="btn main" href="#start">Start here</a><a class="btn" href="#lessons">Lessons</a></p></div>';
+  };
+  pages.thanks.title = "Thank you";
   pages.help.after = function () {
     var T = G.trouble, S = G.steps.filter(function (s) { return s.ifnot; });
     function hi(text, words) { var h = esc(text); words.forEach(function (w) { if (w.length > 1) h = h.replace(new RegExp("(" + w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")", "gi"), "<mark>$1</mark>"); }); return h; }
@@ -1336,6 +1364,11 @@
     var dd = el.closest && el.closest("details"); if (dd) dd.open = true;
     el.focus({ preventScroll: true });
     el.scrollIntoView({ behavior: reduced() || !smooth ? "auto" : "smooth", block: /^(part|term|f|p)-/.test(id) ? "center" : "start" });
+  }
+  // back from Stripe with a paid order: empty the basket, and take the marker out of the address so a reload does not do it again
+  if (/[?&]paid=1(&|$)/.test(location.search) && location.hash === "#thanks") {
+    saveBasket({});
+    try { history.replaceState(null, "", location.pathname + "#thanks"); } catch (e) { /* an old browser keeps ?paid=1 in the address: harmless */ }
   }
   window.addEventListener("hashchange", render);
   $(".skip").addEventListener("click", function (e) { e.preventDefault(); view.focus(); view.scrollIntoView(); });

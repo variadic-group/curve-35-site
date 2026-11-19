@@ -1744,3 +1744,66 @@ tr.here, li.here { outline-offset: 2px; }
   .lessons-page .lc-n { font-size: 2rem; }
 }
 @media (prefers-reduced-motion: reduce) { .lessons-page .lc, .lessons-page .lc:hover { transition: none; transform: none; } }
+
+/* ================================================================ v12: phones
+   1. A scroller holds its own hidden labels.  .sr-only is absolutely placed; inside a sideways scroller that is not itself positioned it escaped the scroller
+      and made the whole page 2,000 px wide on a phone (the lesson row on the home page, the tables on the Build guide and Parts pages).
+   2. The home page on a phone is one bold colour (the hero), then cream and white, then the last call: hero > the kit > how it works > lessons > four facts > last call.
+      The camera sits above the buttons.  The take-apart viewer (it is on the Parts page) and the strip of links (they are in the menu) are left out. */
+html { overflow-x: clip; }
+.tablewrap, .lcar-track, .cb-strip, .cb-secs { position: relative; }
+.ltile { position: relative; }
+.phone-only { display: none; }
+@media (max-width: 600px) {
+  .phone-only { display: block; }
+  .mainnav { display: none; }                                   /* the logo, the kit, the menu: Start here is the menu's first line */
+  .top-in { justify-content: space-between; }
+
+  .home .hero { padding: 22px 0 30px; background-size: 20px 20px; }
+  .home .hero-in { display: flex; flex-direction: column; gap: 0; align-items: stretch; }
+  .home .hero-text { display: contents; }
+  .home .hero-stks { order: 1; margin: 0 0 16px; gap: 9px; }
+  .home .hero-stks .stk { background: #fff; font-size: 0.88rem; padding: 7px 11px 8px; box-shadow: 2px 2px 0 var(--ink); }
+  .home .hero h1 { order: 2; font-size: clamp(2.05rem, 9.4vw, 2.6rem); margin-bottom: 12px; }
+  .home .hero .lead { order: 3; margin: 0; font-size: 1.02rem; }
+  .home .hero-pic { order: 4; margin: 26px 0 0; }
+  .home .hero-pic .frame { padding: 10px 12px; }
+  .home .hero .ctas { order: 5; margin: 22px 0 0; flex-direction: column; flex-wrap: nowrap; gap: 4px; }
+  .home .hero .ctas .btn, .home .final-act .btn { width: 100%; justify-content: center; }
+  .home .btn.alt { background: none; border-color: transparent; box-shadow: none; min-height: 44px; padding-top: 8px; padding-bottom: 8px; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; font-size: 1rem; }
+  .home .btn.alt:hover, .home .btn.alt:active { transform: none; background: none; }
+
+  .home .kitbox { background: var(--cream); border-bottom: 0; padding: 34px 0 10px; }
+  .home .kitbox-in { gap: 20px; }
+  .home .kitbox h2 { font-size: 1.85rem; margin-bottom: 10px; }
+  .home .kb-list { margin-bottom: 18px; font-size: 0.98rem; }
+  .home .kb-list li { padding: 6px 0 6px 28px; }
+  .home .kitbox .btn { width: 100%; justify-content: center; }
+
+  .home .plan { background: var(--cream); border: 0; padding: 34px 0 36px; }
+  .home .steps4 { grid-template-columns: minmax(0, 1fr); gap: 10px; margin-top: 18px; }
+  .home .steps4 li { display: grid; grid-template-columns: 88px minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 14px; align-items: center; padding: 8px 12px 8px 8px; box-shadow: 2px 2px 0 var(--ink); }
+  .home .steps4 img { grid-row: 1 / 3; grid-column: 1; width: 88px; aspect-ratio: 4 / 3; margin: 0; border-radius: 8px; }
+  .home .steps4 h3 { grid-column: 2; align-self: end; margin: 0; font-size: 1.02rem; }
+  .home .steps4 p { grid-column: 2; align-self: start; font-size: 0.88rem; }
+  .home .steps4 .s-n { width: 26px; height: 26px; font-size: 0.85rem; top: -8px; left: -8px; }
+
+  .home .learn { padding: 34px 0 26px; border-top: var(--line); }
+  .home .learn-head { margin-bottom: 14px; }
+  .home .learn-head h2 { font-size: 1.6rem; }
+
+  .home .guide { background: var(--cream); border-top: var(--line); padding: 32px 0 36px; }
+  .home .guide h2 { font-size: 1.6rem; }
+  .home .bns { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; margin-top: 16px; }
+  .home .bns div { background: #fff; box-shadow: 2px 2px 0 var(--ink); border-width: 2px; border-radius: 12px; padding: 12px 12px 13px; }
+  .home .bns dt { font-size: 1.55rem; }
+  .home .bns dt.bn-sm { font-size: 1.05rem; line-height: 1.25; }
+  .home .bns dd { font-size: 0.84rem; margin-top: 6px; }
+
+  .home .x3, .home .strip1 { display: none; }
+
+  .home .final { padding: 32px 0 34px; }
+  .home .final-in { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .home .final-win { display: none; }
+  .home .final-act { flex-direction: column; flex-wrap: nowrap; gap: 4px; }
+}

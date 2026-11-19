@@ -403,3 +403,6 @@ html.lp-deck-open { overflow: hidden; }
 }
 @media (prefers-reduced-motion: reduce) { .lp-th-tri { transition: none; } }
 @media print { .lp-theatre { display: none !important; } }
+
+/* v12: a scroller holds its own hidden labels (see site.css, v12): without this an .sr-only inside one made the page scroll sideways on a phone */
+.lp-nums, .lp-tl, .lp-deck-stage { position: relative; }
