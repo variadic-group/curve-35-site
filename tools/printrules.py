@@ -32,8 +32,13 @@ KNOWN = dict(
  wheel=[((-23.4, 2.2), "spring", "click spring round the rim"), ((-17.9, 14.7), "wall", "rim of the finger dish on top of the handle: 0.6 mm high, on solid plastic")])
 # Thin places that are kept on purpose, with the reason.
 ACCEPT = dict(body=[((-17.4, 0.0), "edge of the picture frame"), ((17.4, 0.0), "edge of the picture frame")],
+              blade=[((-5.3, -5.2), "thin half of the shutter's click spring"), ((12.2, -12.9), "foot of the click tooth")],
               roller=[((27.6 + 6.5 * np.cos(np.radians(45 * k)), 5.4 + 6.5 * np.sin(np.radians(45 * k))), "tooth of the frame wheel") for k in range(8)])
-ACCEPT_WHY = {"edge of the picture frame": "a ridge 0.9 mm wide and 0.6 mm high along each side of the picture, standing on solid plastic.  It is two lines of plastic, it sets the edge of the picture and it carries nothing",
+ACCEPT_WHY = {"thin half of the shutter's click spring": "since v2.18 the spring tapers from 1.76 mm where it joins the shutter to 0.9 mm (two lines of plastic) at its tooth, so that it bends evenly along its length: 0.35 % strain when pressed "
+                                                         "in place of 0.53 % (tools/springsearch.py).  It is a spring, and thin on purpose.  Sliced five ways (Arachne and classic walls, 0.40, 0.45 and 0.50 mm lines, a 0.6 mm nozzle) "
+                                                         "it comes out within 0.04 mm of its drawn thickness everywhere, with no gap between its lines",
+              "foot of the click tooth": "the corner where the tooth's flank meets the end of the spring, 0.4 mm wide and joined on two sides.  It was there before; the rule finds it now because the spring beside it is under 1.2 mm",
+              "edge of the picture frame": "a ridge 0.9 mm wide and 0.6 mm high along each side of the picture, standing on solid plastic.  It is two lines of plastic, it sets the edge of the picture and it carries nothing",
               "tooth of the frame wheel": "each tooth tapers from 1.5 mm at its root to 0.4 mm at its tip, 1.2 mm out from the drum and 1.5 mm tall, standing on the bed.  It has to be narrower than the hole in the film it enters (2.0 mm), "
                                           "and since v2.12 it tapers straight so that it clears the hole's edge on the way in (tools/motion.py).  It carries only the film's pull on a free wheel.  Sliced, the plastic reaches the same radius as the older, stouter tooth"}
 def name_them(part, r):

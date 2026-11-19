@@ -26,9 +26,10 @@ def arcballs(c, r, a0, a1, step=3.0, rad=2.2, size=0.3):
 T_ = B["BL_T"]; R = B["R_OUT"]; bl = fea.section(A + f"blade_PHI{TH}.stl", [0, YF + 1.5, 0], [0, 1, 0], [0, 2]); bl = shapely.affinity.rotate(bl, 90 - (B["DB_A"] + TH), origin=tuple(P))
 tip = (P[0], P[1] + R + B["SLIT"] + T_ + B["BUMP"] - 0.02); ra = np.radians(90 - B["BL_ARC"]); root = P + (R + B["SLIT"]) * np.array([np.cos(ra), np.sin(ra)])
 r, f = fea.run("blade click spring, per mm", bl, lambda x, y: np.where(np.hypot(x - P[0], y - P[1]) < 5.4, 2.0, 1.0), lambda x, y: np.hypot(x - P[0], y - P[1]) < 4.8, [(tip, (None, -1.0))], h=2.5,
-               fine=[(root[0], root[1], 3.5, 0.07)] + arcballs(P, R + B["SLIT"] + T_ / 2, 90 - B["BL_ARC"], 90))
+               fine=[(root[0], root[1], 3.5, 0.07)] + arcballs(P, R + B["SLIT"] + T_ / 2, 90 - B["BL_ARC"], 90, step=2.0, rad=2.4, size=0.18))   # v2.18: finer all along the beam: a constant-strain beam peaks anywhere along it
 for d, lab in BENDS_B: keep(scaled(r, d, f"blade click spring, tooth pushed in {d} mm ({lab})", "inplane_repeated"))
-keep(scaled(r, B["SLIT"], f"blade click spring, squeezed until the rim stops it ({B['SLIT']} mm)", "inplane_rare"))
+STOP_B = round(B["SLIT"] + T_ - B["BL_T1"], 2) if B.get("BL_T0", 0) > 0 else B["SLIT"]   # v2.18: the tapered beam keeps its outer face, so its thin tip stands further off the rim
+keep(scaled(r, STOP_B, f"blade click spring, squeezed until the rim stops it ({STOP_B} mm)", "inplane_rare"))
 pics["blade"] = (f, (root[0] - 3, tip[0] + 3, P[1] + R - 12, P[1] + R + 8), BENDS_B[0][0])
 # ---- 2. wheel click spring
 T_ = B["WH_T"]; RW = B["WHEEL_R"]; wh = fea.section(A + "wheel_STOP0.stl", [0, YF + 0.75, 0], [0, 1, 0], [0, 2]); wh = shapely.affinity.rotate(wh, 90 - B["WD_A0"], origin=tuple(C))

@@ -60,8 +60,9 @@ def run(e, ef, label):
         t = blades(sw if f is None or f[0] == 0 else sw[1:-1], "blade", f); chk(f"blade (whole swing, tooth removed) {w}", t, front); chk(f"blade {w} against the wheel", t, wh); chk(f"blade {w} against the body's face", t, body)
     for sgn, w in ((1, "one side"), (-1, "other side")):
         chk(f"blade at rest in its notch, {w}, tooth and all (as drawn: 0; fatter: the spring is bent by that much)", blades([f"blade_PHI{sgn * TH}"], "blade", None), front)
-    rest = LB["REST_B"] + 4 * e; print(f"   blade click: at rest the tooth is pushed in {rest:.2f} mm (slack {max(-rest + LB['DV_B'] - 0.414 * LB['TIP_R'], 0):.2f} mm in its notch); pressed {LB['PRESSED_B']:.2f} mm; room behind the spring {LB['SLIT'] - 2 * e:.2f} mm" + ("   <-- NO HOLD AT REST" if rest < 0.15 else ""))
-    R["blade click: pushed in at rest, mm / pressed, mm / room behind the spring, mm"] = dict(mm3=0.0, where=[round(rest, 2), LB["PRESSED_B"], round(LB["SLIT"] - 2 * e, 2)])
+    ROOM_B = LB["SLIT"] + LB["BL_T"] - LB["BL_T1"] if LB.get("BL_T0", 0) > 0 else LB["SLIT"]   # v2.18: under the tooth, where the tapered spring is thinnest
+    rest = LB["REST_B"] + 4 * e; print(f"   blade click: at rest the tooth is pushed in {rest:.2f} mm (slack {max(-rest + LB['DV_B'] - 0.414 * LB['TIP_R'], 0):.2f} mm in its notch); pressed {LB['PRESSED_B']:.2f} mm; room behind the spring {ROOM_B - 2 * e:.2f} mm" + ("   <-- NO HOLD AT REST" if rest < 0.15 else ""))
+    R["blade click: pushed in at rest, mm / pressed, mm / room behind the spring, mm"] = dict(mm3=0.0, where=[round(rest, 2), LB["PRESSED_B"], round(ROOM_B - 2 * e, 2)])
     whs = []
     for k in range(3):                                                                                 # the wheel sits where its spring puts it: 2 x the wall error nearer its click wall
         t0 = load(f"wheelN_STOP{k}_WH_BUMP0.0"); u = far(load(f"wheel_STOP{k}"), WC); t = grow(t0, "wheel", e, ef); t.apply_translation([u[0] * 2 * e, 0, u[1] * 2 * e]); whs.append(man(t))

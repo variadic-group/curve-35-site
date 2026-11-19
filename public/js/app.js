@@ -1019,7 +1019,7 @@
   }
   function moreFiles() {
     var M = (FILES.more || []).filter(function (f) { return f.src || f.dl; }); if (!M.length) return "";
-    var WHAT = { fit_gauge: "Print first: checks your printer's fit before the real parts", lens_gauge: "Checks the lens pocket against your lens", test_slab: "A quick check of layers and walls", layout: "All the parts laid out on one bed" };
+    var WHAT = { fit_gauge: "Print first: checks your printer's fit before the real parts", lens_gauge: "Checks the lens pocket against your lens", test_slab: "A quick check of layers and walls", blade_soft: "A fifth softer: keep it if the rocker is hard to press", blade_stiff: "A fifth stiffer: keep it if the click is faint", layout: "All the parts laid out on one bed" };
     return '<h2 class="files-h">Test prints and layout</h2><ul class="files files-more">' + M.map(function (f) {
       return '<li class="file src"><span class="srcicon" aria-hidden="true">' + (f.kind === "scad" ? "{ }" : "&#9651;") + '</span><div class="file-t"><h3>' + esc(f.name) + '</h3><p class="fmeta"><span>' + esc(WHAT[f.key] || "") + "</span><span>" + kib(f.bytes || 0) + "</span></p></div>" + dlControl(f, "Download") + "</li>";
     }).join("") + "</ul>";

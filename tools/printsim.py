@@ -3,7 +3,7 @@ at its real width); then printer error is added: all side walls grown or shrunk 
 The rebuilt parts are measured where the camera depends on them (how far each click tooth is pushed in, whether the slits stay
 open, how big the aperture holes come out) and the results go through the finite-element
 numbers of tools/fea_cases.py.  Writes build/printsim.json and build/printsim.png."""
-import sys, json, numpy as np, trimesh, shapely
+import sys, json, numpy as np, trimesh, shapely, re
 from shapely.geometry import LineString, Point, Polygon, box
 from shapely.ops import unary_union
 sys.path.insert(0, "tools"); from slicecheck import slice_part, parse, offset, LH
@@ -38,7 +38,7 @@ def click(part, wall, c, R, t, a_tip, arc, a_flat, a_notch):
     reach = max(ray(part, c, a)[-1][1] for a in np.arange(a_tip - 2.5, a_tip + 2.51, 0.1))                 # top of the tooth
     slit = [(a, min(q[0] for q in s if q[0] > R + 0.5) - max(q[1] for q in s if q[1] < R + 0.5)) for a in np.arange(a_tip - arc + 5, a_tip - 0.5, 0.5) for s in [ray(part, c, a)] if any(q[0] > R + 0.5 for q in s) and any(R - 3 < q[1] < R + 0.5 for q in s)]   # the gap that holds radius R + 0.5, wherever the rim is under the spring
     hole = float(np.mean([ray(part, c, a)[0][0] for a in np.arange(a_tip - 20, a_tip + 21, 5)]))           # hole in the hub, on the tooth's side
-    boss = float(np.mean([ray(wall, c, a)[0][1] for a in np.arange(a_tip - 20, a_tip + 21, 5)]))
+    boss = float(np.mean([max(q[1] for q in ray(wall, c, a) if q[0] < 1.5) for a in np.arange(a_tip - 20, a_tip + 21, 5)]))   # v2.18: the boss out to its skin: some line widths leave a hair-wide void at its core, and the first stretch alone then read 0.9 mm short
     face = min(s[0] for a in np.arange(a_flat - 1.5, a_flat + 1.51, 0.25) for s in ray(wall, c, a, R + 1.5) if True)
     floor = max(min(s[0] for s in ray(wall, c, a, R + 1.5)) for a in np.arange(a_notch - 0.3, a_notch + 0.31, 0.1))
     push = reach - face - (hole - boss); u = lambda a: (a - a_tip + arc) / arc                    # a bent beam moves (3u^2 - u^3)/2 of its tip's travel at the fraction u of its length
@@ -48,7 +48,7 @@ def click(part, wall, c, R, t, a_tip, arc, a_flat, a_notch):
 if __name__ == "__main__":
     out = {}; F = json.load(open("build/fea.json"))
     def per_mm(key):
-        r = [v for k, v in F.items() if k.startswith(key) and "as drawn" in k][0]; d = B["BUMP"] - B["SCL"] - B["HUBC"]; return r["force_N"] / d, r["peak_strain_pct"] / d
+        k, r = [(k, v) for k, v in F.items() if k.startswith(key) and "as drawn" in k][0]; d = float(re.search(r"pushed in ([0-9.]+) mm", k).group(1)); return r["force_N"] / d, r["peak_strain_pct"] / d   # v2.18: the travel that case was run at (it was a fixed 0.5 mm, from before the springs were preloaded: strain and force read twice too high)
     import geom; RF = geom.lever(B, B["THETA"])                                                            # lever arm of the finger on the raised side of the rocker, where the press starts
     print("how far the click teeth are pushed in, slits and click force, rebuilt from the sliced tool paths")
     for name, e, ef in PRINTERS:
@@ -62,7 +62,7 @@ if __name__ == "__main__":
             hc = C + B["R_HOLE"] * np.array([np.cos(np.radians(B["A_AX"] + B["WPOS"][i])), np.sin(np.radians(B["A_AX"] + B["WPOS"][i]))]); lay = printed("wheel", zl, e)
             holes[lab] = 0.0 if lay.contains(Point(hc)) else round(2 * lay.boundary.distance(Point(hc)), 2)
         out[name] = dict(wall_error=e, elephants_foot=ef, blade=b, wheel=w, aperture_holes_mm=holes)
-        print(f"  {name:16s} walls {e:+.2f}: BLADE tooth pushed in {b['pushed_in']:.2f} mm, room left behind the spring {b['room_left_behind_spring']:.2f}, strain {b['strain_pct']:.2f} %, click {b['click_at_finger_N']:.2f} N at the finger"
+        print(f"  {name:16s} walls {e:+.2f}: BLADE tooth pushed in {b['pushed_in']:.2f} mm, room left behind the spring {b['room_left_behind_spring']:.2f}, strain {b['strain_pct']:.2f} % at rest, {b['click_at_finger_N']:.2f} N at the finger to start it up its ramp (the click itself: tools/exposure.py)"
               f" | WHEEL {w['pushed_in']:.2f} mm, room {w['room_left_behind_spring']:.2f}, strain {w['strain_pct']:.2f} %, click {w['click_at_finger_N']:.2f} N | holes P {holes['P']} S {holes['S']} C {holes['C']} mm")
     # ---- latches (the finger is measured between its nub and its root; the nub against the finger beside it)
     for name, e, ef in PRINTERS:

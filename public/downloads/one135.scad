@@ -1,6 +1,11 @@
-// ONE-135 v2.17 : one simple 35 mm film camera, printed parts only.  No spring, no pins, no screws, no supports,
+// ONE-135 v2.18 : one simple 35 mm film camera, printed parts only.  No spring, no pins, no screws, no supports,
 // no glue, no tape, no tools.  The only things that are not printed: the film and (optional, but it makes this a
 // hand-held camera) the lens from a used single-use camera.
+//
+// v2.18 (shape search): the shutter's click spring is a constant-strain beam.  It was a plain beam 1.35 mm thick, as long as the rim allows and 0.3 mm from the wheel's boss,
+// strained 0.53 % on every picture against a limit of 0.5 %.  tools/springsearch.py searched its thickness along its length for the lowest peak strain at the same force on the
+// tooth: 1.76 mm at the root (four lines), thinning as the square root of the distance from the tooth to 0.9 mm (two lines).  Peak strain 0.35 %; force, click and time unchanged.
+// Its outer face has not moved; the extra thickness is toward the rim, at the root, where the beam barely moves (the slit is 2.19 mm there, 3.05 at the tooth).
 //
 // v2.17 (print-farm review): (1) every print file is a sealed solid: tools/scadr.py welds what OpenSCAD 2021 writes (its STL writer keeps six digits, so faces that the
 // model puts 0.00001 to 0.001 mm apart came out as slivers and 10-nanometre edges, which a checker that welds vertices reads as non-manifold edges) through manifold3d,
@@ -474,10 +479,13 @@ module back() {
 
 // ================================================================== click springs (the same shape on the blade and on the wheel)
 module sector2d(c, r0, r1, a0, a1, n = 12) polygon(concat([for (i = [0 : n]) pol(c, r0, a0 + (a1 - a0) * i / n)], [for (i = [n : -1 : 0]) pol(c, r1, a0 + (a1 - a0) * i / n)]));
-module rimspring2d(c, R, slit, t, a_tip, arc) {                 // on a part whose rim is at radius R: a beam t thick, slit clear of the rim, rooted at a_tip - arc, free end at a_tip
-    dr = 3.0 / R * 180 / PI; a0 = a_tip - arc - dr; a1 = a_tip + 1.5 / R * 180 / PI;
-    sector2d(c, R + slit, R + slit + t, a0, a1, 60);
-    sector2d(c, R - 1.4, R + slit + t, a0, a_tip - arc, 6);                                      // root: 3 mm of solid (it reaches 1.4 mm into the part: the layer on the bed stays in one piece)
+module rimspring2d(c, R, slit, t, a_tip, arc, t0 = 0, t1 = 0, tf = 0) { // on a part whose rim is at radius R: a beam t thick, slit clear of the rim, rooted at a_tip - arc, free end at a_tip
+    dr = 3.0 / R * 180 / PI; a0 = a_tip - arc - dr; a1 = a_tip + 1.5 / R * 180 / PI; Ro = R + slit + t; ar = a_tip - arc; n = 96;
+    if (t0 <= 0) sector2d(c, R + slit, Ro, a0, a1, 60);
+    else polygon(concat(                                                                         // v2.18: a constant-strain beam.  Bent by a load on its tooth, a beam is strained most at its root; this one is
+        [for (i = [0 : n]) pol(c, Ro, ar - 0.3 + (a1 - ar + 0.3) * i / n)],                      // t0 thick at the root and thins toward the tooth as the square root of the distance from it, down to t1 (two printed lines),
+        [for (i = [n : -1 : 0]) let (a = ar - 0.3 + (a1 - ar + 0.3) * i / n, u = min(1, max(0, (a_tip - a) / arc))) pol(c, Ro - max(t1, t0 * sqrt(u) * (1 + tf * pow(u, 6))), a)]));   // so every section works equally hard.  Its outer face stays where it was: the extra is toward the rim, where the beam barely moves
+    sector2d(c, R - 1.4, Ro, a0, ar, 6);                                                         // root: 3 mm of solid (it reaches 1.4 mm into the part: the layer on the bed stays in one piece)
 }
 module rimbump2d(c, R, slit, t, a_tip, bump) if (bump > 0.05) translate(pol(c, R + slit + t, a_tip)) rotate(a_tip - 90) hull() {     // the tooth: a round tip (TIP_R) on a 2.6 mm base
     translate([0, bump - TIP_R]) circle(TIP_R, $fn = 48);
@@ -658,12 +666,12 @@ module blade(phi = PHI) rot_xz(P_S, phi) {                      // prints front 
                     ey(Y_SC1 - BED_CH_FIT / 2, Y_SC1 + 0.01) offset(delta = -BED_CH_FIT) blade_out2d();
                 }
             }
-            ey(Y_SC0, Y_SC1 - 0.2) rimspring2d(P_S, R_OUT, BL_SLIT, BL_T, DB_A, BL_ARC);             // click spring: the rim itself.  It is a spring: it stays 1.35 mm wide and keeps its own bed relief
-            ey(Y_SC1 - 0.21, Y_SC1) offset(delta = -0.3) rimspring2d(P_S, R_OUT, BL_SLIT, BL_T, DB_A, BL_ARC);
+            ey(Y_SC0, Y_SC1 - 0.2) rimspring2d(P_S, R_OUT, BL_SLIT, BL_T, DB_A, BL_ARC, BL_T0, BL_T1, BL_TF);   // click spring: the rim itself.  It is a spring (v2.18: tapered, BL_T0 at the root to BL_T1 at the tooth) and keeps its own bed relief
+            ey(Y_SC1 - 0.21, Y_SC1) offset(delta = -0.3) rimspring2d(P_S, R_OUT, BL_SLIT, BL_T, DB_A, BL_ARC, BL_T0, BL_T1, BL_TF);
             ey(Y_SC0, Y_SC1 - 0.4) rimbump2d(P_S, R_OUT, BL_SLIT, BL_T, DB_A, BL_BUMP - 0.02);
             ey(Y_SC1 - 0.41, Y_SC1) rimbump2d(P_S, R_OUT, BL_SLIT, BL_T, DB_A, BL_BUMP - 0.3);       // the two layers on the bed: 0.3 lower
         }
-        ey(Y_SC0 - 1, Y_SC1 + 1) rimspring_cut2d(P_S, R_OUT, BL_SLIT, DB_A, BL_ARC);
+        ey(Y_SC0 - 1, Y_SC1 + 1) rimspring_cut2d(P_S, R_OUT, BL_T0 > 0 ? BL_SLIT + BL_T - BL_T0 * (1 + BL_TF) : BL_SLIT, DB_A, BL_ARC);   // the slit is narrower at the root of a tapered spring
         cyl_y(pol(P_S, R_PORT - WIN_IN, A0), WIN_R, Y_SC0 - 1, Y_SC1 + 1);                           // the window.  While the rocker is pressed the blade hangs 2 x HUB_C lower on its boss: the window is drawn WIN_IN nearer the pivot, so that it crosses the lens's axis then
         cyl_y(BL_HC, HUB_HOLE, Y_FRONT, Y_SC1 + 1);                                                // off-centre by the hub's play, away from the tooth: at rest the spring holds this side on the boss
         cyl_y(BL_HC, HUB_HOLE, Y_SC1 - 0.4, Y_SC1 + 0.01, HUB_HOLE + 0.4);                              // the hole flares on the bed side: room for elephant's foot
