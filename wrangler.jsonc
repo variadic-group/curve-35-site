@@ -1,13 +1,19 @@
 {
-  // A static site: no Worker script, only the files in ./public.
+  // The static site in ./public, with a small Worker in front that sends
+  // www.curve35.com and curve35.org (and its www) to https://curve35.com.
   "name": "curve-35-site",
+  "main": "worker/index.js",
   "compatibility_date": "2026-11-01",
   "assets": {
     "directory": "./public",
-    "not_found_handling": "404-page"
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "run_worker_first": true
   },
   "routes": [
     { "pattern": "curve35.com", "custom_domain": true },
-    { "pattern": "www.curve35.com", "custom_domain": true }
+    { "pattern": "www.curve35.com", "custom_domain": true },
+    { "pattern": "curve35.org", "custom_domain": true },
+    { "pattern": "www.curve35.org", "custom_domain": true }
   ]
 }
