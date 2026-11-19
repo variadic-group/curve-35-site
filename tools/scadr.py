@@ -31,9 +31,36 @@ def canon_stl(path):
     facets.sort(key=lambda f: f[0]); out = [L[0].strip()]
     for _, n, v in facets: out += ["  " + n, "    outer loop"] + ["      " + q for q in v] + ["    endloop", "  endfacet"]
     out.append("end" + L[0].strip()); open(path, "w").write("\n".join(out) + "\n")
+WELD_TOL = 0.005      # mm: edges shorter than this (5 micrometres, 1/40 of a layer) are collapsed when a print file is sealed
+def weld_stl(path, tol=WELD_TOL):
+    """v2.17: seal a print file.  OpenSCAD 2021 writes STL coordinates to six significant digits, and its CGAL union keeps faces that two solids put 0.00001 to
+    0.001 mm apart (two expressions for one plane that differ in the last digits, the ends of rounded outlines that almost meet a flat face).  The file it writes
+    is closed, but it carries edges 10 nanometres long and slivers of zero area; a checker that first welds vertices within its own tolerance turns those into
+    edges shared by three or four faces: the "non-manifold edges" a print farm reported (v2.16: back 19, body 8, front 17).  Here the mesh is read exactly as
+    written, rebuilt as a manifold by manifold3d (the kernel OpenSCAD's later manifold backend uses; this OpenSCAD 2021 has none), and every edge shorter than
+    tol collapsed; the shape moves by less than tol.  Anything manifold3d cannot read as a closed solid is an error, never written."""
+    import numpy as np, manifold3d as m3
+    V = {}; F = []; tri = []
+    for l in open(path):
+        l = l.strip()
+        if l.startswith("vertex"):
+            tri.append(V.setdefault(tuple(l.split()[1:]), len(V)))
+            if len(tri) == 3: F.append(tri); tri = []
+    P = np.array([[float(x) for x in k] for k in V]); F = np.array(F, dtype=np.uint32)
+    M = m3.Manifold(m3.Mesh(vert_properties=P.astype(np.float32), tri_verts=F))
+    if M.status() != m3.Error.NoError: raise RuntimeError(f"weld: {path} is not a closed manifold as exported ({M.status()})")
+    v0 = M.volume(); M = M.simplify(tol); me = M.to_mesh()
+    Q = np.array(me.vert_properties, dtype=float)[:, :3]; T = np.array(me.tri_verts)
+    if abs(M.volume() - v0) > 1e-3 * max(1.0, v0) or len(T) == 0: raise RuntimeError(f"weld: {path} changed volume {v0:.3f} -> {M.volume():.3f}")
+    n = np.cross(Q[T[:, 1]] - Q[T[:, 0]], Q[T[:, 2]] - Q[T[:, 0]]); n /= np.maximum(np.linalg.norm(n, axis=1)[:, None], 1e-30)
+    out = ["solid OpenSCAD_Model"]
+    for t, nn in zip(T, n):
+        out += ["  facet normal %s" % " ".join("%.6g" % c for c in nn), "    outer loop"] + ["      vertex %s" % " ".join("%.6f" % c for c in Q[i]) for i in t] + ["    endloop", "  endfacet"]
+    out.append("endsolid OpenSCAD_Model"); open(path, "w").write("\n".join(out) + "\n")
 def export(scad, out, d=None, timeout=1200):
     r=subprocess.run(["openscad","-o",out]+defs(d)+[scad],capture_output=True,text=True,timeout=timeout)
     if not os.path.exists(out) or os.path.getsize(out)<50: print(r.stderr[-2000:]); raise RuntimeError("export failed "+out)
+    if out.endswith(".stl") and "build/print" in out.replace(os.sep, "/"): weld_stl(out)      # every print file is sealed (v2.17)
     if out.endswith(".stl"): canon_stl(out)
     w=[l for l in r.stderr.splitlines() if "WARNING" in l or "ERROR" in l]
     return out, w

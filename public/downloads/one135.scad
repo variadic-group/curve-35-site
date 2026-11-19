@@ -1,6 +1,12 @@
-// ONE-135 v2.16 : one simple 35 mm film camera, printed parts only.  No spring, no pins, no screws, no supports,
+// ONE-135 v2.17 : one simple 35 mm film camera, printed parts only.  No spring, no pins, no screws, no supports,
 // no glue, no tape, no tools.  The only things that are not printed: the film and (optional, but it makes this a
 // hand-held camera) the lens from a used single-use camera.
+//
+// v2.17 (print-farm review): (1) every print file is a sealed solid: tools/scadr.py welds what OpenSCAD 2021 writes (its STL writer keeps six digits, so faces that the
+// model puts 0.00001 to 0.001 mm apart came out as slivers and 10-nanometre edges, which a checker that welds vertices reads as non-manifold edges) through manifold3d,
+// and tools/meshcheck.py proves 0 open / 0 non-manifold edges on every file.  (2) BED_CHAMFER: a 45-degree chamfer on each part's outer edge on the bed (elephant's foot);
+// the table is by BED_CHAMFER, below.  (3) Stiffer shutter and aperture wheel: the shutter's thick root reaches 17 mm from the pivot (it was 14); the aperture wheel
+// carries a web 1.2 mm tall over 130 degrees of its far side, merged with the handle's foot, in a matching room in the front plate.  Swing, overlap, clicks and holes unchanged.
 //
 // v2.10 (round 6): the guard round the rocker is gone again (it stood in the line of sight).  Sights: two rails in a V on the top whose outer sides are the left and right
 // edges of the picture, and a wedge sunk into each end for the top and bottom edges.  The front plate takes two moves to come off, up and then sideways (it took one,
@@ -51,6 +57,23 @@ SHOW_FILM = true;
 SHOW_BACK = true;
 SECTION   = false;    // cut the assembly at Z = 0
 DARK      = true;     // false: draw the blade in a colour that shows in figures
+
+/* [Bed chamfer, v2.17] */
+// A 45-degree chamfer on the outer edges of each part's face on the bed: the first layers spread (elephant's foot), and a chamfer lets them spread into air instead of
+// into a fit.  BED_CHAMFER where the edge meets nothing; BED_CH_FIT where it is a fit, a light seal, a sliding face or a click; none where even that is too much.  Per part, as it lies on the bed:
+//   body   front face down.  Sides and bottom BED_CHAMFER (nothing there; the plate's edges stand 1.6 mm or more inside).  Top edge none: the plate's top edge lies flush on it
+//          (a light seal), and the wall over the plate's upper foot pockets is 2.4 mm there (0.4 more of chamfer left 2.0 at the bed: tools/printrules.py flagged it).
+//   back   outer face down.  Outline BED_CHAMFER (the camera's outside).  Latch fingers, their slits and the pads keep their 0.4 mm steps: springs and a catch.
+//   front  front face down.  Outline BED_CHAMFER (the camera's front: nothing mates; the feet and the latch are on the other face).  The sight, slits and pocket keep their own steps.
+//   plate1 as the front plate.
+//   blade  front face down, 1 mm thick, and it slides under the plate's ceiling; its straight edges are the light overlap.  BED_CH_FIT (two layers: 0.4, then 0.2), the
+//          same 0.4 as its old bed layer at the overlap.  The click spring and its tooth keep their own 0.3 mm relief: a spring is sized as it is.
+//   wheel  back face down, 1 mm thick, slides on the body's face: BED_CH_FIT.  Its click spring keeps its own relief.
+//   knob, spool  the knob's top on the bed: nothing touches it.  BED_CHAMFER.
+//   pinring  its clamping face down; it is pressed into the crush ribs, so the chamfer is a lead-in.  BED_CH_FIT: the face still clamps the disc 1.9 mm past the port's corner.
+//   roller (frame wheel)  none beyond its 0.15 mm step: its bed face is the eight teeth, 0.4 mm wide at the tip, and the teeth are what meets the film's holes.
+//   nearring, slide1  none: 0.4 and 1.0 mm thick flat parts whose bed edges are their fits.  Gauges, test slab, tower: none (they show fits as the camera's parts print).
+BED_CHAMFER = 1.0; BED_CH_FIT = 0.4;
 
 /* [Film and body] */
 RF = 32; CF = [0, 32];                      // drum radius and its centre (the lens stop sits on this axis)
@@ -326,6 +349,9 @@ module body() {
         translate([0, 13, -H - 0.01]) { cylinder(d = 11.4 / cos(30), h = 6, $fn = 6); cylinder(d = 7, h = 8); }
         for (sx = [-1, 0, 1]) hull() for (q = [[sx * 2.4, Y_RIM + 6], [sx * (2.4 + tan(GATE_A) * (Y_FRONT - 4.5 - Y_RIM - 6)), sx == 0 ? Y_FRONT + 1 : Y_FRONT - 4.5]]) translate([q[0], q[1], H - 0.6]) cylinder(r = AIM_R, h = 1, $fn = 8);   // aim lines, as in v2.9: the outer two are the picture's edges; the middle one lies on the lens's line and (v2.10) runs to the front face
         translate([ROLLER[0], ROLLER[1] + RIDGE_R0 + 2 * RIDGE_H + 0.6, H - 0.6]) linear_extrude(1) polygon([[-0.5, 0], [0.5, 0], [1.9, 4.4], [-1.9, 4.4]]);      // index mark for the frame dial (v2.11: an arrowhead pointing at the dial; it was a 1.4 mm line)
+        difference() { ey(Y_FRONT - BED_CHAMFER, Y_FRONT + 1) translate([-BXL - 5, -H - 5]) square([BXL + BXR + 10, 2 * H + 10]);       // v2.17: the bed chamfer (front face down): BED_CHAMFER on the sides and the bottom;
+            hull() { ey(Y_FRONT - BED_CHAMFER - 0.02, Y_FRONT - BED_CHAMFER) rrect2([-BXL, -H], [BXR, H], CORNER_R);                       // none on the top edge, where the front plate's top edge lies flush on the face (a light seal) and only 2.4 mm stands over the feet's pockets
+                     ey(Y_FRONT - 0.01, Y_FRONT + 0.01) rrect2([-BXL + BED_CHAMFER, -H + BED_CHAMFER], [BXR - BED_CHAMFER, H], CORNER_R - BED_CHAMFER); } }
     }
     horn(1); horn(-1);
     difference() { fw_ridge(); translate([ROLLER[0] - RIDGE_R0 - 2 * RIDGE_H - 0.2, Y_RIM - 1, H - 1]) cube([2 * (RIDGE_R0 + 2 * RIDGE_H + 0.2), ROLLER[1] - FW_NK - Y_RIM + 1, 6]); ez(H - 1, H + 5) shaft_slot_plan(); }   // the ridge round the frame wheel's hole (front and sides)
@@ -337,7 +363,8 @@ module body() {
     for (q = [[LEDGE_Z, CORE_R + 0.7], [LEDGE2_Z, CORE_R + 0.7]])                                                               // solid steps above and under the take-up roll: front half only, so each grows up from the chamber wall as it prints.  (The rear half of the upper one is on the back: the foot of the spool's block)
         ez(q[0][0], q[0][1]) intersection() { difference() { translate(SPOOL) circle(RCH_S + 0.6); translate(SPOOL) circle(q[1]); fork_slot_plan(); }     // (the upper one keeps clear of the pocket for the frame wheel's fork)
                                               translate([SPOOL[0] - RCH_S - 1, SPOOL[1] + 1.0]) square([2 * RCH_S + 2, RCH_S + 2]); }
-    for (x = [-BXL + 6.5, BXR - 11.5]) translate([x, Y_RIM + 2, -H - SKID]) cube([5, Y_FRONT - Y_RIM - 2, SKID + 0.01]);          // two skids: they run in the print direction, so they need no support
+    for (x = [-BXL + 6.5, BXR - 11.5]) hull() { translate([x, Y_RIM + 2, -H - SKID]) cube([5, Y_FRONT - Y_RIM - 2 - BED_CHAMFER, SKID + 0.01]);   // two skids: they run in the print direction, so they need no support
+        translate([x + BED_CHAMFER, Y_FRONT - 0.01, -H - SKID + BED_CHAMFER]) cube([5 - 2 * BED_CHAMFER, 0.01, SKID]); }                     // (v2.17: chamfered at the bed like the body, and up into the body's own chamfer)          // two skids: they run in the print direction, so they need no support
 }
 
 // ================================================================== BACK (carries everything behind the film)
@@ -400,7 +427,13 @@ module forkfloor2d(c) difference() {                           // floor zone: on
 }
 module back() {
     difference() {
-        union() { ey(Y_RIM - DOOR_T + 0.39, Y_RIM) back2d(); ey(Y_RIM - DOOR_T + 0.19, Y_RIM - DOOR_T + 0.4) offset(delta = -0.2) back2d(); ey(Y_RIM - DOOR_T, Y_RIM - DOOR_T + 0.2) offset(delta = -0.4) back2d(); }     // the layer on the bed is 0.2 mm smaller all round
+        intersection() {
+            union() { ey(Y_RIM - DOOR_T + 0.39, Y_RIM) back2d(); ey(Y_RIM - DOOR_T + 0.19, Y_RIM - DOOR_T + 0.4) offset(delta = -0.2) back2d(); ey(Y_RIM - DOOR_T, Y_RIM - DOOR_T + 0.2) offset(delta = -0.4) back2d(); }     // the layer on the bed is 0.2 mm smaller all round
+            union() { yb = Y_RIM - DOOR_T;                                                    // v2.17: the bed chamfer on the outline (BED_CHAMFER); the latch fingers, slits and pads keep the 0.4 mm steps above
+                      ey(yb + BED_CHAMFER - 0.01, Y_RIM + 1) translate([-BXL - 5, -H - 5]) square([BXL + BXR + 10, 2 * H + 10]);
+                      hull() { ey(yb + BED_CHAMFER - 0.02, yb + BED_CHAMFER) rrect2([-BXL, -H], [BXR, H], CORNER_R); ey(yb - 0.01, yb + 0.01) rrect2([-BXL + BED_CHAMFER, -H + BED_CHAMFER], [BXR - BED_CHAMFER, H - BED_CHAMFER], CORNER_R - BED_CHAMFER); }
+                      for (s = [0, 1]) mirror([0, 0, s]) ey(yb - 1, Y_RIM + 1) translate([PAD_X0 - 1, F_Z1 - 1]) square([PAD_X1 - PAD_X0 + 2, H + PAD_UP - F_Z1 + 2]); }
+        }
     }
     nub(1); nub(-1);
     if (RIB_H > 0) for (s = [1, -1]) scale([1, 1, s]) ey(Y_RIM - 0.01, Y_RIM + RIB_H) polygon([[RIB_X0, f_top(RIB_X0) - F_T], [RIB_X0, f_top(RIB_X0)], [F_X1 + 0.6, f_top(F_X1 + 0.6)], [F_X1 + 2.6, f_top(F_X1 + 0.6)],
@@ -461,6 +494,7 @@ module notch2d(c, rw, a, dv) {                                  // a V with 45-d
 
 // ================================================================== FRONT PLATE (prints front face down; everything rises inside it)
 module plate_out2d() rrect2([FX0, FZ0], [FX1, FZ1], 2.5);    // outline
+module plate_bed2d() rrect2([FX0 + BED_CHAMFER, FZ0 + BED_CHAMFER], [FX1 - BED_CH_FIT, FZ1 - BED_CHAMFER], 2.5 - BED_CHAMFER);   // v2.17: the bed face, chamfered; BED_CH_FIT on the right, where only 1.4 mm of plate stands beside the latch leaf's slit
 module leaf_slit2d() {                                        // the slit round the latch leaf: two sides with round ends, and the gap below its free end
     for (x = [LF_X0 - LF_G / 2, LF_X1 + LF_G / 2]) hull() { translate([x, LF_ZR + LF_G / 2]) circle(LF_G / 2, $fn = 32); translate([x, LF_ZB - LF_G / 2]) circle(LF_G / 2, $fn = 32); }
     translate([LF_X0 - LF_G, LF_ZB - LF_FG]) square([LF_X1 - LF_X0 + 2 * LF_G, LF_FG]);
@@ -492,10 +526,10 @@ module fin_slot2d() arc_slot(WHEEL_C, H_RHO, HANDLE_A0 + FIN_HALF + 1, HANDLE_A0
 module front(slid = SLID) translate([0, 0, slid]) {
     difference() {
         union() {
-            ey(Y_CV0, Y_CVF - 0.2) plate_out2d();
-            ey(Y_CVF - 0.21, Y_CVF) offset(delta = -0.2) plate_out2d();                               // the layer on the bed is drawn 0.2 mm smaller all round: elephant's foot lands on size
-            ey(Y_FRONT, Y_CV0 + 0.01) difference() { plate_out2d(); offset(r = -0.6) offset(delta = 0.6) { blade_room2d(); root_room2d(); wheel_room2d(); foot_room2d(); } }   // the slab: solid up to the body's face wherever nothing moves
-            ey(Y_SC0 - 0.05, Y_CV0 + 0.01) difference() { plate_out2d(); offset(r = -0.6) offset(delta = 0.6) { blade_room2d(); root_room2d(); foot_room2d(); } }                           // over the wheel, outside the blade's sweep: solid down to the wheel's face, so the wheel cannot tip
+            ey(Y_CV0, Y_CVF - BED_CHAMFER + 0.01) plate_out2d();
+            hull() { ey(Y_CVF - BED_CHAMFER, Y_CVF - BED_CHAMFER + 0.02) plate_out2d(); ey(Y_CVF - 0.02, Y_CVF) plate_bed2d(); }   // v2.17: the bed chamfer (it was one layer 0.2 mm smaller)
+            ey(Y_FRONT, Y_CV0 + 0.01) difference() { plate_out2d(); offset(r = -0.6) offset(delta = 0.6) { blade_room2d(); root_room2d(); wheel_room2d(); foot_room2d(); wheel_web_room2d(); } }   // the slab: solid up to the body's face wherever nothing moves
+            ey(Y_SC0 - 0.05, Y_CV0 + 0.01) difference() { plate_out2d(); offset(r = -0.6) offset(delta = 0.6) { blade_room2d(); root_room2d(); foot_room2d(); wheel_web_room2d(); } }        // over the wheel, outside the blade's sweep: solid down to the wheel's face, so the wheel cannot tip (v2.17: except over its web, which rides under the plate's ceiling instead)
             cyl_y(P_S, BOSS_R, Y_FRONT + 0.2, Y_CV0 + 0.01);                                         // the blade turns on this
             difference() { cyl_y(WHEEL_C, WBOSS_R, Y_FRONT + 0.15, Y_CV0 + 0.01); cyl_y(P_S, RWB, Y_FRONT, Y_CV0 + 0.02); }   // the wheel turns on this plain post; it is flat where the blade's spring passes
             ey(Y_SC1 + 0.6, Y_CVF) polygon([[-1.6, FZ1 - 1], [1.6, FZ1 - 1], [0.4, H + PAD_UP - SIGHT_DROP], [-0.4, H + PAD_UP - SIGHT_DROP]]);   // v2.10: front sight, a point on the plate's top edge on the lens's line, in front of the rocker
@@ -552,8 +586,8 @@ module p1_pocket2d() { zl = P1_ZB - P1_UNDER; zk = P1_ZB + P1_NOSE + 0.28 / tan(
 module plate1(slid = SLID) translate([0, 0, slid]) {
     difference() {
         union() {
-            ey(Y_FRONT, Y_CVF - 0.2) plate_out2d();
-            ey(Y_CVF - 0.21, Y_CVF) offset(delta = -0.2) plate_out2d();
+            ey(Y_FRONT, Y_CVF - BED_CHAMFER + 0.01) plate_out2d();
+            hull() { ey(Y_CVF - BED_CHAMFER, Y_CVF - BED_CHAMFER + 0.02) plate_out2d(); ey(Y_CVF - 0.02, Y_CVF) plate_bed2d(); }   // v2.17: the bed chamfer, as on the front plate
             ey(Y_SC1 + 0.6, Y_CVF) polygon([[-1.6, FZ1 - 1], [1.6, FZ1 - 1], [0.4, H + PAD_UP - SIGHT_DROP], [-0.4, H + PAD_UP - SIGHT_DROP]]);   // v2.10: front sight, a point on the plate's top edge on the lens's line, in front of the rocker
             for (f = FEET) intersection() { exx(f[0], f[0] + FOOT_W) polygon(foot_yz(f[1], 0, 0));         // hooked feet (the hooks point down), corners rounded so that a bulging corner or a seam cannot bind
 ey(Y_FRONT - FOOT_D - 1, Y_FRONT + 0.1) rrect2([f[0], f[1] - LIP - 0.01], [f[0] + FOOT_W, f[1] + FOOT_L + 0.01], 0.8);
@@ -597,20 +631,37 @@ module root2d() {                                               // where the bla
     hull() { translate(P_S) circle(HUB_R); intersection() { pie2d(); translate(P_S) circle(10); } }   // A press on the rocker that goes on past the click is carried from here to the stops
     intersection() { pie2d(); translate(P_S) circle(14); }
 }
+// v2.17: the root's web.  Behind the blade (at the wheel's level) the pocket is open wherever the wheel never comes, and out to 17 mm from the pivot the blade's whole swing stays
+// 1.3 mm or more clear of the wheel's and of the plate's walls: so the root, 2 mm deep, reaches 17 mm (it reached 14), between BW_A of the pie's edges.  Farther out the blade passes
+// over the wheel and stays 1 mm thick.  The plate is not changed for it.
+BW_R = 17.0; BW_A = [4.0, 3.6];
+module blade_web2d() sector2d(P_S, 0.01, BW_R, A0 - SPAN + BW_A[0], A0 + SPAN - BW_A[1], 24);
+module arm2d() offset(r = -0.6) offset(delta = 0.6) { translate([P_S[0] - FIN_W / 2, P_S[1]]) square([FIN_W, RK_V + RK_T]); translate(P_S) rocker2d(); translate(P_S) circle(HUB_R); }
+module blade_out2d() { pie2d(); root2d(); blade_web2d(); arm2d(); translate(P_S) rocker2d(); }     // the blade's outline on the bed, less its click spring
 module pie2d() polygon(concat([P_S], [for (a = [A0 - SPAN : 2 : A0 + SPAN]) pol(P_S, R_OUT, a)], [pol(P_S, R_OUT, A0 + SPAN)]));
 module blade(phi = PHI) rot_xz(P_S, phi) {                      // prints front face down; hub, arm and tab rise from it
     difference() {
         union() {
-            ey(Y_SC0 + 0.19, Y_SC1 - 0.2) pie2d();
-            ey(Y_SC0, Y_SC0 + 0.2) offset(delta = -0.3) pie2d();                                     // the layer that faces the wheel is 0.3 smaller: a lead-in
-            ey(Y_SC1 - 0.21, Y_SC1) offset(delta = -0.4) pie2d();                                    // the layer on the bed is 0.3 smaller: elephant's foot lands on size
-            ey(Y_SC0, Y_SC1 - 0.2) rimspring2d(P_S, R_OUT, BL_SLIT, BL_T, DB_A, BL_ARC);             // click spring: the rim itself
+            intersection() {
+                union() {
+                    ey(Y_SC0 + 0.19, Y_SC1 - 0.2) pie2d();
+                    ey(Y_SC0, Y_SC0 + 0.2) offset(delta = -0.3) pie2d();                                     // the layer that faces the wheel is 0.3 smaller: a lead-in
+                    ey(Y_SC1 - 0.21, Y_SC1) offset(delta = -0.4) pie2d();                                    // the layer on the bed is 0.4 smaller: elephant's foot lands on size
+                    ey(Y_FRONT + 0.25, Y_SC1) root2d();                                                      // hub and root: nearly the full depth of the pocket, so the blade cannot tip, and a hard press cannot snap the blade off its hub
+                    ey(Y_FRONT + 0.25, Y_SC1) blade_web2d();                                                 // v2.17: the root's web, as deep, out to BW_R
+                    ey(Y_FRONT + 0.25, Y_SC1) arm2d();                                                       // arm: comes up through the top of the plate; its corners under the rocker are rounded
+                    ey(Y_SC1 - FIN_L, Y_SC1) translate(P_S) rocker2d();                                       // rocker: lies over the top of the camera.  Press the raised side flat
+                }
+                union() {                                                                                    // v2.17: the bed chamfer (BED_CH_FIT), in two layers
+                    ey(Y_SC1 - FIN_L - 1, Y_SC1 - BED_CH_FIT + 0.01) translate(P_S) square(120, center = true);
+                    ey(Y_SC1 - BED_CH_FIT, Y_SC1 - BED_CH_FIT / 2 + 0.01) offset(delta = -BED_CH_FIT / 2) blade_out2d();
+                    ey(Y_SC1 - BED_CH_FIT / 2, Y_SC1 + 0.01) offset(delta = -BED_CH_FIT) blade_out2d();
+                }
+            }
+            ey(Y_SC0, Y_SC1 - 0.2) rimspring2d(P_S, R_OUT, BL_SLIT, BL_T, DB_A, BL_ARC);             // click spring: the rim itself.  It is a spring: it stays 1.35 mm wide and keeps its own bed relief
             ey(Y_SC1 - 0.21, Y_SC1) offset(delta = -0.3) rimspring2d(P_S, R_OUT, BL_SLIT, BL_T, DB_A, BL_ARC);
             ey(Y_SC0, Y_SC1 - 0.4) rimbump2d(P_S, R_OUT, BL_SLIT, BL_T, DB_A, BL_BUMP - 0.02);
             ey(Y_SC1 - 0.41, Y_SC1) rimbump2d(P_S, R_OUT, BL_SLIT, BL_T, DB_A, BL_BUMP - 0.3);       // the two layers on the bed: 0.3 lower
-            ey(Y_FRONT + 0.25, Y_SC1) root2d();                                                      // hub and root: nearly the full depth of the pocket, so the blade cannot tip, and a hard press cannot snap the blade off its hub
-            ey(Y_FRONT + 0.25, Y_SC1) offset(r = -0.6) offset(delta = 0.6) { translate([P_S[0] - FIN_W / 2, P_S[1]]) square([FIN_W, RK_V + RK_T]); translate(P_S) rocker2d(); translate(P_S) circle(HUB_R); }     // arm: comes up through the top of the plate; its corners under the rocker are rounded
-            ey(Y_SC1 - FIN_L, Y_SC1) translate(P_S) rocker2d();                                       // rocker: lies over the top of the camera.  Press the raised side flat
         }
         ey(Y_SC0 - 1, Y_SC1 + 1) rimspring_cut2d(P_S, R_OUT, BL_SLIT, DB_A, BL_ARC);
         cyl_y(pol(P_S, R_PORT - WIN_IN, A0), WIN_R, Y_SC0 - 1, Y_SC1 + 1);                           // the window.  While the rocker is pressed the blade hangs 2 x HUB_C lower on its boss: the window is drawn WIN_IN nearer the pivot, so that it crosses the lens's axis then
@@ -619,12 +670,21 @@ module blade(phi = PHI) rot_xz(P_S, phi) {                      // prints front 
     }
 }
 
+// v2.17: the aperture wheel was a 1 mm disc (the print farm: "thin on average, it may flex or warp").  Over its far side, which the shutter never crosses, it now carries a web
+// 1.2 mm tall (up to the shutter's own front face): WW_A from the handle's foot round to the plate's solid corner, WW_R from the hub to 0.5 inside the rim.  The front plate has a
+// room for its swing (wheel_web_room2d), 1.1 mm all round (the wheel has 0.5 of play on its post, and a fat printer adds 0.25 to each wall), and the web's top rides 0.15 under the room's ceiling as the disc rode under the slab it replaces: the wheel still cannot tip.
+// It stays 1.5 mm or more from everything the shutter sweeps in every position of both (tools/meshcheck.py does not check this; tools/check.py and tools/motion.py do).
+WW_R = [4.6, WHEEL_R - 0.5]; WW_A = [190, 320];
+module wheel_web2d() sector2d(WHEEL_C, WW_R[0], WW_R[1], WW_A[0], WW_A[1], 40);
+module wheel_web_room2d() offset(delta = 1.1) sector2d(WHEEL_C, WW_R[0], WW_R[1], WW_A[0] - WPOS[2], WW_A[1], 60);
 // ================================================================== APERTURE WHEEL (three positions: Pinhole, Sun, Cloud)
 module wheel(pos = STOP) rot_xz(WHEEL_C, -WPOS[pos]) {
     difference() {
         union() {
-            ey(Y_WH0 + 0.19, Y_WH1 - 0.2) translate(WHEEL_C) circle(WHEEL_R);
-            ey(Y_WH0, Y_WH0 + 0.2) translate(WHEEL_C) circle(WHEEL_R - 0.4);                         // the layer on the bed is 0.4 smaller: elephant's foot lands on size
+            ey(Y_WH0 + 0.39, Y_WH1 - 0.2) translate(WHEEL_C) circle(WHEEL_R);
+            ey(Y_WH0 + 0.19, Y_WH0 + 0.4) translate(WHEEL_C) circle(WHEEL_R - BED_CH_FIT / 2);       // v2.17: the bed chamfer, two layers (0.4, then 0.2)
+            ey(Y_WH0, Y_WH0 + 0.2) translate(WHEEL_C) circle(WHEEL_R - BED_CH_FIT);                  // the layer on the bed is 0.4 smaller: elephant's foot lands on size
+            ey(Y_WH1 - 0.01, Y_SC1) wheel_web2d();                                                   // v2.17: the web (see WW_R), up to the blade's front face
             ey(Y_WH1 - 0.21, Y_WH1) translate(WHEEL_C) circle(WHEEL_R - 0.3);                        // top layer 0.3 smaller: a lead-in for the blade's edge
             ey(Y_WH0 + 0.19, Y_WH1) rimspring2d(WHEEL_C, WHEEL_R, WH_SLIT, WH_T, WD_A0, WH_ARC);     // click spring: the rim itself
             ey(Y_WH0, Y_WH0 + 0.2) offset(delta = -0.3) rimspring2d(WHEEL_C, WHEEL_R, WH_SLIT, WH_T, WD_A0, WH_ARC);
@@ -675,8 +735,11 @@ GRIP_D = 0.8;                                                    // how deep the
 module grip2d(r, n) offset(r = 0.4) offset(delta = -0.4) polygon([for (k = [0 : n - 1], t = [0, 0.31, 0.63, 0.94]) pol([0, 0], r - GRIP_D + GRIP_D * t / 0.94, 360 * (k + t) / n)]);
 // Saw teeth round the knob instead of fine knurling or an engraved arrow: the fingers catch when the knob is turned the right way and slip the other way.  It is one outline, so it prints as plain walls.
 HEAD_GAP = 0.05; HEAD_H = 7.0;                                                  // v2.7: the heads REST on the top of the body (they stood 0.4 mm clear): their own weight closes the gap that light came in by
-module knob_head(cw, r = 9) translate([0, 0, H + HEAD_GAP])      // one plain outline from the bed up: no skirt, nothing that grows outward
-    linear_extrude(HEAD_H - HEAD_GAP) if (cw) grip2d(r, round(r * 1.1)); else mirror([1, 0]) grip2d(r, round(r * 1.1));
+module knob_grip2d(cw, r) if (cw) grip2d(r, round(r * 1.1)); else mirror([1, 0]) grip2d(r, round(r * 1.1));
+module knob_head(cw, r = 9) translate([0, 0, H + HEAD_GAP]) {    // one plain outline from the bed up: no skirt, nothing that grows outward
+    linear_extrude(HEAD_H - HEAD_GAP - BED_CHAMFER + 0.01) knob_grip2d(cw, r);
+    translate([0, 0, HEAD_H - HEAD_GAP - BED_CHAMFER]) linear_extrude(BED_CHAMFER, scale = (r - BED_CHAMFER) / r) knob_grip2d(cw, r);   // v2.17: the bed chamfer on the knob's top (it prints head down)
+}
 module knob_stem(r = KN_R, cr = KN_CR) {
     translate([0, 0, ZC1 - 0.3]) cylinder(r = r, h = H + 0.41 - ZC1 + 0.3);                             // solid shaft
     translate([0, 0, KN_CZ[0]]) cylinder(r = cr, h = KN_CZ[1] - KN_CZ[0]);                              // the ring: 1 mm flat, rides in the pocket in the lower half of the top wall
@@ -715,7 +778,7 @@ module spool() translate([SPOOL[0], SPOOL[1], 0]) difference() {          // pri
 PD_D = 10.5; PD_T = 0.10; PD_HOLE = 0.25;   // the pinhole disc: across, thick (drawn; 0.05 to 0.12 works), hole
 PR_H = 2.3; PR_BORE = 2.0;                  // the ring: tall, and the radius of its bore at the disc.  The bore opens at 45 degrees: wider than the 41 degrees the picture's corners need
 PR_UP = Y_SEAT + PD_T + PR_H - Y_CVF;       // how far it stands proud of the front plate (0.8 mm with a 0.1 mm disc)
-module pinring(ys = Y_SEAT + PD_T) difference() { cyl_y([0, 0], LENS_D / 2 - 0.05, ys, ys + PR_H); cyl_y([0, 0], PR_BORE, ys - 0.01, ys + PR_H + 0.01, PR_BORE + PR_H + 0.02); }
+module pinring(ys = Y_SEAT + PD_T) difference() { union() { cyl_y([0, 0], LENS_D / 2 - 0.05 - BED_CH_FIT, ys, ys + BED_CH_FIT, LENS_D / 2 - 0.05); cyl_y([0, 0], LENS_D / 2 - 0.05, ys + BED_CH_FIT - 0.01, ys + PR_H); }   /* v2.17: chamfered at the clamping face (on the bed): a lead-in for the ribs */ cyl_y([0, 0], PR_BORE, ys - 0.01, ys + PR_H + 0.01, PR_BORE + PR_H + 0.02); }
 module pindisc() difference() { cyl_y([0, 0], PD_D / 2, Y_SEAT, Y_SEAT + PD_T); cyl_y([0, 0], PD_HOLE / 2, Y_SEAT - 1, Y_SEAT + 1); }     // a bought part (display and checks only)
 module pinring_v215(ys = Y_SEAT) difference() { cyl_y([0, 0], LENS_D / 2 - 0.05, ys + 0.05, ys + 1.45); cyl_y([0, 0], 2.0, ys, ys + 1.5, 3.5); }     // v2.15: clamped kitchen foil.  Retired, unused
 // v2.14 the near ring (optional; for the lesson on focus): 0.4 mm, two layers, under the lens.  The camera is then set for 1.5 m, not 3.7 m.  Same crush ribs; the lens still sits below the plate's face.

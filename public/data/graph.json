@@ -7,8 +7,8 @@
    "kind": "printed",
    "colour": "black",
    "hex": "#3A3632",
-   "grams": 63.06,
-   "time": "4h 52m 2s",
+   "grams": 62.99,
+   "time": "4h 51m 37s",
    "does": "the dark box; the film lies on its curved rails",
    "steps": [
     "b1",
@@ -59,8 +59,8 @@
    "kind": "printed",
    "colour": "black",
    "hex": "#9AA1A9",
-   "grams": 28.0,
-   "time": "2h 6m 16s",
+   "grams": 27.97,
+   "time": "2h 5m 56s",
    "does": "closes the box; carries the frame wheel and the post the film turns round",
    "steps": [
     "b3",
@@ -108,8 +108,8 @@
    "kind": "printed",
    "colour": "orange",
    "hex": "#E8641B",
-   "grams": 12.14,
-   "time": "57m 6s",
+   "grams": 12.02,
+   "time": "56m 46s",
    "does": "holds the lens, the shutter and the wheel; slides onto the body",
    "steps": [
     "b5",
@@ -158,8 +158,8 @@
    "kind": "printed",
    "colour": "black",
    "hex": "#1F9E92",
-   "grams": 1.63,
-   "time": "8m 33s",
+   "grams": 1.65,
+   "time": "8m 34s",
    "does": "swings across to let light in for an instant; the rocker on top is its button",
    "steps": [
     "b5",
@@ -209,8 +209,8 @@
    "kind": "printed",
    "colour": "black",
    "hex": "#F2C230",
-   "grams": 1.6,
-   "time": "9m 6s",
+   "grams": 1.79,
+   "time": "9m 46s",
    "does": "three holes: how much light",
    "steps": [
     "b6",
@@ -255,8 +255,8 @@
    "kind": "printed",
    "colour": "red",
    "hex": "#D7322B",
-   "grams": 7.64,
-   "time": "43m 55s",
+   "grams": 7.62,
+   "time": "43m 51s",
    "does": "the film is wound onto it first; its knob is the big red one",
    "steps": [
     "b1",
@@ -298,8 +298,8 @@
    "kind": "printed",
    "colour": "green",
    "hex": "#3FA34D",
-   "grams": 1.89,
-   "time": "10m 52s",
+   "grams": 1.87,
+   "time": "10m 47s",
    "does": "the small green knob; winds each picture back into the film's shell",
    "steps": [
     "b2",
@@ -601,8 +601,8 @@
    "kind": "gauge",
    "colour": null,
    "hex": null,
-   "grams": 15.53,
-   "time": "1h 5m 56s",
+   "grams": 15.5,
+   "time": "1h 5m 45s",
    "does": "a two-hour print of the front plate's finest details, to try a printer before the long parts",
    "steps": [],
    "lessons": [],
@@ -2304,7 +2304,7 @@
   },
   {
    "id": "body_print_time",
-   "say": "4h 52m 2s",
+   "say": "4h 51m 37s",
    "sentence": "The body, the longest print, takes 4 hours 52 minutes.",
    "checks": [
     "print"
@@ -2316,7 +2316,7 @@
   },
   {
    "id": "front_print_time",
-   "say": "57m 6s",
+   "say": "56m 46s",
    "sentence": "The front plate takes 57 minutes to print.",
    "checks": [
     "print"

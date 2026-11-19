@@ -38,3 +38,4 @@ json.dump(out, open("build/printcheck.json", "w"), indent=1)
 export(SCAD, f"{OUT}/one135_test_slab.stl", dict(PART="p_test")); export(SCAD, f"{OUT}/one135_lens_gauge.stl", dict(PART="p_lensgauge"))
 export(SCAD, f"{OUT}/one135_tower.stl", dict(PART="p_tower")); export(SCAD, f"{OUT}/one135_key_gauge.stl", dict(PART="p_keygauge")); export(SCAD, f"{OUT}/one135_fit_gauge.stl", dict(PART="p_fitgauge"))
 for r_, tag in ((2.9, "58"), (3.3, "66")): export(SCAD, f"{OUT}/one135_knob_fork{tag}.stl", dict(PART="p_knob", FORK_R=r_))
+for n in ("plate1", "slide1", "nearring", "pinring"): export(SCAD, f"{OUT}/one135_{n}.stl", dict(PART="p_" + n))      # v2.17: the optional parts are exported here too, so every print file is sealed the same way

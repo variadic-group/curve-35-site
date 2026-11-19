@@ -17,6 +17,8 @@ def click(bend, mu=0.35, ramp=45.0, K=None):
     return dict(tooth_pushed_in_mm=bend, spring_force_N=K * bend, peak_strain_pct=S * bend, break_force_at_finger_N=float(Ft * RW / geom.lever(B, B["THETA"])), drag_at_finger_N=float(K * bend * mu * RW / R_F), wedges_shut_above_friction=float(1 / np.tan(a)))
 rho, t = 1.24e-3, 1.0
 I_blade = rho * t * (2 * SPAN) * R_OUT ** 4 / 4 + rho * t * np.radians(B["BL_ARC"] + 5) * ((R_OUT + B["SLIT"] + B["BL_T"]) ** 4 - (R_OUT + B["SLIT"]) ** 4) / 4 + 0.80 * 11.0 ** 2     # g mm2: the sector, its sprung rim, the rocker (v2.7: 0.8 g about 11 mm out)
+from scadr import values as _scad_values                                        # v2.17: the root's second millimetre (the hub side of the blade, 2 mm deep) out to BW_R between the pie's
+_W = _scad_values(["BW_R", "BW_A"]); I_blade += rho * 1.0 * (2 * SPAN - np.radians(sum(_W["BW_A"]))) * (_W["BW_R"] ** 4 - 0.0) / 4   # edges less BW_A: the mass v2.17's web adds (and the root it extends; the sum is under 6 %)
 m_blade = I_blade / R_F ** 2                                                                        # g, as felt at the finger
 def swing(F_break, drag, m_finger, follow):
     """constant push = follow x break force, from the point the click lets go; returns the time the window is over the lens"""
