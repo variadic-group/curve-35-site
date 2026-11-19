@@ -1,6 +1,6 @@
 {
   // A static site: no Worker script, only the files in ./public.
-  "name": "curve35",
+  "name": "curve-35-site",
   "compatibility_date": "2026-11-01",
   "assets": {
     "directory": "./public",
