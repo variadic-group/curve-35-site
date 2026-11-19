@@ -31,7 +31,27 @@ def case(t0, t1, tf=0.0):
     return dict(t0=t0, t1=t1, tf=tf, N_per_mm=r["force_N"] / 10, strain_pct_per_mm=r["peak_strain_pct"] / 10,     # pushed 10 mm in the (linear) model, for three more digits
                 at=r["at"], area=float(bl.area)), f
 
+def picture(out="build/springsearch.png"):
+    """the plain strip and the tapered spring, pressed, side by side on one scale"""
+    import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt; from matplotlib.colors import LinearSegmentedColormap; from matplotlib.tri import Triangulation
+    ramp = LinearSegmentedColormap.from_list("one hue", ["#e8f0fb", "#b7d3f6", "#6da7ec", "#2a78d6", "#184f95", "#0d366b"]); INK, MUTED = "#0b0b0b", "#52514e"; top = 0.55
+    shapes = [("Before: a plain strip, 1.35 mm thick", case(0.0, 0.0)), ("v2.18: tapered, 0.9 mm at the tooth to 1.76 mm at the root", case(B["BL_T0"], B["BL_T1"], B["BL_TF"]))]
+    fig, axes = plt.subplots(2, 1, figsize=(11, 9.6), dpi=150); fig.patch.set_facecolor("#fcfcfb"); ytop = P[1] + R + B["SLIT"] + T_ + B["BUMP"]; ra = np.radians(90 - B["BL_ARC"])
+    for ax, (title, (c, (m, peak, _))) in zip(axes, shapes):
+        e = peak / 10 * PRESSED; tri = Triangulation(m.p[0], m.p[1], m.t.T); pc = ax.tripcolor(tri, facecolors=np.clip(e, 0, top), cmap=ramp, vmin=0, vmax=top, edgecolors="none")
+        i = int(np.argmax(e)); cx, cy = m.p[:, m.t[:, i]].mean(1); ax.plot([cx], [cy], "o", ms=10, mfc="none", mec=INK, mew=1.6)
+        ax.annotate("most bent here: %.2f %%" % e[i], (cx, cy), xytext=(cx + 4.5, cy + 5.5), ha="left", va="center", fontsize=12.5, color=INK, arrowprops=dict(arrowstyle="-", color=MUTED, lw=1, shrinkB=6))
+        ax.set_xlim(P[0] - 9, P[0] + 44); ax.set_ylim(P[1] + 17.5, ytop + 1.5); ax.set_aspect("equal"); ax.axis("off")
+        ax.set_title(title, loc="left", fontsize=14.5, color=INK, weight="bold", pad=26)
+        ax.text(0, 1.035, "tooth pushed in %.1f mm: %.2f N at the tooth, %.2f %% strain (the limit for every shot is 0.5 %%)" % (PRESSED, c["N_per_mm"] * PRESSED, e[i]), transform=ax.transAxes, fontsize=11.5, color=MUTED, va="bottom")
+        ax.text(P[0] - 2.6, ytop - 1.0, "tooth", fontsize=11.5, color=MUTED, ha="right", va="center")
+        ax.text(P[0] + (R + B["SLIT"] + 3.2) * np.cos(ra) + 1.2, P[1] + (R + B["SLIT"] + 3.2) * np.sin(ra) - 2.2, "root: here the spring\njoins the shutter", fontsize=11.5, color=MUTED, ha="left", va="top")
+        ax.text(P[0] + 6, P[1] + 22, "shutter", fontsize=11.5, color=MUTED, ha="center", va="center")
+    cb = fig.colorbar(pc, ax=axes, orientation="horizontal", fraction=0.035, pad=0.03, aspect=50); cb.set_label("strain in the plastic, % (darker is more; the scale is the same for both)", fontsize=11, color=MUTED); cb.outline.set_visible(False); cb.ax.tick_params(colors=MUTED, labelsize=10)
+    fig.savefig(out, facecolor=fig.get_facecolor(), bbox_inches="tight"); print(out)
+
 if __name__ == "__main__":
+    if sys.argv[1:] == ["--picture"]: picture(); sys.exit()
     if sys.argv[1:] == ["--variants"]:
         # Two more shutters for the first print of a new printer or plastic: the same part with its spring a fifth softer and a fifth stiffer.
         # Stiffness goes with thickness cubed, strain with thickness: 7 % in thickness is about 20 % in the click.  Only the spring's inner face moves.
