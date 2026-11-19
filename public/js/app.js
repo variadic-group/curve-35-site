@@ -321,8 +321,24 @@
   }
   function mountExplode() {
     var s = document.getElementById("inside"); if (!s || !window.Camera3D || !C.model3d) return;
-    if (window.getComputedStyle(s).display === "none") return;                    // hidden on a phone's home page (site.css, v12)
+    if (window.getComputedStyle(s).display === "none") return;
     var h = window.Camera3D.viewer(s, C.model3d); cleanup.push(function () { h.destroy(); });
+    // On a phone the viewer is a small stage with one slider (site.css, v12).  The first time it is on screen it takes itself apart once, slowly, so that
+    // nobody has to find the slider to see what it does.  A touch on it stops that, and so does asking for less motion.
+    var range = s.querySelector(".x3-range"), stage = s.querySelector(".x3-stage");
+    if (!range || !stage || !window.IntersectionObserver || reduced() || !(window.matchMedia && window.matchMedia("(max-width: 600px)").matches)) return;
+    var raf = 0, done = false, t0 = 0;
+    function stop() { done = true; if (raf) cancelAnimationFrame(raf); raf = 0; }
+    function tick(now) {
+      if (done) return; if (!t0) t0 = now;
+      var k = Math.min(1, (now - t0) / 5200), v = 4 * (k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2);     // ease in and out, closed to fully open
+      range.value = String(v); range.dispatchEvent(new Event("input", { bubbles: true }));
+      if (k < 1) raf = requestAnimationFrame(tick); else stop();
+    }
+    var io = new IntersectionObserver(function (es) { if (!done && !raf && es[es.length - 1].intersectionRatio >= 0.6 && s.classList.contains("x3-ready")) { io.disconnect(); raf = requestAnimationFrame(tick); } }, { threshold: [0, 0.6, 1] });
+    io.observe(stage);
+    ["pointerdown", "keydown"].forEach(function (ev) { range.addEventListener(ev, stop); stage.addEventListener(ev, stop); });
+    cleanup.push(function () { stop(); io.disconnect(); });
   }
   function mountHero() {
     var b = document.getElementById("h3d"); if (!b || !window.Camera3D || !C.model3d) return;
@@ -374,7 +390,8 @@
   // ---- home (v12): a short pitch.  The way back in for owners is the menu (Start here, Build guide, Lessons, Files, Help).
   //      hero > what's in the box (the one kit block) > how it works (4 steps) > lesson carousel
   //      > four facts (none repeated elsewhere on the page) > the camera viewer > one strip of links > last call
-  //      On a phone (site.css, v12): the camera sits above the buttons, and the viewer and the strip of links are left out.
+  //      On a phone (site.css, v12): the camera sits above the buttons; the viewer is a small stage with one slider, with the four facts as
+  //      stickers under it; the strip of links is left out.
   var REPO = META.repo;
   var CC = META.licence_url;
   function factSay(id, fb) { var f = GF[id]; return String(f && f.say != null ? f.say : fb).replace(/^about /, ""); }
@@ -416,13 +433,13 @@
       '<ul class="hero-stks" aria-label="In short"><li class="stk stk-w">' + esc(String(C.pieces || 9)) + ' pieces</li><li class="stk stk-g">No tools</li><li class="stk stk-b">No glue</li></ul>' +
       '<h1 id="hero-h">Build a real film camera. <span class="hl">Then find out how it works.</span></h1>' +
       '<p class="lead">A 35 mm film camera you build from nine pieces, and learn from.</p>' +
-      '<div class="ctas"><a class="btn main big" href="#store">Get the kit</a><a class="btn big alt" href="#files">Get the free files</a></div></div>' +
+      '<div class="ctas"><a class="btn main big" href="#store">Buy the kit</a><a class="btn big alt" href="#files">Print your own</a></div></div>' +
       '<div class="hero-pic"><span class="hero-stk" aria-hidden="true"><span class="stk stk-o">Real film!</span></span><div class="frame h3d" id="h3d">' + img(PIC.hero, heroAlt, ' class="h3d-still" width="1200" height="900" fetchpriority="high" loading="eager"').replace(' class="r"', "").replace(' loading="lazy"', "") + "</div></div></div></section>" +
       // WHAT'S IN THE BOX: the one kit block on the page
       '<section class="kitbox" aria-labelledby="kb-h"><div class="wrap kitbox-in"><div class="kb-pic frame">' + img(PIC.plan_parts, "Everything in the box laid out: black body, grey back, orange front plate, teal shutter, yellow wheel, red spool, green knob, blue frame wheel, lens, pinhole ring and disc, and a roll of film", ' width="1200" height="900"') + "</div>" +
       '<div class="kb-t"><p class="kb-k">What&rsquo;s in the box</p><h2 id="kb-h">The starter kit' + (sp ? ' <span class="kb-price tnum">' + esc(sp) + "</span>" : "") + "</h2>" +
       '<ul class="kb-list">' + kitList.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>" +
-      '<a class="btn main big" href="#store">Get the kit</a></div></div></section>' +
+      (addBtn(S, "main big", "Add to basket") || '<a class="btn main big" href="#store">See the kit</a>') + '<a class="kb-more" href="#store">Everything in the shop</a></div></div></section>' +
       // HOW IT WORKS: four pictures, one line each
       '<section class="plan" aria-labelledby="pl-h"><div class="wrap"><h2 id="pl-h">How it works.</h2><ol class="steps4">' +
       '<li><span class="s-n" aria-hidden="true">1</span>' + img(PIC.booklet, "The CURVE 35 build guide on top of the box", ' width="640" height="414"') + '<h3><a href="#start">Open the box</a></h3><p>The pieces and a guide, nothing else.</p></li>' +
@@ -434,17 +451,17 @@
       '<a class="btn" href="#lessons">All lessons</a></div>' + lessonCarousel() + "</div></section>" +
       // FOUR FACTS: each one said nowhere else on this page (canon/facts.yaml)
       '<section class="guide" aria-labelledby="gd-h"><div class="wrap"><h2 id="gd-h">Small camera, big numbers.</h2>' +
-      '<dl class="bns"><div class="bn-y"><dt>' + esc(factSay("shutter_speed", "1/322 s")) + "</dt><dd>how long the shutter stays open</dd></div>" +
-      '<div class="bn-b"><dt class="bn-sm">' + dots.map(esc).join(" &middot; ") + "</dt><dd>three dots on one wheel set how much light gets in</dd></div>" +
-      '<div class="bn-g"><dt>' + esc(factSay("light_rays", "69 million")) + "</dt><dd>light rays traced at the closed camera. None got in.</dd></div>" +
-      '<div class="bn-o"><dt>' + esc(factSay("print_hours", "9.3 hours")) + "</dt><dd>to print every part on your own 3D printer</dd></div></dl></div></section>" +
+      '<dl class="bns"><div class="bn-y"><dt>' + esc(factSay("shutter_speed", "1/322 s")) + '</dt><dd><span class="bn-l">how long the shutter stays open</span><span class="bn-s">shutter</span></dd></div>' +
+      '<div class="bn-b"><dt class="bn-sm">' + dots.map(esc).join(" &middot; ") + '</dt><dd><span class="bn-l">three dots on one wheel set how much light gets in</span><span class="bn-s">three dots for the light</span></dd></div>' +
+      '<div class="bn-g"><dt>' + esc(factSay("light_rays", "69 million")) + '</dt><dd><span class="bn-l">light rays traced at the closed camera. None got in.</span><span class="bn-s">light rays tried. None got in.</span></dd></div>' +
+      '<div class="bn-o"><dt>' + esc(factSay("print_hours", "9.3 hours")) + '</dt><dd><span class="bn-l">to print every part on your own 3D printer</span><span class="bn-s">to print your own</span></dd></div></dl></div></section>' +
       // THE CAMERA VIEWER
       explodeSection() +
       // PROGRAMS, OPEN FILES, BUILDS: one line
       '<nav class="strip1" aria-label="More"><div class="wrap"><p><a href="#programs">Programs for classes</a><a href="#open-files">Open files</a><a href="#builds">Builds and remixes</a><a href="#teachers">For teachers</a></p></div></nav>' +
       // LAST CALL
       '<section class="final" aria-labelledby="fn-h"><div class="wrap final-in"><div><h2 id="fn-h">Build a camera this week.</h2><p class="final-win">Or print it free.</p></div>' +
-      '<div class="final-act"><a class="btn ink big" href="#store">Get the kit</a><a class="btn big alt" href="#files">Get the free files</a></div></div></section></div>';
+      '<div class="final-act"><a class="btn ink big" href="#store">Buy the kit</a><a class="btn big alt" href="#files">Print your own</a></div></div></section></div>';
   };
   pages.home.title = "";
   pages.home.after = function () { mountHero(); mountCarousel(); mountExplode(); addButtons(); };
@@ -550,7 +567,7 @@
     var X = GR.lessons[L.id], conn = X ? '<aside class="lconn" aria-labelledby="lc-h-' + L.id + '"><h2 id="lc-h-' + L.id + '">This lesson, linked</h2><dl class="xdl">' +
       xrow("Build steps", "step", X.steps) + xrow("Parts", "part", X.parts) + xrow("Numbers", "fact", X.facts) + xrow("Words", "term", X.terms) + "</dl></aside>" : "";
     return '<div class="lesson-foot">' + conn + '<aside class="kitline" aria-label="The parts in this lesson"><p>In your camera</p>' + partsRow(LESSON_PARTS[L.id] || [], true) +
-      '<p class="kit-loop">Every part here comes in the kit. <a class="btn small main" href="#store">Get the kit' + (Sk ? " " + money(Sk.price_usd) : "") + '</a><a class="btn small" href="#files">Print it free</a></p></aside>' +
+      '<p class="kit-loop">Every part here comes in the kit. <a class="btn small main" href="#store">Buy the kit' + (Sk ? " " + money(Sk.price_usd) : "") + '</a><a class="btn small" href="#files">Print your own</a></p></aside>' +
       '<nav class="pager" aria-label="Other lessons">' + (prev ? '<a href="#' + prev.route + '"><span>' + lessonName(prev) + "</span><strong>" + esc(prev.title) + "</strong></a>" : '<a href="' + (L.shelf === "maker" ? "#files" : "#lessons") + '"><span>Back to</span><strong>All lessons</strong></a>') +
       (next ? '<a class="next" href="#' + next.route + '"><span>' + lessonName(next) + "</span><strong>" + esc(next.title) + "</strong></a>" : (L.shelf === "main" && !list[L.i + 1] ? '<a class="next" href="#files" data-makers><span>For makers</span><strong>Made by a printer</strong></a>' : "")) + "</nav></div>";
   }
@@ -1263,7 +1280,7 @@
       var inKit = e[0] === "pinhole-discs";
       return '<li class="srow" id="p-' + esc(e[0]) + '" tabindex="-1"><span class="sr-pic" aria-hidden="true">' + (e[2] || img(e[1], "", ' width="520" height="390"')) + '</span><span class="sr-t"><strong>' + esc(inKit ? "Pinhole set" : p.name) + "</strong><span>" + esc(e[3]) + '</span></span><span class="sr-buy">' + (inKit ? '<span class="xc-in">In every kit</span>' : '<span class="tnum">' + price(p) + "</span>" + addBtn(p, "small", "Add")) + "</span></li>";
     }
-    return '<div class="store"><section class="store-plate" aria-labelledby="sp-h1"><div class="wrap"><div class="pagehead"><h1 id="sp-h1">Get the kit</h1></div>' +
+    return '<div class="store"><section class="store-plate" aria-labelledby="sp-h1"><div class="wrap"><div class="pagehead"><h1 id="sp-h1">Buy the kit</h1></div>' +
       (S ? '<section class="kstar" id="p-starter-kit" tabindex="-1" aria-labelledby="ks-h"><div class="ks-pic"><div class="frame">' + img(PIC.plan_parts, "Everything in the starter kit laid out: black body, grey back, orange front plate, teal shutter, yellow wheel, red spool, green knob, blue frame wheel, lens, pinhole ring and disc, and a roll of film", ' width="1200" height="900"') + "</div>" +
         '<span class="ks-stk">' + stk("Real film", "o") + "</span></div>" +
         '<div class="ks-t"><h2 id="ks-h">The starter kit</h2><p class="pc-sub">The camera, a roll of film and the developing. Everything for your first roll.</p>' +
@@ -1279,7 +1296,7 @@
       '<p class="after-line">Questions about an order? ' + mailLink(MAIL.support) + '.</p></div>' +
       (S ? '<section class="final" aria-labelledby="sf-h"><div class="wrap final-in"><div><h2 id="sf-h">Build a camera this week.</h2><p class="final-price">' + price(S) + '</p></div><ul class="final-list"><li>Starter kit: camera, film, developing</li><li>One afternoon to build</li><li>Nine lessons, free</li></ul><div class="final-act">' + addBtn(S, "ink big") + "</div></div></section>" : "") + "</div>";
   };
-  pages.store.title = "Get the kit";
+  pages.store.title = "Buy the kit";
   pages.store.wide = true;
   pages.store.after = addButtons;
 

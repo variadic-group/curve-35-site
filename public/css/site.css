@@ -1754,6 +1754,8 @@ html { overflow-x: clip; }
 .tablewrap, .lcar-track, .cb-strip, .cb-secs { position: relative; }
 .ltile { position: relative; }
 .phone-only { display: none; }
+.bns .bn-s { display: none; }
+.kb-more { display: inline-block; margin-left: 20px; font-weight: 700; }
 @media (max-width: 600px) {
   .phone-only { display: block; }
   .mainnav { display: none; }                                   /* the logo, the kit, the menu: Start here is the menu's first line */
@@ -1779,6 +1781,7 @@ html { overflow-x: clip; }
   .home .kb-list { margin-bottom: 18px; font-size: 0.98rem; }
   .home .kb-list li { padding: 6px 0 6px 28px; }
   .home .kitbox .btn { width: 100%; justify-content: center; }
+  .home .kb-more { display: block; margin: 12px 0 0; text-align: center; }
 
   .home .plan { background: var(--cream); border: 0; padding: 34px 0 36px; }
   .home .steps4 { grid-template-columns: minmax(0, 1fr); gap: 10px; margin-top: 18px; }
@@ -1792,15 +1795,38 @@ html { overflow-x: clip; }
   .home .learn-head { margin-bottom: 14px; }
   .home .learn-head h2 { font-size: 1.6rem; }
 
-  .home .guide { background: var(--cream); border-top: var(--line); padding: 32px 0 36px; }
-  .home .guide h2 { font-size: 1.6rem; }
-  .home .bns { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; margin-top: 16px; }
-  .home .bns div { background: #fff; box-shadow: 2px 2px 0 var(--ink); border-width: 2px; border-radius: 12px; padding: 12px 12px 13px; }
-  .home .bns dt { font-size: 1.55rem; }
-  .home .bns dt.bn-sm { font-size: 1.05rem; line-height: 1.25; }
-  .home .bns dd { font-size: 0.84rem; margin-top: 6px; }
+  /* the page's order on a phone: the pitch, the kit, how it works, the camera taken apart with its four facts, the lessons, the last call */
+  .home { display: flex; flex-direction: column; }
+  .home > .hero { order: 1; } .home > .kitbox { order: 2; } .home > .plan { order: 3; } .home > .x3 { order: 4; } .home > .guide { order: 5; } .home > .learn { order: 6; } .home > .strip1 { order: 7; } .home > .final { order: 8; }
 
-  .home .x3, .home .strip1 { display: none; }
+  /* the take-apart viewer, small: a square stage and one slider.  It opens itself once when it comes on screen (app.js, mountExplode). */
+  .home .x3 { background: #fff; border-top: var(--line); border-bottom: 0; padding: 30px 0 4px; }
+  .home .x3-head { display: block; }
+  .home .x3-head h2 { font-size: 1.6rem; }
+  .home .x3-how { font-size: 0.92rem; margin: 4px 0 0; }
+  .home .x3-stage { height: min(88vw, 370px); margin-top: 2px; }
+  .home .x3-bar { display: block; }
+  .home .x3-steps, .home .x3-turn { display: none; }
+  .home .x3-slide { gap: 0; }
+  .home .x3-range { height: 44px; }
+  .home .x3-caps { min-height: 4.5em; margin-top: 2px; }
+  .home .x3-cap { font-size: 0.95rem; line-height: 1.4; }
+
+  /* the four facts: small coloured stickers under the viewer, not a section of their own */
+  .home .guide { background: #fff; border-top: 0; padding: 6px 0 36px; }
+  .home .guide h2 { font: 800 0.8rem/1.2 var(--sans); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2); margin: 0 0 14px; }
+  .home .bns { display: flex; flex-wrap: wrap; gap: 11px 10px; margin: 0; }
+  .home .bns div { display: flex; align-items: baseline; gap: 7px; border-width: 2px; border-radius: 10px; box-shadow: 2px 2px 0 var(--ink); padding: 7px 11px 8px; }
+  .home .bns div:nth-child(odd) { transform: rotate(-1.4deg); }
+  .home .bns div:nth-child(even) { transform: rotate(1.1deg); }
+  .home .bns dt, .home .bns dt.bn-sm { font-size: 1.06rem; line-height: 1.15; letter-spacing: -0.01em; }
+  .home .bns dd { margin: 0; font-size: 0.84rem; font-weight: 600; line-height: 1.2; }
+  .bns .bn-l { display: none; }
+  .bns .bn-s { display: inline; }
+
+  .home .learn { border-top: var(--line); background: var(--cream); }
+
+  .home .strip1 { display: none; }
 
   .home .final { padding: 32px 0 34px; }
   .home .final-in { grid-template-columns: minmax(0, 1fr); gap: 16px; }
