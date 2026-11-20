@@ -7,6 +7,13 @@
   // The checkout switch, the postage and the note are set in the Cloudflare dashboard (see worker/index.js).
   // Without this line every deploy would wipe them; secrets are kept either way.
   "keep_vars": true,
+  // What a buyer is shown at checkout (20 November 2026).  They do nothing until the checkout switch and a key are set in the dashboard.
+  // A value given here wins over the dashboard's at each deploy, so change these three here, not there.
+  "vars": {
+    "SHIPPING_CENTS": "500",
+    "SHIPPING_NAME": "Standard post, United States",
+    "CHECKOUT_NOTE": "Kits are made to order in a first batch. We email your posting date after you order, and you can cancel for a full refund any time before it is posted."
+  },
   "assets": {
     "directory": "./public",
     "binding": "ASSETS",

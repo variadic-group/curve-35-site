@@ -224,7 +224,7 @@ def build():
     def tag2(sec): xx = M + w + 18; c.setFillColor(SEC[sec]); c.roundRect(xx, H - M - 15, 16 + pdfmetrics.stringWidth(sec, "LSB", 9.5), 15, 7.5, fill=1, stroke=0); c.setFillColor(colors.white); c.setFont("LSB", 9.5); c.drawString(xx + 8, H - M - 11.3, sec)
     spread("FILM OUT", fo[:2])
     tag(c, "FILM OUT", page[0]); xl = M + 10; c.setFillColor(SEC["FILM OUT"]); c.setFont("LSB", 17); c.drawString(xl, H - M - 50, "Get it developed"); fit(c, trim("cassette", 6), xl + w - 110, H - M - 170, 80, 120); y = H - M - 80
-    for n, tx in enumerate(("Keep the finished film out of the light: in its tub, or in a pocket.", "Starter kit: post it in the envelope, with the code from your card.", "Any photo lab can develop 35 mm colour film.", "Ask for scans. Keep the negatives: they are the originals.")):
+    for n, tx in enumerate(("Keep the finished film out of the light: in its tub, or in a pocket.", "If a developing card came with your kit, follow the card.", "Any photo lab can develop 35 mm colour film.", "Ask for scans. Keep the negatives: they are the originals.")):
         badge(c, xl + 7, y + 3, n + 1, 6.5, 8, SEC["FILM OUT"]); c.setFillColor(INK); c.setFont("LS", 10.5)
         for ln in simpleSplit(tx, "LS", 10.5, w - 130 if n < 3 else w - 30): c.drawString(xl + 20, y, ln); y -= 13
         y -= 9

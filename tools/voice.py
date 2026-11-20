@@ -1,7 +1,7 @@
 """Narration for the films, with the speech model that is already in this workspace (Kokoro v1.0, voice "af_heart": a machine voice under an open licence, put here on 14 November for the course films).
 Nothing is downloaded.  Each line is made once and kept (build/voice/<hash>.wav).  A human voice can replace any line later: put a recording at the same file name."""
 import os, re, json, hashlib, subprocess, numpy as np, soundfile as sf
-TTS = "/home/claude/course/tts/"; VOICE = "af_heart"; SPEED = 1.0; OUT = "build/voice"; SR = 24000; GAIN = 1.25; os.makedirs(OUT, exist_ok=True)
+TTS = "/home/claude/course/tts/"; VOICE = "af_bella:0.7+af_heart:0.3"; SPEED = 1.0; OUT = "build/voice"; SR = 24000; GAIN = 1.0; os.makedirs(OUT, exist_ok=True)
 _k = None
 NUM = {"1": "one", "2": "two", "3": "three", "4": "four", "5": "five", "6": "six", "7": "seven", "8": "eight", "9": "nine", "10": "ten", "12": "twelve"}
 SAY = [(r"\bCURVE 35\b", "Curve thirty-five"), (r"\b35 mm\b", "thirty-five millimetre"), (r"\bISO\b", "I S O"), (r"f/120\b", "f one twenty"), (r"f/16\b", "f sixteen"), (r"f/11\b", "f eleven"), (r"f/8\b", "f eight"),
@@ -29,7 +29,7 @@ def _style(v):
 def master(wav, out):
     """a narration track made easy to listen to: no hard clip.  Rumble off, a little warmth, the harsh band and the s sounds eased, gentle compression,
     then loudness set to -16 LUFS with peaks under -1.5 dB (two passes, so the gain is one number for the whole film and nothing pumps).  48 kHz out."""
-    pre = "highpass=f=75,equalizer=f=210:t=q:w=0.9:g=1.5,equalizer=f=3400:t=q:w=1.4:g=-2,deesser=i=0.4:m=0.5:f=0.5,acompressor=threshold=-21dB:ratio=2.2:attack=10:release=150:makeup=1.5"
+    pre = "highpass=f=75,equalizer=f=210:t=q:w=0.9:g=1.5,treble=g=1:f=6000,deesser=i=0.4:m=0.5:f=0.5,acompressor=threshold=-21dB:ratio=2.2:attack=10:release=150:makeup=1.5"
     r = subprocess.run(["ffmpeg", "-hide_banner", "-nostats", "-i", wav, "-af", pre + ",loudnorm=I=-16:TP=-1.5:LRA=11:print_format=json", "-f", "null", "-"], capture_output=True, text=True, check=True)
     m = json.loads(r.stderr[r.stderr.rindex("{"):r.stderr.rindex("}") + 1])
     ln = f"loudnorm=I=-16:TP=-1.5:LRA=11:measured_I={m['input_i']}:measured_TP={m['input_tp']}:measured_LRA={m['input_lra']}:measured_thresh={m['input_thresh']}:offset={m['target_offset']}:linear=true"
