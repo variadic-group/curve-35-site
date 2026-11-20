@@ -16,6 +16,16 @@ W, H = 612, 396; M = 22
 INK = colors.HexColor("#17191d"); GREY = colors.HexColor("#6a6f78"); BOX = colors.HexColor("#e8f1fb"); BOXL = colors.HexColor("#9fbbe0"); YEL = colors.HexColor("#ffd23f")
 SEC = {"THE HOLE": colors.HexColor("#8e44ad"), "BUILD": colors.HexColor("#e8641b"), "FILM IN": colors.HexColor("#2a78d6"), "PHOTOS": colors.HexColor("#1b9e62"), "FILM OUT": colors.HexColor("#7a4fd0"), "CARE": colors.HexColor("#6a6f78"), "KNOW": colors.HexColor("#3b4a5a")}
 G = "build/booklet/"; T = G + "trim/"; os.makedirs(T, exist_ok=True)
+# the lesson behind a step: canon's (canon/steps.yaml, the same field the site's build guide shows as "The lesson behind it"), with the lesson's
+# own colour from its page.  The guide says how, the lesson says why, and the two now point at each other in print as they do on the site (19 November 2026)
+WHY = {}
+for _code, _st in CN["step"].items():
+    _id = _st.get("lesson"); _f = f"site/lessons/{_id}.json"
+    if _id and os.path.exists(_f): _L = json.load(open(_f)); WHY[_code] = (int(_id[1:]), _L["title"], colors.HexColor(_L["colour"]), _id[0] == "m")
+def why_line(c, x, y, why):
+    n, title, col, maker = why; c.setFillColor(col); c.circle(x + 5.5, y + 3, 5.5, fill=1, stroke=0); c.setFillColor(colors.white); c.setFont("LSB", 7.6 if not maker else 6.2); c.drawCentredString(x + 5.5, y + (0.4 if not maker else 0.9), ("M" if maker else "") + str(n))
+    t = f"The lesson behind it: {'maker lesson' if maker else 'lesson'} {n}, {title[0].lower() + title[1:]}"; c.setFillColor(col); c.setFont("LSB", 8.6); c.drawString(x + 16, y, t)
+    c.setFillColor(GREY); c.setFont("LS", 8.6); c.drawString(x + 16 + pdfmetrics.stringWidth(t, "LSB", 8.6) + 8, y, f"{CO['product']['domain']}/{'m' if maker else 'l'}{n}")
 def trim(name, pad=14):
     out = T + name + ".png"; src = G + name + ".png"
     if os.path.exists(out) and os.path.getmtime(out) > os.path.getmtime(src): return out
@@ -104,7 +114,8 @@ def table3(c, x0, y, rows, heads, colw, lab=50, fs=9, rh=14, title=None):
         yy = y - (i + 1) * rh; c.setFillColor(BOX if i % 2 == 0 else colors.white); c.rect(x0 - 3, yy - 3.5, lab + colw * len(heads) + 6, rh, fill=1, stroke=0); c.setFillColor(INK); c.setFont("LSB", fs); c.drawString(x0, yy, "ISO " + k)
         for j, v in enumerate(vals): c.drawCentredString(x0 + lab + j * colw + colw / 2, yy, str(v))
     return y - (len(rows) + 1) * rh
-def step(c, num, img, x, y, w, h, items=None, cap=None, bursts=(), extra=None, col=INK, top=58, check=None, code=None):
+def step(c, num, img, x, y, w, h, items=None, cap=None, bursts=(), extra=None, col=INK, top=58, check=None, code=None, why=None):
+    if why: why_line(c, x, y + 1, why); y += 15; h -= 15
     c.setFillColor(col); c.setFont("LSB", 40); c.drawString(x, y + h - 36, str(num)); qw = 0
     if code: S = 43.5; o = S * 29 / 25; qw = qr(c, code, x + w - o, y + h - o, S, fs=6.2) + 6      # 15.3 mm; the outer box is S plus 2 modules a side (25 modules for bN)
     if items: callout(c, items, x + w - qw, y + h)
@@ -171,7 +182,7 @@ def build():
         if st["sec"] == "PHOTOS" and st["n"] == 1: extra = lambda c, bx: minidots(c, bx)
         if st["sec"] in ("PHOTOS", "FILM OUT") and st["img"] == "s4": extra = lambda c, bx, sec=st["sec"]: inset(c, bx, SEC[sec], "arrow: once round" if sec == "PHOTOS" else "until the arrow stops")
         step(c, st["n"], st["img"], M + i * (w + 18), M + 4, w, h, items=st["parts"] or None, cap=st["do"], check=st["check"], bursts=st["bursts"], extra=extra, col=SEC[st["sec"]],
-             code=f"b{st['n']}" if st["sec"] == "BUILD" else None)
+             code=f"b{st['n']}" if st["sec"] == "BUILD" else None, why=WHY.get({"BUILD": "b", "FILM IN": "f", "PHOTOS": "p", "FILM OUT": "o", "THE HOLE": "h"}.get(st["sec"], "?") + str(st["n"])))
     def minidots(c, bx):                                             # which dot, as small as it can be: three kinds of sky and one line for darker
         ww, hh = 150, 82; x, y = bx[0] + 4, bx[1] + 4; c.setFillColor(colors.white); c.setStrokeColor(BOXL); c.setLineWidth(0.8); c.roundRect(x, y, ww, hh, 6, fill=1, stroke=1)
         for k, ((L, ic, nm), hole) in enumerate(zip(LIGHTS[:3], ("small", "middle", "large"))):
@@ -218,6 +229,7 @@ def build():
         for ln in simpleSplit(tx, "LS", 10.5, w - 130 if n < 3 else w - 30): c.drawString(xl + 20, y, ln); y -= 13
         y -= 9
     xr = M + w + 26; c.setFillColor(SEC["THE HOLE"]); c.setFont("LSB", 17); c.drawString(xr, H - M - 50, "The pinhole experiment"); c.setFillColor(GREY); c.setFont("LS", 9.5); c.drawString(xr, H - M - 66, "A picture without the lens: the oldest kind of camera.")
+    if "h1" in WHY: why_line(c, xr, H - M - 84, WHY["h1"])
     fit(c, trim("h2"), xr, M + 160, w - 20, h - 240); y = M + 142
     for n, st in enumerate(WEB):
         badge(c, xr + 7, y + 3, n + 1, 6.5, 8, SEC["THE HOLE"]); c.setFillColor(INK); c.setFont("LS", 9.5)

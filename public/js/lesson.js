@@ -141,11 +141,11 @@
     return '<p class="lp-tagline"><span class="lp-num" aria-hidden="true">' + pad(i + 1) + "</span>" + (t[0] ? '<span class="lp-tag lp-tag-' + t[1] + '">' + esc(t[0]) + "</span>" : "") + "</p>" +
       (s.title ? "<h" + big + ' id="' + lid(L, s.id) + '-h">' + esc(s.title) + "</h" + big + ">" : "<h" + big + ' id="' + lid(L, s.id) + '-h" class="sr-only">' + esc(t[0]) + "</h" + big + ">");
   }
-  function sectionHTML(s, L, o, i) {
+  function sectionHTML(s, L, o, i, unit) {
     var r = R[kindOf(s)] || R.story, body;
     try { body = r(s, L, o); } catch (e) { body = ""; if (window.console) console.error(e); }
     return '<section class="lp-s lp-k-' + esc(kindOf(s)) + '" id="' + lid(L, s.id) + '" data-sec="' + esc(s.id) + '" aria-labelledby="' + lid(L, s.id) + '-h"><div class="lp-in">' +
-      headOf(s, L, i, 2) + body + "</div></section>";
+      (unit || "") + headOf(s, L, i, 2) + body + "</div></section>";
   }
 
   // ------------------------------------------------------------------ units: a lesson is a few short units, each whole on its own, with its own minutes.
@@ -153,13 +153,13 @@
   function unitsOf(L) { return list(L.units).filter(function (u) { return u && list(u.sections).length; }); }
   function unitMins(us) { return us.reduce(function (a, u) { return a + (+u.minutes || 0); }, 0); }
   function unitHTML(u, k, n, L) {
-    return '<div class="lp-unit" id="' + lid(L, "unit-" + (k + 1)) + '"><div class="lp-in"><h2 class="lp-unit-t"><span class="lp-unit-n" aria-hidden="true">' + (k + 1) + '</span><span class="sr-only">Unit ' + (k + 1) + " of " + n + ": </span>" +
-      esc(u.title) + '<span class="lp-unit-m">' + esc(u.minutes) + " min</span></h2>" + (u.what ? '<p class="lp-unit-w">' + esc(u.what) + "</p>" : "") + "</div></div>";
+    return '<p class="lp-unit" id="' + lid(L, "unit-" + (k + 1)) + '"><span class="lp-unit-n" aria-hidden="true">' + (k + 1) + '</span><span class="sr-only">Unit ' + (k + 1) + " of " + n + ": </span>" +
+      '<span class="lp-unit-t">' + esc(u.title) + '</span><span class="lp-unit-m">' + esc(u.minutes) + " min</span></p>";
   }
   function bodyHTML(L, o) {
     var us = unitsOf(L), first = {};
     us.forEach(function (u, k) { first[list(u.sections)[0]] = k; });
-    return L.sections.map(function (s, i) { return (first[s.id] != null ? unitHTML(us[first[s.id]], first[s.id], us.length, L) : "") + sectionHTML(s, L, o, i); }).join("");
+    return L.sections.map(function (s, i) { return sectionHTML(s, L, o, i, first[s.id] != null ? unitHTML(us[first[s.id]], first[s.id], us.length, L) : ""); }).join("");
   }
 
   // ------------------------------------------------------------------ the teacher view
