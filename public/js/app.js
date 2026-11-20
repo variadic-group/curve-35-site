@@ -439,24 +439,24 @@
       '<section class="kitbox" aria-labelledby="kb-h"><div class="wrap kitbox-in"><div class="kb-pic frame">' + img(PIC.plan_parts, "Everything in the box laid out: black body, grey back, orange front plate, teal shutter, yellow wheel, red spool, green knob, blue frame wheel, lens, pinhole ring and disc, and a roll of film", ' width="1200" height="900"') + "</div>" +
       '<div class="kb-t"><p class="kb-k">What&rsquo;s in the box</p><h2 id="kb-h">The starter kit' + (sp ? ' <span class="kb-price tnum">' + esc(sp) + "</span>" : "") + "</h2>" +
       '<ul class="kb-list">' + kitList.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>" +
-      (addBtn(S, "main big", "Add to basket") || '<a class="btn main big" href="#store">See the kit</a>') + '<a class="kb-more" href="#store">Everything in the shop</a></div></div></section>' +
+      '<p class="kb-act">' + (addBtn(S, "main big", "Add to basket") || '<a class="btn main big" href="#store">See the kit</a>') + '<a class="kb-more" href="#store">Check out the shop</a></p></div></div></section>' +
       // HOW IT WORKS: four pictures, one line each
       '<section class="plan" aria-labelledby="pl-h"><div class="wrap"><h2 id="pl-h">How it works.</h2><ol class="steps4">' +
       '<li><span class="s-n" aria-hidden="true">1</span>' + img(PIC.booklet, "The CURVE 35 build guide on top of the box", ' width="640" height="414"') + '<h3><a href="#start">Open the box</a></h3><p>The pieces and a guide, nothing else.</p></li>' +
       '<li><span class="s-n" aria-hidden="true">2</span>' + img(PIC.plan_build, "The orange front plate held above the black body, with an arrow showing it sliding down into place", ' width="1200" height="900"') + '<h3><a href="#build">Build it</a></h3><p>Each part clicks in. No tools.</p></li>' +
       '<li><span class="s-n" aria-hidden="true">3</span>' + img(PIC.plan_shoot, "The camera seen from behind, aimed at a person waving next to a tree in the sun, with the edges of the picture marked", ' width="1200" height="900"') + '<h3><a href="#build-p1">Shoot a roll</a></h3><p>Take it outside on real film.</p></li>' +
       '<li><span class="s-n" aria-hidden="true">4</span>' + img(PIC.plan_learn, "A lesson diagram: light from the top and the foot of a tree crosses in a small hole and lands upside down on the film", ' width="1200" height="900"') + '<h3><a href="#lessons">Learn how it works</a></h3><p>One short lesson per piece.</p></li></ol></div></section>' +
+      // THE CAMERA VIEWER
+      explodeSection() +
+      // FOUR FACTS: each one said nowhere else on this page (canon/facts.yaml).  The same four cards and the same words on every screen (v13)
+      '<section class="guide" aria-labelledby="gd-h"><div class="wrap"><h2 id="gd-h">Small camera, big numbers.</h2>' +
+      '<dl class="bns"><div class="bn-y"><dt>' + esc(factSay("shutter_speed", "1/322 s")) + '</dt><dd>how long the shutter stays open</dd></div>' +
+      '<div class="bn-b"><dt class="bn-sm">' + dots.map(esc).join(" &middot; ") + '</dt><dd>three dots on one wheel set how much light gets in</dd></div>' +
+      '<div class="bn-g"><dt>' + esc(factSay("light_rays", "69 million")) + '</dt><dd>light rays traced at the closed camera. None got in.</dd></div>' +
+      '<div class="bn-o"><dt>' + esc(factSay("print_hours", "9.4 hours")) + '</dt><dd>to print every part on your own 3D printer</dd></div></dl></div></section>' +
       // LESSONS: a carousel of colourful tiles
       '<section class="learn" aria-labelledby="ln-h"><div class="wrap"><div class="learn-head"><h2 id="ln-h">Nine lessons. Nine questions.</h2>' +
       '<a class="btn" href="#lessons">All lessons</a></div>' + lessonCarousel() + "</div></section>" +
-      // FOUR FACTS: each one said nowhere else on this page (canon/facts.yaml)
-      '<section class="guide" aria-labelledby="gd-h"><div class="wrap"><h2 id="gd-h">Small camera, big numbers.</h2>' +
-      '<dl class="bns"><div class="bn-y"><dt>' + esc(factSay("shutter_speed", "1/322 s")) + '</dt><dd><span class="bn-l">how long the shutter stays open</span><span class="bn-s">shutter</span></dd></div>' +
-      '<div class="bn-b"><dt class="bn-sm">' + dots.map(esc).join(" &middot; ") + '</dt><dd><span class="bn-l">three dots on one wheel set how much light gets in</span><span class="bn-s">three dots for the light</span></dd></div>' +
-      '<div class="bn-g"><dt>' + esc(factSay("light_rays", "69 million")) + '</dt><dd><span class="bn-l">light rays traced at the closed camera. None got in.</span><span class="bn-s">light rays tried. None got in.</span></dd></div>' +
-      '<div class="bn-o"><dt>' + esc(factSay("print_hours", "9.4 hours")) + '</dt><dd><span class="bn-l">to print every part on your own 3D printer</span><span class="bn-s">to print your own</span></dd></div></dl></div></section>' +
-      // THE CAMERA VIEWER
-      explodeSection() +
       // PROGRAMS, OPEN FILES, BUILDS: one line
       '<nav class="strip1" aria-label="More"><div class="wrap"><p><a href="#programs">Programs for classes</a><a href="#open-files">Open files</a><a href="#builds">Builds and remixes</a><a href="#teachers">For teachers</a></p></div></nav>' +
       // LAST CALL

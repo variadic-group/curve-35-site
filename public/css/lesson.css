@@ -203,6 +203,7 @@
 .lp-table th, .lp-table td { text-align: left; padding: 9px 10px 9px 0; border-bottom: 1px solid var(--lp-rule); vertical-align: top; }
 .lp-table thead th { font-weight: 800; color: var(--lc-ink); border-bottom: var(--lp-line); }
 .lp-table tbody th { font-weight: 700; color: var(--lp-ink2); white-space: nowrap; }
+@media (max-width: 600px) { .lp-table { font-size: 0.86rem; } .lp-table tbody th { white-space: normal; } .lp-table th, .lp-table td { padding-right: 8px; overflow-wrap: break-word; } }   /* v13: a row's name kept on one line made the table 360 px wide; on an iPhone SE its last column was cut off */
 
 /* the teacher view */
 .lp-teach { padding: clamp(32px, 4vw, 48px) 0; background: var(--lp-paper2); border-bottom: var(--lp-line); scroll-margin-top: calc(var(--lp-top) + 60px); }

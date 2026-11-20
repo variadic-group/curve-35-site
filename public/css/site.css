@@ -639,7 +639,6 @@ mark { background: #FFE0C7; color: inherit; }
 @media (max-width: 420px) {
   .nav li:first-child { display: none; }
   .narrow-only { display: block; }
-  .top-in.has-basket .brand span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -1604,7 +1603,6 @@ tr.here, li.here { outline-offset: 2px; }
   .top-in { gap: 6px; }
   .brand { gap: 6px; }
 }
-@media (max-width: 350px) { .brand span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); } }
 .steps4 img { aspect-ratio: 4 / 3; }
 @media (min-width: 1081px) { .x3-bar { grid-template-columns: auto minmax(0, 1fr); } .x3-steps { flex-wrap: nowrap; } }
 /* part facts: one quiet line, not three boxes */
@@ -1745,66 +1743,70 @@ tr.here, li.here { outline-offset: 2px; }
 }
 @media (prefers-reduced-motion: reduce) { .lessons-page .lc, .lessons-page .lc:hover { transition: none; transform: none; } }
 
-/* ================================================================ v12: phones
-   1. A scroller holds its own hidden labels.  .sr-only is absolutely placed; inside a sideways scroller that is not itself positioned it escaped the scroller
-      and made the whole page 2,000 px wide on a phone (the lesson row on the home page, the tables on the Build guide and Parts pages).
-   2. The home page on a phone is one bold colour (the hero), then cream and white, then the last call: hero > the kit > how it works > lessons > four facts > last call.
-      The camera sits above the buttons.  The take-apart viewer (it is on the Parts page) and the strip of links (they are in the menu) are left out. */
+/* ================================================================ v13: one page on every screen
+   The home page has one order and one set of parts on a phone and on a desk: the pitch, the kit, how it works, the camera taken apart, its four numbers, the lessons,
+   the last call.  What differs on a phone is layout (one column; the hero's camera sits between the words and the buttons) and three things left out because they
+   are in the menu or done by touch: the strip of links, the viewer's step buttons and its turn arrows.  Colour: the stickers, cards and numbers keep theirs; the
+   sections behind them are cream and white on a phone, where five coloured bands in a row read as noise.
+   Heights (v13): a phone screen is short.  The hero's camera and the kit's picture take the height the screen has left (100svh: the screen with the browser's
+   bars showing), so the buttons under them are on the first screen of an iPhone SE (375 x 548 showing) as well as a tall phone.
+   Also here (v12): a scroller holds its own hidden labels (.sr-only is absolutely placed; inside a sideways scroller that is not itself positioned it escaped and
+   made the page 2,000 px wide on a phone). */
 html { overflow-x: clip; }
 .tablewrap, .lcar-track, .cb-strip, .cb-secs { position: relative; }
 .ltile { position: relative; }
 .phone-only { display: none; }
-.bns .bn-s { display: none; }
-.kb-more { display: inline-block; margin-left: 20px; font-weight: 700; }
+.kb-pic.frame, .ks-pic .frame { background: #FAF6EE; }             /* the kit's picture is drawn on this paper: its frame is the same paper, so no box shows inside the frame */
+.kb-pic img, .ks-pic img { mix-blend-mode: normal; }
+.kb-act { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; margin: 0; }
+.kb-more { font-weight: 700; }
+.home .plan { border-bottom: 0; }                                /* the viewer's own line follows */
+.home .learn { border-top: var(--line); }
 @media (max-width: 600px) {
   .phone-only { display: block; }
-  .mainnav { display: none; }                                   /* the logo, the kit, the menu: Start here is the menu's first line */
+  .mainnav { display: none; }                                   /* the logo with its name, the kit, the menu: Start here is the menu's first line */
   .top-in { justify-content: space-between; }
 
-  .home .hero { padding: 22px 0 30px; background-size: 20px 20px; }
-  .home .hero-in { display: flex; flex-direction: column; gap: 0; align-items: stretch; }
+  .home .hero { padding: 18px 0 26px; background-size: 20px 20px; }
+  .home .hero-in { display: flex; flex-direction: column; gap: 0; align-items: stretch; min-height: calc(100vh - 104px); min-height: min(calc(100svh - 104px), 640px); }
   .home .hero-text { display: contents; }
-  .home .hero-stks { order: 1; margin: 0 0 16px; gap: 9px; }
-  .home .hero-stks .stk { background: #fff; font-size: 0.88rem; padding: 7px 11px 8px; box-shadow: 2px 2px 0 var(--ink); }
-  .home .hero h1 { order: 2; font-size: clamp(2.05rem, 9.4vw, 2.6rem); margin-bottom: 12px; }
-  .home .hero .lead { order: 3; margin: 0; font-size: 1.02rem; }
-  .home .hero-pic { order: 4; margin: 26px 0 0; }
-  .home .hero-pic .frame { padding: 10px 12px; }
-  .home .hero .ctas { order: 5; margin: 22px 0 0; flex-direction: column; flex-wrap: nowrap; gap: 4px; }
-  .home .hero .ctas .btn, .home .final-act .btn { width: 100%; justify-content: center; }
-  .home .btn.alt { background: none; border-color: transparent; box-shadow: none; min-height: 44px; padding-top: 8px; padding-bottom: 8px; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; font-size: 1rem; }
-  .home .btn.alt:hover, .home .btn.alt:active { transform: none; background: none; }
+  .home .hero-stks { order: 1; margin: 0 0 14px; gap: 9px; }
+  .home .hero-stks .stk { font-size: 0.88rem; padding: 7px 11px 8px; box-shadow: 2px 2px 0 var(--ink); }
+  .home .hero h1 { order: 2; font-size: clamp(1.85rem, 9vw, 2.6rem); margin-bottom: 10px; }
+  .home .hero .lead { order: 3; margin: 0; font-size: 1rem; }
+  .home .hero-pic { order: 4; margin: 22px 0 0; flex: 1 1 150px; min-height: 150px; max-height: 340px; display: flex; }
+  .home .hero-pic .frame { flex: 1 1 auto; aspect-ratio: auto; min-height: 0; padding: 0; }
+  .home .hero-pic .h3d-still { padding: 10px 12px; }
+  .home .hero .ctas { order: 5; margin: 20px 0 0; flex-wrap: nowrap; gap: 10px; }
+  .home .hero .ctas .btn, .home .final-act .btn { flex: 1 1 0; width: auto; min-width: 0; justify-content: center; padding-left: 8px; padding-right: 8px; font-size: clamp(0.9rem, 4.2vw, 1.05rem); }
 
-  .home .kitbox { background: var(--cream); border-bottom: 0; padding: 34px 0 10px; }
-  .home .kitbox-in { gap: 20px; }
-  .home .kitbox h2 { font-size: 1.85rem; margin-bottom: 10px; }
-  .home .kb-list { margin-bottom: 18px; font-size: 0.98rem; }
-  .home .kb-list li { padding: 6px 0 6px 28px; }
-  .home .kitbox .btn { width: 100%; justify-content: center; }
-  .home .kb-more { display: block; margin: 12px 0 0; text-align: center; }
+  .home .kitbox { background: var(--cream); border-bottom: 0; padding: 30px 0 8px; }
+  .home .kitbox-in { gap: 16px; }
+  .home .kb-pic img { max-height: clamp(170px, calc(100svh - 390px), 270px); object-fit: contain; }   /* on a short screen the picture gives way, so the list and the button stay on the screen */
+  .route-store .ks-pic img { max-height: clamp(150px, calc(100svh - 380px), 250px); }
+  .home .kb-k { margin-bottom: 8px; }
+  .home .kitbox h2 { font-size: 1.85rem; margin-bottom: 8px; }
+  .home .kb-list { margin-bottom: 14px; font-size: 0.94rem; line-height: 1.4; }
+  .home .kb-list li { padding: 4px 0 4px 28px; }
+  .home .kb-list li::before { top: 0.7em; }
+  .home .kb-act { gap: 10px 14px; }
+  .home .kb-act .btn { padding: 14px 16px; }
+  .home .kb-more { font-size: 0.96rem; }
 
-  .home .plan { background: var(--cream); border: 0; padding: 34px 0 36px; }
-  .home .steps4 { grid-template-columns: minmax(0, 1fr); gap: 10px; margin-top: 18px; }
+  .home .plan { background: var(--cream); border: 0; padding: 30px 0 34px; }
+  .home .steps4 { grid-template-columns: minmax(0, 1fr); gap: 10px; margin-top: 16px; }
   .home .steps4 li { display: grid; grid-template-columns: 88px minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 14px; align-items: center; padding: 8px 12px 8px 8px; box-shadow: 2px 2px 0 var(--ink); }
   .home .steps4 img { grid-row: 1 / 3; grid-column: 1; width: 88px; aspect-ratio: 4 / 3; margin: 0; border-radius: 8px; }
   .home .steps4 h3 { grid-column: 2; align-self: end; margin: 0; font-size: 1.02rem; }
   .home .steps4 p { grid-column: 2; align-self: start; font-size: 0.88rem; }
   .home .steps4 .s-n { width: 26px; height: 26px; font-size: 0.85rem; top: -8px; left: -8px; }
 
-  .home .learn { padding: 34px 0 26px; border-top: var(--line); }
-  .home .learn-head { margin-bottom: 14px; }
-  .home .learn-head h2 { font-size: 1.6rem; }
-
-  /* the page's order on a phone: the pitch, the kit, how it works, the camera taken apart with its four facts, the lessons, the last call */
-  .home { display: flex; flex-direction: column; }
-  .home > .hero { order: 1; } .home > .kitbox { order: 2; } .home > .plan { order: 3; } .home > .x3 { order: 4; } .home > .guide { order: 5; } .home > .learn { order: 6; } .home > .strip1 { order: 7; } .home > .final { order: 8; }
-
-  /* the take-apart viewer, small: a square stage and one slider.  It opens itself once when it comes on screen (app.js, mountExplode). */
-  .home .x3 { background: #fff; border-top: var(--line); border-bottom: 0; padding: 30px 0 4px; }
+  /* the take-apart viewer: a stage and one slider.  It opens itself once when it comes on screen (app.js, mountExplode). */
+  .home .x3 { background: #fff; border-top: var(--line); border-bottom: 0; padding: 28px 0 4px; }
   .home .x3-head { display: block; }
   .home .x3-head h2 { font-size: 1.6rem; }
   .home .x3-how { font-size: 0.92rem; margin: 4px 0 0; }
-  .home .x3-stage { height: min(88vw, 370px); margin-top: 2px; }
+  .home .x3-stage { height: min(88vw, 370px, calc(100svh - 250px)); min-height: 200px; aspect-ratio: auto; max-height: none; margin-top: 2px; }
   .home .x3-bar { display: block; }
   .home .x3-steps, .home .x3-turn { display: none; }
   .home .x3-slide { gap: 0; }
@@ -1812,24 +1814,38 @@ html { overflow-x: clip; }
   .home .x3-caps { min-height: 4.5em; margin-top: 2px; }
   .home .x3-cap { font-size: 0.95rem; line-height: 1.4; }
 
-  /* the four facts: small coloured stickers under the viewer, not a section of their own */
-  .home .guide { background: #fff; border-top: 0; padding: 6px 0 36px; }
-  .home .guide h2 { font: 800 0.8rem/1.2 var(--sans); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2); margin: 0 0 14px; }
-  .home .bns { display: flex; flex-wrap: wrap; gap: 11px 10px; margin: 0; }
-  .home .bns div { display: flex; align-items: baseline; gap: 7px; border-width: 2px; border-radius: 10px; box-shadow: 2px 2px 0 var(--ink); padding: 7px 11px 8px; }
-  .home .bns div:nth-child(odd) { transform: rotate(-1.4deg); }
-  .home .bns div:nth-child(even) { transform: rotate(1.1deg); }
-  .home .bns dt, .home .bns dt.bn-sm { font-size: 1.06rem; line-height: 1.15; letter-spacing: -0.01em; }
-  .home .bns dd { margin: 0; font-size: 0.84rem; font-weight: 600; line-height: 1.2; }
-  .bns .bn-l { display: none; }
-  .bns .bn-s { display: inline; }
+  /* the four numbers: the same four coloured cards, two by two */
+  .home .guide { background: #fff; border-top: 0; padding: 10px 0 34px; }
+  .home .guide h2 { font-size: 1.6rem; margin: 0 0 14px; }
+  .home .bns { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 0; }
+  .home .bns div { border-width: 2px; border-radius: 12px; box-shadow: 3px 3px 0 var(--ink); padding: 10px 11px 11px; min-width: 0; }
+  .home .bns dt { font-size: clamp(1.2rem, 6.2vw, 1.7rem); line-height: 1.05; }
+  .home .bns dt.bn-sm { font-size: clamp(0.84rem, 4vw, 1.05rem); line-height: 1.6; letter-spacing: -0.02em; }
+  .home .bns dd { margin: 4px 0 0; font-size: 0.82rem; line-height: 1.3; }
 
-  .home .learn { border-top: var(--line); background: var(--cream); }
+  .home .learn { padding: 30px 0 26px; border-top: var(--line); background: var(--cream); }
+  .home .learn-head { margin-bottom: 14px; }
+  .home .learn-head h2 { font-size: 1.6rem; }
 
   .home .strip1 { display: none; }
 
-  .home .final { padding: 32px 0 34px; }
+  .home .final { padding: 30px 0 34px; }
   .home .final-in { grid-template-columns: minmax(0, 1fr); gap: 16px; }
-  .home .final-win { display: none; }
-  .home .final-act { flex-direction: column; flex-wrap: nowrap; gap: 4px; }
+  .home .final-win { margin-top: 6px; font-size: 1rem; }
+  .home .final-act { flex-direction: row; flex-wrap: nowrap; gap: 10px; }
+}
+/* the top bar on the narrowest phones (an iPhone SE of 2016 is 320 px): the name stays; the parts beside it give a little */
+@media (max-width: 350px) {
+  .top-in { padding: 10px 10px; gap: 5px; }
+  .brand { font-size: 0.95rem; gap: 5px; }
+  .top-act { gap: 5px; }
+  .top-cta { padding: 9px 8px; font-size: 0.82rem; }
+  .basket-btn, .menu-btn { min-width: 36px; padding: 0 6px; }
+}
+/* a short phone screen (an iPhone SE shows 548 px, the 2016 one 454): the hero's words give a little so the buttons stay in reach */
+@media (max-width: 600px) and (max-height: 500px) {
+  .home .hero h1 { font-size: 1.7rem; }
+  .home .hero .lead { font-size: 0.94rem; }
+  .home .hero-pic { flex-basis: 120px; min-height: 120px; margin-top: 16px; }
+  .home .hero .ctas { margin-top: 16px; }
 }
