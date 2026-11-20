@@ -35,6 +35,13 @@
 /store /#store 302
 /open /#open-files 302
 /contact /#contact 302
+/open-files /#open-files 302
+/builds /#builds 302
+/parts /#parts 302
+/teachers /#teachers 302
+/glossary /#glossary 302
+/facts /#facts 302
+/licence /#licence 302
 /f1 /#build-f1 302
 /f2 /#build-f2 302
 /f3 /#build-f3 302

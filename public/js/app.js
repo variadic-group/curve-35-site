@@ -449,12 +449,6 @@
       // LESSONS: step 4 above ("Learn how it works") leads straight into them (v16)
       '<section class="learn" aria-labelledby="ln-h"><div class="wrap"><div class="learn-head"><h2 id="ln-h">Nine lessons. Nine questions.</h2>' +
       '<a class="btn" href="#lessons">All lessons</a></div>' + lessonCarousel() + "</div></section>" +
-      // FOUR WAYS ON (classes, files, builds, teachers): a card each, right after the lessons they belong with
-      '<nav class="more3" aria-label="More"><div class="wrap"><ul class="m3">' +
-      '<li class="m3-y"><a href="#programs"><strong>Programs for classes</strong><span>Homeschool, a class, a summer week or a weekend workshop.</span></a></li>' +
-      '<li class="m3-g"><a href="#open-files"><strong>Open files</strong><span>Every part is code. Read it, change it, print it.</span></a></li>' +
-      '<li class="m3-p"><a href="#builds"><strong>Builds and remixes</strong><span>Built one or changed one? Show us.</span></a></li>' +
-      '<li class="m3-b"><a href="#teachers"><strong>For teachers</strong><span>A 50-minute plan and slides for every lesson. Free.</span></a></li></ul></div></nav>' +
       // THE CAMERA VIEWER, then its four numbers: the last place to play before the last call (v16)
       explodeSection() +
       // FOUR FACTS as chips: each one said nowhere else on this page (canon/facts.yaml)
@@ -938,10 +932,10 @@
   // ---- for teachers: the mission side.  Free plans, slides and teacher views; class sets and the four packages are on Programs
   pages.teachers = function () {
     return '<div class="teachers">' +
-      '<section class="teach-plate" aria-labelledby="tc-h1"><div class="wrap tp-in"><div class="pagehead"><p class="kick kick-sun">For teachers</p><h1 id="tc-h1">Teach light, lenses and mechanisms. With the camera in their hands.</h1>' +
+      '<section class="teach-plate" aria-labelledby="tc-h1"><div class="wrap tp-in"><div class="pagehead"><h1 id="tc-h1">Teach light, lenses and mechanisms. With the camera in their hands.</h1>' +
       '<p class="lead">Nine lessons, each a 50-minute period. Every one has a plan, slides and a teacher view. Free, no account.</p>' +
       '<div class="ctas"><a class="btn main big" href="#teach-1">Open the lesson 1 plan</a><a class="btn big" href="#lesson-1-slides">Show lesson 1 as slides</a></div></div>' +
-      '<ul class="cl-grid"><li><b>50</b><span>minutes, planned minute by minute</span></li><li><b>9</b><span>lessons, one piece of the camera each</span></li><li><b>1</b><span>kit per student, built in a session</span></li><li><b>0</b><span>accounts, for you or for them</span></li></ul></div></section>' +
+      '<dl class="bns"><div class="bn-y"><dt>50 minutes</dt><dd>planned minute by minute</dd></div><div class="bn-b"><dt>9 lessons</dt><dd>one piece of the camera each</dd></div><div class="bn-g"><dt>1 kit</dt><dd>per student, built in a session</dd></div><div class="bn-o"><dt>0 accounts</dt><dd>for you or for them</dd></div></dl></div></section>' +
       '<div class="wrap"><h2 class="t-h">What you get</h2><ul class="t4">' +
       '<li class="t-sun"><h3>Lesson plans</h3><p>The period minute by minute, the materials, the objectives and an exit ticket.</p></li>' +
       '<li class="t-sky"><h3>Slides</h3><p>Each lesson\'s key moments and simulations, full screen. Arrow keys to step.</p></li>' +
@@ -969,7 +963,7 @@
   pages.programs = function () {
     var S = PROD["starter-kit"], K = PROD["camera-kit"];
     var kitPrice = (S ? "Starter kit " + price(S) : "") + (S && K ? " &middot; " : "") + (K ? "Camera kit " + price(K) : "");
-    return '<div class="programs"><section class="pg-plate" aria-labelledby="pg-h1"><div class="wrap"><div class="pagehead"><p class="kick">Programs</p><h1 id="pg-h1">Teach it at home, in a class, in a week or a weekend.</h1>' +
+    return '<div class="programs"><section class="pg-plate" aria-labelledby="pg-h1"><div class="wrap"><div class="pagehead"><h1 id="pg-h1">Teach it at home, in a class, in a week or a weekend.</h1>' +
       '<p class="lead">Four ready-made plans for 14 and up. Each one: who it is for, what is included, the schedule.</p>' + waysStrip("programs") +
       '<p class="pg-free"><strong>Included free:</strong> ' + esc(C.programs_free) + '.</p></div></div></section>' +
       '<div class="wrap"><ol class="pg-list" role="list">' + PROGRAMS.map(function (g) {
@@ -991,7 +985,7 @@
   pages.opensource = function () {
     var S = FILES.source || {};
     return '<div class="ospage">' +
-      '<section class="os-plate" aria-labelledby="os-h1"><div class="wrap of-in"><div class="pagehead"><p class="kick kick-mint">Open files</p><h1 id="os-h1">All of it is open to print, change and teach with.</h1>' +
+      '<section class="os-plate" aria-labelledby="os-h1"><div class="wrap of-in"><div class="pagehead"><h1 id="os-h1">All of it is open to print, change and teach with.</h1>' +
       '<p class="lead">The CAD, the print files, the guides, the lessons and the films. Print it, change it, remix it, teach with it. Give credit and share your changes the same way.</p>' +
       '<div class="ctas"><a class="btn main big" href="#files">Download the files</a><a class="btn big" href="' + REPO + '" rel="noopener">The code on GitHub</a></div></div>' +
       '<div class="code-card"><p class="cc-bar"><span aria-hidden="true"><i></i><i></i><i></i></span>variadic-group/curve-35-site</p><dl class="cc-dl"><div><dt>Repository</dt><dd><a href="' + REPO + '" rel="noopener">github.com/variadic-group/curve-35-site</a></dd></div>' +
@@ -1012,7 +1006,7 @@
       '<li><span class="s-n" aria-hidden="true">2</span><h3>Change one thing</h3><p>A colour, a knob, a ring. The <a href="#makers">maker lessons</a> explain every shape.</p></li>' +
       '<li><span class="s-n" aria-hidden="true">3</span><h3>Print and test</h3><p>Print the fit gauge first. Then shoot a test roll.</p></li>' +
       '<li><span class="s-n" aria-hidden="true">4</span><h3>Share it back</h3><p>Post it on <a href="#builds">Builds</a>, with the credit line. The best remixes get featured.</p></li></ol>' +
-      '<section class="makers" id="os-makers" aria-labelledby="osm-h"><p class="kick">For makers</p><h2 id="osm-h">Made by a printer</h2><p class="lead">Four lessons on why every shape in these files is the shape it is.</p>' + makerRow(false) + "</section></div></div>";
+      '<p class="after-line">Why every shape in these files is the shape it is: <a href="#makers">four lessons for makers</a>, with the files.</p></div></div>';
   };
   pages.opensource.title = "Open files";
   pages.opensource.wide = true;
@@ -1099,14 +1093,14 @@
     var ch = C.checked || { rows: [] };
     var rows = ch.rows.map(function (r) { return "<tr><td>" + fmt(r.q) + "</td><td>" + fmt(r.how) + "</td><td>" + fmt(r.result) + "</td></tr>"; }).join("");
     var S = FILES.source || {};
-    return '<div class="wrap files-page"><div class="pagehead"><p class="kick">Open files</p><h1>Print it yourself. Free.</h1><p class="lead">Eight parts, no supports, any ordinary printer. Add one lens and you have the camera. <a href="#open-files">What you can do with the files</a>.</p>' +
+    return '<div class="wrap files-page"><div class="pagehead"><h1>Print it yourself. Free.</h1><p class="lead">Eight parts, no supports, any ordinary printer. Add one lens and you have the camera. <a href="#open-files">What you can do with the files</a>.</p>' +
       '<dl class="bns"><div class="bn-y"><dt>9.4 h</dt><dd>of printing</dd></div><div class="bn-b"><dt>' + esc(FILES.grams || 118) + ' g</dt><dd>of plastic</dd></div><div class="bn-g"><dt>0</dt><dd>supports</dd></div><div class="bn-o"><dt>0.2 mm</dt><dd>layers</dd></div></dl>' +
       '<p class="dlstate note" id="dlstate" role="status">Checking whether this view can save files.</p></div>' +
       '<ol class="files">' + FILES.parts.map(fileRow).join("") +
       '<li class="file src"><span class="srcicon" aria-hidden="true">{ }</span><div class="file-t"><h3>OpenSCAD source</h3><p class="fmeta"><span>Every part, as code</span><span>' + kib(S.bytes || 0) + "</span></p></div>" +
       (S.src || S.dl ? dlControl(S, "Download") : "") + "</li></ol>" +
       moreFiles() + guidesBlock(true) +
-      '<section class="makers" id="makers" tabindex="-1" aria-labelledby="mk-h"><p class="kick">For makers</p><h2 id="mk-h">Made by a printer</h2><p class="lead">Four lessons on why every shape in these files is the shape it is.</p>' + makerRow(false) + "</section>" +
+      '<section class="makers" id="makers" tabindex="-1" aria-labelledby="mk-h"><h2 id="mk-h">Made by a printer</h2><p class="lead">Four lessons on why every shape in these files is the shape it is.</p>' + makerRow(false) + "</section>" +
       '<div class="two-up"><section aria-labelledby="ps-h"><h2 id="ps-h">Print settings</h2><ul><li>0.2 mm layers, no supports.</li><li>Body, back, shutter and wheel in black: they keep light off the film.</li><li>Frame wheel in blue, the top five layers white for the arrow.</li></ul></section>' +
       '<section aria-labelledby="mi-h"><h2 id="mi-h">Make it yours</h2><ul><li>Print the front plate and knobs in your own colours.</li><li>The back is 126 x 59 mm of flat space for a name.</li><li>Change a number in the source and the part changes.</li></ul><p><a href="#builds">Share what you made</a></p></section></div>' +
       '<details class="tests"><summary>What we tested</summary><div class="tablewrap" tabindex="0" role="region" aria-label="Tests"><table><thead><tr><th scope="col">Question</th><th scope="col">How</th><th scope="col">Result</th></tr></thead><tbody>' + rows + "</tbody></table></div></details>" +

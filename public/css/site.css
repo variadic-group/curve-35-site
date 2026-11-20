@@ -166,10 +166,6 @@ main.is-wide { padding: 0 0 96px; }
 
 /* guide: four real numbers, one colour each */
 .guide { padding: 88px 0 80px; }
-.bns { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; margin: 30px 0 0; }
-.bns div { border: var(--line); border-radius: 16px; box-shadow: var(--sh); padding: 18px 20px 20px; }
-.bns dt { font: 900 clamp(2.4rem, 1.8rem + 1.6vw, 3.2rem)/1 var(--display); letter-spacing: -0.03em; }
-.bns dd { margin: 10px 0 0; font-weight: 600; font-size: 0.95rem; line-height: 1.35; }
 .bn-y { background: var(--sun); } .bn-b { background: var(--sky); } .bn-g { background: var(--mint); } .bn-o { background: var(--tang); }
 
 /* 1-2-3 */
@@ -425,10 +421,6 @@ mark { background: #FFE0C7; color: inherit; }
 
 /* ================================================================ FILES */
 .dlstate { margin-top: 16px; }
-.files-page .bns { grid-template-columns: repeat(4, minmax(0, 1fr)); max-width: 46rem; gap: 14px; margin-top: 22px; }
-.files-page .bns div { padding: 12px 14px 14px; box-shadow: 3px 3px 0 var(--ink); border-radius: 12px; }
-.files-page .bns dt { font-size: 1.7rem; }
-.files-page .bns dd { margin-top: 4px; }
 .files { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 48px; border-top: var(--line); }
 .file { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr) auto; gap: 18px; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--rule); margin: 0; }
 .file-pic { background: #fff; border: 2px solid var(--ink); border-radius: 10px; padding: 4px; }
@@ -535,8 +527,6 @@ mark { background: #FFE0C7; color: inherit; }
 /* ---- footer */
 .foot { background: var(--ink); color: #D9D4CC; padding: 44px 0 52px; font-size: 0.9rem; }
 .foot-in { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; display: flex; flex-wrap: wrap; gap: 20px 64px; }
-.foot-brand { flex: 1 1 22rem; }
-.foot-big { font: 900 1.6rem/1 var(--display); color: #fff; margin: 0 0 10px; }
 .foot ul { list-style: none; padding: 0; margin: 0; }
 .foot li { margin: 0 0 8px; }
 .foot a { color: #fff; }
@@ -546,7 +536,6 @@ mark { background: #FFE0C7; color: inherit; }
 /* ================================================================ narrower */
 @media (max-width: 1080px) {
   .pcards { grid-template-columns: 1fr 1fr; }
-  .bns { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .mrow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .pts.mini { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 }
@@ -592,9 +581,6 @@ mark { background: #FFE0C7; color: inherit; }
   .vs-card span:last-child { font-size: 0.82rem; }
   .guide, .learn, .plan, .openfiles { padding: 56px 0 64px; }
   .partsec { padding: 0 0 64px; }
-  .bns { gap: 14px; }
-  .bns div { padding: 14px; box-shadow: 4px 4px 0 var(--ink); }
-  .bns dd { font-size: 0.86rem; }
   .steps3 li { grid-template-columns: 1fr; padding: 24px 18px 18px; }
   .steps3 img { grid-row: auto; margin: 0 0 12px; }
   .tiles, .tiles.full { grid-template-columns: 1fr; gap: 14px; }
@@ -620,7 +606,6 @@ mark { background: #FFE0C7; color: inherit; }
   .pt-links { flex-direction: column; gap: 4px; }
   .of-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; }
   .final { padding: 44px 0; }
-  .files-page .bns { grid-template-columns: 1fr 1fr; }
   .file { grid-template-columns: 4.5rem minmax(0, 1fr) auto; gap: 12px; }
   .makers { padding: 22px 18px; margin: 48px 0 40px; }
   .xlist li { grid-template-columns: 44px minmax(0, 1fr) auto; }
@@ -848,10 +833,6 @@ mark { background: #FFE0C7; color: inherit; }
 .classroom h2 { max-width: 20ch; }
 .classroom .lead, .teach-plate .lead { color: #E4ECFB; }
 .cl-in, .tp-in { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 56px; align-items: center; }
-.cl-grid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-.cl-grid li { margin: 0; background: #fff; color: var(--ink); border: 2.5px solid var(--ink); border-radius: 16px; box-shadow: 5px 5px 0 var(--sun); padding: 18px 18px 16px; }
-.cl-grid b { display: block; font: 900 2.7rem/1 var(--display); letter-spacing: -0.03em; }
-.cl-grid span { display: block; margin-top: 6px; font-weight: 600; font-size: 0.92rem; line-height: 1.35; }
 
 /* builds: a pin board */
 .board { background: var(--pink-soft); border-top: var(--line); padding: 84px 0 96px; }
@@ -945,13 +926,6 @@ mark { background: #FFE0C7; color: inherit; }
 .kit-loop { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; margin: 18px 0 0; font-weight: 700; }
 
 /* footer */
-.foot-in { gap: 28px 56px; }
-.foot-col { flex: 0 0 auto; min-width: 9rem; }
-.foot-h { font: 800 0.76rem/1 var(--sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--sun) !important; margin: 4px 0 14px !important; }
-.foot-badges { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 14px !important; }
-.foot-badges { gap: 4px 0; }
-.foot-badges span { font-weight: 700; font-size: 0.9rem; }
-.foot-badges span + span::before { content: "\00B7"; margin: 0 8px; }
 
 @media (max-width: 1180px) {
   .wide-only { display: none; }
@@ -987,9 +961,6 @@ mark { background: #FFE0C7; color: inherit; }
   .addon { padding: 14px 11px 12px; box-shadow: 4px 4px 0 var(--ink); }
   .addon p { font-size: 0.85rem; }
   .inv { padding: 22px 14px 20px; box-shadow: 5px 5px 0 var(--ink); }
-  .cl-grid { gap: 12px; }
-  .cl-grid li { padding: 14px 12px; box-shadow: 4px 4px 0 var(--sun); }
-  .cl-grid b { font-size: 2.1rem; }
   .pins { grid-template-columns: 1fr; gap: 26px; }
   .pin { min-height: 0; }
   .pin-b { margin-top: 0; }
@@ -1029,7 +1000,6 @@ mark { background: #FFE0C7; color: inherit; }
 
 /* the four numbers: plain bold cards */
 .guide { background: var(--cream); padding: 84px 0 76px; }
-.bns { margin-top: 34px; }
 .guide-open { margin: 26px 0 0; font-weight: 700; }
 
 /* lessons: nine compact cards, three across */
@@ -1083,15 +1053,6 @@ mark { background: #FFE0C7; color: inherit; }
 .kc-txt .lead { margin: 0; }
 
 /* open source, builds, teachers: one line each */
-.more3 { padding: 0 0 84px; }
-.m3 { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-.m3 li { margin: 0; }
-.m3 a { display: flex; flex-direction: column; gap: 4px; height: 100%; padding: 18px 20px 18px 24px; background: #fff; border: var(--line); border-left-width: 10px; border-radius: 14px; text-decoration: none; color: var(--ink); }
-.m3-g a { border-left-color: var(--mint); } .m3-p a { border-left-color: var(--tang); } .m3-b a { border-left-color: var(--sky); }
-.m3 strong { font-size: 1.1rem; font-weight: 800; }
-.m3 strong::after { content: " \2192"; }
-.m3 span { color: var(--ink-2); font-size: 0.95rem; line-height: 1.4; }
-.m3 a:hover strong { text-decoration: underline; text-decoration-color: var(--orange); text-underline-offset: 0.18em; }
 
 /* last call: two columns */
 .final-in { grid-template-columns: minmax(0, 1fr) auto; }
@@ -1103,7 +1064,6 @@ mark { background: #FFE0C7; color: inherit; }
 }
 @media (max-width: 860px) {
   .kc-card { grid-template-columns: 1fr; padding: 22px; gap: 22px; }
-  .m3 { grid-template-columns: 1fr; gap: 12px; }
   .final-in { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
@@ -1117,7 +1077,6 @@ mark { background: #FFE0C7; color: inherit; }
   .kitcta { padding: 56px 0 52px; }
   .kc-card { box-shadow: 5px 5px 0 var(--ink); border-radius: 18px; padding: 16px; }
   .kc-txt .btn { width: 100%; }
-  .more3 { padding-bottom: 56px; }
   .final-act { flex-direction: column; }
   .final-act .btn { width: 100%; }
 }
@@ -1223,14 +1182,6 @@ main.route-lessons { padding-bottom: 0; }
 .froll { margin-bottom: 0; }
 
 /* ---- v11: footer legal lines, the home strip with Programs, the Programs page, the licence, Contact, order by email */
-.foot-co { color: #fff; max-width: 31rem; }
-.foot-legal { max-width: var(--wrap); margin: 30px auto 0; padding: 0 24px; font-size: 0.84rem; color: #D9D4CC; }
-.foot-legal::before { content: ""; display: block; border-top: 1px solid #4F4A43; margin-bottom: 18px; }
-.foot-legal p { margin: 0 0 6px; }
-.m3 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.m3-y a { border-left-color: var(--sun); }
-@media (max-width: 1080px) { .m3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 600px) { .m3 { grid-template-columns: 1fr; } }
 .order-note { margin: 10px 0 0; text-align: center; }
 
 .pg-plate { background: var(--sky-soft); border-bottom: var(--line); }
@@ -1288,7 +1239,6 @@ main.route-lessons { padding-bottom: 0; }
 .ct-list dt { font-weight: 800; overflow-wrap: anywhere; }
 .ct-list dd { margin: 0; color: var(--ink-2); }
 @media (max-width: 600px) { .ct-list div { grid-template-columns: 1fr; } .contact { padding: 18px 14px; } }
-.kick-mint { color: var(--mint); } .kick-sun { color: var(--sun); }      /* kickers on the dark plates (Open files, For teachers): AA on forest and navy */
 
 /* ===================================================================================================================
    v2.16: the interactive build guide, the parts table, the glossary, the facts, cross-links, three ways in, wholesale
@@ -1479,7 +1429,6 @@ table.sortable td a, table.sortable th a { font-weight: 600; }
 .plist { margin: 40px 0 10px; }
 .plist .xchips { margin-top: 6px; }
 .plist td .btn { white-space: nowrap; }
-.m3-line { margin: 18px 0 0; font-weight: 600; }
 .lconn { border: 2px solid var(--ink); border-radius: 14px; background: #fff; padding: 16px 20px; margin: 0 0 22px; }
 .lconn h2 { font-size: 1.1rem; margin: 0 0 4px; }
 tr.here, li.here { outline-offset: 2px; }
@@ -1535,14 +1484,8 @@ tr.here, li.here { outline-offset: 2px; }
 .steps4 .s-n { width: 32px; height: 32px; font-size: 1rem; top: -12px; left: -10px; }
 
 /* the end of home: the four links quieter, then the one orange band */
-.home .more3 { padding: 56px 0 64px; }
-.m3 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.m3 a { border-width: 1.5px; border-left-width: 6px; padding: 14px 16px; }
 
 /* the footer: one or two short lines */
-.foot { padding: 18px 0 20px; font-size: 0.82rem; }
-.foot-in { display: block; }
-.foot-l { margin: 0 !important; display: flex; flex-wrap: wrap; gap: 4px 0; line-height: 1.5; }
 .foot-l span + span::before { content: "\00B7"; margin: 0 9px; color: #9C958A; }
 .lic-note { margin: 16px 0 0; font-size: 0.92rem; color: var(--ink-2); max-width: 46rem; }
 
@@ -1552,7 +1495,6 @@ tr.here, li.here { outline-offset: 2px; }
 
 @media (max-width: 1080px) {
   .steps4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  .m3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 860px) {
   .steps4 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 14px; }
@@ -1568,12 +1510,6 @@ tr.here, li.here { outline-offset: 2px; }
   .steps4 li { padding: 8px 8px 10px; }
   .steps4 h3 { font-size: 0.95rem; }
   .steps4 p { font-size: 0.82rem; }
-  .home .more3 { padding: 24px 0 32px; }
-  .m3 { grid-template-columns: minmax(0, 1fr); gap: 8px; }
-  .m3 a { padding: 10px 14px; }
-  .m3 span { font-size: 0.88rem; }
-  .foot { padding: 16px 0 18px; font-size: 0.8rem; }
-  .foot-l { display: block; }
   .foot-l span { display: block; }
   .foot-l span + span::before { content: none; }
   /* the camera viewer on a phone: full-width stage, then big controls below it */
@@ -1753,18 +1689,35 @@ html { overflow-x: clip; }
 .kb-more { font-weight: 700; }
 .home .plan { border-bottom: 0; }                                /* the viewer's own line follows */
 .home .learn { border-top: var(--line); }
-/* The four numbers are small coloured chips on every screen: one line each, a number and a few words, a little tilted, closing the viewer's section under a
-   small heading.  The owner chose them over four big cards twice (v14 for the hand, v15 for the desk as well); site/mobilecheck.py fails if they are cards. */
+/* A number is a small coloured chip on every page and every screen: one line, a number and a few words, a little tilted.  On the home page the four chips close
+   the viewer's section under a small heading; on the files page they sit under the page's heading.  The owner chose them over big cards twice (v14, v15);
+   site/mobilecheck.py fails if a page shows cards. */
+.bns { display: flex; flex-wrap: wrap; gap: 14px 13px; margin: 22px 0 0; }
+.bns div { display: flex; align-items: baseline; gap: 9px; border: 2px solid var(--ink); border-radius: 12px; box-shadow: 3px 3px 0 var(--ink); padding: 9px 14px 10px; min-width: 0; }
+.bns div:nth-child(odd) { transform: rotate(-1.4deg); }
+.bns div:nth-child(even) { transform: rotate(1.1deg); }
+.bns dt, .bns dt.bn-sm { font: 900 1.3rem/1.15 var(--display); letter-spacing: -0.01em; }
+.bns dd { margin: 0; font-size: 0.98rem; font-weight: 600; line-height: 1.2; }
+.bns div { color: var(--ink); }
 .home .x3 { border-bottom: 0; padding-bottom: 8px; }
 .home .guide { background: var(--paper-3); border-top: 0; padding: 10px 0 48px; }
 .home .guide h2 { font: 800 0.8rem/1.2 var(--sans); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2); margin: 0 0 14px; }
-.home .bns { display: flex; flex-wrap: wrap; gap: 14px 13px; margin: 0; }
-.home .bns div { display: flex; align-items: baseline; gap: 9px; border-width: 2px; border-radius: 12px; box-shadow: 3px 3px 0 var(--ink); padding: 9px 14px 10px; min-width: 0; }
-.home .bns div:nth-child(odd) { transform: rotate(-1.4deg); }
-.home .bns div:nth-child(even) { transform: rotate(1.1deg); }
-.home .bns dt, .home .bns dt.bn-sm { font-size: 1.3rem; line-height: 1.15; letter-spacing: -0.01em; }
-.home .bns dd { margin: 0; font-size: 0.98rem; font-weight: 600; line-height: 1.2; }
+.home .bns { margin: 0; }
 .home .learn { border-top: var(--line); }
+/* The footer is the site's map, on every page: each page once, under the thing it is nearest to (v17).  The home page's four link cards live here now, straight
+   under the last call: programs and teachers with the lessons, open files and builds with printing your own.  Each group's bar is the colour its card had. */
+.foot { padding: 34px 0 22px; font-size: 0.9rem; }
+.foot-in { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 26px 32px; }
+.foot-col { min-width: 0; }
+.foot-h { font: 800 0.76rem/1 var(--sans); letter-spacing: 0.08em; text-transform: uppercase; color: #fff; margin: 0 0 12px; padding-top: 10px; border-top: 4px solid var(--sun); }
+.fc-o .foot-h { border-top-color: var(--tang); } .fc-g .foot-h { border-top-color: var(--mint); } .fc-b .foot-h { border-top-color: var(--sky); }
+.foot li { margin: 0 0 7px; line-height: 1.35; overflow-wrap: anywhere; }
+.foot .foot-l { max-width: var(--wrap); margin: 26px auto 0; padding: 14px 24px 0; border-top: 1px solid #4F4A43; display: flex; flex-wrap: wrap; gap: 4px 0; line-height: 1.5; font-size: 0.82rem; }
+@media (max-width: 600px) {
+  .foot { padding: 26px 0 18px; font-size: 0.88rem; }
+  .foot-in { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 18px; padding: 0 20px; }
+  .foot .foot-l { display: block; padding: 12px 20px 0; margin-top: 20px; }
+}
 .top-basket { gap: 7px; }                                           /* the bar's one orange button, once something is in the basket */
 .top-basket .badge { font-size: 0.78rem; margin: -3px 0; }             /* the count must not make this button taller than "Buy the kit" */
 @media (max-width: 600px) {
@@ -1820,10 +1773,10 @@ html { overflow-x: clip; }
 
   /* the four numbers: the chips (above), a size down, on the viewer's white */
   .home .guide { background: #fff; padding: 6px 0 34px; }
-  .home .bns { gap: 11px 10px; }
-  .home .bns div { gap: 7px; border-radius: 10px; box-shadow: 2px 2px 0 var(--ink); padding: 7px 11px 8px; }
-  .home .bns dt, .home .bns dt.bn-sm { font-size: 1.06rem; }
-  .home .bns dd { font-size: 0.84rem; }
+  .bns { gap: 11px 10px; }
+  .bns div { gap: 7px; border-radius: 10px; box-shadow: 2px 2px 0 var(--ink); padding: 7px 11px 8px; }
+  .bns dt, .bns dt.bn-sm { font-size: 1.06rem; }
+  .bns dd { font-size: 0.84rem; }
 
   .home .learn { padding: 30px 0 26px; border-top: var(--line); background: var(--cream); }
   .home .learn-head { margin-bottom: 14px; }
