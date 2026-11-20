@@ -1735,8 +1735,8 @@ tr.here, li.here { outline-offset: 2px; }
 @media (prefers-reduced-motion: reduce) { .lessons-page .lc, .lessons-page .lc:hover { transition: none; transform: none; } }
 
 /* ================================================================ v13: one page on every screen
-   The home page has one order and one set of parts on a phone and on a desk: the pitch, the kit, how it works, the camera taken apart, its four numbers, the lessons,
-   the last call.  What differs on a phone is layout (one column; the hero's camera sits between the words and the buttons) and three things left out because they
+   The home page has one order and one set of parts on a phone and on a desk: the pitch, the kit, how it works, the lessons, the four ways on, the camera taken
+   apart with its four numbers, the last call (v16: step 4 of how it works leads into the lessons, and the viewer is the last place to play before the last call).  What differs on a phone is layout (one column; the hero's camera sits between the words and the buttons) and three things left out because they
    are in the menu or done by touch: the strip of links, the viewer's step buttons and its turn arrows.  Colour: the stickers, cards and numbers keep theirs; the
    sections behind them are cream and white on a phone, where five coloured bands in a row read as noise.
    Heights (v13): a phone screen is short.  The hero's camera and the kit's picture take the height the screen has left (100svh: the screen with the browser's

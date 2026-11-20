@@ -446,23 +446,23 @@
       '<li><span class="s-n" aria-hidden="true">2</span>' + img(PIC.plan_build, "The orange front plate held above the black body, with an arrow showing it sliding down into place", ' width="1200" height="900"') + '<h3><a href="#build">Build it</a></h3><p>Each part clicks in. No tools.</p></li>' +
       '<li><span class="s-n" aria-hidden="true">3</span>' + img(PIC.plan_shoot, "The camera seen from behind, aimed at a person waving next to a tree in the sun, with the edges of the picture marked", ' width="1200" height="900"') + '<h3><a href="#build-p1">Shoot a roll</a></h3><p>Take it outside on real film.</p></li>' +
       '<li><span class="s-n" aria-hidden="true">4</span>' + img(PIC.plan_learn, "A lesson diagram: light from the top and the foot of a tree crosses in a small hole and lands upside down on the film", ' width="1200" height="900"') + '<h3><a href="#lessons">Learn how it works</a></h3><p>One short lesson per piece.</p></li></ol></div></section>' +
-      // THE CAMERA VIEWER
-      explodeSection() +
-      // FOUR FACTS: each one said nowhere else on this page (canon/facts.yaml).  The same four cards and the same words on every screen (v13)
-      '<section class="guide" aria-labelledby="gd-h"><div class="wrap"><h2 id="gd-h">Small camera, big numbers.</h2>' +
-      '<dl class="bns"><div class="bn-y"><dt>' + esc(factSay("shutter_speed", "1/322 s")) + '</dt><dd>shutter</dd></div>' +
-      '<div class="bn-b"><dt class="bn-sm">' + dots.map(esc).join(" &middot; ") + '</dt><dd>three dots for the light</dd></div>' +
-      '<div class="bn-g"><dt>' + esc(factSay("light_rays", "69 million")) + '</dt><dd>light rays tried. None got in.</dd></div>' +
-      '<div class="bn-o"><dt>' + esc(factSay("print_hours", "9.4 hours")) + '</dt><dd>to print your own</dd></div></dl></div></section>' +
-      // LESSONS: a carousel of colourful tiles
+      // LESSONS: step 4 above ("Learn how it works") leads straight into them (v16)
       '<section class="learn" aria-labelledby="ln-h"><div class="wrap"><div class="learn-head"><h2 id="ln-h">Nine lessons. Nine questions.</h2>' +
       '<a class="btn" href="#lessons">All lessons</a></div>' + lessonCarousel() + "</div></section>" +
-      // PROGRAMS, OPEN FILES, BUILDS: one line
+      // FOUR WAYS ON (classes, files, builds, teachers): a card each, right after the lessons they belong with
       '<nav class="more3" aria-label="More"><div class="wrap"><ul class="m3">' +
       '<li class="m3-y"><a href="#programs"><strong>Programs for classes</strong><span>Homeschool, a class, a summer week or a weekend workshop.</span></a></li>' +
       '<li class="m3-g"><a href="#open-files"><strong>Open files</strong><span>Every part is code. Read it, change it, print it.</span></a></li>' +
       '<li class="m3-p"><a href="#builds"><strong>Builds and remixes</strong><span>Built one or changed one? Show us.</span></a></li>' +
       '<li class="m3-b"><a href="#teachers"><strong>For teachers</strong><span>A 50-minute plan and slides for every lesson. Free.</span></a></li></ul></div></nav>' +
+      // THE CAMERA VIEWER, then its four numbers: the last place to play before the last call (v16)
+      explodeSection() +
+      // FOUR FACTS as chips: each one said nowhere else on this page (canon/facts.yaml)
+      '<section class="guide" aria-labelledby="gd-h"><div class="wrap"><h2 id="gd-h">Small camera, big numbers.</h2>' +
+      '<dl class="bns"><div class="bn-y"><dt>' + esc(factSay("shutter_speed", "1/322 s")) + '</dt><dd>shutter</dd></div>' +
+      '<div class="bn-b"><dt class="bn-sm">' + dots.map(esc).join(" &middot; ") + '</dt><dd>three dots for the light</dd></div>' +
+      '<div class="bn-g"><dt>' + esc(factSay("light_rays", "69 million")) + '</dt><dd>light rays tried. None got in.</dd></div>' +
+      '<div class="bn-o"><dt>' + esc(factSay("print_hours", "9.4 hours")) + '</dt><dd>to print your own</dd></div></dl></div></section>' +
       // LAST CALL
       '<section class="final" aria-labelledby="fn-h"><div class="wrap final-in"><div><h2 id="fn-h">Build a camera this week.</h2><p class="final-win">Or print it free.</p></div>' +
       '<div class="final-act"><a class="btn ink big" href="#store">Buy the kit</a><a class="btn big alt" href="#files">Print your own</a></div></div></section></div>';
