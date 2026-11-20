@@ -450,10 +450,10 @@
       explodeSection() +
       // FOUR FACTS: each one said nowhere else on this page (canon/facts.yaml).  The same four cards and the same words on every screen (v13)
       '<section class="guide" aria-labelledby="gd-h"><div class="wrap"><h2 id="gd-h">Small camera, big numbers.</h2>' +
-      '<dl class="bns"><div class="bn-y"><dt>' + esc(factSay("shutter_speed", "1/322 s")) + '</dt><dd>how long the shutter stays open</dd></div>' +
-      '<div class="bn-b"><dt class="bn-sm">' + dots.map(esc).join(" &middot; ") + '</dt><dd>three dots on one wheel set how much light gets in</dd></div>' +
-      '<div class="bn-g"><dt>' + esc(factSay("light_rays", "69 million")) + '</dt><dd>light rays traced at the closed camera. None got in.</dd></div>' +
-      '<div class="bn-o"><dt>' + esc(factSay("print_hours", "9.4 hours")) + '</dt><dd>to print every part on your own 3D printer</dd></div></dl></div></section>' +
+      '<dl class="bns"><div class="bn-y"><dt>' + esc(factSay("shutter_speed", "1/322 s")) + '</dt><dd><span class="bn-l">how long the shutter stays open</span><span class="bn-s">shutter</span></dd></div>' +
+      '<div class="bn-b"><dt class="bn-sm">' + dots.map(esc).join(" &middot; ") + '</dt><dd><span class="bn-l">three dots on one wheel set how much light gets in</span><span class="bn-s">three dots for the light</span></dd></div>' +
+      '<div class="bn-g"><dt>' + esc(factSay("light_rays", "69 million")) + '</dt><dd><span class="bn-l">light rays traced at the closed camera. None got in.</span><span class="bn-s">light rays tried. None got in.</span></dd></div>' +
+      '<div class="bn-o"><dt>' + esc(factSay("print_hours", "9.4 hours")) + '</dt><dd><span class="bn-l">to print every part on your own 3D printer</span><span class="bn-s">to print your own</span></dd></div></dl></div></section>' +
       // LESSONS: a carousel of colourful tiles
       '<section class="learn" aria-labelledby="ln-h"><div class="wrap"><div class="learn-head"><h2 id="ln-h">Nine lessons. Nine questions.</h2>' +
       '<a class="btn" href="#lessons">All lessons</a></div>' + lessonCarousel() + "</div></section>" +
