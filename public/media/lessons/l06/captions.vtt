@@ -1,186 +1,186 @@
 WEBVTT
 
 1
-00:00:00.200 --> 00:00:04.917
+00:00:00.200 --> 00:00:04.994
 After each picture you turn the green knob, and one picture's length of film moves.
 
 2
-00:00:05.333 --> 00:00:09.581
+00:00:05.400 --> 00:00:09.733
 Too little, and two pictures overlap. Too much, and film is wasted.
 
 3
-00:00:10.000 --> 00:00:15.442
+00:00:10.133 --> 00:00:15.719
 There is no motor and no chip. How does the camera know it has moved exactly one picture?
 
 4
-00:00:15.867 --> 00:00:20.055
+00:00:16.133 --> 00:00:20.546
 Most people guess: count turns of the knob. One turn, one picture.
 
 5
-00:00:20.467 --> 00:00:24.658
+00:00:20.967 --> 00:00:25.294
 But film winds onto a roll, and the roll grows fatter with every turn.
 
 6
-00:00:25.067 --> 00:00:27.604
+00:00:25.700 --> 00:00:28.236
 A fatter roll takes in more film each turn.
 
 7
-00:00:28.033 --> 00:00:34.204
+00:00:28.667 --> 00:00:34.921
 Empty, one turn takes in a little under one picture. Full, it takes in about one and two-thirds.
 
 8
-00:00:34.633 --> 00:00:39.089
+00:00:35.333 --> 00:00:39.860
 So turns cannot count pictures. The camera must measure the film itself.
 
 9
-00:00:39.500 --> 00:00:44.144
+00:00:40.267 --> 00:00:44.997
 Look at the film's edges. A row of holes runs along each, top and bottom.
 
 10
-00:00:44.567 --> 00:00:54.097
+00:00:45.400 --> 00:00:55.266
 About 1892, in Thomas Edison's laboratory, William Dickson settled on film 35 millimetres wide, with holes down both edges.
 
 11
-00:00:54.500 --> 00:00:58.600
+00:00:55.667 --> 00:00:59.850
 It was for moving pictures: teeth in the holes pulled it along exactly.
 
 12
-00:00:59.033 --> 00:01:03.452
+00:01:00.267 --> 00:01:04.898
 On today's film the holes are 4.75 millimetres apart.
 
 13
-00:01:03.867 --> 00:01:10.562
+00:01:05.300 --> 00:01:12.301
 In 1913 Oskar Barnack designed a small camera that ran this film sideways, for still pictures.
 
 14
-00:01:10.967 --> 00:01:16.675
+00:01:12.733 --> 00:01:18.573
 His picture was 36 by 24 millimetres. Yours is exactly the same size.
 
 15
-00:01:17.100 --> 00:01:20.306
+00:01:19.000 --> 00:01:22.280
 It went on sale in 1925, as the Leica.
 
 16
-00:01:20.733 --> 00:01:26.444
+00:01:22.700 --> 00:01:28.539
 One picture is 36 millimetres long, and the gap after it 2: 38 millimetres.
 
 17
-00:01:26.867 --> 00:01:33.764
+00:01:28.967 --> 00:01:36.329
 And eight holes, 4.75 apart, make exactly 38 millimetres. Eight holes, one picture.
 
 18
-00:01:34.167 --> 00:01:38.754
+00:01:36.733 --> 00:01:41.651
 So the camera counts holes, not turns. That is the blue frame wheel's job.
 
 19
-00:01:39.167 --> 00:01:43.165
+00:01:42.067 --> 00:01:46.172
 It has eight teeth, and they sit in the holes along the film's top edge.
 
 20
-00:01:43.567 --> 00:01:47.541
+00:01:46.600 --> 00:01:50.685
 The wheel does not pull the film. The film, moving, turns the wheel.
 
 21
-00:01:47.967 --> 00:01:52.940
+00:01:51.100 --> 00:01:56.320
 Eight holes pass, the wheel turns once, and the arrow on the frame wheel comes home.
 
 22
-00:01:53.367 --> 00:01:57.136
+00:01:56.733 --> 00:02:00.608
 The camera does not stop you. You stop when the arrow comes round.
 
 23
-00:01:57.567 --> 00:02:00.153
+00:02:01.033 --> 00:02:03.661
 Each tooth tapers, so it finds its hole.
 
 24
-00:02:00.567 --> 00:02:04.848
+00:02:04.067 --> 00:02:08.498
 By the model, with thin film or thick, no tooth touches a hole's edge.
 
 25
-00:02:05.267 --> 00:02:09.115
+00:02:08.900 --> 00:02:12.856
 To load, you wind the whole film out of its shell onto the red spool.
 
 26
-00:02:09.533 --> 00:02:14.686
+00:02:13.267 --> 00:02:18.399
 That takes about 25 turns for 24 pictures, 33 for 36.
 
 27
-00:02:15.100 --> 00:02:19.216
+00:02:18.800 --> 00:02:23.073
 Then, after each picture, the green knob winds it back into the shell.
 
 28
-00:02:19.633 --> 00:02:24.643
+00:02:23.500 --> 00:02:28.778
 Why backwards? The shell is dark inside: pictures already taken are safe in it.
 
 29
-00:02:25.067 --> 00:02:29.730
+00:02:29.200 --> 00:02:33.946
 If the back opens by accident, only pictures not yet taken are lost.
 
 30
-00:02:30.133 --> 00:02:33.696
+00:02:34.367 --> 00:02:38.013
 The shell you can load in daylight came in 1934.
 
 31
-00:02:34.100 --> 00:02:41.139
+00:02:38.433 --> 00:02:45.736
 Now a sum. One turn of a roll takes in its distance round: two times 3.14 times its radius.
 
 32
-00:02:41.567 --> 00:02:49.746
+00:02:46.167 --> 00:02:54.618
 The red spool empty: radius 5.9 millimetres. One turn: about 37 millimetres, just under one picture.
 
 33
-00:02:50.167 --> 00:02:56.721
+00:02:55.033 --> 00:03:01.867
 Full after 36 pictures: radius 10.1. One turn: about 63 millimetres.
 
 34
-00:02:57.133 --> 00:03:05.378
+00:03:02.300 --> 00:03:10.835
 63 divided by 37 is 1.7. The last turn moves 1.7 times the film of the first.
 
 35
-00:03:05.800 --> 00:03:11.305
+00:03:11.267 --> 00:03:16.827
 The same happens in the film's shell: the roll the green knob winds grows with every picture.
 
 36
-00:03:11.733 --> 00:03:16.374
+00:03:17.233 --> 00:03:22.025
 Same knob, same turn, very different lengths. Only the holes stay the same.
 
 37
-00:03:16.800 --> 00:03:21.359
+00:03:22.433 --> 00:03:27.158
 In your kit, the frame wheel lies in a fork on the back, beside a round post.
 
 38
-00:03:21.767 --> 00:03:25.231
+00:03:27.567 --> 00:03:31.220
 Close the back and its teeth come down on the film's top edge.
 
 39
-00:03:25.633 --> 00:03:31.195
+00:03:31.633 --> 00:03:37.430
 After the last picture, wind the green knob until the arrow stops. Then three more turns.
 
 40
-00:03:31.600 --> 00:03:34.871
+00:03:37.833 --> 00:03:41.216
 Now all the film is in its shell, and the back can come off.
 
 41
-00:03:35.300 --> 00:03:39.757
+00:03:41.633 --> 00:03:46.202
 While you wind, keep a hand off the red knob, and never force either knob.
 
 42
-00:03:40.167 --> 00:03:45.633
+00:03:46.633 --> 00:03:52.249
 So how does it know? It counts holes: eight holes, 38 millimetres, one turn of the wheel.
 
 43
-00:03:46.033 --> 00:03:50.195
+00:03:52.667 --> 00:03:56.821
 Look at a roll of tape: its outer turns are longer than its inner ones.
 
 44
-00:03:50.600 --> 00:03:55.713
+00:03:57.233 --> 00:04:02.661
 Try: wind a long paper strip round a pencil, mark each turn, unroll it and measure.
 
 45
-00:03:56.133 --> 00:04:00.181
+00:04:03.067 --> 00:04:07.279
 Next, lesson seven: how can a box full of gaps be dark inside?
 
 46
-00:04:00.600 --> 00:04:07.126
+00:04:07.700 --> 00:04:14.337
 Every picture here is drawn from the model or simulated. No photograph has been taken with this camera yet.
 

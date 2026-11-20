@@ -48,7 +48,7 @@
     if (!f) return "";
     var inner = "";
     if (f.svg) { var fn = REG.figs[f.svg]; try { inner = fn ? fn() : ""; } catch (e) { inner = ""; } if (!inner) return ""; }
-    else if (f.img) inner = '<img src="' + esc(img(base, f.img)) + '" alt="' + esc(f.alt || f.caption || "") + '" loading="lazy" onerror="this.closest(\'figure\').hidden=true">';
+    else if (f.img) inner = '<img src="' + esc(img(base, f.img)) + '" alt="' + esc(f.alt || f.caption || "") + '" loading="lazy" data-gone="figure">';
     else return "";
     return '<figure class="lp-fig' + (f.img ? " lp-fig-img" : "") + '">' + inner + (f.caption ? "<figcaption>" + esc(f.caption) + "</figcaption>" : "") + "</figure>";
   }
@@ -92,7 +92,7 @@
   };
   R.film = function (s, L, o) { return prose(s.body) + (filmHTML(L, o) || figure(L.still, o.base)); };
   R.kit = function (s, L, o) {
-    var pic = s.render ? '<figure class="lp-fig lp-fig-img lp-render"><img src="' + esc(img(o.base, s.render)) + '" alt="' + esc(s.alt || s.caption || "") + '" loading="lazy" onerror="this.closest(\'figure\').hidden=true">' +
+    var pic = s.render ? '<figure class="lp-fig lp-fig-img lp-render"><img src="' + esc(img(o.base, s.render)) + '" alt="' + esc(s.alt || s.caption || "") + '" loading="lazy" data-gone="figure">' +
       '<figcaption>' + esc(s.caption || "") + "</figcaption></figure>" : "";
     var steps = list(s.step).map(function (code) { return '<a class="lp-go" href="#build-' + esc(code) + '">Build step ' + esc(stepName(code)) + ' <span aria-hidden="true">→</span></a>'; }).join(" ");
     return '<div class="lp-cols lp-cam">' + '<div class="lp-side">' + pic + "</div>" + '<div class="lp-prose">' + (s.body || "") + (steps ? '<p class="lp-steps-go">' + steps + "</p>" : "") + "</div></div>";
@@ -147,6 +147,10 @@
     return '<section class="lp-s lp-k-' + esc(kindOf(s)) + '" id="' + lid(L, s.id) + '" data-sec="' + esc(s.id) + '" aria-labelledby="' + lid(L, s.id) + '-h"><div class="lp-in">' +
       (unit || "") + headOf(s, L, i, 2) + body + "</div></section>";
   }
+
+  // A picture that will not load takes its figure with it.  A listener, not an onerror attribute: the site's policy allows no inline script, and under it the
+  // attribute was refused on the live site (20 November 2026).  Error events do not bubble, so this listens on the way down.
+  document.addEventListener("error", function (e) { var t = e.target, sel = t && t.getAttribute && t.getAttribute("data-gone"), f = sel && t.closest(sel); if (f) f.hidden = true; }, true);
 
   // ------------------------------------------------------------------ units: a lesson is a few short units, each whole on its own, with its own minutes.
   // The film is one unit's worth and never the whole lesson; nothing is padded out to a period (19 November 2026).
