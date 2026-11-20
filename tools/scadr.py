@@ -40,13 +40,18 @@ def weld_stl(path, tol=WELD_TOL):
     written, rebuilt as a manifold by manifold3d (the kernel OpenSCAD's later manifold backend uses; this OpenSCAD 2021 has none), and every edge shorter than
     tol collapsed; the shape moves by less than tol.  Anything manifold3d cannot read as a closed solid is an error, never written."""
     import numpy as np, manifold3d as m3
-    V = {}; F = []; tri = []
-    for l in open(path):
-        l = l.strip()
-        if l.startswith("vertex"):
-            tri.append(V.setdefault(tuple(l.split()[1:]), len(V)))
-            if len(tri) == 3: F.append(tri); tri = []
-    P = np.array([[float(x) for x in k] for k in V]); F = np.array(F, dtype=np.uint32)
+    raw = open(path, "rb").read(); binary = not (raw[:5] == b"solid" and b"facet" in raw[:600])
+    if binary:                                                   # a plate put together from sealed parts (tools/plate.py, tools/production.py) is a binary file: same treatment, written back as binary
+        rec = np.dtype([("n", "<f4", 3), ("v", "<f4", (3, 3)), ("a", "<u2")]); pts = np.frombuffer(raw, dtype=rec, count=int.from_bytes(raw[80:84], "little"), offset=84)["v"].reshape(-1, 3)
+        P, inv = np.unique(pts, axis=0, return_inverse=True); P = P.astype(float); F = inv.reshape(-1, 3).astype(np.uint32)
+    else:
+        V = {}; F = []; tri = []
+        for l in raw.decode().splitlines():
+            l = l.strip()
+            if l.startswith("vertex"):
+                tri.append(V.setdefault(tuple(l.split()[1:]), len(V)))
+                if len(tri) == 3: F.append(tri); tri = []
+        P = np.array([[float(x) for x in k] for k in V]); F = np.array(F, dtype=np.uint32)
     M = m3.Manifold(m3.Mesh(vert_properties=P.astype(np.float32), tri_verts=F))
     if M.status() != m3.Error.NoError: raise RuntimeError(f"weld: {path} is not a closed manifold as exported ({M.status()})")
     v0 = M.volume(); M = M.simplify(tol); me = M.to_mesh()
@@ -56,6 +61,14 @@ def weld_stl(path, tol=WELD_TOL):
     # area).  Each is taken out here, as the file will be written (six decimals): if its shortest edge is under tol that edge is collapsed; if not, the long edge it
     # shares with its neighbour is swapped for the short one across, which moves nothing.  The result must still be one closed solid of the same volume.
     R = np.round(Q, 6); flat = lambda: np.nonzero(np.linalg.norm(np.cross(R[T[:, 1]] - R[T[:, 0]], R[T[:, 2]] - R[T[:, 0]]), axis=1) / 2 < 1e-9)[0]
+    # 20 November 2026: simplify() also leaves a few edges far shorter than tol where collapsing one would have cost it something (v2.20: three in the shutter, 4 to 100
+    # nanometres long, one in the body).  Their triangles have a little area, so the loop below never saw them, and the farm's checker, which welds first, counted
+    # each as two "non-manifold edges" (shutter 4, body 2).  Every edge under tol is collapsed here, whatever its triangle's area; the checks below still have to pass.
+    for _ in range(5000):
+        E = np.vstack([T[:, [0, 1]], T[:, [1, 2]], T[:, [2, 0]]]); short = np.nonzero(np.linalg.norm(R[E[:, 0]] - R[E[:, 1]], axis=1) < tol)[0]
+        if not len(short): break
+        p_, q_ = E[short[0]]; T = np.where(T == q_, p_, T); T = T[(T[:, 0] != T[:, 1]) & (T[:, 1] != T[:, 2]) & (T[:, 2] != T[:, 0])]
+    else: raise RuntimeError(f"weld: {path} still has edges shorter than {tol} mm")
     for _ in range(400):
         bad = flat()
         if not len(bad): break
@@ -72,6 +85,9 @@ def weld_stl(path, tol=WELD_TOL):
     M2 = m3.Manifold(m3.Mesh(vert_properties=Q.astype(np.float32), tri_verts=T.astype(np.uint32)))
     if M2.status() != m3.Error.NoError or abs(M2.volume() - v0) > 1e-3 * max(1.0, v0): raise RuntimeError(f"weld: {path} is not a closed solid of the same volume once its flat faces are out ({M2.status()})")
     n = np.cross(Q[T[:, 1]] - Q[T[:, 0]], Q[T[:, 2]] - Q[T[:, 0]]); n /= np.maximum(np.linalg.norm(n, axis=1)[:, None], 1e-30)
+    if binary:
+        rec = np.zeros(len(T), dtype=np.dtype([("n", "<f4", 3), ("v", "<f4", (3, 3)), ("a", "<u2")])); rec["n"] = n; rec["v"] = Q[T]
+        open(path, "wb").write(b"sealed by tools/scadr.py".ljust(80, b" ") + len(T).to_bytes(4, "little") + rec.tobytes()); return
     out = ["solid OpenSCAD_Model"]
     for t, nn in zip(T, n):
         out += ["  facet normal %s" % " ".join("%.6g" % c for c in nn), "    outer loop"] + ["      vertex %s" % " ".join("%.6f" % c for c in Q[i]) for i in t] + ["    endloop", "  endfacet"]

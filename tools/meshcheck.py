@@ -14,6 +14,10 @@ import sys, os, glob, json, collections
 import numpy as np, trimesh
 
 WELD = 0.001          # mm: a checker's typical weld tolerance; v2.16's files had 16 to 20 edges shorter than this in the body, back and front
+WELDS = (1e-5, 1e-4, 1e-3, 2e-3)    # 20 November 2026: the farm reported "4 non-manifold edges" in v2.20's shutter and 2 in its body, which passed here.  Welding leaves faces
+                                    # with two corners in one place; this check used to drop those before counting, the farm's does not, and each one puts a third face on
+                                    # an edge.  Welding at 0.0001 mm and counting them gives the farm's 4 and 2.  Its tolerance is not published, so a file must now come
+                                    # through all of these with nothing collapsed (tools/scadr.py removes every edge under 0.005 mm, so nothing should weld at all)
 D = sys.argv[1] if len(sys.argv) > 1 else "build/print"
 
 
@@ -48,7 +52,8 @@ def welded(P, F, tol):
     q = np.round(P / tol).astype(np.int64); _, inv = np.unique(q, axis=0, return_inverse=True); G = inv.ravel()[F]
     keep = (G[:, 0] != G[:, 1]) & (G[:, 1] != G[:, 2]) & (G[:, 0] != G[:, 2])
     Q = np.zeros((int(inv.max()) + 1, 3)); Q[inv.ravel()] = P                     # one position per welded vertex (any of those merged into it)
-    t = topology(G[keep], Q); t["collapsed_faces"] = int((~keep).sum()); t.pop("zero_area"); return t
+    t = topology(G[keep], Q); t["collapsed_faces"] = int((~keep).sum()); t.pop("zero_area")
+    und = collections.Counter(tuple(sorted(e)) for a, b, c in G for e in ((a, b), (b, c), (c, a)) if e[0] != e[1]); t["as_a_farm_counts"] = sum(1 for v in und.values() if v > 2); return t
 
 
 def shape(m):
@@ -60,11 +65,12 @@ def check(path):
     P, F = read_stl(path)
     m = trimesh.Trimesh(P, F, process=False)
     E = np.concatenate([F[:, [0, 1]], F[:, [1, 2]], F[:, [2, 0]]]); L = np.linalg.norm(P[E[:, 0]] - P[E[:, 1]], axis=1)
-    r = dict(faces=int(len(F)), exact=topology(F, P), welded=welded(P, F, WELD), shortest_edge_mm=float("%.3g" % L.min()), watertight=bool(m.is_watertight),
+    r = dict(faces=int(len(F)), exact=topology(F, P), welded=welded(P, F, WELD), farm={("%g" % t): welded(P, F, t)["as_a_farm_counts"] for t in WELDS}, shortest_edge_mm=float("%.3g" % L.min()), watertight=bool(m.is_watertight),
              winding_consistent=bool(m.is_winding_consistent), volume_mm3=round(float(m.volume), 2), solids=int(len(m.split(only_watertight=False))))
     r.update(shape(m))
     bad = [k for k in ("open", "nonmanifold", "inverted", "zero_area", "degenerate") if r["exact"][k]] + ["welded_" + k for k in ("open", "nonmanifold", "inverted") if r["welded"][k]]
     if not r["watertight"]: bad.append("not watertight")
+    if max(r["farm"].values()): bad.append("a farm's checker would count %d non-manifold edges (welding at %s mm)" % max((v, k) for k, v in r["farm"].items()))
     r["ok"] = not bad; r["problems"] = bad; return r
 
 

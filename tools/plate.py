@@ -16,6 +16,7 @@ for row in ROWS:
             boxes[key] = [round(float(x), 1), round(float(y), 1), round(float(b[1][0] - b[0][0]), 1), round(float(b[1][1] - b[0][1]), 1)]; x += b[1][0] - b[0][0] + GAP; h = max(h, b[1][1] - b[0][1])
     y += h + GAP
 ext = scene.bounds[1] - scene.bounds[0]; whole = trimesh.util.concatenate(list(scene.geometry.values())); whole.export("build/print/one135_plate.stl"); scene.export("build/print/one135_plate.3mf")
+import sys; sys.path.insert(0, "tools"); import scadr; scadr.weld_stl("build/print/one135_plate.stl")      # joined from sealed parts, then sealed as one file (20 November 2026: a plate carried its parts' tiny edges into a farm's check)
 print("plate: %.0f x %.0f mm, %d objects" % (ext[0], ext[1], len(scene.geometry)))
 SPEEDS = {"older bed-slinger (45 mm/s walls)": [],
           "current mid-range (120 mm/s walls, input shaping)": ["--perimeter-speed", "120", "--external-perimeter-speed", "80", "--small-perimeter-speed", "60", "--infill-speed", "200", "--solid-infill-speed", "160", "--top-solid-infill-speed", "100",
