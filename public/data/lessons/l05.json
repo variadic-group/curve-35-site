@@ -222,6 +222,66 @@
    ]
   }
  ],
+ "units": [
+  {
+   "id": "u1",
+   "title": "Watch and think",
+   "minutes": 10,
+   "what": "Say your guess. Watch the film. Then read the idea in words.",
+   "sections": [
+    "predict",
+    "why"
+   ]
+  },
+  {
+   "id": "u2",
+   "title": "See it happen",
+   "minutes": 8,
+   "what": "On your screen: freeze the horse, slow the blade.",
+   "sections": [
+    "play"
+   ]
+  },
+  {
+   "id": "u3",
+   "title": "Find it in your camera",
+   "minutes": 5,
+   "what": "Where this idea sits in the camera you built, and in your phone.",
+   "sections": [
+    "camera",
+    "phone"
+   ]
+  },
+  {
+   "id": "u4",
+   "title": "Work it out",
+   "minutes": 5,
+   "what": "One sum, with the camera's own numbers.",
+   "sections": [
+    "maths"
+   ]
+  },
+  {
+   "id": "u5",
+   "title": "Make it",
+   "minutes": 15,
+   "what": "Hands on: catch the window on film.",
+   "sections": [
+    "try"
+   ]
+  },
+  {
+   "id": "u6",
+   "title": "Check yourself",
+   "minutes": 5,
+   "what": "5 questions, then 2 pictures to take on your roll in your own time.",
+   "sections": [
+    "quiz",
+    "roll",
+    "next"
+   ]
+  }
+ ],
  "teach": {
   "objectives": [
    "Describe how this shutter makes a picture: a blade with one window swings once past the lens.",

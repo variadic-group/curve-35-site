@@ -933,9 +933,9 @@
   pages.teachers = function () {
     return '<div class="teachers">' +
       '<section class="teach-plate" aria-labelledby="tc-h1"><div class="wrap tp-in"><div class="pagehead"><h1 id="tc-h1">Teach light, lenses and mechanisms. With the camera in their hands.</h1>' +
-      '<p class="lead">Nine lessons, each a 50-minute period. Every one has a plan, slides and a teacher view. Free, no account.</p>' +
+      '<p class="lead">Nine lessons, each in six short units. Teach one unit on its own, or all six in about an hour. Every lesson has a plan, slides and a teacher view. Free, no account.</p>' +
       '<div class="ctas"><a class="btn main big" href="#teach-1">Open the lesson 1 plan</a><a class="btn big" href="#lesson-1-slides">Show lesson 1 as slides</a></div></div>' +
-      '<dl class="bns"><div class="bn-y"><dt>50 minutes</dt><dd>planned minute by minute</dd></div><div class="bn-b"><dt>9 lessons</dt><dd>one piece of the camera each</dd></div><div class="bn-g"><dt>1 kit</dt><dd>per student, built in a session</dd></div><div class="bn-o"><dt>0 accounts</dt><dd>for you or for them</dd></div></dl></div></section>' +
+      '<dl class="bns"><div class="bn-y"><dt>6 units</dt><dd>a lesson, 5 to 15 minutes each</dd></div><div class="bn-b"><dt>9 lessons</dt><dd>one piece of the camera each</dd></div><div class="bn-g"><dt>1 kit</dt><dd>per student, built in a session</dd></div><div class="bn-o"><dt>0 accounts</dt><dd>for you or for them</dd></div></dl></div></section>' +
       '<div class="wrap"><h2 class="t-h">What you get</h2><ul class="t4">' +
       '<li class="t-sun"><h3>Lesson plans</h3><p>The period minute by minute, the materials, the objectives and an exit ticket.</p></li>' +
       '<li class="t-sky"><h3>Slides</h3><p>Each lesson\'s key moments and simulations, full screen. Arrow keys to step.</p></li>' +
@@ -1269,7 +1269,7 @@
       ["Do I need a 3D printer?", "No. The kits come printed. Have a printer? The files are free."],
       ["Where does the film get developed?", "The starter kit includes developing and scans for one roll, sent by email. Any lab that develops 35 mm film can do it too."],
       ["What age is it for?", "14 and up. Younger builders can build it with an adult."],
-      ["Can I use it in a class?", "Yes. Every lesson has a 50-minute plan and slides, free. Class sets of 8, 16 or 24 kits: see Programs, or email " + MAIL.schools + " for a quote."]
+      ["Can I use it in a class?", "Yes. Every lesson comes in six short units, with a plan and slides, free. Class sets of 8, 16 or 24 kits: see Programs, or email " + MAIL.schools + " for a quote."]
     ];
     function box(pic, svg, a, b) { return "<li>" + thumb(pic, svg) + "<span><strong>" + esc(a) + "</strong>" + esc(b) + "</span></li>"; }
     // a compact row: picture, name and one line, price, one button

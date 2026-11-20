@@ -19,6 +19,21 @@ def speakable(t):
     for a, b in SAY: t = re.sub(a, b, t)
     t = re.sub(r"(?<![\d.,$])\b(1[0-9]\d\d|20[0-2]\d)\b(?![\d.,]\d)(?!\s*(mm|m|s|g|N|%|pictures|rays|cases|positions|million|turns|layers))", _year, t)      # v2.14: the voice read "By 1727," as a plain number
     return t.strip()
+def use(voice, speed):
+    """another voice for the films that ask for one: a name, or a blend such as 'af_bella:0.6+af_heart:0.4'.  The cache key carries both, so two voices never share a line"""
+    global VOICE, SPEED; VOICE, SPEED = voice, speed
+def _style(v):
+    if ":" not in v: return v
+    parts = [p.split(":") for p in v.split("+")]; tot = sum(float(w) for _, w in parts)
+    return sum(_k.get_voice_style(n) * np.float32(float(w) / tot) for n, w in parts)
+def master(wav, out):
+    """a narration track made easy to listen to: no hard clip.  Rumble off, a little warmth, the harsh band and the s sounds eased, gentle compression,
+    then loudness set to -16 LUFS with peaks under -1.5 dB (two passes, so the gain is one number for the whole film and nothing pumps).  48 kHz out."""
+    pre = "highpass=f=75,equalizer=f=210:t=q:w=0.9:g=1.5,equalizer=f=3400:t=q:w=1.4:g=-2,deesser=i=0.4:m=0.5:f=0.5,acompressor=threshold=-21dB:ratio=2.2:attack=10:release=150:makeup=1.5"
+    r = subprocess.run(["ffmpeg", "-hide_banner", "-nostats", "-i", wav, "-af", pre + ",loudnorm=I=-16:TP=-1.5:LRA=11:print_format=json", "-f", "null", "-"], capture_output=True, text=True, check=True)
+    m = json.loads(r.stderr[r.stderr.rindex("{"):r.stderr.rindex("}") + 1])
+    ln = f"loudnorm=I=-16:TP=-1.5:LRA=11:measured_I={m['input_i']}:measured_TP={m['input_tp']}:measured_LRA={m['input_lra']}:measured_thresh={m['input_thresh']}:offset={m['target_offset']}:linear=true"
+    tmp = out[:-4] + ".part.wav"; subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", wav, "-af", pre + "," + ln, "-ar", "48000", "-ac", "1", tmp], check=True); os.replace(tmp, out); return out
 def say(text):
     """-> (wav file, seconds).  The file is cut to the speech with 60 ms of quiet either side."""
     global _k
@@ -26,7 +41,7 @@ def say(text):
     if not os.path.exists(f):
         if _k is None:
             from kokoro_onnx import Kokoro; _k = Kokoro(TTS + "kokoro-v1.0.int8.onnx", TTS + "voices-v1.0.bin")
-        a, sr = _k.create(sp, voice=VOICE, speed=SPEED, lang="en-us"); a = np.asarray(a, np.float32); assert sr == SR
+        a, sr = _k.create(sp, voice=_style(VOICE), speed=SPEED, lang="en-us"); a = np.asarray(a, np.float32); assert sr == SR
         on = np.nonzero(np.abs(a) > 0.01)[0]; a = a[max(0, on[0] - 1440):min(len(a), on[-1] + 1440)] if len(on) else a; sf.write(f, a, SR)
     return f, sf.info(f).duration
 def track(lines, seconds, path):

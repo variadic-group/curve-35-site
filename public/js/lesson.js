@@ -148,6 +148,20 @@
       headOf(s, L, i, 2) + body + "</div></section>";
   }
 
+  // ------------------------------------------------------------------ units: a lesson is a few short units, each whole on its own, with its own minutes.
+  // The film is one unit's worth and never the whole lesson; nothing is padded out to a period (19 November 2026).
+  function unitsOf(L) { return list(L.units).filter(function (u) { return u && list(u.sections).length; }); }
+  function unitMins(us) { return us.reduce(function (a, u) { return a + (+u.minutes || 0); }, 0); }
+  function unitHTML(u, k, n, L) {
+    return '<div class="lp-unit" id="' + lid(L, "unit-" + (k + 1)) + '"><div class="lp-in"><h2 class="lp-unit-t"><span class="lp-unit-n" aria-hidden="true">' + (k + 1) + '</span><span class="sr-only">Unit ' + (k + 1) + " of " + n + ": </span>" +
+      esc(u.title) + '<span class="lp-unit-m">' + esc(u.minutes) + " min</span></h2>" + (u.what ? '<p class="lp-unit-w">' + esc(u.what) + "</p>" : "") + "</div></div>";
+  }
+  function bodyHTML(L, o) {
+    var us = unitsOf(L), first = {};
+    us.forEach(function (u, k) { first[list(u.sections)[0]] = k; });
+    return L.sections.map(function (s, i) { return (first[s.id] != null ? unitHTML(us[first[s.id]], first[s.id], us.length, L) : "") + sectionHTML(s, L, o, i); }).join("");
+  }
+
   // ------------------------------------------------------------------ the teacher view
   function teachHTML(L) {
     var T = L.teach; if (!T) return "";
@@ -158,15 +172,22 @@
     var D = T.differentiation || {};
     function blk(h, inner) { return inner ? '<div class="lp-tb"><h3>' + h + "</h3>" + inner + "</div>" : ""; }
     function ul(a, tag) { a = list(a); return a.length ? "<" + (tag || "ul") + ">" + a.map(function (x) { return "<li>" + x + "</li>"; }).join("") + "</" + (tag || "ul") + ">" : ""; }
+    var us = unitsOf(L), all = unitMins(us), short3 = us.length > 2 ? [us[0], us[1], us[us.length - 1]] : us;
+    var ubar = us.length ? '<div class="lp-tp-bar" aria-hidden="true">' + us.map(function (u, i) { return '<span style="flex:' + (+u.minutes || 1) + '" class="lp-tp-seg lp-tp-' + (i % 3) + '"><b>' + esc(u.minutes) + "</b></span>"; }).join("") + "</div>" : "";
+    var ulist = us.length ? ubar + '<ol class="lp-tp">' + us.map(function (u, i) { return '<li><span class="lp-tp-m">' + esc(u.minutes) + ' min</span><span class="lp-tp-ph">Unit ' + (i + 1) + "</span><span><b>" + esc(u.title) + ".</b> " + esc(u.what || "") + "</span></li>"; }).join("") + "</ol>" : "";
+    var ways = us.length ? "<ul><li><b>" + esc(us[0].minutes) + " minutes:</b> unit 1 on its own, as a starter.</li>" +
+      (us.length > 2 ? "<li><b>" + unitMins(short3) + " minutes:</b> units 1, 2 and " + us.length + ": the idea, seen and checked.</li>" : "") +
+      "<li><b>" + all + " minutes:</b> all " + us.length + ", in one sitting or over two.</li></ul><p>Each unit stands on its own. Stop after any of them and nothing is left half done.</p>" : "";
     return '<section class="lp-teach" id="' + lid(L, "teach") + '" aria-labelledby="' + lid(L, "teach") + '-h" hidden><div class="lp-in"><div class="lp-teach-card">' +
-      '<div class="lp-teach-top"><div><p class="lp-mini">For the teacher · lesson ' + esc(L.code || L.n) + '</p><h2 id="' + lid(L, "teach") + '-h">The lesson plan: one ' + total + "-minute period</h2></div>" +
+      '<div class="lp-teach-top"><div><p class="lp-mini">For the teacher · lesson ' + esc(L.code || L.n) + '</p><h2 id="' + lid(L, "teach") + '-h">' + (us.length ? "The lesson plan: " + us.length + " units, " + all + " minutes if you teach them all" : "The lesson plan: one " + total + "-minute period") + "</h2></div>" +
       '<div class="lp-teach-act"><button type="button" class="lp-btn lp-btn-main" data-act="slides">Show the slides <span aria-hidden="true">▶</span></button><button type="button" class="lp-btn lp-btn-quiet" data-act="teach">Leave teacher mode</button></div></div>' +
       '<div class="lp-teach-grid"><div>' +
       blk("By the end, students can", ul(T.objectives, "ol")) + blk("You need", ul(T.materials)) +
       blk("The misconception to listen for", T.misconception ? "<p>" + T.misconception + "</p>" : "") +
       blk("Safety", T.safety ? "<p>" + esc(T.safety) + "</p>" : "") +
       "</div><div>" +
-      blk("The period, minute by minute", bar + '<ol class="lp-tp">' + per.map(function (p) { return '<li><span class="lp-tp-m">' + esc(p.minutes) + ' min</span><span class="lp-tp-ph">' + esc(p.phase || "") + "</span><span>" + (p.what || "") + "</span></li>"; }).join("") + "</ol>") +
+      blk("The units", ulist) + blk("Short on time?", ways) +
+      blk(us.length ? "One way to run it as a " + total + "-minute class" : "The period, minute by minute", bar + '<ol class="lp-tp">' + per.map(function (p) { return '<li><span class="lp-tp-m">' + esc(p.minutes) + ' min</span><span class="lp-tp-ph">' + esc(p.phase || "") + "</span><span>" + (p.what || "") + "</span></li>"; }).join("") + "</ol>") +
       blk("Questions to ask", list(T.questions).length ? '<ol class="lp-tq">' + list(T.questions).map(function (q) { return "<li><p>" + esc(q.q) + '</p><details><summary>Show the answer</summary><p>' + esc(q.a) + "</p></details></li>"; }).join("") + "</ol>" : "") +
       blk("Exit ticket", T.exit_ticket ? '<p class="lp-exit">' + esc(T.exit_ticket) + "</p>" : "") +
       blk("Every student in", (D.support || D.stretch || D.access) ? "<dl class=\"lp-dif\">" + (D.support ? "<dt>Support</dt><dd>" + esc(D.support) + "</dd>" : "") + (D.stretch ? "<dt>Stretch</dt><dd>" + esc(D.stretch) + "</dd>" : "") + (D.access ? "<dt>Access</dt><dd>" + esc(D.access) + "</dd>" : "") + "</dl>" : "") +
@@ -245,6 +266,10 @@
     }).join("") + "</ol>";
   }
   function tilesHTML(L) {
+    var us = unitsOf(L);
+    if (us.length) return '<nav class="lp-tiles lp-tiles-u" aria-label="The units of this lesson"><p class="lp-mini">' + us.length + " units · do one, or all " + us.length + '</p><ol>' + us.map(function (u, k) {
+      return '<li><a href="#' + lid(L, "unit-" + (k + 1)) + '"><span class="lp-tile-n">' + (k + 1) + '</span><span class="lp-tile-k">' + esc(u.minutes) + ' min</span><span class="lp-tile-t">' + esc(u.title) + "</span></a></li>";
+    }).join("") + "</ol></nav>";
     return '<nav class="lp-tiles" aria-label="In this lesson"><p class="lp-mini">In this lesson</p><ol>' + L.sections.map(function (s, i) {
       if (kindOf(s) === "next") return "";
       var t = tagOf(s); if (!s.title || s.title === t[0]) t = ["", ""];
@@ -263,7 +288,7 @@
       (L.hook ? '<p class="lp-hook">' + L.hook + "</p>" : "") + (chips ? '<ul class="lp-chips">' + chips + "</ul>" : "") + '<p class="lp-acts">' + acts + "</p></div>" +
       (fig ? '<div class="lp-hero-m">' + fig + "</div>" : "") + "</div></div></header>" + theatre +
       '<div class="lp-tilesband"><div class="lp-in">' + tilesHTML(L) + "</div></div>";
-    return stripHTML(L, o) + head + teachHTML(L) + '<div class="lp-body">' + L.sections.map(function (s, i) { return sectionHTML(s, L, o, i); }).join("") + "</div>";
+    return stripHTML(L, o) + head + teachHTML(L) + '<div class="lp-body">' + bodyHTML(L, o) + "</div>";
   }
 
   // ------------------------------------------------------------------ wiring

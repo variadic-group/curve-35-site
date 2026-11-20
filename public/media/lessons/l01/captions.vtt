@@ -1,121 +1,298 @@
 WEBVTT
 
 1
-00:00:00.450 --> 00:00:02.174
-This camera has no lens.
+00:00:00.550 --> 00:00:03.433
+Before the lens goes into your camera, try something.
 
 2
-00:00:04.550 --> 00:00:07.093
-No glass. No battery. No sensor.
+00:00:03.833 --> 00:00:05.236
+Put this in its place.
 
 3
-00:00:09.750 --> 00:00:12.451
-Just a hole, a quarter of a millimetre wide.
+00:00:05.236 --> 00:00:09.380
+A thin disc with a single hole, a quarter of a millimetre across.
 
 4
-00:00:13.150 --> 00:00:15.019
-So how does a hole make a picture?
+00:00:09.680 --> 00:00:10.339
+No glass.
 
 5
-00:00:19.550 --> 00:00:25.734
-Hold a piece of film up to a tree. Light from each point of the tree lands on every part of the film.
+00:00:10.339 --> 00:00:11.949
+Nothing to focus with.
 
 6
-00:00:30.350 --> 00:00:35.990
-So every part of the film sees the whole tree at once. All the light is there. The picture is not.
+00:00:12.399 --> 00:00:14.626
+Open the shutter, count, and close it.
 
 7
-00:00:39.550 --> 00:00:43.926
-Now put a wall with a small hole between them. Most of the light is stopped.
+00:00:14.626 --> 00:00:16.619
+And the film has caught a picture.
 
 8
-00:00:47.150 --> 00:00:54.001
-Each part of the film can see only one point of the tree: the one in line with the hole. That is all a picture is.
+00:00:17.419 --> 00:00:18.742
+So here's the question.
 
 9
-00:00:58.750 --> 00:01:07.142
-It is upside down, and left and right are swapped, because the rays cross in the hole. Move a point up the tree and its picture moves down.
+00:00:18.742 --> 00:00:20.469
+How can a hole make a picture?
 
 10
-00:01:13.350 --> 00:01:19.973
-People have known this for about 2,400 years. For most of them, nobody could make the picture stay.
+00:00:22.650 --> 00:00:26.103
+Most people guess that the hole acts like a tiny lens.
 
 11
-00:01:20.273 --> 00:01:32.478
-c. 400 BC. Mozi and his school, China. The oldest account that survives: light through a small hole makes an upside-down picture, because light travels in straight lines.
+00:00:26.103 --> 00:00:29.429
+That it bends the light, and squeezes it into focus.
 
 12
-00:01:32.778 --> 00:01:46.359
-c. 350 BC. Aristotle, or a follower, Greece. The book Problems asks why the spots of sunlight under a tree turn into crescents during an eclipse. Every gap between the leaves is a pinhole.
+00:00:29.929 --> 00:00:31.095
+It's a good guess.
 
 13
-00:01:47.683 --> 00:01:58.812
-c. 1021. Ibn al-Haytham. In his Book of Optics he tests it. Several lamps, one hole, a spot of light for each. Screen one lamp and only its spot goes out.
+00:00:31.095 --> 00:00:32.132
+It's also wrong.
 
 14
-00:01:59.417 --> 00:02:06.188
-How big should the hole be? A big hole is bright, but each point of the scene lands as a disc the size of the hole.
+00:00:32.632 --> 00:00:33.616
+A hole is a gap.
 
 15
-00:02:07.117 --> 00:02:11.854
-Make it smaller and the picture gets sharper, and dimmer: the exposure gets longer.
+00:00:33.616 --> 00:00:37.368
+There's no glass in it, and nothing to bend light to a focus.
 
 16
-00:02:21.117 --> 00:02:28.281
-For this camera, 28.7 mm from hole to film, the sharpest hole is about a quarter of a millimetre.
+00:00:37.968 --> 00:00:39.068
+So what does it do?
 
 17
-00:02:28.581 --> 00:02:34.147
-Smaller still and it gets worse again. Light spreads out as it squeezes through a tiny hole.
+00:00:40.950 --> 00:00:42.811
+Start with no camera at all.
 
 18
-00:02:37.781 --> 00:02:44.737
-So a pinhole has a best size. The picture can never be sharper than that, which is why a lens was worth inventing.
+00:00:42.811 --> 00:00:46.133
+Just a tree, and a sheet of film, out in the open.
 
 19
-00:02:47.383 --> 00:02:56.961
-1544. Gemma Frisius, Leuven. He watches an eclipse of the sun safely inside a dark room, and prints a picture of the room the year after.
+00:00:46.583 --> 00:00:50.046
+Every point on the tree scatters light in every direction.
 
 20
-00:02:57.261 --> 00:03:10.540
-1550 to 1568. Cardano, then Barbaro, Italy. Glass goes in the hole: first a glass disc, then a lens with a stop in front. The picture gets far brighter. That is lesson 2.
+00:00:50.446 --> 00:00:54.040
+So light from the top of the tree lands all over the film.
 
 21
-00:03:10.840 --> 00:03:19.732
-1604. Johannes Kepler. He is the first to use the name camera obscura: Latin for dark room. Our word camera simply means room.
+00:00:54.040 --> 00:00:56.146
+And so does light from the bottom.
 
 22
-00:03:20.650 --> 00:03:29.305
-The price of sharpness is light. A hole a quarter of a millimetre wide passes about seventy times less light than a hole of two millimetres.
+00:00:56.546 --> 00:01:00.487
+Every spot on the film gets light from every part of the tree.
 
 23
-00:03:31.450 --> 00:03:38.652
-So the camera stands on something steady. You lift the slide, count, and push it down. That count is the exposure.
+00:01:00.487 --> 00:01:03.030
+Add it all up, and you get an even glow.
 
 24
-00:03:47.050 --> 00:04:01.135
-1826 or 1827. Nicéphore Niépce, France. He puts a light-sensitive plate where the picture falls and waits: eight hours by tradition, perhaps days. It is the oldest camera photograph that survives.
+00:01:03.530 --> 00:01:05.710
+The light for a picture is all there.
+
+25
+00:01:05.710 --> 00:01:07.301
+It's just completely mixed.
 
 26
-00:04:11.450 --> 00:04:19.068
-No lens, no shutter, no dial. Take a picture with nothing but a hole. The lens comes next, and you will know what it is for.
+00:01:08.583 --> 00:01:11.677
+Now put a wall in the way, with one small hole in it.
 
 27
-00:04:23.750 --> 00:04:29.314
-So how does a hole make a picture? It lets each part of the film see only one point of the world.
+00:01:12.277 --> 00:01:13.925
+Before I show you, decide.
 
 28
-00:04:29.614 --> 00:04:36.611
-Look. On a sunny day, stand under a leafy tree. Every round spot of light on the ground is a picture of the sun.
+00:01:13.925 --> 00:01:15.509
+What happens on the film?
 
 29
-00:04:36.911 --> 00:04:43.551
-Try. A box, a pin, a piece of tracing paper. Point the hole at a window and look at the paper from behind.
+00:01:19.009 --> 00:01:24.534
+From the top of the tree, the wall stops every ray except the one lined up with the hole.
 
 30
-00:04:43.851 --> 00:04:49.028
-Next, lesson two: why a lens? The same picture, far brighter, and what it costs.
+00:01:24.534 --> 00:01:28.135
+That ray goes straight through, and lands low on the film.
 
 31
-00:04:49.351 --> 00:04:55.678
-Every picture in this film is drawn or simulated from the model. The camera has not been printed yet.
+00:01:28.585 --> 00:01:32.137
+From the bottom of the tree, one ray gets through as well.
+
+32
+00:01:32.137 --> 00:01:32.994
+It lands high.
+
+33
+00:01:33.494 --> 00:01:37.193
+Now each part of the tree has its own spot on the film.
+
+34
+00:01:37.193 --> 00:01:38.403
+That is a picture.
+
+35
+00:01:38.403 --> 00:01:41.631
+Upside down, because the rays cross at the hole.
+
+36
+00:01:42.331 --> 00:01:44.167
+And notice what the hole did.
+
+37
+00:01:44.167 --> 00:01:45.244
+It added nothing.
+
+38
+00:01:45.244 --> 00:01:49.296
+It took away almost all of the light, and what's left is sorted.
+
+39
+00:01:51.350 --> 00:01:53.851
+If that's really how it works, you can test it.
+
+40
+00:01:54.251 --> 00:01:57.581
+About a thousand years ago, Ibn al-Haytham did.
+
+41
+00:01:57.581 --> 00:02:02.469
+Several lamps in a row, one small opening, and a dark room behind it.
+
+42
+00:02:02.969 --> 00:02:07.757
+If light goes straight through the opening, how many spots land on the far wall?
+
+43
+00:02:07.757 --> 00:02:08.834
+And in what order?
+
+44
+00:02:12.134 --> 00:02:15.330
+One spot for each lamp, in the opposite order.
+
+45
+00:02:15.330 --> 00:02:18.386
+Cover one lamp, and only its spot goes dark.
+
+46
+00:02:18.986 --> 00:02:22.145
+Each lamp's light keeps to its own straight line.
+
+47
+00:02:22.145 --> 00:02:24.272
+Nothing mixes, and nothing bends.
+
+48
+00:02:26.150 --> 00:02:28.370
+So why isn't every camera just a hole?
+
+49
+00:02:28.370 --> 00:02:30.707
+Because of a trade you can't get out of.
+
+50
+00:02:31.207 --> 00:02:34.055
+Make the hole bigger, and more light gets in.
+
+51
+00:02:34.055 --> 00:02:39.055
+But now each point of the tree paints a blob, not a dot, and the blobs overlap.
+
+52
+00:02:39.055 --> 00:02:40.511
+Brighter, and blurrier.
+
+53
+00:02:41.011 --> 00:02:43.520
+Make it smaller, and the picture sharpens.
+
+54
+00:02:43.520 --> 00:02:44.356
+Up to a point.
+
+55
+00:02:44.856 --> 00:02:49.630
+Squeeze light through a tiny enough hole, and it spreads out on the far side.
+
+56
+00:02:49.630 --> 00:02:51.366
+The picture goes soft again.
+
+57
+00:02:51.966 --> 00:02:53.878
+So there's a best size.
+
+58
+00:02:53.878 --> 00:02:57.952
+For this camera it works out at 0.24 millimetres.
+
+59
+00:02:57.952 --> 00:03:01.278
+The disc in your kit is drilled at 0.25.
+
+60
+00:03:03.150 --> 00:03:04.993
+And here's what that costs.
+
+61
+00:03:04.993 --> 00:03:10.589
+The smallest opening your camera's lens ever uses is about two millimetres across.
+
+62
+00:03:10.589 --> 00:03:13.934
+The pinhole lets in sixty-seven times less light.
+
+63
+00:03:14.534 --> 00:03:16.237
+So you don't click the shutter.
+
+64
+00:03:16.237 --> 00:03:17.720
+You open it, and you count.
+
+65
+00:03:18.220 --> 00:03:20.044
+In full sun: open, shut.
+
+66
+00:03:20.044 --> 00:03:22.249
+In the shade, count to three.
+
+67
+00:03:22.249 --> 00:03:24.985
+Indoors by a window, count to forty.
+
+68
+00:03:26.950 --> 00:03:29.525
+That's the pinhole experiment in your kit.
+
+69
+00:03:29.525 --> 00:03:32.161
+Two pictures, made with nothing but a hole.
+
+70
+00:03:32.761 --> 00:03:34.795
+But it leaves you with a problem.
+
+71
+00:03:34.795 --> 00:03:38.492
+A sharp picture needs a small hole, and a small hole is dim.
+
+72
+00:03:38.992 --> 00:03:43.326
+What if you could keep the big, bright opening, and get the sharp picture too?
+
+73
+00:03:44.026 --> 00:03:46.845
+That's the job of the piece that goes in next.
+
+74
+00:03:46.845 --> 00:03:47.397
+The lens.
+
