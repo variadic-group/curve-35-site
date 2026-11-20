@@ -206,10 +206,10 @@
   function price(p) { return p.price_usd === 0 ? "Free" : typeof p.price_usd === "number" ? money(p.price_usd) : p.price_text; }
   function basketItems() { var b = loadBasket(); return Object.keys(b).filter(function (id) { return PROD[id] && PROD[id].basket && b[id] > 0; }).map(function (id) { return { p: PROD[id], q: Math.min(99, Math.floor(b[id])) }; }); }
   function countBasket() {
-    var n = basketItems().reduce(function (a, i) { return a + i.q; }, 0), el = document.getElementById("basket-count"), btn = document.getElementById("basket-open");
+    var n = basketItems().reduce(function (a, i) { return a + i.q; }, 0), el = document.getElementById("basket-count"), btn = document.getElementById("basket-open"), buy = document.getElementById("top-buy");
     if (el) el.textContent = String(n);
-    var ti = document.querySelector(".top-in"); if (ti) ti.classList.toggle("has-basket", !!n);
     if (btn) { btn.hidden = !n; btn.setAttribute("aria-label", "Basket: " + n + (n === 1 ? " item" : " items")); }
+    if (buy) buy.hidden = !!n;                       // one orange button in the bar: "Buy the kit" until something is in the basket, then the basket itself
     return n;
   }
   function addToBasket(id) { var b = loadBasket(); b[id] = Math.min(99, (b[id] || 0) + 1); saveBasket(b); }
@@ -223,7 +223,7 @@
           '<div class="qty" role="group" aria-label="How many: ' + esc(i.p.name) + '"><button type="button" data-dec="' + i.p.id + '" aria-label="One fewer ' + esc(i.p.name) + '">&minus;</button><output aria-live="polite">' + i.q + '</output><button type="button" data-inc="' + i.p.id + '" aria-label="One more ' + esc(i.p.name) + '">+</button></div>' +
           '<div class="lsub"><span class="tnum">' + money(i.p.price_usd * i.q) + '</span><button type="button" class="linkbtn" data-del="' + i.p.id + '">Remove</button></div></li>';
       }).join("") + "</ul>" +
-      '<p class="tot"><span>Total</span><span class="tnum">' + money(total) + '</span></p><p class="note">Before postage and tax.</p>' +
+      '<p class="tot"><span>Total</span><span class="tnum">' + money(total) + '</span></p><p class="note">Before postage and tax. <a href="#store" data-close>Add something else</a></p>' +
       (PAY.state === "on"
         ? '<button type="button" class="btn main wide-btn" id="pay">Checkout</button>' +
           '<p class="note order-note" id="pay-note">Card payment by Stripe. Postage and tax are shown before you pay.</p>' +
@@ -437,7 +437,7 @@
       '<div class="hero-pic"><span class="hero-stk" aria-hidden="true"><span class="stk stk-o">Real film!</span></span><div class="frame h3d" id="h3d">' + img(PIC.hero, heroAlt, ' class="h3d-still" width="1200" height="900" fetchpriority="high" loading="eager"').replace(' class="r"', "").replace(' loading="lazy"', "") + "</div></div></div></section>" +
       // WHAT'S IN THE BOX: the one kit block on the page
       '<section class="kitbox" aria-labelledby="kb-h"><div class="wrap kitbox-in"><div class="kb-pic frame">' + img(PIC.plan_parts, "Everything in the box laid out: black body, grey back, orange front plate, teal shutter, yellow wheel, red spool, green knob, blue frame wheel, lens, pinhole ring and disc, and a roll of film", ' width="1200" height="900"') + "</div>" +
-      '<div class="kb-t"><p class="kb-k">What&rsquo;s in the box</p><h2 id="kb-h">The starter kit' + (sp ? ' <span class="kb-price tnum">' + esc(sp) + "</span>" : "") + "</h2>" +
+      '<div class="kb-t"><h2 id="kb-h">The starter kit' + (sp ? ' <span class="kb-price tnum">' + esc(sp) + "</span>" : "") + "</h2>" +
       '<ul class="kb-list">' + kitList.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>" +
       '<p class="kb-act">' + (addBtn(S, "main big", "Add to basket") || '<a class="btn main big" href="#store">See the kit</a>') + '<a class="kb-more" href="#store">Check out the shop</a></p></div></div></section>' +
       // HOW IT WORKS: four pictures, one line each
@@ -450,15 +450,19 @@
       explodeSection() +
       // FOUR FACTS: each one said nowhere else on this page (canon/facts.yaml).  The same four cards and the same words on every screen (v13)
       '<section class="guide" aria-labelledby="gd-h"><div class="wrap"><h2 id="gd-h">Small camera, big numbers.</h2>' +
-      '<dl class="bns"><div class="bn-y"><dt>' + esc(factSay("shutter_speed", "1/322 s")) + '</dt><dd><span class="bn-l">how long the shutter stays open</span><span class="bn-s">shutter</span></dd></div>' +
-      '<div class="bn-b"><dt class="bn-sm">' + dots.map(esc).join(" &middot; ") + '</dt><dd><span class="bn-l">three dots on one wheel set how much light gets in</span><span class="bn-s">three dots for the light</span></dd></div>' +
-      '<div class="bn-g"><dt>' + esc(factSay("light_rays", "69 million")) + '</dt><dd><span class="bn-l">light rays traced at the closed camera. None got in.</span><span class="bn-s">light rays tried. None got in.</span></dd></div>' +
-      '<div class="bn-o"><dt>' + esc(factSay("print_hours", "9.4 hours")) + '</dt><dd><span class="bn-l">to print every part on your own 3D printer</span><span class="bn-s">to print your own</span></dd></div></dl></div></section>' +
+      '<dl class="bns"><div class="bn-y"><dt>' + esc(factSay("shutter_speed", "1/322 s")) + '</dt><dd>shutter</dd></div>' +
+      '<div class="bn-b"><dt class="bn-sm">' + dots.map(esc).join(" &middot; ") + '</dt><dd>three dots for the light</dd></div>' +
+      '<div class="bn-g"><dt>' + esc(factSay("light_rays", "69 million")) + '</dt><dd>light rays tried. None got in.</dd></div>' +
+      '<div class="bn-o"><dt>' + esc(factSay("print_hours", "9.4 hours")) + '</dt><dd>to print your own</dd></div></dl></div></section>' +
       // LESSONS: a carousel of colourful tiles
       '<section class="learn" aria-labelledby="ln-h"><div class="wrap"><div class="learn-head"><h2 id="ln-h">Nine lessons. Nine questions.</h2>' +
       '<a class="btn" href="#lessons">All lessons</a></div>' + lessonCarousel() + "</div></section>" +
       // PROGRAMS, OPEN FILES, BUILDS: one line
-      '<nav class="strip1" aria-label="More"><div class="wrap"><p><a href="#programs">Programs for classes</a><a href="#open-files">Open files</a><a href="#builds">Builds and remixes</a><a href="#teachers">For teachers</a></p></div></nav>' +
+      '<nav class="more3" aria-label="More"><div class="wrap"><ul class="m3">' +
+      '<li class="m3-y"><a href="#programs"><strong>Programs for classes</strong><span>Homeschool, a class, a summer week or a weekend workshop.</span></a></li>' +
+      '<li class="m3-g"><a href="#open-files"><strong>Open files</strong><span>Every part is code. Read it, change it, print it.</span></a></li>' +
+      '<li class="m3-p"><a href="#builds"><strong>Builds and remixes</strong><span>Built one or changed one? Show us.</span></a></li>' +
+      '<li class="m3-b"><a href="#teachers"><strong>For teachers</strong><span>A 50-minute plan and slides for every lesson. Free.</span></a></li></ul></div></nav>' +
       // LAST CALL
       '<section class="final" aria-labelledby="fn-h"><div class="wrap final-in"><div><h2 id="fn-h">Build a camera this week.</h2><p class="final-win">Or print it free.</p></div>' +
       '<div class="final-act"><a class="btn ink big" href="#store">Buy the kit</a><a class="btn big alt" href="#files">Print your own</a></div></div></section></div>';

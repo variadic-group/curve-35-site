@@ -110,8 +110,8 @@ img.r { mix-blend-mode: multiply; }
 .nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--tang); }
 .top-act { display: flex; align-items: center; gap: 10px; }
 .top-cta { padding: 10px 16px; }
-.basket-btn, .menu-btn, .so-x { background: #fff; border: var(--line); border-radius: 10px; height: 40px; min-width: 40px; display: inline-flex; align-items: center; justify-content: center; gap: 4px; padding: 0 10px; cursor: pointer; color: var(--ink); }
-.basket-btn svg, .menu-btn svg, .so-x svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.menu-btn, .so-x { background: #fff; border: var(--line); border-radius: 10px; height: 40px; min-width: 40px; display: inline-flex; align-items: center; justify-content: center; gap: 4px; padding: 0 10px; cursor: pointer; color: var(--ink); }
+.menu-btn svg, .so-x svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .badge { display: inline-block; min-width: 1.4em; padding: 2px 5px; border-radius: 999px; background: var(--ink); color: #fff; font: 600 0.75rem/1.2 var(--sans); text-align: center; }
 .menu-btn { display: none; }
 .nav-more { display: none; list-style: none; margin: 0; padding: 4px 24px 12px; border-top: 1px solid var(--rule); background: var(--cream); }
@@ -579,7 +579,7 @@ mark { background: #FFE0C7; color: inherit; }
   .nav { gap: 14px; font-size: 0.9rem; }
   .top-act { gap: 6px; }
   .top-cta { padding: 9px 11px; font-size: 0.88rem; }
-  .basket-btn, .menu-btn { height: 38px; min-width: 38px; padding: 0 8px; }
+  .menu-btn { height: 38px; min-width: 38px; padding: 0 8px; }
   .pagehead { padding: 36px 0 26px; }
   .stk { font-size: 0.85rem; padding: 7px 10px 8px; }
   .hero .ctas .btn { width: 100%; }
@@ -1568,7 +1568,7 @@ tr.here, li.here { outline-offset: 2px; }
   .steps4 li { padding: 8px 8px 10px; }
   .steps4 h3 { font-size: 0.95rem; }
   .steps4 p { font-size: 0.82rem; }
-  .home .more3 { padding: 40px 0 44px; }
+  .home .more3 { padding: 24px 0 32px; }
   .m3 { grid-template-columns: minmax(0, 1fr); gap: 8px; }
   .m3 a { padding: 10px 14px; }
   .m3 span { font-size: 0.88rem; }
@@ -1629,7 +1629,6 @@ tr.here, li.here { outline-offset: 2px; }
 .kitbox-in { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 48px; align-items: center; }
 .kb-pic { background: #fff; border: var(--line); border-radius: 18px; box-shadow: var(--sh); overflow: hidden; }
 .kb-pic img { display: block; width: 100%; height: auto; }
-.kb-k { font: 800 0.85rem/1 var(--sans); letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 10px; color: var(--orange-ink); }
 .kitbox h2 { margin: 0 0 16px; font-size: clamp(2rem, 1.4rem + 2vw, 3rem); display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 18px; }
 .kb-price { background: var(--tang); border: var(--line); border-radius: 12px; padding: 4px 12px 6px; box-shadow: 3px 3px 0 var(--ink); transform: rotate(-3deg); display: inline-block; font-size: 0.8em; }
 .kb-list { list-style: none; padding: 0; margin: 0 0 24px; font-weight: 600; }
@@ -1657,12 +1656,6 @@ tr.here, li.here { outline-offset: 2px; }
 .home .learn { padding: 56px 0 60px; }
 .home .learn-head { margin-bottom: 20px; }
 
-.home .guide { padding: 56px 0 60px; }
-.bns dt.bn-sm { font-size: clamp(1.5rem, 1.1rem + 1vw, 2rem); letter-spacing: -0.02em; }
-
-.strip1 { padding: 22px 0; border-top: var(--line); background: #fff; }
-.strip1 p { margin: 0; display: flex; flex-wrap: wrap; gap: 8px 28px; justify-content: center; font-weight: 700; }
-
 @media (max-width: 860px) {
   .kitbox-in { grid-template-columns: 1fr; gap: 28px; }
   .lcar-track { grid-auto-columns: minmax(240px, 72%); }
@@ -1676,10 +1669,8 @@ tr.here, li.here { outline-offset: 2px; }
   .lcar-track { margin: 0 -20px; padding: 6px 20px 16px; scroll-padding: 0 20px; grid-auto-columns: 78%; gap: 14px; }
   .lcar-nav { display: none; }
   .home .learn-head { align-items: center; }
-  .strip1 p { justify-content: flex-start; gap: 6px 18px; }
 }
 @media (prefers-reduced-motion: reduce) { .ltile, .ltile:hover { transition: none; transform: none; } }
-@media (max-width: 600px) { .bns dt { font-size: 1.9rem; } .bns dt.bn-sm { font-size: 1.3rem; } }
 
 /* ================================================================ store v11: the products first; the rest as compact rows */
 .kcam { margin-top: 26px; display: grid; grid-template-columns: 180px minmax(0, 1fr) auto; gap: 24px; align-items: center; background: #fff; border: var(--line); border-radius: 20px; box-shadow: var(--sh); padding: 16px 24px 16px 16px; scroll-margin-top: 24px; }
@@ -1760,25 +1751,22 @@ html { overflow-x: clip; }
 .kb-pic img, .ks-pic img { mix-blend-mode: normal; }
 .kb-act { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; margin: 0; }
 .kb-more { font-weight: 700; }
-.bns .bn-s { display: none; }                                      /* the chip's few words; a card shows the sentence (.bn-l) */
 .home .plan { border-bottom: 0; }                                /* the viewer's own line follows */
 .home .learn { border-top: var(--line); }
-/* The four numbers in the hand (a phone, a tablet held upright): small coloured chips that close the viewer's section, a few words each (.bn-s).
-   On a desk and a tablet on its side they are the four big cards with the whole sentence (.bn-l). */
-@media (max-width: 860px) {
-  .home .x3 { border-bottom: 0; padding-bottom: 8px; }
-  .home .guide { background: var(--paper-3); border-top: 0; padding: 10px 0 46px; }
-  .home .guide h2 { font: 800 0.8rem/1.2 var(--sans); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2); margin: 0 0 14px; }
-  .home .bns { display: flex; flex-wrap: wrap; gap: 14px 13px; margin: 0; }
-  .home .bns div { display: flex; align-items: baseline; gap: 9px; border-width: 2px; border-radius: 12px; box-shadow: 3px 3px 0 var(--ink); padding: 9px 14px 10px; min-width: 0; }
-  .home .bns div:nth-child(odd) { transform: rotate(-1.4deg); }
-  .home .bns div:nth-child(even) { transform: rotate(1.1deg); }
-  .home .bns dt, .home .bns dt.bn-sm { font-size: 1.3rem; line-height: 1.15; letter-spacing: -0.01em; }
-  .home .bns dd { margin: 0; font-size: 0.98rem; font-weight: 600; line-height: 1.2; }
-  .home .bns .bn-l { display: none; }
-  .home .bns .bn-s { display: inline; }
-  .home .learn { border-top: var(--line); }
-}
+/* The four numbers are small coloured chips on every screen: one line each, a number and a few words, a little tilted, closing the viewer's section under a
+   small heading.  The owner chose them over four big cards twice (v14 for the hand, v15 for the desk as well); site/mobilecheck.py fails if they are cards. */
+.home .x3 { border-bottom: 0; padding-bottom: 8px; }
+.home .guide { background: var(--paper-3); border-top: 0; padding: 10px 0 48px; }
+.home .guide h2 { font: 800 0.8rem/1.2 var(--sans); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2); margin: 0 0 14px; }
+.home .bns { display: flex; flex-wrap: wrap; gap: 14px 13px; margin: 0; }
+.home .bns div { display: flex; align-items: baseline; gap: 9px; border-width: 2px; border-radius: 12px; box-shadow: 3px 3px 0 var(--ink); padding: 9px 14px 10px; min-width: 0; }
+.home .bns div:nth-child(odd) { transform: rotate(-1.4deg); }
+.home .bns div:nth-child(even) { transform: rotate(1.1deg); }
+.home .bns dt, .home .bns dt.bn-sm { font-size: 1.3rem; line-height: 1.15; letter-spacing: -0.01em; }
+.home .bns dd { margin: 0; font-size: 0.98rem; font-weight: 600; line-height: 1.2; }
+.home .learn { border-top: var(--line); }
+.top-basket { gap: 7px; }                                           /* the bar's one orange button, once something is in the basket */
+.top-basket .badge { font-size: 0.78rem; margin: -3px 0; }             /* the count must not make this button taller than "Buy the kit" */
 @media (max-width: 600px) {
   .phone-only { display: block; }
   .mainnav { display: none; }                                   /* the logo with its name, the kit, the menu: Start here is the menu's first line */
@@ -1801,7 +1789,6 @@ html { overflow-x: clip; }
   .home .kitbox-in { gap: 16px; }
   .home .kb-pic img { max-height: clamp(170px, calc(100svh - 390px), 270px); object-fit: contain; }   /* on a short screen the picture gives way, so the list and the button stay on the screen */
   .route-store .ks-pic img { max-height: clamp(150px, calc(100svh - 380px), 250px); }
-  .home .kb-k { margin-bottom: 8px; }
   .home .kitbox h2 { font-size: 1.85rem; margin-bottom: 8px; }
   .home .kb-list { margin-bottom: 14px; font-size: 0.94rem; line-height: 1.4; }
   .home .kb-list li { padding: 4px 0 4px 28px; }
@@ -1842,7 +1829,6 @@ html { overflow-x: clip; }
   .home .learn-head { margin-bottom: 14px; }
   .home .learn-head h2 { font-size: 1.6rem; }
 
-  .home .strip1 { display: none; }
 
   .home .final { padding: 30px 0 34px; }
   .home .final-in { grid-template-columns: minmax(0, 1fr); gap: 16px; }
@@ -1855,7 +1841,7 @@ html { overflow-x: clip; }
   .brand { font-size: 0.95rem; gap: 5px; }
   .top-act { gap: 5px; }
   .top-cta { padding: 9px 8px; font-size: 0.82rem; }
-  .basket-btn, .menu-btn { min-width: 36px; padding: 0 6px; }
+  .menu-btn { min-width: 36px; padding: 0 6px; }
 }
 /* a short phone screen (an iPhone SE shows 548 px, the 2016 one 454): the hero's words give a little so the buttons stay in reach */
 @media (max-width: 600px) and (max-height: 500px) {
