@@ -125,7 +125,7 @@
     var resetB = H.el("button", { type: "button", "class": "mk-btn" }, bs, "Reset");
     var snd = H.seg(ctl2, "Sound", [[1, "click on"], [0, "off"]], 1);
     var read = H.el("div", { "class": "mk-read" }, r);
-    var nTip = H.num(read, "tip bent sideways"), nStr = H.num(read, "stretch at the root (strain)"), nF = H.num(read, "push needed now"), nPk = H.num(read, "hardest push on the way");
+    var nTip = H.num(read, "tip bent sideways"), nStr = H.num(read, "stretch at the root (strain)"), nF = H.num(read, "push needed now"), nPk = H.num(read, "most force on the way");
     var say = H.el("p", { "class": "mk-say", "aria-live": "polite" }, r);
 
     // geometry of the ramp along the travel s (mm)
@@ -343,7 +343,7 @@
   function T(x, y, s, o) { o = o || {}; return '<text x="' + x + '" y="' + y + '" font-size="' + (o.size || 15) + '" font-weight="' + (o.w || 600) + '" fill="' + (o.fill || "#2D2A26") + '"' + (o.anchor ? ' text-anchor="' + o.anchor + '"' : "") + ">" + s + "</text>"; }
 
   CURVE.fig("fig_m02_nine", function () {
-    var parts = [["body", "#3b3936", "r"], ["back", "#c9cdcf", "r"], ["front plate", "#D9601A", "r"], ["shutter", "#1aa39a", "s"], ["dot wheel", "#f2c230", "c"], ["spool", "#d6301f", "c"], ["wind knob", "#2fa84f", "c"], ["frame wheel", "#2f6fe0", "c"], ["lens", "#9fd3e6", "l"]];
+    var parts = [["body", "#3b3936", "r"], ["back", "#c9cdcf", "r"], ["front plate", "#D9601A", "r"], ["shutter", "#1aa39a", "s"], ["dot wheel", "#f2c230", "c"], ["spool", "#d6301f", "c"], ["green winder", "#2fa84f", "c"], ["frame wheel", "#2f6fe0", "c"], ["lens", "#9fd3e6", "l"]];
     var b = "";
     parts.forEach(function (p, i) {
       var x = 40 + (i % 5) * 136, y = i < 5 ? 40 : 170;
@@ -354,7 +354,7 @@
       b += T(x, y + 86, p[0], { anchor: "middle", size: 14 });
     });
     b += '<g transform="translate(560,190)"><circle r="40" fill="none" stroke="#c0392b" stroke-width="5"/><line x1="-28" y1="28" x2="28" y2="-28" stroke="#c0392b" stroke-width="5"/>' + T(0, 5, "screws", { anchor: "middle", size: 13 }) + "</g>";
-    return S(680, 290, "The nine pieces of the camera: body, back, front plate, shutter, dot wheel, spool, wind knob, frame wheel and lens. No screws.", b);
+    return S(680, 290, "The nine pieces of the camera: body, back, front plate, shutter, dot wheel, spool, green winder, frame wheel and lens. No screws.", b);
   });
 
   CURVE.fig("fig_m02_catch", function () {

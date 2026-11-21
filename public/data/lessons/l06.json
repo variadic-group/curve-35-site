@@ -23,7 +23,7 @@
     "It guesses, and the lab sorts it out"
    ],
    "answer": 1,
-   "reveal": "<p><strong>It measures the film.</strong> Counting turns can't work, and the next experiment shows why: film winds onto a roll, the roll gets fatter, and a fatter roll swallows more film per turn. By the model, one turn of the red spool takes in about <strong>37 mm</strong> when it is nearly empty and about <strong>63 mm</strong> when it is full. Same winder, same turn, wildly different lengths.</p>"
+   "reveal": "<p><strong>It measures the film.</strong> Counting turns can't work, and the next experiment shows why: film winds onto a roll, the roll gets thicker, and a thicker roll takes in more film per turn. By the model, one turn of the red spool takes in about <strong>37 mm</strong> when it is nearly empty and about <strong>63 mm</strong> when it is full. Same winder, same turn, wildly different lengths.</p>"
   },
   {
    "id": "why",
@@ -123,7 +123,7 @@
     "Plot the gaps on squared paper: turn number across, gap up.",
     "Do it again on the marker and plot that line too."
    ],
-   "notice": "The gaps grow steadily, faster on the fat marker. If each mark were a picture, the pictures would drift apart. That's why the camera counts holes."
+   "notice": "The gaps grow steadily, faster on the thick marker. If each mark were a picture, the pictures would drift apart. That's why the camera counts holes."
   },
   {
    "id": "quiz",
@@ -139,7 +139,7 @@
       "Turns are too hard to count"
      ],
      "answer": 1,
-     "why": "A fatter roll takes in more film per turn. On the red spool, by the model, about 37 mm per turn empty and 63 mm full."
+     "why": "A thicker roll takes in more film per turn. On the red spool, by the model, about 37 mm per turn empty and 63 mm full."
     },
     {
      "q": "How many of the film's holes make one picture?",
@@ -338,7 +338,7 @@
   ],
   "questions": [
    {
-    "q": "If the roll gets fatter, does one turn move more film or less?",
+    "q": "If the roll gets thicker, does one turn move more film or less?",
     "a": "More: the distance round is bigger."
    },
    {

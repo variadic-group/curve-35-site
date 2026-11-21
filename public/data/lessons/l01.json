@@ -72,7 +72,7 @@
     {
      "sim": "l01_hole",
      "intro": "So why not make the hole as small as possible? Or as big as one of your camera's dots? Slide it and find out. The picture is simulated from your camera's numbers: 28.9 mm from hole to film.",
-     "after": "A big hole blurs because each point lands as a disc the size of the hole: slide to 1.96 mm, the small dot, and the picture is mush. A tiny hole blurs because light spreads out after squeezing through it (diffraction). The best hole sits between them: 0.24 mm."
+     "after": "A big hole blurs because each point lands as a disc the size of the hole: slide to 1.96 mm, the small dot, and the picture is mush. A tiny hole blurs because light spreads out after passing through it (diffraction). The best hole sits between them: 0.24 mm."
     }
    ]
   },

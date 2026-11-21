@@ -647,7 +647,7 @@
    },
    "img": "media/img/step_b1.webp",
    "clip": "media/clips/b1.mp4",
-   "dur": 22.31,
+   "dur": 23.7,
    "terms": [],
    "model": {
     "in": [
@@ -667,12 +667,12 @@
    "sec": "BUILD",
    "n": 2,
    "title": "Green winder in",
-   "do": "Slide the green winder into the slot on the left.",
+   "do": "Fit the green winder into the slot on the left.",
    "check": "It turns. It only comes out backwards.",
    "mistake": null,
    "fix": null,
    "why": "This winder will turn the film's own spool. Its forked end fits over a bar inside the film.",
-   "narration": "Step two. Slide the green winder into the slot on the left. Give it a turn. It turns, and it only comes out backwards. This winder will turn the film's own spool: its forked end fits over a bar inside the film. So the green winder winds each picture back into the film's shell, and the red winder is where the film starts.",
+   "narration": "Step two. Fit the green winder into the slot on the left. Give it a turn. It turns, and it only comes out backwards. This winder will turn the film's own spool: its forked end fits over a bar inside the film. So the green winder winds each picture back into the film's shell, and the red winder is where the film starts.",
    "parts": [
     {
      "id": "knob",
@@ -688,7 +688,7 @@
    },
    "img": "media/img/step_b2.webp",
    "clip": "media/clips/b2.mp4",
-   "dur": 12.8,
+   "dur": 13.21,
    "terms": [],
    "model": {
     "in": [
@@ -712,9 +712,9 @@
    "do": "Lay the back down, inside up. Hold the blue frame wheel with its dial just past the edge of the back. Lay its neck in the fork, then slide it toward the long round post until its teeth touch the end of the post.",
    "check": "The wheel turns freely. It does not lift out of the fork.",
    "mistake": "If it lifts out.",
-   "fix": "It was not slid home: slide it 3 mm toward the edge, press it down into the fork, slide it back.",
+   "fix": "It was not all the way home: move it 3 mm toward the edge, press it down into the fork, and move it back.",
    "why": "The film will turn this wheel: its eight teeth sit in the holes along the film's top edge, and one turn of the dial is one picture. Below the wheel, the film slides round the post.",
-   "narration": "Step three. Lay the back down, inside up. Hold the blue frame wheel with its dial just past the edge. Lay its neck in the fork, then slide it toward the long round post until its teeth touch the end of the post. The wheel turns freely, and it does not lift out. If it does lift out, it was not slid home: slide it toward the edge, press it down into the fork, and slide it back.",
+   "narration": "Step three. Lay the back down, inside up. Hold the blue frame wheel with its dial just past the edge. Lay its neck in the fork, then slide it toward the long round post until its teeth touch the end of the post. The wheel turns freely, and it does not lift out. If it does lift out, it was not all the way home: move it toward the edge, press it down into the fork, and move it back.",
    "parts": [
     {
      "id": "back",
@@ -734,7 +734,7 @@
    },
    "img": "media/img/step_b3.webp",
    "clip": "media/clips/b3.mp4",
-   "dur": 29.01,
+   "dur": 30.4,
    "terms": [
     "frame-wheel"
    ],
@@ -787,7 +787,7 @@
    },
    "img": "media/img/step_b4.webp",
    "clip": "media/clips/b4.mp4",
-   "dur": 20.8,
+   "dur": 21.91,
    "terms": [
     "light-trap",
     "snap-fit"
@@ -839,7 +839,7 @@
    },
    "img": "media/img/step_b5.webp",
    "clip": "media/clips/b5.mp4",
-   "dur": 24.41,
+   "dur": 25.41,
    "terms": [
     "shutter"
    ],
@@ -899,7 +899,7 @@
    },
    "img": "media/img/step_b6.webp",
    "clip": "media/clips/b6.mp4",
-   "dur": 16.51,
+   "dur": 17.3,
    "terms": [
     "aperture"
    ],
@@ -959,7 +959,7 @@
    },
    "img": "media/img/step_b7.webp",
    "clip": "media/clips/b7.mp4",
-   "dur": 23.4,
+   "dur": 24.32,
    "terms": [],
    "model": {
     "in": [
@@ -1019,7 +1019,7 @@
    },
    "img": "media/img/step_b8.webp",
    "clip": "media/clips/b8.mp4",
-   "dur": 17.6,
+   "dur": 18.3,
    "terms": [],
    "model": {
     "in": [
@@ -1079,7 +1079,7 @@
    },
    "img": "media/img/step_b9.webp",
    "clip": "media/clips/b9.mp4",
-   "dur": 18.0,
+   "dur": 18.9,
    "terms": [
     "snap-fit"
    ],
@@ -1130,7 +1130,7 @@
    },
    "img": "media/img/step_b10.webp",
    "clip": "media/clips/b10.mp4",
-   "dur": 15.7,
+   "dur": 19.11,
    "terms": [
     "lens"
    ],
@@ -1164,7 +1164,7 @@
    "mistake": null,
    "fix": null,
    "why": "Do this in the shade, never in bright sun.",
-   "narration": "Loading the film. Find some shade first: never do this in bright sun. Pinch the two pads, top and bottom, and lift the back off. The blue frame wheel comes away with the back, so lay the back down somewhere safe, inside up. From here until the back is closed again, keep the film out of the sun. Next, the green winder goes into the film.",
+   "narration": "Loading the film. Find some shade first: never do this in bright sun. Pinch the two pads, top and bottom, and lift the back off. The blue frame wheel comes away with the back, so lay the back down somewhere safe, inside up. From here until the back is closed again, keep the film out of the sun. Next, the green winder is fitted to the film.",
    "parts": [],
    "lesson": "l07",
    "short": "f1",
@@ -1175,7 +1175,7 @@
    },
    "img": "media/img/step_f1.webp",
    "clip": "media/clips/f1.mp4",
-   "dur": 9.92,
+   "dur": 10.41,
    "terms": [],
    "model": {
     "in": [
@@ -1211,12 +1211,12 @@
    "sec": "FILM IN",
    "n": 2,
    "title": "Fit the winder to the film",
-   "do": "Slide the green winder out. Push its forked end into the hollow end of the film.",
+   "do": "Take the green winder out. Fit its fork over the bar in the open end of the film.",
    "check": "Turning the winder turns the spool inside the film.",
    "mistake": "Wrong end?",
    "fix": "The other end of the film has a peg sticking out.",
    "why": "The fork straddles a bar inside the film's spool.",
-   "narration": "Slide the green winder out of the camera. Push its forked end into the hollow end of the film. Now turn the winder: the spool inside the film turns with it. Wrong end? The other end of the film has a peg sticking out. The fork straddles a bar inside the film's spool, so from now on this winder turns the film's own spool.",
+   "narration": "Take the green winder out of the camera. Fit its fork over the bar in the open end of the film. Now turn the winder: the spool inside the film turns with it. Wrong end? The other end of the film has a peg sticking out. The fork straddles a bar inside the film's spool, so from now on this winder turns the film's own spool.",
    "parts": [
     {
      "id": "knob",
@@ -1236,7 +1236,7 @@
    },
    "img": "media/img/step_f2.webp",
    "clip": "media/clips/f2.mp4",
-   "dur": 12.42,
+   "dur": 12.71,
    "terms": [
     "film-shell"
    ],
@@ -1281,7 +1281,7 @@
    "mistake": null,
    "fix": null,
    "why": null,
-   "narration": "Slide the film and the winder in together, on the left, with the film's lip pointing to the middle of the camera. Keep them together as they go in. The film sits flat in its chamber, and the green winder sits in its slot on top, just as it did before. If the film will not sit flat, lift it out and try again with the lip facing the middle.",
+   "narration": "Lower the film and the winder in together, on the left, with the film's lip pointing to the middle of the camera. Keep them together as they go in. The film sits flat in its chamber, and the green winder sits in its slot on top, just as it did before. If the film will not sit flat, lift it out and try again with the lip facing the middle.",
    "parts": [],
    "lesson": "l03",
    "short": "f3",
@@ -1292,7 +1292,7 @@
    },
    "img": "media/img/step_f3.webp",
    "clip": "media/clips/f3.mp4",
-   "dur": 8.92,
+   "dur": 10.22,
    "terms": [],
    "model": {
     "in": [
@@ -1344,7 +1344,7 @@
    },
    "img": "media/img/step_f4.webp",
    "clip": "media/clips/f4.mp4",
-   "dur": 20.91,
+   "dur": 21.91,
    "terms": [],
    "model": {
     "in": [
@@ -1396,7 +1396,7 @@
    },
    "img": "media/img/step_f5.webp",
    "clip": "media/clips/f5.mp4",
-   "dur": 14.1,
+   "dur": 14.72,
    "terms": [
     "light-trap"
    ],
@@ -1439,7 +1439,7 @@
    },
    "img": "media/img/step_f6.webp",
    "clip": "media/clips/f6.mp4",
-   "dur": 30.8,
+   "dur": 32.41,
    "terms": [
     "winding-on"
    ],
@@ -1482,7 +1482,7 @@
    },
    "img": "media/img/step_p1.webp",
    "clip": "media/clips/p1.mp4",
-   "dur": 19.41,
+   "dur": 20.5,
    "terms": [
     "aperture",
     "exposure"
@@ -1526,7 +1526,7 @@
    },
    "img": "media/img/step_p2.webp",
    "clip": "media/clips/p2.mp4",
-   "dur": 17.81,
+   "dur": 18.6,
    "terms": [
     "focus",
     "sights"
@@ -1570,7 +1570,7 @@
    },
    "img": "media/img/step_p3.webp",
    "clip": "media/clips/p3.mp4",
-   "dur": 20.01,
+   "dur": 21.01,
    "terms": [
     "shutter",
     "exposure"
@@ -1614,7 +1614,7 @@
    },
    "img": "media/img/step_p4.webp",
    "clip": "media/clips/p4.mp4",
-   "dur": 17.71,
+   "dur": 17.41,
    "terms": [
     "frame-wheel",
     "winding-on"
@@ -1658,7 +1658,7 @@
    },
    "img": "media/img/step_o1.webp",
    "clip": "media/clips/o1.mp4",
-   "dur": 13.12,
+   "dur": 13.21,
    "terms": [
     "film-shell",
     "winding-on"
@@ -1686,12 +1686,12 @@
    "sec": "FILM OUT",
    "n": 2,
    "title": "Take the film out",
-   "do": "Open the back. Slide the film out with its winder and pull the winder off. Send it off with your developing card, or take it to any photo lab.",
+   "do": "Open the back. Lift the film out with its winder, and take the winder off. Send it off with your developing card, or take it to any photo lab.",
    "check": "The film's tip is inside the shell, or just peeping out.",
    "mistake": null,
    "fix": null,
    "why": "Any lab that develops 35 mm film can do it.",
-   "narration": "Open the back. Slide the film out with its winder and pull the winder off. The film's tip is inside the shell, or just peeping out. Send the film off with your developing card, or take it to any photo lab: any lab that develops 35 millimetre film can do it. Ask for scans, and keep the negatives. They are the originals.",
+   "narration": "Open the back. Lift the film out with its winder, and take the winder off. The film's tip is inside the shell, or just peeping out. Send the film off with your developing card, or take it to any photo lab: any lab that develops 35 millimetre film can do it. Ask for scans, and keep the negatives. They are the originals.",
    "parts": [],
    "lesson": "l03",
    "short": "o2",
@@ -1702,7 +1702,7 @@
    },
    "img": "media/img/step_o2.webp",
    "clip": "media/clips/o2.mp4",
-   "dur": 17.22,
+   "dur": 18.41,
    "terms": [
     "film-shell",
     "negative",

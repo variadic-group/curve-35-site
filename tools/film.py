@@ -6,7 +6,7 @@ sys.path.insert(0, "tools")
 import booklet_render as BR
 W, H, FPS = 1920, 1080, 30
 OUT = "build/film"; SRC = OUT + "/src"; os.makedirs(SRC, exist_ok=True)
-MODEL = "ONE-135 v2.14"
+import canon as _CN; MODEL = _CN.load()["company"]["product"]["model"]        # the model's name is said once, in the canon: a film never prints an old one
 
 def col(h, a=255): h = h.lstrip("#"); return skia.Color(int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16), a)
 BG = col("0f1317"); PANEL = col("182028"); LINE = col("2b3642"); INK = col("f1ece2"); MUTE = col("8e99a6"); ORANGE = col("e8651a"); YEL = col("f4c430"); CYAN = col("4fb7e6"); RED = col("ef5b4c"); GREEN = col("3fae6b"); WHITE = col("ffffff")

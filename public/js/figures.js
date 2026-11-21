@@ -86,7 +86,7 @@
       if (r[2] > r[1]) b += rect(x0 + r[1] * s, y, (r[2] - r[1]) * s, 30, "acc-fill light");
       b += t(x0 + r[2] * s + 8, y + 22, (r[2] > r[1] ? r[1] + "–" + r[2] : r[1]) + " N", "lab strong");
     });
-    return svg("How hard each click is: the back about 0.6 newtons, the rocker 2.3, a dot 2.4, the front plate about 3 to 5, the hardest push in the build.", b);
+    return svg("How hard each click is: the back about 0.6 newtons, the rocker 2.3, a dot 2.4, the front plate about 3 to 5, the most force of any step in the build.", b);
   };
 
   F[10] = function () {   // the sight crosses the lens's line far away

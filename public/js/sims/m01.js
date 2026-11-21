@@ -161,7 +161,7 @@
     r.appendChild(el("div", { "class": "mx-row", style: "margin:0 0 12px" }, [vSeg]));
     r.appendChild(el("div", { "class": "mx-stage" }, [s]));
     var eS = slider({ label: "Your printer: every wall comes out", min: -0.15, max: 0.25, step: 0.01, value: 0.10, fmt: function (v) { var p = PRN.filter(function (x) { return Math.abs(x.e - v) < 0.005; })[0]; return (v > 0 ? v.toFixed(2) + " mm fat" : v < 0 ? (-v).toFixed(2) + " mm thin" : "exactly as drawn") + (p ? " (" + p.t + ")" : ""); }, on: function (v) { st.e = v; if (pSeg) pSeg.querySelectorAll("button").forEach(function (b) { b.setAttribute("aria-pressed", String(Math.abs(b._v - v) < 0.005)); }); draw(); } });
-    var pSeg = null, fS = slider({ label: "FIT in one135.scad (room round each knob):", min: 0.2, max: 1.0, step: 0.05, value: 0.65, fmt: function (v) { return v.toFixed(2) + " mm" + (Math.abs(v - 0.65) < 0.001 ? " (as shipped)" : ""); }, on: function (v) { st.fit = v; draw(); } });
+    var pSeg = null, fS = slider({ label: "FIT in one135.scad (room round each winder):", min: 0.2, max: 1.0, step: 0.05, value: 0.65, fmt: function (v) { return v.toFixed(2) + " mm" + (Math.abs(v - 0.65) < 0.001 ? " (as shipped)" : ""); }, on: function (v) { st.fit = v; draw(); } });
     pSeg = seg("The five printers in the model", PRN.map(function (p) { return { v: p.e, t: (p.e > 0 ? "+" : p.e < 0 ? "−" : "±") + Math.abs(p.e).toFixed(2) }; }), 0.10, function (v) { eS.set(v); });
     r.appendChild(el("div", { "class": "mx-row" }, [eS, fS]));
     r.appendChild(el("div", { "class": "mx-row" }, [el("div", { "class": "mx-ctl" }, [el("label", { text: "Jump to a printer the model checked" }), pSeg])]));
@@ -183,7 +183,7 @@
     }
     function gaps() {
       var e = st.e, knob = st.fit - 2 * e, mach = 0.2 - 2 * e;
-      ring(110, 130, knob, "knob in its slot", "drawn: FIT = " + st.fit.toFixed(2) + " mm");
+      ring(110, 130, knob, "winder in its slot", "drawn: FIT = " + st.fit.toFixed(2) + " mm");
       ring(300, 130, mach, "a machinist's fit", "drawn: 0.20 mm");
       var gx = 440, gy = 60, key = 3.0 + 2 * e, best = null;
       T(570, 30, "fit gauge: a 3.0 mm key, slots a tenth apart", "middle", "#2D2A26", 14, 700);
@@ -202,14 +202,14 @@
       if (bx !== null) g.appendChild(sv("path", { d: "M" + (bx + 10) + "," + (gy + 4) + " l-7,-12 h14Z", fill: "#D9601A" }));
       T(590, gy + 290, "slot number; width as drawn (mm)", "middle", "#625C53", 12, 400);
       T(110, 330, "gaps drawn 60× bigger", "middle", "#625C53", 11, 400);
-      lab(c1, "knob: room left all round"); lab(c2, "the 0.2 mm machinist's fit"); lab(c3, "gauge: narrowest slot the key enters");
+      lab(c1, "winder: room left all round"); lab(c2, "the 0.2 mm machinist's fit"); lab(c3, "gauge: narrowest slot the key enters");
       c1.val(knob <= 0 ? "binds" : knob.toFixed(2) + " mm", knob <= 0 ? "bad" : "good");
       c2.val(mach <= 0 ? "binds" : mach.toFixed(2) + " mm", mach <= 0 ? "bad" : "good");
       c3.val(best === null ? "none" : "slot " + best + " → " + (best * 0.025 >= 0 ? "+" : "") + (best * 0.025).toFixed(3) + " mm");
       var worst = st.fit - 0.5;
-      out.textContent = "Walls " + (e >= 0 ? e.toFixed(2) + " mm fat" : (-e).toFixed(2) + " mm thin") + ": every gap loses twice that. The knob keeps " + (knob <= 0 ? "nothing: it binds." : knob.toFixed(2) + " mm.") +
+      out.textContent = "Walls " + (e >= 0 ? e.toFixed(2) + " mm fat" : (-e).toFixed(2) + " mm thin") + ": every gap loses twice that. The winder keeps " + (knob <= 0 ? "nothing: it binds." : knob.toFixed(2) + " mm.") +
         " The 0.2 mm fit " + (mach <= 0 ? "binds solid." : "keeps " + mach.toFixed(2) + " mm.") + " The key prints " + key.toFixed(2) + " mm and first drops into slot " + best + ": " + best + " × 0.025 = " + (best * 0.025).toFixed(3) + " mm, your printer's number." +
-        (Math.abs(st.fit - 0.65) > 0.001 ? " With FIT = " + st.fit.toFixed(2) + ", the fattest printer the model checks (+0.25) " + (worst <= 0 ? "binds the knobs." : "still leaves " + worst.toFixed(2) + " mm.") : "");
+        (Math.abs(st.fit - 0.65) > 0.001 ? " With FIT = " + st.fit.toFixed(2) + ", the fattest printer the model checks (+0.25) " + (worst <= 0 ? "binds the winders." : "still leaves " + worst.toFixed(2) + " mm.") : "");
     }
     var M = 40;
     function joints() {

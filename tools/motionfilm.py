@@ -53,7 +53,12 @@ def sc(cam, body=None, front=None, blade=None, wheel=None, lens=None, spool=None
 def plate(M=I, lens=True): return dict(front=M, blade=M, wheel=M, **(dict(lens=M) if lens else {}))
 def lerp(a, b, e): return tuple(x + (y - x) * e for x, y in zip(a, b))
 def seg(u, a, b): return ease(ramp(u, a, b))
-def fkey(s): return hashlib.sha1(json.dumps(s, sort_keys=True).encode()).hexdigest()[:16]
+_dig = {}
+def digest(f):
+    """a part file by what is in it, so that a picture is drawn again when the model changes (until 21 November 2026 the film kept pictures of v2.14 under v2.20's name)"""
+    if f not in _dig: _dig[f] = hashlib.sha1(open(f, "rb").read()).hexdigest()[:10]
+    return _dig[f]
+def fkey(s): return hashlib.sha1(json.dumps([s, [digest(p[0]) for p in s["P"]]], sort_keys=True).encode()).hexdigest()[:16]
 def render(s):
     k = fkey(s); png = f"{FRD}/{k}.png"
     if os.path.exists(png): return png
@@ -199,13 +204,13 @@ def p_roll(u): L = 1640.0 * ramp(u, 0, 1) ** 1.3; return wound(L, hide_back=True
 def p_dial(u): return sc(TOP, **BASE, back=I, knob=I, spool=RZ(SP, 360 * ramp(u, 0, 1)), roller=RZ(RO, -720 * ramp(u, 0, 1))), [("dial", 0)]
 PROOF = [("shutter", "The shutter, moved slowly from one side to the other", "in use a press flips it in an instant and it stays there: nothing springs it back. Here it is stepped across, rested, and stepped back, to measure every position", p_shutter, 8.0),
          ("aperture", "The aperture wheel, moved slowly through its travel", "from the smallest hole to the largest, a rest, and back; in use it clicks into three places", p_aperture, 8.0),
-         ("plate", "The front plate goes on", "onto the body, across, down: with shutter, wheel and lens on board", p_plate, 6.5), ("lens", "The lens is pressed in", "three ribs in its pocket are meant to be squeezed", p_lens, 4.0),
-         ("spool", "The spool slides in and turns", "its knob rests on the top of the body", p_spool, 7.0), ("knob", "The wind knob and the film slide in; the knob turns", "the film's shell stands on the chamber floor", p_knob, 7.0),
+         ("plate", "The front plate goes on", "onto the body, across, down: with shutter, wheel and lens on board", p_plate, 6.5), ("lens", "The lens is pressed in", "three ribs in its pocket are meant to be pressed in", p_lens, 4.0),
+         ("spool", "The spool is lowered in and turns", "its winder rests on the top of the body", p_spool, 7.0), ("knob", "The green winder and the film are lowered in; the winder turns", "the film's shell stands on the chamber floor", p_knob, 7.0),
          ("wheel", "The frame wheel goes into its fork and turns", "into the fork, down, then one whole turn", p_wheel, 7.5), ("back", "The back closes over the film", "the film wraps round the frame wheel as the back comes home", p_back, 6.0),
          ("teeth", "The film turns the frame wheel", "one picture: 38 mm of film, eight holes, one turn", p_teeth, 9.0), ("roll", "The whole film is wound onto the spool", "1.64 m of film: the roll grows from 5.9 mm to 10.1 mm", p_roll, 8.0),
-         ("dial", "The dial and the red knob, both turning", "the nearest two things on top of the camera", p_dial, 5.0)]
+         ("dial", "The dial and the red winder, both turning", "the nearest two things on top of the camera", p_dial, 5.0)]
 def proof_clips(): return [dict(key="title", kind="title", dur=6.0)] + [dict(key=k, kind="move", title=t, sub=s, fn=f, md=md, dur=md + 4.0, t0=1.2) for k, t, s, f, md in PROOF] + [dict(key="summary", kind="summary", dur=14.0), dict(key="limits", kind="limits", dur=11.0)]
-NAME = {"front": "front plate", "roller": "frame wheel", "knob": "wind knob", "cassette": "film's shell", "shutter open": "shutter, open", "film, empty take-up": "film (take-up roll empty)", "film, full take-up": "film (take-up roll full)"}
+NAME = {"front": "front plate", "roller": "frame wheel", "knob": "green winder", "cassette": "film's shell", "shutter open": "shutter, open", "film, empty take-up": "film (take-up roll empty)", "film, full take-up": "film (take-up roll full)"}
 def nm(n): return NAME.get(n, n)
 def series(key):
     """what tools/motion.py measured for one move: x, {neighbour: clearance}, shared volume per step, the expected contacts"""
@@ -239,11 +244,11 @@ def draw_proof(c, cl, i, n, t):
         for x, hlab, al in zip(cols, ["the move", "positions", "space shared", "nearest", "to"], "lrrrl"): text(c, hlab, x if al == "l" else x + 150, y, 22, MUTE, 600, al)
         rows = [(s["move"], str(s["steps"]), "none" if s["shared_mm3"] <= 0.002 else "%.3f mm3" % s["shared_mm3"], "%.2f mm" % s["nearest_mm"], nm(s["nearest_to"])) for s in S]
         cs = MJ["film"]["cases"]; rows += [("film through the frame wheel's teeth (6 films)", str(sum(len(v["adv"]) for v in cs.values())), "none", "%.2f mm" % min(v["min_gap_mm"] for v in cs.values()), "edge of a hole"),
-                                         ("dial and red knob, both turning", "all round", "none", "%.2f mm" % MJ["dial_and_knob"]["nearest_mm"], "each other")]
+                                         ("dial and red winder, both turning", "all round", "none", "%.2f mm" % MJ["dial_and_knob"]["nearest_mm"], "each other")]
         for k, r in enumerate(rows):
             a = ease(ramp(t, .3 + .28 * k, .7 + .28 * k)); yy = y + 44 + k * 42
             for x, v, al in zip(cols, r, "lrrrl"): text(c, v, x if al == "l" else x + 150, yy, 25, GREEN if v == "none" else INK, 600 if v == "none" else 500, al, a)
-        para(c, "Nearest 0.00 to 0.05 mm: two parts that rest on each other. A knob on the top of the body, the plate on the body's face, the film's shell on the chamber floor, the shutter and the aperture wheel lying in the plate.", CX, y + 44 + len(rows) * 42 + 26, 23, W - 2 * CX, MUTE, 500, a=ease(ramp(t, 5, 5.6))); return
+        para(c, "Nearest 0.00 to 0.05 mm: two parts that rest on each other. A winder on the top of the body, the plate on the body's face, the film's shell on the chamber floor, the shutter and the aperture wheel lying in the plate.", CX, y + 44 + len(rows) * 42 + 26, 23, W - 2 * CX, MUTE, 500, a=ease(ramp(t, 5, 5.6))); return
     if cl["kind"] == "limits":
         text(c, "What this does and does not show", CX, 170, 52, INK, 700)
         L = [("It shows", "that no part, at its drawn size, has to pass through another to be put in, to move, or to come out; and that the film's holes meet the teeth all the way round.", GREEN),
@@ -261,7 +266,7 @@ def draw_proof(c, cl, i, n, t):
     key, xc = data[0]; ov, yl, exp = plot(c, X, y, Wd, 330, key, xc); extra = max((series(k2)[2][int(np.argmin(np.abs(np.array(series(k2)[0], float) - x2)))] for k2, x2 in data[1:]), default=0.0); ov = max(ov, extra); yl += 14
     rrect(c, X, yl, Wd, 86, 16, PANEL); text(c, "space shared with a neighbour", X + 22, yl + 52, 23, MUTE, 500); text(c, "none" if ov <= 0.002 else "%.3f mm3" % ov, X + Wd - 22, yl + 56, 38, GREEN if ov <= 0.002 else RED, 700, "r")
     if key == "teeth": para(c, "Before the change (v2.11) the nearest was 0.06 to 0.09 mm, on the way into a hole. The teeth now taper straight.", X, yl + 124, 22, Wd, MUTE, 500)
-    if exp: para(c, "Meant to touch: the three ribs in the lens's pocket are squeezed by 0.3 mm3 as the lens goes home. That is what holds it.", X, yl + 124, 22, Wd, MUTE, 500)
+    if exp: para(c, "Meant to touch: the three ribs in the lens's pocket are pressed in by 0.3 mm3 as the lens seats. That is what holds it.", X, yl + 124, 22, Wd, MUTE, 500)
 # ---------------------------------------------------------------- build
 def clip_frames(cl): return int(round(cl["dur"] * FPS))
 def specs(cl, film):
@@ -280,7 +285,7 @@ def encode(film, clips, i, draw):
     if p.wait() != 0: raise RuntimeError("ffmpeg failed on " + out)
     os.replace(tmp, out)
     if cl.get("lines") is not None:                                    # the clip's own sound, and the clip with it, for a lesson or a web page
-        import voice as VC; os.makedirs(f"{OUT}/clips", exist_ok=True); wv = VC.track(cl["lines"], clip_frames(cl) / FPS, out[:-4] + ".wav"); VC.mux(out, wv, f"{OUT}/clips/{film}_{cl['key']}.mp4")
+        import voice as VC; os.makedirs(f"{OUT}/clips", exist_ok=True); wv = VC.track(cl["lines"], clip_frames(cl) / FPS, out[:-4] + ".wav"); VC.mux(out, VC.master(wv, out[:-4] + ".m.wav"), f"{OUT}/clips/{film}_{cl['key']}.mp4")      # a step's clip as loud as a lesson's film
     return out
 def main():
     film = sys.argv[1]; args = sys.argv[2:]; clips = guide_clips() if film == "guide" else proof_clips(); draw = draw_guide if film == "guide" else draw_proof; xstart()
@@ -293,7 +298,7 @@ def main():
             return
         if args == ["sound"]:                                          # the sound again (a new recording of a line, or a new level) without drawing a single picture
             import voice as VC
-            for i, cl in enumerate(clips): out = f"{OUT}/{film}_{i:02d}_{cl['key']}.mp4"; VC.mux(out, VC.track(cl["lines"], clip_frames(cl) / FPS, out[:-4] + ".wav"), f"{OUT}/clips/{film}_{cl['key']}.mp4")
+            for i, cl in enumerate(clips): out = f"{OUT}/{film}_{i:02d}_{cl['key']}.mp4"; VC.mux(out, VC.master(VC.track(cl["lines"], clip_frames(cl) / FPS, out[:-4] + ".wav"), out[:-4] + ".m.wav"), f"{OUT}/clips/{film}_{cl['key']}.mp4")
             args = ["__none__"]
         todo = [i for i, cl in enumerate(clips) if not args or any(cl["key"].endswith(a) or cl["key"] == a for a in args)]; t0 = time.time(); uniq = {}
         for i in todo:
@@ -306,7 +311,7 @@ def main():
         if all(os.path.exists(f"{OUT}/{film}_{i:02d}_{cl['key']}.mp4") for i, cl in enumerate(clips)):
             name = "build/CURVE-35_assembly_guide.mp4" if film == "guide" else "build/CURVE-35_motion_proof.mp4"; sil = f"{OUT}/{film}_silent.mp4"; subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", lst, "-c", "copy", "-movflags", "+faststart", sil], check=True)
             if film == "guide":
-                import voice as VC; VC.mux(sil, VC.join([f"{OUT}/{film}_{i:02d}_{cl['key']}.wav" for i, cl in enumerate(clips)], f"{OUT}/guide.wav"), name); os.remove(sil)
+                import voice as VC; VC.mux(sil, VC.master(VC.join([f"{OUT}/{film}_{i:02d}_{cl['key']}.wav" for i, cl in enumerate(clips)], f"{OUT}/guide.wav"), f"{OUT}/guide_m.wav"), name); os.remove(sil)
             else: os.replace(sil, name)
             tot = sum(cl["dur"] for cl in clips); json.dump([dict(key=cl["key"], start=round(sum(c2["dur"] for c2 in clips[:i]), 1), seconds=cl["dur"]) for i, cl in enumerate(clips)], open(f"{OUT}/{film}_chapters.json", "w"), indent=1)
             print("%s  %.1f s (%d:%02d)  %d clips   %.0f s" % (name, tot, tot // 60, tot % 60, len(clips), time.time() - t0))
