@@ -256,9 +256,9 @@
  "units": [
   {
    "id": "u1",
-   "title": "Watch and think",
-   "minutes": 15,
-   "what": "Say your guess. Watch the film. Then read the idea in words.",
+   "title": "Read and think",
+   "minutes": 13,
+   "what": "Say your guess. Then read the idea in words.",
    "sections": [
     "predict",
     "why",
