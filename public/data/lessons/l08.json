@@ -13,7 +13,7 @@
  "film": false,
  "still": {
   "img": "hero",
-  "alt": "The finished camera from the front: orange front plate, lens, the dot handle, red and green knobs",
+  "alt": "The finished camera from the front: orange front plate, lens, the dot handle, red and green winders",
   "caption": "Everything left to decide is yours."
  },
  "sections": [
@@ -81,7 +81,7 @@
    "render": "s2",
    "alt": "The top of the camera, with the sight line from the pad at the back to the point at the front",
    "caption": "The sight: a groove, a pad edge and a point.",
-   "body": "<p>Every picture is four moves. Choose a dot: slide the handle and count the clicks. Aim: pad edge to point, picture between the outer lines, two big steps away or more. Press: one quick press of the raised side, both hands, elbows in. Wind: the green knob, until the arrow comes home.</p><p>Nothing to press your eye against, so glasses are fine and you can keep both eyes open to watch the world.</p>",
+   "body": "<p>Every picture is four moves. Choose a dot: slide the handle and count the clicks. Aim: pad edge to point, picture between the outer lines, two big steps away or more. Press: one quick press of the raised side, both hands, elbows in. Wind: the green winder, until the arrow comes home.</p><p>Nothing to press your eye against, so glasses are fine and you can keep both eyes open to watch the world.</p>",
    "step": [
     "p1",
     "p2",

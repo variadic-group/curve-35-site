@@ -64,8 +64,8 @@
    "name": "Camera kit",
    "for": "People who already have film.",
    "contents": [
-    "The 9 pieces: body, back, front plate, shutter, aperture wheel, spool, wind knob, frame wheel, lens",
-    "2 spares: a shutter and a wind knob",
+    "The 9 pieces: body, back, front plate, shutter, aperture wheel, spool, green winder, frame wheel, lens",
+    "2 spares: a shutter and a green winder",
     "For the pinhole experiment: the pinhole ring and a pinhole disc (thin metal, laser-drilled 0.25 mm hole)",
     "The printed build guide, 16 small pages",
     "The card"
@@ -246,7 +246,7 @@
    "for": "",
    "contents": [
     "1 shutter",
-    "1 wind knob"
+    "1 green winder"
    ],
    "price_usd": 5,
    "price_text": "$5",
@@ -322,7 +322,7 @@
    "name": "Colour pack",
    "for": "Make it yours.",
    "contents": [
-    "A front plate and two knobs in other colours"
+    "A front plate and two winders in other colours"
    ],
    "price_usd": 6,
    "price_text": "$6",
@@ -339,7 +339,7 @@
    "for": "",
    "contents": [
     "One sheet, about 4 x 6 inches",
-    "1 name label, 3 which-dot stickers (one for each film speed), 2 \"film inside\" labels, 2 knob arrows",
+    "1 name label, 3 which-dot stickers (one for each film speed), 2 \"film inside\" labels, 2 winder arrows",
     "A dozen plain shapes in the kit's colours"
    ],
    "price_usd": 4,

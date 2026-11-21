@@ -2,7 +2,7 @@
  "n": 6,
  "title": "Winding on",
  "question": "How does the camera know it has moved the film exactly one picture?",
- "hook": "After every picture you turn the green knob and exactly one picture's worth of film slides along. Too little and two pictures land on top of each other; too much and you waste film. No motor, no chip. The film does its own counting, with a row of holes older than cinema.",
+ "hook": "After every picture you turn the green winder and exactly one picture's worth of film slides along. Too little and two pictures land on top of each other; too much and you waste film. No motor, no chip. The film does its own counting, with a row of holes older than cinema.",
  "colour": "#1E5AA8",
  "hero_fig": "fig_l06_wheel",
  "chips": [
@@ -18,18 +18,18 @@
    "body": "<p>Take a picture, wind, take the next. Each picture is 36 mm long. If the camera winds 30 mm, two pictures overlap into a ghostly double. If it winds 60 mm, you lose a third of your roll to blank film. The camera has to get it right 36 times in a row, with nothing but plastic.</p>",
    "q": "How does the camera know it has moved exactly one picture?",
    "choices": [
-    "One turn of the knob is one picture",
+    "One turn of the winder is one picture",
     "It measures the film itself",
     "It guesses, and the lab sorts it out"
    ],
    "answer": 1,
-   "reveal": "<p><strong>It measures the film.</strong> Counting turns can't work, and the next experiment shows why: film winds onto a roll, the roll gets fatter, and a fatter roll swallows more film per turn. By the model, one turn of the red spool takes in about <strong>37 mm</strong> when it is nearly empty and about <strong>63 mm</strong> when it is full. Same knob, same turn, wildly different lengths.</p>"
+   "reveal": "<p><strong>It measures the film.</strong> Counting turns can't work, and the next experiment shows why: film winds onto a roll, the roll gets fatter, and a fatter roll swallows more film per turn. By the model, one turn of the red spool takes in about <strong>37 mm</strong> when it is nearly empty and about <strong>63 mm</strong> when it is full. Same winder, same turn, wildly different lengths.</p>"
   },
   {
    "id": "why",
    "kind": "story",
    "title": "The film carries its own ruler",
-   "body": "<p>Counting turns of a knob doesn't work: as film piles onto a spool, each turn takes in more. So the camera counts something that never changes.</p><p>Look along the edge of any 35 mm film: a row of little holes, 4.75 mm apart. One picture is 36 mm long plus a 2 mm gap: 38 mm. And 8 × 4.75 = 38.00 mm exactly. Eight holes, one picture, at the start of the roll and at the end.</p><p>The blue frame wheel has 8 teeth that sit in those holes. The wheel doesn't pull the film; the moving film turns the wheel. Eight holes go by, the wheel turns once, its white arrow comes home, and you stop.</p><p>One twist: this camera loads backwards on purpose. You wind the whole film out onto the red spool first, then each picture is wound back into the shell. Every picture you've taken is safe in the dark.</p>",
+   "body": "<p>Counting turns of a winder doesn't work: as film piles onto a spool, each turn takes in more. So the camera counts something that never changes.</p><p>Look along the edge of any 35 mm film: a row of little holes, 4.75 mm apart. One picture is 36 mm long plus a 2 mm gap: 38 mm. And 8 × 4.75 = 38.00 mm exactly. Eight holes, one picture, at the start of the roll and at the end.</p><p>The blue frame wheel has 8 teeth that sit in those holes. The wheel doesn't pull the film; the moving film turns the wheel. Eight holes go by, the wheel turns once, its white arrow comes home, and you stop.</p><p>One twist: this camera loads backwards on purpose. You wind the whole film out onto the red spool first, then each picture is wound back into the shell. Every picture you've taken is safe in the dark.</p>",
    "figure": {
     "svg": "fig_l06_holes",
     "caption": "Eight holes, one picture: 8 × 4.75 = 38 mm."
@@ -61,8 +61,8 @@
    "sims": [
     {
      "sim": "l06_wind",
-     "intro": "The film from behind, drawn to scale. Take a picture, wind with the green knob, and stop when the blue arrow comes home.",
-     "after": "Every picture that arrived with the arrow home is exactly 38 mm from the last. The red knob's turns per picture kept changing; the frame wheel's never did."
+     "intro": "The film from behind, drawn to scale. Take a picture, wind with the green winder, and stop when the blue arrow comes home.",
+     "after": "Every picture that arrived with the arrow home is exactly 38 mm from the last. The red winder's turns per picture kept changing; the frame wheel's never did."
     },
     {
      "sim": "l06_roll",
@@ -76,9 +76,9 @@
    "kind": "kit",
    "title": "Wind until the arrow comes home",
    "render": "dial",
-   "alt": "The blue frame wheel's dial with its white arrow, next to the big red knob",
+   "alt": "The blue frame wheel's dial with its white arrow, next to the red winder",
    "caption": "The blue dial goes round once for each picture.",
-   "body": "<p>After each picture, turn the small green knob until the arrow on the blue dial has gone once round. That's it: 8 holes, 38 mm, one picture. Keep your other hand off the big red knob, and never force either one: a stiff knob means a hand is on the other, or the film has reached its end.</p><p>Loading: about 25 turns of the red knob for a 24-picture film, 33 for 36.</p>",
+   "body": "<p>After each picture, turn the green winder until the arrow on the blue dial has gone once round. That's it: 8 holes, 38 mm, one picture. Leave the red winder alone, and do not force either one: a winder that resists means a hand is on the other, or the film has reached its end.</p><p>Loading: about 25 turns of the red winder for a 24-picture film, 33 for 36.</p>",
    "step": [
     "f6",
     "p4"
@@ -131,9 +131,9 @@
    "title": "Check yourself",
    "items": [
     {
-     "q": "Why can't the camera count turns of a knob to move one picture?",
+     "q": "Why can't the camera count turns of a winder to move one picture?",
      "choices": [
-      "Knobs slip",
+      "Winders slip",
       "The roll grows, so each turn moves a different length",
       "Film stretches",
       "Turns are too hard to count"
@@ -156,9 +156,9 @@
      "q": "What turns the blue frame wheel?",
      "choices": [
       "A spring inside it",
-      "The green knob, through gears",
+      "The green winder, through gears",
       "The film, moving past its teeth",
-      "The red knob"
+      "The red winder"
      ],
      "answer": 2,
      "why": "The film pushes on the 8 teeth sitting in its holes. Eight holes pass, the wheel turns once, the arrow comes home."
@@ -175,7 +175,7 @@
      "why": "If the back opens by accident, only the pictures not yet taken are fogged."
     },
     {
-     "q": "About how many turns of the green knob wind a roll of 24 pictures back into its shell?",
+     "q": "About how many turns of the green winder wind a roll of 24 pictures back into its shell?",
      "choices": [
       "8",
       "About 25",
@@ -203,7 +203,7 @@
   {
    "id": "next",
    "kind": "next",
-   "body": "<p>Knobs, a dial and a back that comes off. Every one is a gap. So why is the film not ruined?</p>",
+   "body": "<p>Winders, a dial and a back that comes off. Every one is a gap. So why is the film not ruined?</p>",
    "links": [
     {
      "title": "135 film",
@@ -285,7 +285,7 @@
  ],
  "teach": {
   "objectives": [
-   "Explain why counting turns of a knob cannot move film one picture at a time.",
+   "Explain why counting turns of a winder cannot move film one picture at a time.",
    "Show that eight holes 4.75 mm apart are 38 mm: one 36 mm picture and a 2 mm gap.",
    "Describe how the film turns the frame wheel, and why the wheel turns exactly once a picture.",
    "Explain why the film is wound out first and each picture wound back into the shell.",
@@ -297,13 +297,13 @@
    "The class camera if built; otherwise the page on a projector"
   ],
   "exit_ticket": "In one sentence: how does the camera know it has moved one picture? And one number: how many millimetres are eight holes? (38.)",
-  "misconception": "That a camera moves film one picture by turning a knob a fixed amount. In its place: a roll grows, so turns are not lengths; the film carries its own ruler, the holes; eight holes are one picture; and the film itself turns the wheel that tells you when to stop.",
+  "misconception": "That a camera moves film one picture by turning a winder a fixed amount. In its place: a roll grows, so turns are not lengths; the film carries its own ruler, the holes; eight holes are one picture; and the film itself turns the wheel that tells you when to stop.",
   "differentiation": {
    "support": "Give a table with the radius already filled in (5.9, 8, 10.1) and only the multiplication to do. Use the roll sim's readouts as a check. For the Try card, pre-mark the first turn.",
    "stretch": "The roll grows by about twice the film's thickness each turn. Use 5.9 mm empty and 10.1 mm full for 1368 mm of film to estimate the film's thickness (area of the ring = thickness × length: about 0.15 mm). Compare with a real film measured by a micrometer.",
-   "access": "The wind sim works from the keyboard (arrow keys turn the knob, Space takes a picture) and reports every picture in words. The Try card can be done in pairs with one person winding and one marking."
+   "access": "The wind sim works from the keyboard (arrow keys turn the winder, Space takes a picture) and reports every picture in words. The Try card can be done in pairs with one person winding and one marking."
   },
-  "safety": "Open a loaded camera's back only after the arrow has stopped and three more turns are done, and only in the shade. Nobody forces a knob.",
+  "safety": "Open a loaded camera's back only after the arrow has stopped and three more turns are done, and only in the shade. Nobody forces a winder.",
   "period": [
    {
     "minutes": 5,

@@ -302,7 +302,7 @@
   var X3_CAPS = [
     ["Closed", "Everything clicked shut. Slide to take it apart."],
     ["1 The dark box", "Body and back. They keep the light off the film."],
-    ["2 The film path", "Red spool, green knob, blue frame wheel. One turn, one picture."],
+    ["2 The film path", "Red spool, green winder, blue frame wheel. One turn, one picture."],
     ["3 The front plate", "The shutter, and the wheel with three holes."],
     ["4 The lens, or a pinhole", "A 12 mm lens presses in. Or the pinhole disc and ring, in the same pocket."]
   ];
@@ -312,7 +312,7 @@
     var arrow = function (d) { return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="' + (d < 0 ? "M15 5l-7 7 7 7" : "M9 5l7 7-7 7") + '"/></svg>'; };
     return '<section class="x3" id="inside" aria-labelledby="x3-h"><div class="wrap x3-head"><div><h2 id="x3-h">Take it apart.</h2></div>' +
       '<p class="x3-how">Slide to open it. Drag to turn it.</p></div>' +
-      '<div class="x3-stage">' + img(M.still, "The camera taken apart: the black body in the middle, the grey back behind it, the red, green and blue knobs above, the orange front plate in front with the shutter and wheel, and the lens in front of that.", ' class="x3-still" width="' + (M.still_w || 1159) + '" height="' + (M.still_h || 1163) + '"').replace(' class="r"', "") + "</div>" +
+      '<div class="x3-stage">' + img(M.still, "The camera taken apart: the black body in the middle, the grey back behind it, the red, green and blue winders above, the orange front plate in front with the shutter and wheel, and the lens in front of that.", ' class="x3-still" width="' + (M.still_w || 1159) + '" height="' + (M.still_h || 1163) + '"').replace(' class="r"', "") + "</div>" +
       '<div class="wrap x3-bar"><div class="x3-steps" role="group" aria-label="Build stages">' +
       X3_CAPS.map(function (c, i) { return '<button type="button" class="x3-go" data-go="' + i + '" aria-pressed="' + (i === 0) + '">' + (i ? "<b>" + i + "</b>" : "") + esc(X3_SHORT[i]) + "</button>"; }).join("") + "</div>" +
       '<div class="x3-slide"><button type="button" class="x3-turn" data-turn="-40" aria-label="Turn left">' + arrow(-1) + '</button><label class="sr-only" for="x3-range">Take the camera apart</label>' +
@@ -423,7 +423,7 @@
   }
   pages.home = function () {
     var S = PROD["starter-kit"] || {}, sp = S.price_usd != null ? money(S.price_usd) : "";
-    var heroAlt = "The CURVE 35 camera: a black body, an orange front plate with a round lens, a red knob and a green knob on top";
+    var heroAlt = "The CURVE 35 camera: a black body, an orange front plate with a round lens, a red winder and a green winder on top";
     // what is in the starter kit, from its canon contents (offers.yaml): short, one line each
     var kitList = ["Every piece of the camera, plus 2 spares", "A pinhole ring and disc", "The printed build guide", "A roll of colour film (" + factSay("kit_film_pictures", "24") + " pictures), with developing and scans"];
     var dots = [factSay("f_small", "f/16"), factSay("f_middle", "f/11"), factSay("f_large", "f/9.5")];
@@ -436,7 +436,7 @@
       '<div class="ctas"><a class="btn main big" href="#store">Buy the kit</a><a class="btn big alt" href="#files">Print your own</a></div></div>' +
       '<div class="hero-pic"><span class="hero-stk" aria-hidden="true"><span class="stk stk-o">Real film!</span></span><div class="frame h3d" id="h3d">' + img(PIC.hero, heroAlt, ' class="h3d-still" width="1200" height="900" fetchpriority="high" loading="eager"').replace(' class="r"', "").replace(' loading="lazy"', "") + "</div></div></div></section>" +
       // WHAT'S IN THE BOX: the one kit block on the page
-      '<section class="kitbox" aria-labelledby="kb-h"><div class="wrap kitbox-in"><div class="kb-pic frame">' + img(PIC.plan_parts, "Everything in the box laid out: black body, grey back, orange front plate, teal shutter, yellow wheel, red spool, green knob, blue frame wheel, lens, pinhole ring and disc, and a roll of film", ' width="1200" height="900"') + "</div>" +
+      '<section class="kitbox" aria-labelledby="kb-h"><div class="wrap kitbox-in"><div class="kb-pic frame">' + img(PIC.plan_parts, "Everything in the box laid out: black body, grey back, orange front plate, teal shutter, yellow wheel, red spool, green winder, blue frame wheel, lens, pinhole ring and disc, and a roll of film", ' width="1200" height="900"') + "</div>" +
       '<div class="kb-t"><h2 id="kb-h">The starter kit' + (sp ? ' <span class="kb-price tnum">' + esc(sp) + "</span>" : "") + "</h2>" +
       '<ul class="kb-list">' + kitList.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>" +
       '<p class="kb-act">' + (addBtn(S, "main big", "Add to basket") || '<a class="btn main big" href="#store">See the kit</a>') + '<a class="kb-more" href="#store">Check out the shop</a></p></div></div></section>' +
@@ -622,7 +622,7 @@
     ];
     var k = steps.filter(function (s) { return done[s.id]; }).length;
     var inv = PARTS.map(function (p) { return '<li><span class="inv-pic">' + img(partImg(p.key), "", ' width="520" height="390"') + '</span><span class="inv-n">1&times;</span><span class="inv-name">' + esc(p.name) + "</span></li>"; }).join("") +
-      '<li><span class="inv-pic">' + img("media/img/part_blade.webp", "", ' width="520" height="390"') + '</span><span class="inv-n">2&times;</span><span class="inv-name">Spares: shutter, wind knob</span></li>' +
+      '<li><span class="inv-pic">' + img("media/img/part_blade.webp", "", ' width="520" height="390"') + '</span><span class="inv-n">2&times;</span><span class="inv-name">Spares: shutter, green winder</span></li>' +
       '<li><span class="inv-pic">' + img("media/img/part_pinring.webp", "", ' width="520" height="390"') + '</span><span class="inv-n">1&times;</span><span class="inv-name">Pinhole ring and disc</span></li>' +
       '<li><span class="inv-pic">' + img(PIC.booklet, "", ' width="520" height="390"') + '</span><span class="inv-n">1&times;</span><span class="inv-name">Build guide</span></li>';
     return '<div class="start">' +
@@ -636,7 +636,7 @@
           '<label class="tick"><input type="checkbox" data-done="' + s.id + '"' + (done[s.id] ? " checked" : "") + "> Done<span class=\"sr-only\">: " + esc(s.title) + "</span></label></div>" +
           '<div class="path-pic">' + img(s.pic, s.alt, ' width="900" height="675"') + "</div></li>";
       }).join("") + "</ol>" +
-      '<div class="duo"><section class="duo-card t-pink" aria-labelledby="st-h"><h2 id="st-h">Stuck?</h2><p>Type what you see: "knob won\'t turn", "back won\'t close".</p><a class="btn small" href="#help">Help</a></section>' +
+      '<div class="duo"><section class="duo-card t-pink" aria-labelledby="st-h"><h2 id="st-h">Stuck?</h2><p>Type what you see: "winder won\'t turn", "back won\'t close".</p><a class="btn small" href="#help">Help</a></section>' +
       '<section class="duo-card t-mint" aria-labelledby="dn-h"><h2 id="dn-h">Done all three?</h2><p>Show everyone your camera. Or change the files and post a remix.</p><a class="btn small" href="#builds">Share your build</a></section></div></div></div>';
   };
   pages.start.title = "Start here";
@@ -660,7 +660,7 @@
       '<ol class="pts full" role="list">' + PARTS.map(function (p, i) { return partCard(p, true, i + 1, PARTS.length); }).join("") + BONUS.map(function (p) { return partCard(p, true, 0); }).join("") + "</ol>" +
       moreParts() + partsTable() + '<div class="parts-after">' +
       '<div class="duo"><section class="duo-card t-sun" aria-labelledby="lo-h"><h2 id="lo-h">Lost one? Broke one?</h2><p>Get a spares pack, or print a new one from the files.</p><p class="path-links"><a class="btn main small" href="#spares">Spares and extras</a><a class="btn small" href="#files">The files</a></p></section>' +
-      '<section class="duo-card t-tang" aria-labelledby="co-h"><h2 id="co-h">Want new colours?</h2><p>The colour pack swaps the front plate and both knobs. Or print your own.</p><p class="path-links"><a class="btn main small" href="#spares">Colour pack</a><a class="btn small" href="#builds">Remix ideas</a></p></section></div></div></div>';
+      '<section class="duo-card t-tang" aria-labelledby="co-h"><h2 id="co-h">Want new colours?</h2><p>The colour pack swaps the front plate and both winders. Or print your own.</p><p class="path-links"><a class="btn main small" href="#spares">Colour pack</a><a class="btn small" href="#builds">Remix ideas</a></p></section></div></div></div>';
   };
   pages.parts.title = "The parts";
   pages.parts.after = function () { wireSort(view); };
@@ -1003,7 +1003,7 @@
       '<p class="lic-note">The camera on this site is model ' + esc(META.model || "") + '.</p></section>' +
       '<h2 class="t-h">Make a remix</h2><ol class="loop">' +
       '<li><span class="s-n" aria-hidden="true">1</span><h3>Get the files</h3><p>Download the source and the print files, or fork the code.</p></li>' +
-      '<li><span class="s-n" aria-hidden="true">2</span><h3>Change one thing</h3><p>A colour, a knob, a ring. The <a href="#makers">maker lessons</a> explain every shape.</p></li>' +
+      '<li><span class="s-n" aria-hidden="true">2</span><h3>Change one thing</h3><p>A colour, a winder, a ring. The <a href="#makers">maker lessons</a> explain every shape.</p></li>' +
       '<li><span class="s-n" aria-hidden="true">3</span><h3>Print and test</h3><p>Print the fit gauge first. Then shoot a test roll.</p></li>' +
       '<li><span class="s-n" aria-hidden="true">4</span><h3>Share it back</h3><p>Post it on <a href="#builds">Builds</a>, with the credit line. The best remixes get featured.</p></li></ol>' +
       '<p class="after-line">Why every shape in these files is the shape it is: <a href="#makers">four lessons for makers</a>, with the files.</p></div></div>';
@@ -1013,7 +1013,7 @@
   // ---- help
   pages.help = function () {
     return '<div class="page"><p class="kicker"><a href="#build">The build guide</a></p><h1>Help</h1><p class="lead">Something not right? Type what you see. Most fixes take a minute.</p>' +
-      '<div class="search" role="search"><label class="sr-only" for="q">Search the help</label><input id="q" type="search" placeholder="For example: knob, back, blank, streaks" autocomplete="off"><p class="note" id="hits" aria-live="polite"></p></div>' +
+      '<div class="search" role="search"><label class="sr-only" for="q">Search the help</label><input id="q" type="search" placeholder="For example: winder, back, blank, streaks" autocomplete="off"><p class="note" id="hits" aria-live="polite"></p></div>' +
       '<h2>Common problems</h2><ul class="trouble" id="trouble"></ul><h2>Step by step</h2><ul class="trouble" id="atstep"></ul>' + contactBlock() + "</div>";
   };
   function contactBlock() {           // canon/company.yaml: who to write to, the phone, the post
@@ -1102,7 +1102,7 @@
       moreFiles() + guidesBlock(true) +
       '<section class="makers" id="makers" tabindex="-1" aria-labelledby="mk-h"><h2 id="mk-h">Made by a printer</h2><p class="lead">Four lessons on why every shape in these files is the shape it is.</p>' + makerRow(false) + "</section>" +
       '<div class="two-up"><section aria-labelledby="ps-h"><h2 id="ps-h">Print settings</h2><ul><li>0.2 mm layers, no supports.</li><li>Body, back, shutter and wheel in black: they keep light off the film.</li><li>Frame wheel in blue, the top five layers white for the arrow.</li></ul></section>' +
-      '<section aria-labelledby="mi-h"><h2 id="mi-h">Make it yours</h2><ul><li>Print the front plate and knobs in your own colours.</li><li>The back is 126 x 59 mm of flat space for a name.</li><li>Change a number in the source and the part changes.</li></ul><p><a href="#builds">Share what you made</a></p></section></div>' +
+      '<section aria-labelledby="mi-h"><h2 id="mi-h">Make it yours</h2><ul><li>Print the front plate and winders in your own colours.</li><li>The back is 126 x 59 mm of flat space for a name.</li><li>Change a number in the source and the part changes.</li></ul><p><a href="#builds">Share what you made</a></p></section></div>' +
       '<details class="tests"><summary>What we tested</summary><div class="tablewrap" tabindex="0" role="region" aria-label="Tests"><table><thead><tr><th scope="col">Question</th><th scope="col">How</th><th scope="col">Result</th></tr></thead><tbody>' + rows + "</tbody></table></div></details>" +
       '<p class="after-line">No printer? <a href="#store">The kits come printed</a>.</p></div>';
   };
@@ -1152,7 +1152,7 @@
   }
   // what makes a good post: four coloured cards, each with a picture and a door to the page that helps
   function buildIdeas() {
-    var I = [["tang", "media/img/part_front.webp", "Your colours", "Front plate and knobs in your own colours: show them off.", "#files", "The free files"],
+    var I = [["tang", "media/img/part_front.webp", "Your colours", "Front plate and winders in your own colours: show them off.", "#files", "The free files"],
       ["sun", PIC.b3c, "Your build time", "From the bag to the last click: how long did it take you?", "#build", "The build guide"],
       ["sky", PIC.s3, "Your first roll", "The best picture, and the one that went wrong. Both count.", "#build-p1", "Which dot?"],
       ["mint", PIC.section, "Your remix", "Changed a number in the source? Show what it does.", "#makers", "Maker lessons"]];
@@ -1168,8 +1168,8 @@
       '<li><span class="s-n" aria-hidden="true">3</span><h3>Change the files</h3><p>Change one thing in the <a href="#open-files">open files</a>.</p></li>' +
       '<li><span class="s-n" aria-hidden="true">4</span><h3>Share a remix</h3><p>Show what your change does. Others print it.</p></li></ol>' +
       '<section class="featured" aria-labelledby="fr-h"><h2 id="fr-h">Featured remixes</h2><ul class="fr-grid"><li class="fr-slot"><strong>Your remix here.</strong><span>The best remixes get a spot on this shelf, with your name on it.</span><a href="#open-files">The open files</a></li>' +
-      '<li class="fr-slot"><strong>A new knob?</strong><span>A grip, a strap lug, a lens hood. Change it, print it, test it.</span><a href="#makers" data-makers>Maker lessons</a></li>' +
-      '<li class="fr-slot"><strong>A new colourway?</strong><span>Print the front plate and knobs in your colours.</span><a href="#files">The files</a></li></ul></section>';
+      '<li class="fr-slot"><strong>A new winder?</strong><span>A grip, a strap lug, a lens hood. Change it, print it, test it.</span><a href="#makers" data-makers>Maker lessons</a></li>' +
+      '<li class="fr-slot"><strong>A new colourway?</strong><span>Print the front plate and winders in your colours.</span><a href="#files">The files</a></li></ul></section>';
   }
   function buildsHead() {
     return '<div class="pagehead"><h1>Show us <span class="hl">yours.</span></h1>' +
@@ -1179,7 +1179,7 @@
     if (!inClaude()) return '<div class="wrap builds">' + buildsHead() +
       '<div class="builds-soon"><div><h2>Send us yours.</h2><p>Email a photo to ' + mailLink(MAIL.hello) + ' or tag <strong>#curve35</strong>. Your camera, your remix, your first roll: say which, and the name to show with it.</p>' +
       '<p class="path-links"><a class="btn main" href="' + esc(mailto(MAIL.hello, "My CURVE 35 build", "Hello,\n\nHere is my CURVE 35 (photo attached).\n\nIt's a: build / remix / first roll\nName to show with it (first name or a nickname):\nWhat I did:\n")) + '">Email a photo</a><a class="btn" href="#build">Build one</a></p></div>' +
-      '<div class="soon-pic">' + img(PIC.hero, "The CURVE 35 camera: a black body, an orange front plate with a round lens, a red knob and a green knob on top", ' width="1200" height="900"') + "</div></div>" + buildIdeas() + "</div>";
+      '<div class="soon-pic">' + img(PIC.hero, "The CURVE 35 camera: a black body, an orange front plate with a round lens, a red winder and a green winder on top", ' width="1200" height="900"') + "</div></div>" + buildIdeas() + "</div>";
     return '<div class="wrap builds">' + buildsHead() +
       '<div class="builds-grid"><section class="share" aria-labelledby="sh-h"><h2 id="sh-h">Share your build</h2>' +
       '<p class="nb" id="share-state" role="status">Connecting&hellip;</p>' +
@@ -1257,8 +1257,8 @@
     ["film-roll", null, packSvg(1, 0), "One roll of colour film, ISO 400, 24 pictures"],
     ["developing-code", null, packSvg(0, 1), "Developing and scans for one roll, by email"]];
   var PART_X = [["pinhole-discs", "media/img/part_pinring.webp", null, "The pinhole experiment: lens out, disc and ring in. One set comes in every kit.", "h2", 1],
-    ["swap-pack", "media/img/part_front.webp", null, "A front plate and two knobs in new colours", "b5", 4],
-    ["spares-pack", "media/img/part_blade.webp", null, "A shutter and a wind knob", "b5", 5],
+    ["swap-pack", "media/img/part_front.webp", null, "A front plate and two winders in new colours", "b5", 4],
+    ["spares-pack", "media/img/part_blade.webp", null, "A shutter and a green winder", "b5", 5],
     ["lenses-three", PIC.lens, null, "Three lenses in a bag", "b10", 2],
     ["sticker-sheet", null, SVG_STK, "A name label, which-dot stickers and shapes in the kit's colours", "p1", 4]];
   pages.store = function () {
@@ -1279,7 +1279,7 @@
       return '<li class="srow" id="p-' + esc(e[0]) + '" tabindex="-1"><span class="sr-pic" aria-hidden="true">' + (e[2] || img(e[1], "", ' width="520" height="390"')) + '</span><span class="sr-t"><strong>' + esc(inKit ? "Pinhole set" : p.name) + "</strong><span>" + esc(e[3]) + '</span></span><span class="sr-buy">' + (inKit ? '<span class="xc-in">In every kit</span>' : '<span class="tnum">' + price(p) + "</span>" + addBtn(p, "small", "Add")) + "</span></li>";
     }
     return '<div class="store"><section class="store-plate" aria-labelledby="sp-h1"><div class="wrap"><div class="pagehead"><h1 id="sp-h1">Buy the kit</h1></div>' +
-      (S ? '<section class="kstar" id="p-starter-kit" tabindex="-1" aria-labelledby="ks-h"><div class="ks-pic"><div class="frame">' + img(PIC.plan_parts, "Everything in the starter kit laid out: black body, grey back, orange front plate, teal shutter, yellow wheel, red spool, green knob, blue frame wheel, lens, pinhole ring and disc, and a roll of film", ' width="1200" height="900"') + "</div>" +
+      (S ? '<section class="kstar" id="p-starter-kit" tabindex="-1" aria-labelledby="ks-h"><div class="ks-pic"><div class="frame">' + img(PIC.plan_parts, "Everything in the starter kit laid out: black body, grey back, orange front plate, teal shutter, yellow wheel, red spool, green winder, blue frame wheel, lens, pinhole ring and disc, and a roll of film", ' width="1200" height="900"') + "</div>" +
         '<span class="ks-stk">' + stk("Real film", "o") + "</span></div>" +
         '<div class="ks-t"><h2 id="ks-h">The starter kit</h2><p class="pc-sub">The camera, a roll of film and the developing. Everything for your first roll.</p>' +
         '<ul class="ks-in">' + box(PIC.hero, null, "9 pieces to build", "+ 2 spares") + box(PIC.cassette, null, "1 roll of colour film", "ISO 400, 24 pictures") + box(null, SVG_SCAN, "Developing and scans", "for that roll, by email") + box("media/img/part_pinring.webp", null, "Pinhole set", "ring and disc, for lesson 1") + "</ul>" +

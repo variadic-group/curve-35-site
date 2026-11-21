@@ -35,7 +35,7 @@
    "kind": "why",
    "label": "Why it's drawn this way",
    "title": "A camera you can work with your eyes shut",
-   "body": "<p class=\"lp-lead\">A part that's right on paper still has to be found, pressed and read by a person in a hurry. So every control here says what it's for with its shape.</p><p><strong>The rocker</strong> is a shallow V on top of the shutter. One side is always up: that's the side you press. Either end, either hand, about <strong>2 N</strong> (2.3 N by the model: the weight of a large apple) and 5 mm of travel. After the click the other side is up, so the part tells you what to do next. Nothing to read, nothing to get wrong.</p><p><strong>The dots</strong> have no numbers. Each is a hollow pressed three layers into the front plate, the same size as the hole behind it: bigger dot, more light. And each is a click of the handle (about 2.4 N), so in the dark you count clicks from one end.</p><p><strong>The knobs</strong> are big for their job: 19 and 21 mm across, 7 mm tall, ringed with saw teeth 0.8 mm deep. A tooth's steep face catches your thumb going the right way and slips going the wrong way, and the two knobs' teeth lean opposite ways because they turn opposite ways.</p><p>Designers call a shape that invites the right move an <strong>affordance</strong>, and the visible clue a <strong>signifier</strong>. A raised side says <em>press me</em>. A groove says <em>look along me</em>. Saw teeth say <em>this way round</em>. And bigger targets are quicker to hit: Paul Fitts measured that in 1954, which is why the rocker's raised side is a whole 10.5 mm pad sitting right under your thumb.</p>",
+   "body": "<p class=\"lp-lead\">A part that's right on paper still has to be found, pressed and read by a person in a hurry. So every control here says what it's for with its shape.</p><p><strong>The rocker</strong> is a shallow V on top of the shutter. One side is always up: that's the side you press. Either end, either hand, about <strong>2 N</strong> (2.3 N by the model: the weight of a large apple) and 5 mm of travel. After the click the other side is up, so the part tells you what to do next. Nothing to read, nothing to get wrong.</p><p><strong>The dots</strong> have no numbers. Each is a hollow pressed three layers into the front plate, the same size as the hole behind it: bigger dot, more light. And each is a click of the handle (about 2.4 N), so in the dark you count clicks from one end.</p><p><strong>The winders</strong> are big for their job: 19 and 21 mm across, 7 mm tall, ringed with saw teeth 0.8 mm deep. A tooth's steep face catches your thumb going the right way and slips going the wrong way, and the two winders' teeth lean opposite ways because they turn opposite ways.</p><p>Designers call a shape that invites the right move an <strong>affordance</strong>, and the visible clue a <strong>signifier</strong>. A raised side says <em>press me</em>. A groove says <em>look along me</em>. Saw teeth say <em>this way round</em>. And bigger targets are quicker to hit: Paul Fitts measured that in 1954, which is why the rocker's raised side is a whole 10.5 mm pad sitting right under your thumb.</p>",
    "figure": {
     "svg": "fig_m04_rocker",
     "caption": "The raised side is the one to press. After the click, the other side is raised. Drawn from the model."
@@ -104,9 +104,9 @@
    "label": "In the files",
    "title": "The numbers that fit a hand",
    "render": "s2",
-   "alt": "The top of the camera drawn from the model: the two knobs, the rocker, and the aim lines running toward the front",
-   "caption": "The top, drawn from the model: knobs, rocker, and the lines you aim along.",
-   "body": "<p>Open <code>scad/one135.scad</code>. Here's where the hands and eyes live, and what each number does if you move it.</p><ul><li><strong>The rocker:</strong> <code>RK_L = 13.0</code> (each side's length from the pivot), <code>THETA_S = 15.5</code> (how far each side tips: the V's angle and the 5 mm of travel), <code>FIN_W = 11.0</code> (the rocker's width), <code>RK_T = 3.15</code> (its thickness) and <code>FIN_CLR = 1.8</code> (how high the pressed side stays above the body). Longer and wider is an easier target for a big or gloved thumb; a bigger <code>THETA_S</code> means more travel per picture, and a different blade swing, so the shutter's time changes too.</li><li><strong>The click under it</strong> isn't in the rocker at all: it's the blade's rim spring (<code>BL_T</code>, <code>SPR_RAMP = 45</code>, written by <code>tools/layout.py</code>). That same click sets how fast the blade flies, so you can't make the rocker firmer for gloves without changing the shutter's time. Run <code>tools/exposure.py</code> after.</li><li><strong>The dots:</strong> <code>DOT_R = STOP_R</code>, the holes' own sizes (2.0, 2.9 and 3.4 mm across), pressed three layers deep. <code>HND_UP = 3.5</code> is how far the handle stands proud for a fingertip.</li><li><strong>The knobs:</strong> <code>WIND_HEAD = 9.5</code> and <code>TAKE_HEAD = 10.5</code> (radii: 19 and 21 mm across), <code>HEAD_H = 7.0</code> tall, <code>GRIP_D = 0.8</code> deep saw teeth, <code>WIND_CW</code> and <code>TAKE_CW</code> set which way the teeth lean. The heads also cover the gap in front of the blocks that close their slots, so they can grow but not shrink.</li><li><strong>The sight:</strong> <code>SIGHT_DROP = (Y_CVF + 4.5) * (H + PAD_UP) / 2800</code>. The 2800 is the crossing distance in mm. <code>PAD_UP = 1.8</code> is how proud the back's pinch pads stand, and the pad's edge is the rear sight, so raising the pads raises the sight too.</li><li><strong>The pads:</strong> <code>PAD_X0 = -10.8</code> to <code>PAD_X1 = -0.7</code>: 5.6 mm wide each. Until v2.10 they were 3.4 mm, no wider than a child's fingertip: hard to find, harder to pinch.</li></ul><p>After any change, <code>sh tools/run_all.sh</code> reruns the light, fit, motion and force checks. Bigger knobs and rockers are where light traps and clearances get tested hardest.</p><table class=\"lp-facts\"><tr><th>Rocker</th><td>about 2 N (2.3), 5 mm travel, either end</td></tr><tr><th>Dot click</th><td>about 2.4 N</td></tr><tr><th>Knobs</th><td>19 and 21 mm across, 7 mm tall, teeth 0.8 mm</td></tr><tr><th>Sight crosses the lens's line</th><td>2.8 m</td></tr><tr><th>Aim at 0.7 m</th><td>4.3 % high</td></tr><tr><th>Words on the parts</th><td>none</td></tr></table>",
+   "alt": "The top of the camera drawn from the model: the two winders, the rocker, and the aim lines running toward the front",
+   "caption": "The top, drawn from the model: winders, rocker, and the lines you aim along.",
+   "body": "<p>Open <code>scad/one135.scad</code>. Here's where the hands and eyes live, and what each number does if you move it.</p><ul><li><strong>The rocker:</strong> <code>RK_L = 13.0</code> (each side's length from the pivot), <code>THETA_S = 15.5</code> (how far each side tips: the V's angle and the 5 mm of travel), <code>FIN_W = 11.0</code> (the rocker's width), <code>RK_T = 3.15</code> (its thickness) and <code>FIN_CLR = 1.8</code> (how high the pressed side stays above the body). Longer and wider is an easier target for a big or gloved thumb; a bigger <code>THETA_S</code> means more travel per picture, and a different blade swing, so the shutter's time changes too.</li><li><strong>The click under it</strong> isn't in the rocker at all: it's the blade's rim spring (<code>BL_T</code>, <code>SPR_RAMP = 45</code>, written by <code>tools/layout.py</code>). That same click sets how fast the blade flies, so you can't make the rocker firmer for gloves without changing the shutter's time. Run <code>tools/exposure.py</code> after.</li><li><strong>The dots:</strong> <code>DOT_R = STOP_R</code>, the holes' own sizes (2.0, 2.9 and 3.4 mm across), pressed three layers deep. <code>HND_UP = 3.5</code> is how far the handle stands proud for a fingertip.</li><li><strong>The winders:</strong> <code>WIND_HEAD = 9.5</code> and <code>TAKE_HEAD = 10.5</code> (radii: 19 and 21 mm across), <code>HEAD_H = 7.0</code> tall, <code>GRIP_D = 0.8</code> deep saw teeth, <code>WIND_CW</code> and <code>TAKE_CW</code> set which way the teeth lean. The heads also cover the gap in front of the blocks that close their slots, so they can grow but not shrink.</li><li><strong>The sight:</strong> <code>SIGHT_DROP = (Y_CVF + 4.5) * (H + PAD_UP) / 2800</code>. The 2800 is the crossing distance in mm. <code>PAD_UP = 1.8</code> is how proud the back's pinch pads stand, and the pad's edge is the rear sight, so raising the pads raises the sight too.</li><li><strong>The pads:</strong> <code>PAD_X0 = -10.8</code> to <code>PAD_X1 = -0.7</code>: 5.6 mm wide each. Until v2.10 they were 3.4 mm, no wider than a child's fingertip: hard to find, harder to pinch.</li></ul><p>After any change, <code>sh tools/run_all.sh</code> reruns the light, fit, motion and force checks. Bigger winders and rockers are where light traps and clearances get tested hardest.</p><table class=\"lp-facts\"><tr><th>Rocker</th><td>about 2 N (2.3), 5 mm travel, either end</td></tr><tr><th>Dot click</th><td>about 2.4 N</td></tr><tr><th>Winders</th><td>19 and 21 mm across, 7 mm tall, teeth 0.8 mm</td></tr><tr><th>Sight crosses the lens's line</th><td>2.8 m</td></tr><tr><th>Aim at 0.7 m</th><td>4.3 % high</td></tr><tr><th>Words on the parts</th><td>none</td></tr></table>",
    "step": [
     "p1",
     "p2",
@@ -144,10 +144,10 @@
    "steps": [
     "Hand the camera to your friend with one sentence: 'Take a picture, then get ready for the next one.' No pointing, no help.",
     "Time them. Write down every moment they stop, hesitate or try the wrong thing, and what they touched.",
-    "Now gloves on. Same task. Which control got harder: the rocker, the dot handle, the knobs, the pads?",
+    "Now gloves on. Same task. Which control got harder: the rocker, the dot handle, the winders, the pads?",
     "Then shut your own eyes and set the middle dot by counting clicks. Did you land on it?",
-    "Pick the worst moment and name the number you'd change: RK_L or FIN_W for the rocker, HND_UP for the handle, HEAD_H or GRIP_D for the knobs, PAD_X0 to PAD_X1 for the pads.",
-    "Say what that change would cost: a bigger knob needs room on the top, a longer rocker swings the blade differently, deeper teeth thin the head's wall."
+    "Pick the worst moment and name the number you'd change: RK_L or FIN_W for the rocker, HND_UP for the handle, HEAD_H or GRIP_D for the winders, PAD_X0 to PAD_X1 for the pads.",
+    "Say what that change would cost: a bigger winder needs room on the top, a longer rocker swings the blade differently, deeper teeth thin the head's wall."
    ],
    "notice": "Where people stop is almost never where the sums worry. That's the point of testing on a person: you find the problem you didn't know to calculate. For small hands, reach and pad width matter most; for gloves, target size and how far a control stands proud.",
    "safety": "Nobody aims the sight at the sun."
@@ -245,7 +245,7 @@
  "teach": {
   "objectives": [
    "Explain why a part that is right by calculation can still fail a person, using the first sight and the rocker guard.",
-   "Name what each control tells the hand without words: the rocker's raised side, the dots' sizes and clicks, the knobs' saw teeth.",
+   "Name what each control tells the hand without words: the rocker's raised side, the dots' sizes and clicks, the winders' saw teeth.",
    "Find where the sight's line crosses the lens's line from three numbers, and change SIGHT_DROP for a new distance.",
    "Use 32 mm and 0.05 mm to explain why about 1/300 s forgives a steady hand but a time picture needs a table.",
    "Test a control on someone who hasn't seen it, name the parameter they struggled with, and say what changing it would cost."
@@ -255,7 +255,7 @@
   "materials": [
    "One built camera or test slab per group of three, plus a pair of thick gloves",
    "A phone timer, a pencil and a sheet to note every hesitation",
-   "Card, tape and modelling clay for mock-ups of a bigger rocker or knob",
+   "Card, tape and modelling clay for mock-ups of a bigger rocker or winder",
    "A laptop with OpenSCAD and scad/one135.scad, if the club has one",
    "The two sims on a projector"
   ],
@@ -268,7 +268,7 @@
    {
     "minutes": 8,
     "phase": "explain",
-    "what": "Pass cameras round, eyes shut: find the rocker's raised side, count to the middle dot, wind a knob. Then the 'why' section: affordance, signifier, Fitts. Show the rocker figure."
+    "what": "Pass cameras round, eyes shut: find the rocker's raised side, count to the middle dot, wind a winder. Then the 'why' section: affordance, signifier, Fitts. Show the rocker figure."
    },
    {
     "minutes": 10,
@@ -309,13 +309,13 @@
     "a": "A wider, longer rocker (FIN_W, RK_L) is an easier target. A firmer click means a stiffer blade spring, and that changes the shutter's time: rerun the exposure check."
    },
    {
-    "q": "Why are the knobs' heads allowed to grow but not shrink?",
+    "q": "Why are the winders' heads allowed to grow but not shrink?",
     "a": "Each head also covers the gap in front of the block that closes its slot: smaller, and light could get in."
    }
   ],
   "exit_ticket": "Name one control on the camera that tells your hand what to do without words, and how. And one number: if SIGHT_DROP doubles, where do the lines cross? (1.4 m.)",
   "differentiation": {
-   "support": "Give the eye-line drawing with 30 mm and 0.375 mm marked, and do the sum as 'how many 35 mm steps'. In the sight sim, use only the 'Jump to' buttons. In the Try card, the observer only ticks a list: rocker, dots, knobs, pads.",
+   "support": "Give the eye-line drawing with 30 mm and 0.375 mm marked, and do the sum as 'how many 35 mm steps'. In the sight sim, use only the 'Jump to' buttons. In the Try card, the observer only ticks a list: rocker, dots, winders, pads.",
    "stretch": "Write the aim offset as a percentage of the picture for any distance d and SIGHT_DROP s, and find where it's worst. Then pick one parameter, change it in OpenSCAD, export the front plate and run the checks: what failed?",
    "access": "Both sims run from the keyboard and describe themselves in words. The eyes-shut and gloves tests suit everyone; pair a student who can't see the screen as the tester."
   },

@@ -12,14 +12,14 @@
  "still": {
   "img": "step_b9",
   "alt": "The orange front plate sliding down onto the camera body",
-  "caption": "The front plate going home: the hardest click in the build."
+  "caption": "The front plate seating: the firmest click in the build."
  },
  "sections": [
   {
    "id": "guess",
    "kind": "predict",
    "title": "Make a guess first",
-   "body": "<p>The whole camera: a body, a back, a front plate, a shutter, a dot wheel, a spool, two knobs, a frame wheel and a lens. Nine pieces, held together with no screws, no glue and no springs from a shop. You can wind it, shake it, knock it off a desk.</p>",
+   "body": "<p>The whole camera: a body, a back, a front plate, a shutter, a dot wheel, a spool, two winders, a frame wheel and a lens. Nine pieces, held together with no screws, no glue and no springs from a shop. You can wind it, shake it, knock it off a desk.</p>",
    "q": "So what makes a good snap hold on?",
    "choices": [
     "It's stiff: the harder it is to bend, the better it grips",
@@ -66,16 +66,16 @@
     {
      "sim": "m02_snap",
      "intro": "This is the back's own finger: 35 mm long, 1.3 mm thick, with a 1.6 mm nub. Push the back on and watch the root stretch and the force graph draw itself. Then make the finger short and fat, and break it. Push slowly and stop right at the click. What does the force graph do there? Press 'Pull it straight off'. Why won't it move?",
-     "after": "A long thin finger bends a long way at the tip while its root hardly stretches. Strain grows with thickness and falls with length <em>squared</em>; force grows with thickness <em>cubed</em>. So thickness is the knob that bites. And did you see the force drop to nothing at the click? That sudden drop is what your thumb feels and your ear hears."
+     "after": "A long thin finger bends a long way at the tip while its root hardly stretches. Strain grows with thickness and falls with length <em>squared</em>; force grows with thickness <em>cubed</em>. So thickness is the winder that bites. And did you see the force drop to nothing at the click? That sudden drop is what your thumb feels and your ear hears."
     }
    ]
   },
   {
    "id": "plate",
    "kind": "text",
-   "label": "The hardest hold",
+   "label": "The strongest hold",
    "title": "The front plate: hooks, a latch, and a path a knock can't follow",
-   "body": "<p>The front plate carries the lens, shutter and dot wheel, and it's what a fall hits first. Three things hold it:</p><ul><li><strong>Four hooked feet</strong> drop into four pockets on the body. Their hooks are 43° wedges: pressing the plate down pulls it tight onto the body's flat face, and that face sets the focus.</li><li><strong>A side lip on each foot</strong> tucks under the body's skin when you slide the plate across. Now it can't lift off.</li><li><strong>A leaf latch</strong>: a strip 1.6 mm thick (eight layers) lying in the plate's face, with a post on its free end. As the plate slides home, the post climbs a bump in the body and drops behind it. About 3 to 5 N to click on, the hardest push in the build; about 2 N to slide off.</li></ul><p>It used to slide straight up and off. Then the model dropped it, from four heights, on three kinds of printer. From 1 m the old plate came off in <strong>two falls out of three</strong>. Now, to come off, it has to go <em>up</em> and then <em>sideways</em> before it can come <em>away</em>. A knock pushes one way at a time.</p><p>The latch got a second look too. Its bump used to climb at 62°, and the click took about 9 N. Now the climbing side lies back at 54° and the push is about half. The holding side didn't change at all.</p>",
+   "body": "<p>The front plate carries the lens, shutter and dot wheel, and it's what a fall hits first. Three things hold it:</p><ul><li><strong>Four hooked feet</strong> drop into four pockets on the body. Their hooks are 43° wedges: pressing the plate down pulls it tight onto the body's flat face, and that face sets the focus.</li><li><strong>A side lip on each foot</strong> tucks under the body's skin when you slide the plate across. Now it can't lift off.</li><li><strong>A leaf latch</strong>: a strip 1.6 mm thick (eight layers) lying in the plate's face, with a post on its free end. As the plate slides home, the post climbs a bump in the body and drops behind it. About 3 to 5 N to click on, more force than any other click in the build; about 2 N to slide off.</li></ul><p>It used to slide straight up and off. Then the model dropped it, from four heights, on three kinds of printer. From 1 m the old plate came off in <strong>two falls out of three</strong>. Now, to come off, it has to go <em>up</em> and then <em>sideways</em> before it can come <em>away</em>. A knock pushes one way at a time.</p><p>The latch got a second look too. Its bump used to climb at 62°, and the click took about 9 N. Now the climbing side lies back at 54° and the push is about half. The holding side didn't change at all.</p>",
    "figure": {
     "svg": "fig_m02_path",
     "caption": "To come off: up, then sideways, then away. A knock pushes in one direction at a time."
@@ -101,7 +101,7 @@
    "render": "step_b4",
    "alt": "The back being pressed onto the body until its two fingers click",
    "caption": "BUILD 4: two fingers, two clicks.",
-   "body": "<p>Every spring is a few numbers in <code>scad/one135.scad</code> (and the shutter and dot wheel's rims in <code>scad/layout.scad</code>, which <code>tools/layout.py</code> writes: change them there).</p><ul><li><strong>The back's fingers:</strong> <code>F_T = 1.3</code> (thickness), <code>NUB_H = 1.6</code> (how far the nub stands up), <code>PAD_UP = 1.8</code> (how proud the pads stand). A thicker finger pushes harder by the cube of its thickness and strains more; a taller nub holds harder but must bend further to open.</li><li><strong>The front plate's leaf:</strong> <code>LF_T = 1.6</code> (eight layers), 25 mm long so the climb strains it 0.85 % at most. The bump: <code>LF_RAMP = 54</code> (the side the post climbs) and <code>LF_RAKE = 38</code> (the side that holds). Steepen <code>LF_RAMP</code> and the click gets harder fast; steepen <code>LF_RAKE</code> and the plate holds harder and comes off harder.</li><li><strong>The shutter and dot wheel:</strong> each one's rim is the spring, a beam with a round tooth that drops into 45° notches (<code>BL_T</code>, <code>WH_T</code>, <code>SPR_RAMP</code>). The rocker clicks at about 2.3 N, the dot wheel at about 2.4 N.</li><li><strong>The lens</strong> is the only part with no click: three small crush ribs squeeze it.</li></ul><p>Every spring lies flat on the bed so it bends along its lines, never across its layers. Turn a part in the slicer and you break that.</p><table class=\"lp-facts\"><tr><th>Back on / off</th><td>0.6 N / 0.5 N a pad</td></tr><tr><th>Rocker click</th><td>about 2.3 N (0.8 N on a thin print)</td></tr><tr><th>Dot click</th><td>about 2.4 N</td></tr><tr><th>Front plate click</th><td>about 3 to 5 N; off about 2 N</td></tr><tr><th>PLA yields at</th><td>about 1.7 % strain</td></tr><tr><th>Bought springs</th><td>none</td></tr></table>",
+   "body": "<p>Every spring is a few numbers in <code>scad/one135.scad</code> (and the shutter and dot wheel's rims in <code>scad/layout.scad</code>, which <code>tools/layout.py</code> writes: change them there).</p><ul><li><strong>The back's fingers:</strong> <code>F_T = 1.3</code> (thickness), <code>NUB_H = 1.6</code> (how far the nub stands up), <code>PAD_UP = 1.8</code> (how proud the pads stand). A thicker finger pushes harder by the cube of its thickness and strains more; a taller nub holds harder but must bend further to open.</li><li><strong>The front plate's leaf:</strong> <code>LF_T = 1.6</code> (eight layers), 25 mm long so the climb strains it 0.85 % at most. The bump: <code>LF_RAMP = 54</code> (the side the post climbs) and <code>LF_RAKE = 38</code> (the side that holds). Steepen <code>LF_RAMP</code> and the click gets harder fast; steepen <code>LF_RAKE</code> and the plate holds harder and comes off harder.</li><li><strong>The shutter and dot wheel:</strong> each one's rim is the spring, a beam with a round tooth that drops into 45° notches (<code>BL_T</code>, <code>WH_T</code>, <code>SPR_RAMP</code>). The rocker clicks at about 2.3 N, the dot wheel at about 2.4 N.</li><li><strong>The lens</strong> is the only part with no click: three small ribs hold it.</li></ul><p>Every spring lies flat on the bed so it bends along its lines, never across its layers. Turn a part in the slicer and you break that.</p><table class=\"lp-facts\"><tr><th>Back on / off</th><td>0.6 N / 0.5 N a pad</td></tr><tr><th>Rocker click</th><td>about 2.3 N (0.8 N on a thin print)</td></tr><tr><th>Dot click</th><td>about 2.4 N</td></tr><tr><th>Front plate click</th><td>about 3 to 5 N; off about 2 N</td></tr><tr><th>PLA yields at</th><td>about 1.7 % strain</td></tr><tr><th>Bought springs</th><td>none</td></tr></table>",
    "step": "b4"
   },
   {
@@ -305,7 +305,7 @@
    "stretch": "Design a finger that stays under 0.5 % with a 1.6 mm bend and pushes no harder than today's. Then explain from the drop sim why a thin, slippery printer loses more plates, and propose one change to the plate.",
    "access": "Both sims work from the keyboard and say what they show in words. Building the back with eyes shut, counting clicks, suits someone who can't see the screen."
   },
-  "safety": "Safety glasses while strips are bent: a strip can snap and fly. Bend away from faces. Nobody forces a camera part: the hardest push in the build is about 5 N, a firm thumb."
+  "safety": "Safety glasses while strips are bent: a strip can snap and fly. Bend away from faces. Nobody forces a camera part: more force than any other click in the build is about 5 N, a firm thumb."
  },
  "slides": [
   "guess",

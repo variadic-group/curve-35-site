@@ -66,7 +66,7 @@
    "id": "play",
    "kind": "play",
    "title": "Slopes, bridges and fat walls",
-   "intro": "Two benches. The first prints a slope or a bridge, layer by layer. The second puts five printers through three fits and the fit gauge, and lets you change FIT, the number in the files that sets the room round every shaft.",
+   "intro": "Two benches. The first prints a slope or a bridge, layer by layer. The second puts five printers through three fits and the fit gauge, and lets you change FIT, the number in the files that sets the room round every axle.",
    "sims": [
     {
      "sim": "m01_slice",
@@ -77,8 +77,8 @@
     {
      "sim": "m01_fit",
      "title": "Fat printers, thin printers",
-     "intro": "Draw a 3 mm slot and no printer makes it 3. The model rebuilt every joint on five printers, from walls 0.15 mm thin to 0.25 mm fat. Slide through them. Then change FIT, the number in the files that sets the room round every shaft, and see what it buys you. Typical printer (+0.10): how much room is left round the knob? Does the 0.2 mm machinist's fit survive? Fattest printer (+0.25): does the knob still turn?",
-     "after": "A fat wall makes a shaft bigger and its hole smaller at the same time, so every gap loses <strong>twice</strong> the wall error. FIT = 0.65 mm keeps 0.15 mm round the knobs even on the fattest printer. A 0.2 mm gap, which a machinist would call loose, binds on any printer more than 0.1 mm fat. Loose looks sloppy. It's on purpose.  The other trick is the rule: <strong>a flat face where the position must be exact, a wedge everywhere else.</strong> A wedge slides in until it meets, so it's snug on every printer. The one place where 'a little sooner or later' matters is lens to film, so the lens sits on a flat seat built from whole layers, and the front plate's 43° hooks are wedges that pull the plate hard onto the body's flat face."
+     "intro": "Draw a 3 mm slot and no printer makes it 3. The model rebuilt every joint on five printers, from walls 0.15 mm thin to 0.25 mm fat. Slide through them. Then change FIT, the number in the files that sets the room round every axle, and see what it buys you. Typical printer (+0.10): how much room is left round the winder? Does the 0.2 mm machinist's fit survive? Fattest printer (+0.25): does the winder still turn?",
+     "after": "A fat wall makes an axle bigger and its hole smaller at the same time, so every gap loses <strong>twice</strong> the wall error. FIT = 0.65 mm keeps 0.15 mm round the winders even on the fattest printer. A 0.2 mm gap, which a machinist would call loose, binds on any printer more than 0.1 mm fat. Loose looks sloppy. It's on purpose.  The other trick is the rule: <strong>a flat face where the position must be exact, a wedge everywhere else.</strong> A wedge slides in until it meets, so it's snug on every printer. The one place where 'a little sooner or later' matters is lens to film, so the lens sits on a flat seat built from whole layers, and the front plate's 43° hooks are wedges that pull the plate hard onto the body's flat face."
     }
    ],
    "figure": {
@@ -94,23 +94,23 @@
    "render": "p_front",
    "alt": "The front plate lying as it is printed, front face down",
    "caption": "The front plate prints front face down: 47 layers, 57 minutes.",
-   "body": "<p>Open <code>scad/one135.scad</code>. These are the numbers the printer forced on the design, and what happens if you change them.</p><ul><li><strong><code>FIT = 0.65</code></strong>: the room beside every shaft, bar and ring that slides into a slot (knobs, the frame wheel's fork, the blocks on the back). Drop it toward 0.4 and fat printers bind; push it up and the knobs rattle and the light traps get wider than the light check was run for.</li><li><strong><code>HOLE_COMP = 0.15</code></strong>: small holes print small, so they're drawn 0.15 mm bigger on the radius. Nothing needs drilling out.</li><li><strong>Whole layers.</strong> Every thickness in the front stack (wheel, blade, lens pocket) is a whole number of 0.2 mm layers, and so are the light seal's steps (<code>STEP_H = 1.2</code>). Slice at another layer height and the slicer rounds those away: clearances can vanish. Keep 0.2 mm.</li><li><strong>The front plate's feet</strong> (<code>FOOT_D</code>, <code>FOOT_TIP</code>, <code>LIP</code>): their hooks are the 43° wedges. The hook's tip stands on the pocket's floor, so only twice the wall error moves the plate, and pressing it down wedges it tight.</li><li><strong>First layers.</strong> The bed squashes the first layers wider (elephant's foot), so every pocket mouth on the bed side widens in a 45° slope. If you add a hole on the bed face, do the same.</li></ul><p>Each part is exported lying the way it must print. Don't turn any of them: the springs were checked for that layer direction only.</p><table class=\"lp-facts\"><tr><th>Layer</th><td>0.2 mm</td></tr><tr><th>Line</th><td>about 0.45 mm (0.4 mm nozzle)</td></tr><tr><th>Body</th><td>164 layers, 5 h, 64 g</td></tr><tr><th>Whole camera</th><td>9 h 26 min, 118 g</td></tr><tr><th>Printers checked</th><td>walls −0.15 to +0.25 mm</td></tr><tr><th>FIT round the knobs</th><td>0.65 mm; 0.15 mm left on the fattest</td></tr></table>"
+   "body": "<p>Open <code>scad/one135.scad</code>. These are the numbers the printer forced on the design, and what happens if you change them.</p><ul><li><strong><code>FIT = 0.65</code></strong>: the room beside every axle, bar and ring that slides into a slot (winders, the frame wheel's fork, the blocks on the back). Drop it toward 0.4 and fat printers bind; push it up and the winders rattle and the light traps get wider than the light check was run for.</li><li><strong><code>HOLE_COMP = 0.15</code></strong>: small holes print small, so they're drawn 0.15 mm bigger on the radius. Nothing needs drilling out.</li><li><strong>Whole layers.</strong> Every thickness in the front stack (wheel, blade, lens pocket) is a whole number of 0.2 mm layers, and so are the light seal's steps (<code>STEP_H = 1.2</code>). Slice at another layer height and the slicer rounds those away: clearances can vanish. Keep 0.2 mm.</li><li><strong>The front plate's feet</strong> (<code>FOOT_D</code>, <code>FOOT_TIP</code>, <code>LIP</code>): their hooks are the 43° wedges. The hook's tip stands on the pocket's floor, so only twice the wall error moves the plate, and pressing it down wedges it tight.</li><li><strong>First layers.</strong> The bed squashes the first layers wider (elephant's foot), so every pocket mouth on the bed side widens in a 45° slope. If you add a hole on the bed face, do the same.</li></ul><p>Each part is exported lying the way it must print. Don't turn any of them: the springs were checked for that layer direction only.</p><table class=\"lp-facts\"><tr><th>Layer</th><td>0.2 mm</td></tr><tr><th>Line</th><td>about 0.45 mm (0.4 mm nozzle)</td></tr><tr><th>Body</th><td>164 layers, 5 h, 64 g</td></tr><tr><th>Whole camera</th><td>9 h 26 min, 118 g</td></tr><tr><th>Printers checked</th><td>walls −0.15 to +0.25 mm</td></tr><tr><th>FIT round the winders</th><td>0.65 mm; 0.15 mm left on the fattest</td></tr></table>"
   },
   {
    "id": "maths",
    "kind": "maths",
    "title": "Read your printer off the gauge",
-   "summary": "why slot N means 0.025 × N mm, and what's left round the knobs",
+   "summary": "why slot N means 0.025 × N mm, and what's left round the winders",
    "lines": [
     "Every wall prints e too fat (e is negative on a thin printer). Both sides of the key move out: the 3.0 mm key prints 3.0 + 2e.",
     "Both walls of a slot move in: slot N, drawn 3.0 + 0.1 × N, prints 3.0 + 0.1 × N − 2e.",
     "The key goes in when 3.0 + 2e ≤ 3.0 + 0.1 × N − 2e, so when 4e ≤ 0.1 × N, so when e ≤ 0.025 × N.",
     "Example, e = 0.1 mm: the key prints 3.2. Slot 3 prints 3.1: no. Slot 4 prints 3.2: just.",
     "Narrowest slot 4: 4 × 0.025 = 0.1 mm. That's your printer's number.",
-    "The knobs: FIT = 0.65. Fattest printer, e = 0.25: 0.65 − 0.25 − 0.25 = 0.15 mm left. It turns.",
+    "The winders: FIT = 0.65. Fattest printer, e = 0.25: 0.65 − 0.25 − 0.25 = 0.15 mm left. It turns.",
     "The hooks: a 43° wedge's seat moves 2e ÷ sin 43°. At e = 0.25 that's 0.73 mm, and it doesn't matter: the hook pulls the plate onto a flat face, and the face sets the focus."
    ],
-   "body": "<p>The gap closes from four sides at once, so a printer just 0.1 mm fat needs a slot 0.4 mm wider than the key.</p><p><strong>Your turn.</strong> Your key first drops into slot 6. How fat are your walls, and how much of FIT = 0.65 is left round each knob?</p><p><strong>Answer.</strong> 6 × 0.025 = 0.15 mm fat. 0.65 − 0.15 − 0.15 = 0.35 mm left.</p>"
+   "body": "<p>The gap closes from four sides at once, so a printer just 0.1 mm fat needs a slot 0.4 mm wider than the key.</p><p><strong>Your turn.</strong> Your key first drops into slot 6. How fat are your walls, and how much of FIT = 0.65 is left round each winder?</p><p><strong>Answer.</strong> 6 × 0.025 = 0.15 mm fat. 0.65 − 0.15 − 0.15 = 0.35 mm left.</p>"
   },
   {
    "id": "try",
@@ -133,7 +133,7 @@
     "If the key won't go in anywhere: your printer is more than 0.2 mm fat. Check the filament diameter and flow first, then tune."
    ],
    "notice": "One number from your own printer, set once, puts every joint in the middle of its range instead of near an edge. Change filament or nozzle and print the gauge again: the number moves.",
-   "safety": "The nozzle and bed are hot. Hands off while it prints."
+   "safety": "The nozzle and bed are hot. Keep clear while it prints."
   },
   {
    "id": "quiz",
@@ -202,7 +202,7 @@
    "kind": "next",
    "label": "Print it, then next",
    "title": "The files and settings that matter",
-   "body": "<ul><li><strong>Settings:</strong> PLA, 0.4 mm nozzle, 0.2 mm layers, 3 walls, 15 % infill, fan on, seam aligned, avoid crossing perimeters on, no supports, no brim. The knobs, spool and frame wheel come out solid.</li><li><strong>Colour:</strong> dark and opaque. Hold a printed part against a phone light in a dark room: nothing should glow.</li><li><strong>Files:</strong> <code>one135_fit_gauge.stl</code> first, once per printer and filament. Then <code>one135_test_slab.stl</code> if you want a quick check. Then the whole kit: <code>one135_plate.3mf</code> fits a 220 mm bed in one run, or print the parts one by one (<code>one135_body.stl</code>, <code>one135_back.stl</code>, <code>one135_front.stl</code> and the rest).</li><li><strong>Changing the design:</strong> edit <code>scad/one135.scad</code>, export the part with <code>PART = \"p_front\"</code> (or <code>p_body</code>, <code>p_back</code>…) so it lies the right way, then run <code>sh tools/run_all.sh</code> to repeat every check.</li></ul><p>Everything is on the <a href=\"#files\">Files page</a>.</p>",
+   "body": "<ul><li><strong>Settings:</strong> PLA, 0.4 mm nozzle, 0.2 mm layers, 3 walls, 15 % infill, fan on, seam aligned, avoid crossing perimeters on, no supports, no brim. The winders, spool and frame wheel come out solid.</li><li><strong>Colour:</strong> dark and opaque. Hold a printed part against a phone light in a dark room: nothing should glow.</li><li><strong>Files:</strong> <code>one135_fit_gauge.stl</code> first, once per printer and filament. Then <code>one135_test_slab.stl</code> if you want a quick check. Then the whole kit: <code>one135_plate.3mf</code> fits a 220 mm bed in one run, or print the parts one by one (<code>one135_body.stl</code>, <code>one135_back.stl</code>, <code>one135_front.stl</code> and the rest).</li><li><strong>Changing the design:</strong> edit <code>scad/one135.scad</code>, export the part with <code>PART = \"p_front\"</code> (or <code>p_body</code>, <code>p_back</code>…) so it lies the right way, then run <code>sh tools/run_all.sh</code> to repeat every check.</li></ul><p>Everything is on the <a href=\"#files\">Files page</a>.</p>",
    "href": "#maker-2",
    "kicker": "Next · M2 · Click",
    "question": "Nine pieces, no screws, no glue, no bought springs. What holds it together?",
@@ -255,7 +255,7 @@
    {
     "minutes": 14,
     "phase": "explore",
-    "what": "Measure three fits: a knob's stem and its slot, the lens and its pocket, a front plate foot and its pocket (calipers, or the numbers in the files section). Work out each gap. Which are big, and why would anyone draw them big?"
+    "what": "Measure three fits: a winder's stem and its slot, the lens and its pocket, a front plate foot and its pocket (calipers, or the numbers in the files section). Work out each gap. Which are big, and why would anyone draw them big?"
    },
    {
     "minutes": 7,
@@ -280,10 +280,10 @@
    },
    {
     "q": "Which gaps in the camera are big? Why draw a gap that big?",
-    "a": "About 0.65 mm round the knobs (FIT), so they still turn on a printer 0.25 mm fat."
+    "a": "About 0.65 mm round the winders (FIT), so they still turn on a printer 0.25 mm fat."
    },
    {
-    "q": "A printer 0.15 mm fat: how much of the knob's 0.65 mm is left?",
+    "q": "A printer 0.15 mm fat: how much of the winder's 0.65 mm is left?",
     "a": "0.65 − 0.15 − 0.15 = 0.35 mm."
    },
    {
@@ -297,7 +297,7 @@
   ],
   "exit_ticket": "In one sentence: name one shape a printer can't make and how this camera avoids needing it. And one number: a printer 0.1 mm fat on every wall: how much narrower does a slot print? (0.2 mm.)",
   "differentiation": {
-   "support": "Give the Try card's key and slots already drawn; students only fatten edges and count squares. In the fit sim, watch the knob ring only.",
+   "support": "Give the Try card's key and slots already drawn; students only fatten edges and count squares. In the fit sim, watch the winder ring only.",
    "stretch": "Derive e ≤ 0.025 × N from the drawing. Then: a wedge's seat moves 2e ÷ sin 43°. How far does a +0.25 printer lift the front plate's hooks? (About 0.73 mm.) Why doesn't that move the focus?",
    "access": "Both sims run from the keyboard and say what they show in words. The paper version of the Try card works at any size."
   },

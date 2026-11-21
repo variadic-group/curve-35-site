@@ -235,13 +235,13 @@
     b += '<rect x="120" y="110" width="400" height="150" rx="22" fill="#2a2d31"/><rect x="150" y="100" width="340" height="16" rx="6" fill="#c9cdd1"/>';
     b += '<circle cx="190" cy="96" r="22" fill="#2f9e57"/><circle cx="450" cy="96" r="24" fill="#c62828"/><circle cx="380" cy="100" r="13" fill="#2b6cb0"/><circle cx="320" cy="185" r="34" fill="#D9601A"/><circle cx="320" cy="185" r="12" fill="#1a1a1a"/>';
     function call(x1, y1, x2, y2, t1, t2) { return '<line x1="' + x1 + '" y1="' + y1 + '" x2="' + x2 + '" y2="' + y2 + '" stroke="#2D2A26" stroke-width="1.5"/><text x="' + x2 + '" y="' + (y2 - 20) + '" font-size="14" font-weight="700" fill="#2D2A26">' + t1 + '</text><text x="' + x2 + '" y="' + (y2 - 5) + '" font-size="12" fill="#625C53">' + t2 + '</text>'; }
-    b += call(190, 74, 10, 50, "green knob: 0.65 mm of room", "head lies flat; ring in a channel; block behind");
-    b += call(450, 72, 470, 50, "red knob: the same", "no straight line past either");
+    b += call(190, 74, 10, 50, "green winder: 0.65 mm of room", "head lies flat; ring in a channel; block behind");
+    b += call(450, 72, 470, 50, "red winder: the same", "no straight line past either");
     b += call(380, 88, 250, 86, "frame wheel's opening", "the leakiest of the three on top");
     b += call(500, 116, 530, 170, "back's joint", "ridge in a groove, 1.9 mm deep");
     b += call(320, 219, 380, 322, "the lens: the one way in", "only when the shutter opens");
     b += call(126, 230, 20, 322, "front plate's edge", "hooks pull it flat on the body");
-    return svgFig(700, 330, "The ways light could try to get into the camera: the two knobs, the frame wheel's opening, the back's joint, the front plate's edge, and the lens. Only the lens is meant to let light in, and only while the shutter is open.", b);
+    return svgFig(700, 330, "The ways light could try to get into the camera: the two winders, the frame wheel's opening, the back's joint, the front plate's edge, and the lens. Only the lens is meant to let light in, and only while the shutter is open.", b);
   });
 })();
 

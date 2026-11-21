@@ -84,13 +84,13 @@
     var r = root(host, K);
     var S = 4, W = 720, H = 400, gx = 360, fy = 170, fh = 35 * S;   // gate centre x; film top y
     var st = { D: 0, shots: [], lastD: null, knob: 0, red: 0 };
-    var s = sv("svg", { viewBox: "0 0 " + W + " " + H, role: "img", "aria-label": "The film seen from behind, with its holes. The blue frame wheel's teeth sit in the top row of holes. Turn the green knob to wind; take a picture when the arrow comes home." });
+    var s = sv("svg", { viewBox: "0 0 " + W + " " + H, role: "img", "aria-label": "The film seen from behind, with its holes. The blue frame wheel's teeth sit in the top row of holes. Turn the green winder to wind; take a picture when the arrow comes home." });
     s.appendChild(sv("rect", { x: 0, y: 0, width: W, height: H, fill: "#f7f4ee" }));
     var defs = sv("defs", {}); var cp = sv("clipPath", { id: "l06clip" }); cp.appendChild(sv("rect", { x: 110, y: 0, width: 500, height: H })); defs.appendChild(cp); s.appendChild(defs);
     // rolls
     var shell = sv("rect", { x: 22, y: fy - 10, width: 86, height: fh + 20, rx: 14, fill: "#3b3f44" }); s.appendChild(shell);
     var shellRoll = sv("circle", { cx: 65, cy: fy + fh / 2, r: 24, fill: "#7a5230", stroke: "#2D2A26" }); s.appendChild(shellRoll);
-    var knob = sv("g", { tabindex: 0, role: "slider", "aria-label": "Green wind knob: drag round, or use the arrow keys", "aria-valuemin": 0, "aria-valuemax": 1400, style: "cursor:grab;outline:none" });
+    var knob = sv("g", { tabindex: 0, role: "slider", "aria-label": "Green green winder: drag round, or use the arrow keys", "aria-valuemin": 0, "aria-valuemax": 1400, style: "cursor:grab;outline:none" });
     knob.appendChild(sv("circle", { cx: 65, cy: 70, r: 42, fill: "#2f9e57", stroke: "#1c5e34", "stroke-width": 3 }));
     for (var g = 0; g < 12; g++) knob.appendChild(sv("rect", { x: 63, y: 30, width: 4, height: 10, fill: "#1c5e34", transform: "rotate(" + g * 30 + " 65 70)" }));
     var knobMark = sv("line", { x1: 65, y1: 70, x2: 65, y2: 36, stroke: "#fff", "stroke-width": 5, "stroke-linecap": "round" }); knob.appendChild(knobMark);
@@ -124,7 +124,7 @@
     var wind1 = el("button", { type: "button", "class": "lx-btn", text: "Wind 1 mm" }), wind5 = el("button", { type: "button", "class": "lx-btn", text: "Wind 5 mm" });
     var shoot = el("button", { type: "button", "class": "lx-btn go", text: "Take a picture" }), reset = el("button", { type: "button", "class": "lx-btn", text: "New roll" });
     r.appendChild(el("div", { "class": "lx-row" }, [shoot, wind1, wind5, reset]));
-    var cN = chip("pictures taken"), cW = chip("frame wheel turns since the last picture"), cR = chip("red knob turns, this picture"), cRR = chip("film roll on the red spool");
+    var cN = chip("pictures taken"), cW = chip("frame wheel turns since the last picture"), cR = chip("red winder turns, this picture"), cRR = chip("film roll on the red spool");
     r.appendChild(el("div", { "class": "lx-read" }, [cN, cW, cR, cRR]));
     var out = say(r);
     var Lstart = NPIC * FRAME;   // a loaded 36-picture film on the red spool
@@ -173,7 +173,7 @@
       st.shots.push({ u: u, bad: bad }); st.lastD = st.D; st.redThis = 0;
       if (!RM) { flash.setAttribute("opacity", 0.9); setTimeout(function () { flash.setAttribute("opacity", 0); }, 160); }
       update(bad ? "Double picture! You wound only " + (gap + PIC).toFixed(1) + " mm, less than 36: two pictures sit on top of each other." :
-        gap == null ? "Picture 1. Now turn the green knob and watch the blue wheel: stop when its arrow comes home." :
+        gap == null ? "Picture 1. Now turn the green winder and watch the blue wheel: stop when its arrow comes home." :
         gap > 4 ? "Picture " + st.shots.length + ". You wound " + (gap + PIC).toFixed(1) + " mm: " + (gap - 2).toFixed(1) + " mm of film wasted, but no harm done." :
         "Picture " + st.shots.length + ". Eight holes, 38 mm, one turn of the wheel: spot on.");
     }
@@ -188,7 +188,7 @@
       if (d < 0) { var rs = Math.sqrt(16 + THICK * st.D / Math.PI); wind(-d * rs); }   // turning anticlockwise winds the film home; the knob has no reverse
     });
     knob.addEventListener("pointerup", function () { drag = null; });
-    update("Picture 1 is ready in the gate. Press \"Take a picture\", then wind with the green knob (drag it anticlockwise) or the buttons, and stop when the blue arrow comes home.");
+    update("Picture 1 is ready in the gate. Press \"Take a picture\", then wind with the green winder (drag it anticlockwise) or the buttons, and stop when the blue arrow comes home.");
     return { destroy: function () {} };
   });
 
@@ -267,8 +267,8 @@
     b += '<circle cx="545" cy="130" r="48" fill="#7a5230"/><circle cx="545" cy="130" r="24" fill="#c62828"/><text x="545" y="215" font-size="14" font-weight="600" text-anchor="middle" fill="#2D2A26">red spool</text>';
     b += '<defs><marker id="a6" markerWidth="10" markerHeight="10" refX="6" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10Z" fill="#2D2A26"/></marker></defs>';
     b += '<path d="M150,226 H500" stroke="#625C53" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#a6)"/><text x="325" y="252" font-size="13" text-anchor="middle" fill="#625C53">1. loading: the whole film wound OUT (about 25 turns for 24 pictures)</text>';
-    b += '<path d="M500,30 H150" stroke="#2D2A26" stroke-width="3" marker-end="url(#a6)"/><text x="325" y="14" font-size="13" text-anchor="middle" fill="#2D2A26" font-weight="600">2. after each picture: green knob winds it BACK into the dark shell</text>';
-    return svgFig(620, 260, "The film's path. Loading winds the whole film out of its shell onto the red spool. After each picture the green knob winds it back into the shell, past the gate, while the film's holes turn the blue frame wheel.", b);
+    b += '<path d="M500,30 H150" stroke="#2D2A26" stroke-width="3" marker-end="url(#a6)"/><text x="325" y="14" font-size="13" text-anchor="middle" fill="#2D2A26" font-weight="600">2. after each picture: green winder winds it BACK into the dark shell</text>';
+    return svgFig(620, 260, "The film's path. Loading winds the whole film out of its shell onto the red spool. After each picture the green winder winds it back into the shell, past the gate, while the film's holes turn the blue frame wheel.", b);
   });
 })();
 

@@ -2,7 +2,7 @@
  "n": 7,
  "title": "Light traps",
  "question": "How can a box full of gaps be dark inside?",
- "hook": "Inside this camera lies film that one moment of daylight would ruin. Yet the knobs turn, the dial spins and the back comes off. Air leaks through every gap. Light doesn't. The trick is a fact from lesson 1: light goes in straight lines.",
+ "hook": "Inside this camera lies film that one moment of daylight would ruin. Yet the winders turn, the dial spins and the back comes off. Air leaks through every gap. Light doesn't. The trick is a fact from lesson 1: light goes in straight lines.",
  "colour": "#4B5563",
  "hero_fig": "fig_l07_trap",
  "chips": [
@@ -15,7 +15,7 @@
    "id": "predict",
    "kind": "predict",
    "title": "Your guess first",
-   "body": "<p>This camera is not tight anywhere. Each knob has <strong>0.65 mm</strong> of room all round so it can turn. The back sits in its groove with <strong>0.6 mm</strong> to spare. The frame wheel's opening on top is simply open. Pour smoke at it and smoke would get in.</p>",
+   "body": "<p>This camera is not tight anywhere. Each winder has <strong>0.65 mm</strong> of room all round so it can turn. The back sits in its groove with <strong>0.6 mm</strong> to spare. The frame wheel's opening on top is simply open. Pour smoke at it and smoke would get in.</p>",
    "q": "So why doesn't light get in and fog the film?",
    "choices": [
     "The gaps are too small for light to fit through",
@@ -29,7 +29,7 @@
    "id": "why",
    "kind": "story",
    "title": "Bend the gap and light can't follow",
-   "body": "<p>If light only travels in straight lines, a gap is harmless as long as no straight line runs through it to the film. Give the gap a corner or two and you've built a wall light can't walk through, while the parts still move. That's a light trap.</p><p>Hunt the ways in. Each knob's head lies flat on the body, a ring on its stem runs in a channel, and a block closes the slot behind it: corner, corner, corner. A ridge on the back stands in a groove in the body, reaching almost 2 mm in. The front plate's hooks pull it flat. The only open way in is the lens, and only while the shutter is open.</p><p>Light also bounces, and no plastic is perfectly black. Each bounce keeps only a share, so a few corners shrink it to nothing worth counting. The computer model checked it the hard way: rays fired outward from the film in every direction, 21 cases, 69 million rays. Not one got out. With the shutter held open, rays escaped, every one through the lens. The test can find light; shut, it found none.</p>",
+   "body": "<p>If light only travels in straight lines, a gap is harmless as long as no straight line runs through it to the film. Give the gap a corner or two and you've built a wall light can't walk through, while the parts still move. That's a light trap.</p><p>Hunt the ways in. Each winder's head lies flat on the body, a ring on its stem runs in a channel, and a block closes the slot behind it: corner, corner, corner. A ridge on the back stands in a groove in the body, reaching almost 2 mm in. The front plate's hooks pull it flat. The only open way in is the lens, and only while the shutter is open.</p><p>Light also bounces, and no plastic is perfectly black. Each bounce keeps only a share, so a few corners shrink it to nothing worth counting. The computer model checked it the hard way: rays fired outward from the film in every direction, 21 cases, 69 million rays. Not one got out. With the shutter held open, rays escaped, every one through the lens. The test can find light; shut, it found none.</p>",
    "figure": {
     "svg": "fig_l07_waysin",
     "caption": "The places light could try its luck."
@@ -131,12 +131,12 @@
    "title": "Check yourself",
    "items": [
     {
-     "q": "The knobs have 0.65 mm of room all round. Why doesn't light come through?",
+     "q": "The winders have 0.65 mm of room all round. Why doesn't light come through?",
      "choices": [
       "0.65 mm is too small for light",
       "There's no straight line through: the light would have to bounce round corners",
       "A foam ring seals them",
-      "The knobs are painted"
+      "The winders are painted"
      ],
      "answer": 1,
      "why": "The head lies on the body, a ring runs in a channel and a block closes the slot behind: several corners, and every bounce throws light away."
@@ -168,7 +168,7 @@
      "choices": [
       "The lens",
       "A back not pressed home",
-      "The knobs turning",
+      "The winders turning",
       "Bright sunlight on the front plate"
      ],
      "answer": 1,
@@ -284,7 +284,7 @@
  "teach": {
   "objectives": [
    "Say why a gap with a bend in it keeps light out when the same gap straight does not.",
-   "Name the ways into this camera (two knobs, the frame wheel's opening, the back's joint, the front plate's edge, the lens) and what keeps light out at each.",
+   "Name the ways into this camera (two winders, the frame wheel's opening, the back's joint, the front plate's edge, the lens) and what keeps light out at each.",
    "Work out how much light is left after a number of bounces at a given share, and say why the model's 0.3 is a worst case.",
    "Explain why a test must be shown finding a problem (the open shutter) before its 'none' can be believed."
   ],

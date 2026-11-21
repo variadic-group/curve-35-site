@@ -153,7 +153,7 @@ def build():
         if k in NUM: badge(c, x0 + 15, y0 + 13, NUM[k])
         c.setFillColor(INK); c.setFont("LSB", 10); c.drawString(x0 + 27, y0 + 9.5, "1x"); c.setFillColor(GREY); c.setFont("LS", 9); c.drawString(x0 + 44, y0 + 9.5, nm)
     x0 = M + 4 * cw; y0 = H - M - 40 - 2 * chh; c.setFillColor(INK); c.setFont("LSB", 10); c.drawString(x0 + 12, y0 + 66, "Spares"); c.setFillColor(GREY); c.setFont("LS", 9)      # the empty fifth cell of the second row
-    for i, tx in enumerate(("1x wind knob", "1x shutter")): c.drawString(x0 + 12, y0 + 50 - 13 * i, tx)
+    for i, tx in enumerate(("1x green winder", "1x shutter")): c.drawString(x0 + 12, y0 + 50 - 13 * i, tx)
     fit(c, trim("p_pinring", 6), x0 + 4, y0 + 4, 20, 22); fit(c, trim("p_pindisc", 6), x0 + 22, y0 + 4, 16, 22); c.setFillColor(INK); c.setFont("LSB", 8.6); c.drawString(x0 + 40, y0 + 18, "pinhole ring + disc"); c.setFillColor(GREY); c.setFont("LS", 7.6); c.drawString(x0 + 40, y0 + 8, "for the pinhole"); c.drawString(x0 + 40, y0 - 1, "experiment: page 15")
     c.setStrokeColor(BOXL); c.setLineWidth(0.8); c.setFillColor(BOX); c.roundRect(M, M + 2, W - 2 * M, 44, 8, fill=1, stroke=1); fit(c, trim("cassette", 6), M + 8, M + 5, 40, 38)
     c.setFillColor(INK); c.setFont("LSB", 11); c.drawString(M + 56, M + 27, "Film: any 35 mm film.  A roll is in the starter kit."); c.setFillColor(GREY); c.setFont("LS", 9.5); c.drawString(M + 56, M + 13, "The dot chart in this guide is for ISO 400 film.")
@@ -204,7 +204,7 @@ def build():
     xr = M + w + 18; c.setFillColor(SEC["KNOW"]); c.setFont("LSB", 15); c.drawString(xr, H - M - 14, "How it works"); c.setFillColor(GREY); c.setFont("LS", 8.5); c.drawString(xr + 100, H - M - 14, "from above, cut through the middle")
     fit(c, "build/booklet/how.png", xr - 4, M + 148, w + 8, h - 166); y = M + 136
     for n, tx in enumerate(("Light comes in through the lens.", "A hole in the wheel sets how much: the dot you choose.", "Press the rocker: the shutter opens for an instant.", "The film lies on a curve round the lens, so the whole picture is sharp.",
-                            "The green knob winds each picture back into the film's shell.", "The film turns the blue wheel: once round for each picture.")):
+                            "The green winder winds each picture back into the film's shell.", "The film turns the blue wheel: once round for each picture.")):
         badge(c, xr + 6, y + 3, n + 1, 5.6, 7, SEC["KNOW"]); c.setFillColor(INK); c.setFont("LS", 8.8)
         for ln in simpleSplit(tx, "LS", 8.8, w - 20): c.drawString(xr + 17, y, ln); y -= 10.6
         y -= 3.4
@@ -242,7 +242,7 @@ def build():
     for k, v in CN["panels"]["booklet_numbers"]:
         c.setFillColor(GREY); c.setFont("LS", 9.5); c.drawString(xl, y, k); c.setFillColor(INK); c.drawString(xl + 50, y, v); y -= 14
     xr = M + w + 26; c.setFillColor(INK); c.setFont("LSB", 12); c.drawString(xr, H - M - 54, "Good to know"); y = H - M - 72
-    for tx in ("Load and unload in the shade, never in the sun.", "Press the rocker, then wind. Every time.", "Put what matters in the middle: it is sharpest there.", "Never force a knob. If one is stiff, stop and look.", "If the back comes open, the pictures already taken are safe in the film's shell.", "Keep the camera out of hot cars: the plastic softens."):
+    for tx in ("Load and unload in the shade, never in the sun.", "Press the rocker, then wind. Every time.", "Put what matters in the middle: it is sharpest there.", "Never force a winder. If one is stiff, stop and look.", "If the back comes open, the pictures already taken are safe in the film's shell.", "Keep the camera out of hot cars: the plastic softens."):
         c.setFillColor(SEC["BUILD"]); c.circle(xr + 3, y + 3.5, 2.2, fill=1, stroke=0); c.setFillColor(INK); c.setFont("LS", 9.5)
         for ln in simpleSplit(tx, "LS", 9.5, w - 30): c.drawString(xr + 12, y, ln); y -= 12
         y -= 4
@@ -261,7 +261,7 @@ def build():
     # ---- the first picture: rung 1, a hole and a slide.  Four pages for the website (lesson 1), in the guide's own layout
     page[0] = 1; spread("THE HOLE", WEB[:4])
     tag(c, "THE HOLE", page[0]); c.setFillColor(INK); c.setFont("LSB", 20); c.drawString(M + 86, H - M - 14, "Your first picture"); fit(c, trim("r5"), M, M + 96, w + 6, h - 110); y = M + 84
-    for n, tx in enumerate(("Stand the camera on something steady, outdoors.", "Aim along the middle line on top.", "Lift the slide by its grip. Count. Push it down.", "Wind on: turn the green knob until the arrow has gone once round.")):
+    for n, tx in enumerate(("Stand the camera on something steady, outdoors.", "Aim along the middle line on top.", "Lift the slide by its grip. Count. Push it down.", "Wind on: turn the green winder until the arrow has gone once round.")):
         badge(c, M + 7, y + 3, n + 1, 6.5, 8, SEC["THE HOLE"]); c.setFillColor(INK); c.setFont("LS", 10); c.drawString(M + 20, y, tx); y -= 16
     xr = M + w + 34; c.setFillColor(INK); c.setFont("LSB", 13); c.drawString(xr, H - M - 56, "How long to count"); table3(c, xr + 4, H - M - 92, [(k, PINS[k]) for k in ISOS], PINL, 49, lab=44, fs=8.5, title="Seconds, by film and light"); c.setFillColor(INK); c.setFont("LS", 9.5); y = H - M - 196
     for tx in ("A hole this small lets in very little light, so every picture is counted, not snapped.", "A camera is a dark box with a hole. Everything you add from here makes the picture brighter, sharper or quicker to take: a lens, three sizes of hole, a shutter.", "Then take the same picture again with the lens, and compare."):
