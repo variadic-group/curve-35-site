@@ -1,186 +1,326 @@
 WEBVTT
 
 1
-00:00:00.200 --> 00:00:04.994
-After each picture you turn the green knob, and one picture's length of film moves.
+00:00:00.200 --> 00:00:03.425
+After every picture, you turn the green winder,
 
 2
-00:00:05.400 --> 00:00:09.733
-Too little, and two pictures overlap. Too much, and film is wasted.
+00:00:03.175 --> 00:00:06.090
+and one picture's length of film moves along.
 
 3
-00:00:10.133 --> 00:00:15.719
-There is no motor and no chip. How does the camera know it has moved exactly one picture?
+00:00:06.800 --> 00:00:11.015
+Move the film too little, and two pictures land on top of each other.
 
 4
-00:00:16.133 --> 00:00:20.546
-Most people guess: count turns of the knob. One turn, one picture.
+00:00:10.765 --> 00:00:13.897
+Move it too much, and you're throwing film away.
 
 5
-00:00:20.967 --> 00:00:25.294
-But film winds onto a roll, and the roll grows fatter with every turn.
+00:00:14.600 --> 00:00:17.535
+And there's no motor in here, and no chip.
 
 6
-00:00:25.700 --> 00:00:28.236
-A fatter roll takes in more film each turn.
+00:00:17.285 --> 00:00:21.598
+So how does the camera know it has moved the film exactly one picture?
 
 7
-00:00:28.667 --> 00:00:34.921
-Empty, one turn takes in a little under one picture. Full, it takes in about one and two-thirds.
+00:00:22.300 --> 00:00:25.470
+Most people say: count turns of the winder.
 
 8
-00:00:35.333 --> 00:00:39.860
-So turns cannot count pictures. The camera must measure the film itself.
+00:00:25.220 --> 00:00:27.475
+One turn, one picture.
 
 9
-00:00:40.267 --> 00:00:44.997
-Look at the film's edges. A row of holes runs along each, top and bottom.
+00:00:27.225 --> 00:00:29.920
+And that would work, except for one thing.
 
 10
-00:00:45.400 --> 00:00:55.266
-About 1892, in Thomas Edison's laboratory, William Dickson settled on film 35 millimetres wide, with holes down both edges.
+00:00:29.670 --> 00:00:34.355
+The film winds onto a roll, and the roll gets thicker with every turn.
 
 11
-00:00:55.667 --> 00:00:59.850
-It was for moving pictures: teeth in the holes pulled it along exactly.
+00:00:34.105 --> 00:00:37.917
+A thicker roll takes in more film each time round.
 
 12
-00:01:00.267 --> 00:01:04.898
-On today's film the holes are 4.75 millimetres apart.
+00:00:37.667 --> 00:00:41.652
+When it's empty, one turn takes in a little under one picture.
 
 13
-00:01:05.300 --> 00:01:12.301
-In 1913 Oskar Barnack designed a small camera that ran this film sideways, for still pictures.
+00:00:41.402 --> 00:00:45.827
+When it's full, one turn takes in about one and two-thirds.
 
 14
-00:01:12.733 --> 00:01:18.573
-His picture was 36 by 24 millimetres. Yours is exactly the same size.
+00:00:45.577 --> 00:00:48.222
+So turns can't count pictures.
 
 15
-00:01:19.000 --> 00:01:22.280
-It went on sale in 1925, as the Leica.
+00:00:47.972 --> 00:00:50.677
+The camera has to measure the film itself.
 
 16
-00:01:22.700 --> 00:01:28.539
-One picture is 36 millimetres long, and the gap after it 2: 38 millimetres.
+00:00:51.400 --> 00:00:53.160
+And the film gives it a way.
 
 17
-00:01:28.967 --> 00:01:36.329
-And eight holes, 4.75 apart, make exactly 38 millimetres. Eight holes, one picture.
+00:00:52.910 --> 00:00:54.790
+Look along the edges.
 
 18
-00:01:36.733 --> 00:01:41.651
-So the camera counts holes, not turns. That is the blue frame wheel's job.
+00:00:54.540 --> 00:00:58.288
+There's a row of holes running down each one, top and bottom.
 
 19
-00:01:42.067 --> 00:01:46.172
-It has eight teeth, and they sit in the holes along the film's top edge.
+00:00:59.000 --> 00:01:01.090
+Those holes have a history.
 
 20
-00:01:46.600 --> 00:01:50.685
-The wheel does not pull the film. The film, moving, turns the wheel.
+00:01:00.840 --> 00:01:05.130
+Around 1892, in Thomas Edison's laboratory,
 
 21
-00:01:51.100 --> 00:01:56.320
-Eight holes pass, the wheel turns once, and the arrow on the frame wheel comes home.
+00:01:04.880 --> 00:01:11.354
+William Dickson settled on film 35 millimetres wide, with holes down both edges.
 
 22
-00:01:56.733 --> 00:02:00.608
-The camera does not stop you. You stop when the arrow comes round.
+00:01:11.104 --> 00:01:13.415
+It was made for moving pictures,
 
 23
-00:02:01.033 --> 00:02:03.661
-Each tooth tapers, so it finds its hole.
+00:01:13.165 --> 00:01:17.919
+where teeth in the holes pulled the film along by exactly the right amount.
 
 24
-00:02:04.067 --> 00:02:08.498
-By the model, with thin film or thick, no tooth touches a hole's edge.
+00:01:17.669 --> 00:01:23.102
+On today's film, those holes are 4.75 millimetres apart.
 
 25
-00:02:08.900 --> 00:02:12.856
-To load, you wind the whole film out of its shell onto the red spool.
+00:01:23.833 --> 00:01:30.538
+Then in 1913, Oskar Barnack designed a small camera that ran that same film sideways,
 
 26
-00:02:13.267 --> 00:02:18.399
-That takes about 25 turns for 24 pictures, 33 for 36.
+00:01:30.288 --> 00:01:32.338
+to take still pictures.
 
 27
-00:02:18.800 --> 00:02:23.073
-Then, after each picture, the green knob winds it back into the shell.
+00:01:32.088 --> 00:01:38.823
+His picture was 36 by 24 millimetres, and yours is exactly the same size.
 
 28
-00:02:23.500 --> 00:02:28.778
-Why backwards? The shell is dark inside: pictures already taken are safe in it.
+00:01:38.573 --> 00:01:42.286
+It went on sale in 1925 as the Leica.
 
 29
-00:02:29.200 --> 00:02:33.946
-If the back opens by accident, only pictures not yet taken are lost.
+00:01:42.036 --> 00:01:44.696
+Now watch the numbers click together.
 
 30
-00:02:34.367 --> 00:02:38.013
-The shell you can load in daylight came in 1934.
+00:01:44.446 --> 00:01:50.731
+One picture is 36 millimetres long, and the gap after it is 2, which makes 38.
 
 31
-00:02:38.433 --> 00:02:45.736
-Now a sum. One turn of a roll takes in its distance round: two times 3.14 times its radius.
+00:01:50.481 --> 00:01:56.661
+And eight holes, 4.75 apart, come to exactly 38 millimetres.
 
 32
-00:02:46.167 --> 00:02:54.618
-The red spool empty: radius 5.9 millimetres. One turn: about 37 millimetres, just under one picture.
+00:01:56.411 --> 00:01:58.702
+Eight holes, one picture.
 
 33
-00:02:55.033 --> 00:03:01.867
-Full after 36 pictures: radius 10.1. One turn: about 63 millimetres.
+00:01:59.433 --> 00:02:02.303
+So the camera counts holes, not turns.
 
 34
-00:03:02.300 --> 00:03:10.835
-63 divided by 37 is 1.7. The last turn moves 1.7 times the film of the first.
+00:02:02.053 --> 00:02:04.753
+That's the job of the blue frame wheel.
 
 35
-00:03:11.267 --> 00:03:16.827
-The same happens in the film's shell: the roll the green knob winds grows with every picture.
+00:02:04.503 --> 00:02:09.056
+It has eight teeth, and they sit in the holes along the film's top edge.
 
 36
-00:03:17.233 --> 00:03:22.025
-Same knob, same turn, very different lengths. Only the holes stay the same.
+00:02:08.806 --> 00:02:10.991
+The wheel doesn't pull the film.
 
 37
-00:03:22.433 --> 00:03:27.158
-In your kit, the frame wheel lies in a fork on the back, beside a round post.
+00:02:10.741 --> 00:02:13.926
+The film, as it moves, turns the wheel.
 
 38
-00:03:27.567 --> 00:03:31.220
-Close the back and its teeth come down on the film's top edge.
+00:02:13.676 --> 00:02:18.956
+Eight holes go past, the wheel turns once, and the arrow on it comes back home.
 
 39
-00:03:31.633 --> 00:03:37.430
-After the last picture, wind the green knob until the arrow stops. Then three more turns.
+00:02:18.706 --> 00:02:20.790
+The camera doesn't stop you.
 
 40
-00:03:37.833 --> 00:03:41.216
-Now all the film is in its shell, and the back can come off.
+00:02:20.540 --> 00:02:23.305
+You stop, when the arrow comes round.
 
 41
-00:03:41.633 --> 00:03:46.202
-While you wind, keep a hand off the red knob, and never force either knob.
+00:02:23.055 --> 00:02:27.508
+Each tooth tapers so that it finds its hole, and by the model,
 
 42
-00:03:46.633 --> 00:03:52.249
-So how does it know? It counts holes: eight holes, 38 millimetres, one turn of the wheel.
+00:02:27.258 --> 00:02:31.031
+with thin film or thick, no tooth touches the edge of a hole.
 
 43
-00:03:52.667 --> 00:03:56.821
-Look at a roll of tape: its outer turns are longer than its inner ones.
+00:02:31.733 --> 00:02:36.203
+To load it, you wind the whole film out of its shell onto the red spool.
 
 44
-00:03:57.233 --> 00:04:02.661
-Try: wind a long paper strip round a pencil, mark each turn, unroll it and measure.
+00:02:35.953 --> 00:02:41.985
+That takes about 25 turns for 24 pictures, or 33 for 36.
 
 45
-00:04:03.067 --> 00:04:07.279
-Next, lesson seven: how can a box full of gaps be dark inside?
+00:02:42.700 --> 00:02:47.600
+Then, after each picture, the green winder winds it back into the shell.
 
 46
-00:04:07.700 --> 00:04:14.337
-Every picture here is drawn from the model or simulated. No photograph has been taken with this camera yet.
+00:02:47.350 --> 00:02:49.025
+Why backwards?
+
+47
+00:02:48.775 --> 00:02:54.279
+Because the shell is dark inside, so the pictures you've already taken are safe in there.
+
+48
+00:02:54.029 --> 00:02:56.705
+If the back comes open by accident,
+
+49
+00:02:56.455 --> 00:03:00.554
+the only pictures you lose are the ones you haven't taken yet.
+
+50
+00:03:00.304 --> 00:03:04.755
+The shell you can load in daylight arrived in 1934.
+
+51
+00:03:05.467 --> 00:03:06.882
+Now a sum.
+
+52
+00:03:06.632 --> 00:03:13.962
+One turn of a roll takes in the distance round it: two, times 3.14, times its radius.
+
+53
+00:03:13.712 --> 00:03:18.662
+The red spool, empty, has a radius of 5.9 millimetres,
+
+54
+00:03:18.412 --> 00:03:22.022
+so one turn takes in about 37 millimetres.
+
+55
+00:03:21.772 --> 00:03:24.027
+That's just under one picture.
+
+56
+00:03:23.777 --> 00:03:31.977
+Full, after 36 pictures, the radius is 10.1, and one turn takes in about 63 millimetres.
+
+57
+00:03:31.727 --> 00:03:36.122
+63 divided by 37 is 1.7.
+
+58
+00:03:35.872 --> 00:03:41.062
+The last turn moves 1.7 times as much film as the first.
+
+59
+00:03:40.812 --> 00:03:44.132
+And the same thing is happening inside the film's shell,
+
+60
+00:03:43.882 --> 00:03:48.097
+where the roll the green winder winds grows with every picture.
+
+61
+00:03:47.847 --> 00:03:52.097
+Same winder, same turn, very different lengths.
+
+62
+00:03:51.847 --> 00:03:54.024
+Only the holes stay the same.
+
+63
+00:03:54.733 --> 00:03:59.548
+In your kit, the frame wheel lies in a fork on the back, beside a round post.
+
+64
+00:04:00.267 --> 00:04:04.156
+Close the back, and its teeth come down onto the film's top edge.
+
+65
+00:04:04.867 --> 00:04:09.572
+After the last picture, wind the green winder until the arrow stops moving.
+
+66
+00:04:09.322 --> 00:04:11.657
+Then give it three more turns.
+
+67
+00:04:12.367 --> 00:04:16.244
+Now all of the film is back in its shell, and the back can come off.
+
+68
+00:04:16.967 --> 00:04:21.604
+And while you wind, leave the red winder alone, and don't force either one.
+
+69
+00:04:22.333 --> 00:04:23.693
+So how does it know?
+
+70
+00:04:23.443 --> 00:04:26.003
+It counts holes, not turns.
+
+71
+00:04:25.753 --> 00:04:29.603
+Eight holes, 38 millimetres, one turn of the wheel.
+
+72
+00:04:29.353 --> 00:04:32.568
+You can see the problem with turns on a roll of tape:
+
+73
+00:04:32.318 --> 00:04:35.482
+its outer turns are longer than its inner ones.
+
+74
+00:04:35.232 --> 00:04:39.208
+And try this: wind a long strip of paper round a pencil,
+
+75
+00:04:38.958 --> 00:04:42.277
+mark each turn, then unroll it and measure.
+
+76
+00:04:42.027 --> 00:04:45.402
+So the film moves by exactly one picture.
+
+77
+00:04:45.152 --> 00:04:48.573
+But that film is sitting in a box with two winders,
+
+78
+00:04:48.323 --> 00:04:51.244
+a spinning wheel and a back that comes off.
+
+79
+00:04:50.994 --> 00:04:55.154
+Next time: how can a box full of gaps be dark inside?
+
+80
+00:04:54.904 --> 00:04:59.074
+Every picture here is drawn from the model or simulated.
+
+81
+00:04:58.824 --> 00:05:02.129
+No photograph has been taken with this camera yet.
 
