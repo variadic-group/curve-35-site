@@ -647,7 +647,7 @@
    },
    "img": "media/img/step_b1.webp",
    "clip": "media/clips/b1.mp4",
-   "dur": 23.7,
+   "dur": 24.11,
    "terms": [],
    "model": {
     "in": [
@@ -688,7 +688,7 @@
    },
    "img": "media/img/step_b2.webp",
    "clip": "media/clips/b2.mp4",
-   "dur": 13.21,
+   "dur": 13.42,
    "terms": [],
    "model": {
     "in": [
@@ -734,7 +734,7 @@
    },
    "img": "media/img/step_b3.webp",
    "clip": "media/clips/b3.mp4",
-   "dur": 30.4,
+   "dur": 30.8,
    "terms": [
     "frame-wheel"
    ],
@@ -787,7 +787,7 @@
    },
    "img": "media/img/step_b4.webp",
    "clip": "media/clips/b4.mp4",
-   "dur": 21.91,
+   "dur": 22.31,
    "terms": [
     "light-trap",
     "snap-fit"
@@ -839,7 +839,7 @@
    },
    "img": "media/img/step_b5.webp",
    "clip": "media/clips/b5.mp4",
-   "dur": 25.41,
+   "dur": 25.81,
    "terms": [
     "shutter"
    ],
@@ -899,7 +899,7 @@
    },
    "img": "media/img/step_b6.webp",
    "clip": "media/clips/b6.mp4",
-   "dur": 17.3,
+   "dur": 17.71,
    "terms": [
     "aperture"
    ],
@@ -959,7 +959,7 @@
    },
    "img": "media/img/step_b7.webp",
    "clip": "media/clips/b7.mp4",
-   "dur": 24.32,
+   "dur": 24.7,
    "terms": [],
    "model": {
     "in": [
@@ -1019,7 +1019,7 @@
    },
    "img": "media/img/step_b8.webp",
    "clip": "media/clips/b8.mp4",
-   "dur": 18.3,
+   "dur": 18.71,
    "terms": [],
    "model": {
     "in": [
@@ -1079,7 +1079,7 @@
    },
    "img": "media/img/step_b9.webp",
    "clip": "media/clips/b9.mp4",
-   "dur": 18.9,
+   "dur": 19.31,
    "terms": [
     "snap-fit"
    ],
@@ -1130,7 +1130,7 @@
    },
    "img": "media/img/step_b10.webp",
    "clip": "media/clips/b10.mp4",
-   "dur": 19.11,
+   "dur": 19.52,
    "terms": [
     "lens"
    ],
@@ -1175,7 +1175,7 @@
    },
    "img": "media/img/step_f1.webp",
    "clip": "media/clips/f1.mp4",
-   "dur": 10.41,
+   "dur": 10.82,
    "terms": [],
    "model": {
     "in": [
@@ -1236,7 +1236,7 @@
    },
    "img": "media/img/step_f2.webp",
    "clip": "media/clips/f2.mp4",
-   "dur": 12.71,
+   "dur": 13.12,
    "terms": [
     "film-shell"
    ],
@@ -1292,7 +1292,7 @@
    },
    "img": "media/img/step_f3.webp",
    "clip": "media/clips/f3.mp4",
-   "dur": 10.22,
+   "dur": 10.6,
    "terms": [],
    "model": {
     "in": [
@@ -1344,7 +1344,7 @@
    },
    "img": "media/img/step_f4.webp",
    "clip": "media/clips/f4.mp4",
-   "dur": 21.91,
+   "dur": 22.31,
    "terms": [],
    "model": {
     "in": [
@@ -1439,7 +1439,7 @@
    },
    "img": "media/img/step_f6.webp",
    "clip": "media/clips/f6.mp4",
-   "dur": 32.41,
+   "dur": 32.81,
    "terms": [
     "winding-on"
    ],
@@ -1482,7 +1482,7 @@
    },
    "img": "media/img/step_p1.webp",
    "clip": "media/clips/p1.mp4",
-   "dur": 20.5,
+   "dur": 20.91,
    "terms": [
     "aperture",
     "exposure"
@@ -1526,7 +1526,7 @@
    },
    "img": "media/img/step_p2.webp",
    "clip": "media/clips/p2.mp4",
-   "dur": 18.6,
+   "dur": 19.01,
    "terms": [
     "focus",
     "sights"
@@ -1570,7 +1570,7 @@
    },
    "img": "media/img/step_p3.webp",
    "clip": "media/clips/p3.mp4",
-   "dur": 21.01,
+   "dur": 21.42,
    "terms": [
     "shutter",
     "exposure"
@@ -1614,7 +1614,7 @@
    },
    "img": "media/img/step_p4.webp",
    "clip": "media/clips/p4.mp4",
-   "dur": 17.41,
+   "dur": 17.81,
    "terms": [
     "frame-wheel",
     "winding-on"
@@ -1658,7 +1658,7 @@
    },
    "img": "media/img/step_o1.webp",
    "clip": "media/clips/o1.mp4",
-   "dur": 13.21,
+   "dur": 13.61,
    "terms": [
     "film-shell",
     "winding-on"
@@ -1702,7 +1702,7 @@
    },
    "img": "media/img/step_o2.webp",
    "clip": "media/clips/o2.mp4",
-   "dur": 18.41,
+   "dur": 18.82,
    "terms": [
     "film-shell",
     "negative",

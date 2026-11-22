@@ -1,342 +1,342 @@
 WEBVTT
 
 1
-00:00:00.200 --> 00:00:02.740
+00:00:01.500 --> 00:00:04.040
 Slide the handle on the front of your camera.
 
 2
-00:00:02.490 --> 00:00:07.195
+00:00:03.790 --> 00:00:08.495
 The dot wheel turns, and the hole behind the lens changes size.
 
 3
-00:00:06.945 --> 00:00:09.405
+00:00:08.245 --> 00:00:10.705
 Three holes, three sizes.
 
 4
-00:00:10.133 --> 00:00:13.468
+00:00:11.433 --> 00:00:14.768
 Now, photographers have names for holes like these,
 
 5
-00:00:13.218 --> 00:00:17.348
+00:00:14.518 --> 00:00:18.648
 and the names are numbers: eight, eleven, sixteen.
 
 6
-00:00:17.098 --> 00:00:19.643
+00:00:18.398 --> 00:00:20.943
 Two things about them are strange.
 
 7
-00:00:19.393 --> 00:00:22.388
+00:00:20.693 --> 00:00:23.688
 The biggest number means the smallest hole.
 
 8
-00:00:22.138 --> 00:00:25.443
+00:00:23.438 --> 00:00:26.743
 And the steps between them look completely random.
 
 9
-00:00:25.193 --> 00:00:28.897
+00:00:26.493 --> 00:00:30.197
 So why do camera numbers go eight, eleven, sixteen?
 
 10
-00:00:29.600 --> 00:00:35.540
+00:00:30.900 --> 00:00:36.840
 First, decide: which lets in more light, f/8 or f/16, and by how much?
 
 11
-00:00:35.290 --> 00:00:39.545
+00:00:36.590 --> 00:00:40.845
 Most people guess that f/16 lets in twice the light of f/8,
 
 12
-00:00:39.295 --> 00:00:41.540
+00:00:40.595 --> 00:00:42.840
 because sixteen is twice eight.
 
 13
-00:00:41.290 --> 00:00:43.745
+00:00:42.590 --> 00:00:45.045
 It's actually the other way round.
 
 14
-00:00:43.495 --> 00:00:47.790
+00:00:44.795 --> 00:00:49.090
 An f/16 hole is half as wide as an f/8 hole.
 
 15
-00:00:47.540 --> 00:00:50.485
+00:00:48.840 --> 00:00:51.785
 And half as wide doesn't let in half the light.
 
 16
-00:00:50.235 --> 00:00:51.742
+00:00:51.535 --> 00:00:53.042
 It lets in a quarter.
 
 17
-00:00:52.467 --> 00:00:57.522
+00:00:53.767 --> 00:00:58.822
 That's because light comes through the whole area of a hole, not just across its width.
 
 18
-00:00:57.272 --> 00:00:59.332
+00:00:58.572 --> 00:01:00.632
 Picture a square hole.
 
 19
-00:00:59.082 --> 00:01:04.728
+00:01:00.382 --> 00:01:06.028
 Make it twice as wide, and it's twice as tall too, so it has four times the area.
 
 20
-00:01:04.478 --> 00:01:09.728
+00:01:05.778 --> 00:01:11.028
 Round holes play by the same rule: twice the width, four times the light.
 
 21
-00:01:09.478 --> 00:01:11.792
+00:01:10.778 --> 00:01:13.092
 So if you only want to double the light,
 
 22
-00:01:11.542 --> 00:01:14.658
+00:01:12.842 --> 00:01:15.958
 you need a step that's smaller than doubling the width.
 
 23
-00:01:14.408 --> 00:01:17.783
+00:01:15.708 --> 00:01:19.083
 What number, multiplied by itself, makes two?
 
 24
-00:01:17.533 --> 00:01:19.908
+00:01:18.833 --> 00:01:21.208
 It's about 1.41.
 
 25
-00:01:19.658 --> 00:01:24.323
+00:01:20.958 --> 00:01:25.623
 Make a hole 1.41 times wider, and you get twice the light.
 
 26
-00:01:25.033 --> 00:01:26.493
+00:01:26.333 --> 00:01:27.793
 Now the numbers.
 
 27
-00:01:26.243 --> 00:01:34.238
+00:01:27.543 --> 00:01:35.538
 Take the length of the lens, divide it by the width of the hole, and that's the f-number.
 
 28
-00:01:33.988 --> 00:01:35.953
+00:01:35.288 --> 00:01:37.253
 Your lens is 32 millimetres.
 
 29
-00:01:35.703 --> 00:01:39.756
+00:01:37.003 --> 00:01:41.056
 A hole 2 millimetres wide gives you 32 divided by 2: f/16.
 
 30
-00:01:39.506 --> 00:01:44.763
+00:01:40.806 --> 00:01:46.063
 In 1867, two men called Sutton and Dawson wrote a hole this way,
 
 31
-00:01:44.513 --> 00:01:47.016
+00:01:45.813 --> 00:01:48.316
 as a fraction of the lens's length.
 
 32
-00:01:46.766 --> 00:01:52.567
+00:01:48.066 --> 00:01:53.867
 It means one number stands for one brightness, on any lens, long or short.
 
 33
-00:01:52.317 --> 00:02:01.287
+00:01:53.617 --> 00:02:02.587
 Now keep dividing by 1.41, again and again: 16, 11.3, 8, 5.7, 4.
 
 34
-00:02:01.037 --> 00:02:04.037
+00:02:02.337 --> 00:02:05.337
 Round those off and you have the famous row.
 
 35
-00:02:03.787 --> 00:02:06.892
+00:02:05.087 --> 00:02:08.192
 Every step along the row doubles the light.
 
 36
-00:02:06.642 --> 00:02:09.061
+00:02:07.942 --> 00:02:10.361
 Every second step doubles the width.
 
 37
-00:02:09.767 --> 00:02:15.722
+00:02:11.067 --> 00:02:17.022
 A picture needs a certain amount of light, and that amount is how bright, times how long.
 
 38
-00:02:15.472 --> 00:02:20.566
+00:02:16.772 --> 00:02:21.866
 Twice the light through the hole for half the time gives you exactly the same picture.
 
 39
-00:02:20.316 --> 00:02:25.061
+00:02:21.616 --> 00:02:26.361
 Your camera has only one time, about a three-hundredth of a second.
 
 40
-00:02:24.811 --> 00:02:27.436
+00:02:26.111 --> 00:02:28.736
 So the dots have to do the choosing.
 
 41
-00:02:27.186 --> 00:02:32.940
+00:02:28.486 --> 00:02:34.240
 In 1890, Hurter and Driffield measured how much light makes a plate go how dark.
 
 42
-00:02:32.690 --> 00:02:40.915
+00:02:33.990 --> 00:02:42.215
 Film speed numbers came out of that: the ASA scale in 1943, and ISO from 1974.
 
 43
-00:02:40.665 --> 00:02:44.104
+00:02:41.965 --> 00:02:45.404
 Double the number, and the film needs half the light.
 
 44
-00:02:43.854 --> 00:02:46.658
+00:02:45.154 --> 00:02:47.958
 Your film says ISO 400.
 
 45
-00:02:47.367 --> 00:02:50.677
+00:02:48.667 --> 00:02:51.977
 There's an old rule photographers carry in their heads.
 
 46
-00:02:50.427 --> 00:02:56.287
+00:02:51.727 --> 00:02:57.587
 In full sun, use f/16, and for the time, one over the film speed.
 
 47
-00:02:56.037 --> 00:03:01.534
+00:02:57.337 --> 00:03:02.834
 For ISO 400 that's f/16 for a four-hundredth of a second.
 
 48
-00:03:01.284 --> 00:03:05.952
+00:03:02.584 --> 00:03:07.252
 Your small dot is about f/16, and your time is a three-hundredth,
 
 49
-00:03:05.702 --> 00:03:08.379
+00:03:07.002 --> 00:03:09.679
 which by the model is half a step over.
 
 50
-00:03:08.129 --> 00:03:11.649
+00:03:09.429 --> 00:03:12.949
 And remember, film forgives three steps too much.
 
 51
-00:03:11.399 --> 00:03:15.364
+00:03:12.699 --> 00:03:16.664
 So the chart on your camera says: full sun, small dot.
 
 52
-00:03:16.067 --> 00:03:18.947
+00:03:17.367 --> 00:03:20.247
 Now let's check it with your own three dots.
 
 53
-00:03:18.697 --> 00:03:24.937
+00:03:19.997 --> 00:03:26.237
 They're 1.96, 2.88 and 3.34 millimetres wide.
 
 54
-00:03:24.687 --> 00:03:32.042
+00:03:25.987 --> 00:03:33.342
 From small to middle: 2.88 divided by 1.96 is 1.47.
 
 55
-00:03:31.792 --> 00:03:36.132
+00:03:33.092 --> 00:03:37.432
 Multiply that by itself and you get 2.16.
 
 56
-00:03:35.882 --> 00:03:37.762
+00:03:37.182 --> 00:03:39.062
 About double the light.
 
 57
-00:03:37.512 --> 00:03:47.541
+00:03:38.812 --> 00:03:48.841
 From middle to large: 3.34 divided by 2.88 is 1.16, and times itself that's 1.35.
 
 58
-00:03:47.291 --> 00:03:49.031
+00:03:48.591 --> 00:03:50.331
 About a third more.
 
 59
-00:03:48.781 --> 00:03:57.122
+00:03:50.081 --> 00:03:58.422
 And as f-numbers, 32 divided by each width comes out at about f/16, f/11 and f/9.5.
 
 60
-00:03:57.833 --> 00:03:59.668
+00:03:59.133 --> 00:04:00.968
 So here's your whole chart.
 
 61
-00:03:59.418 --> 00:04:01.583
+00:04:00.718 --> 00:04:02.883
 Full sun, small dot.
 
 62
-00:04:01.333 --> 00:04:03.313
+00:04:02.633 --> 00:04:04.613
 Hazy sun, middle dot.
 
 63
-00:04:03.063 --> 00:04:05.358
+00:04:04.363 --> 00:04:06.658
 Bright cloud, large dot.
 
 64
-00:04:05.108 --> 00:04:10.754
+00:04:06.408 --> 00:04:12.054
 And if it's darker than that, you take a time picture: by a window, small dot, count one.
 
 65
-00:04:11.467 --> 00:04:16.457
+00:04:12.767 --> 00:04:17.757
 Why does the large dot stop at f/9.5 and not go on to f/8?
 
 66
-00:04:16.207 --> 00:04:19.547
+00:04:17.507 --> 00:04:20.847
 f/8 would need a hole 4 millimetres wide.
 
 67
-00:04:19.297 --> 00:04:24.769
+00:04:20.597 --> 00:04:26.069
 But a single lens goes soft away from the middle, and a bigger hole makes that worse.
 
 68
-00:04:24.519 --> 00:04:25.581
+00:04:25.819 --> 00:04:26.881
 By the model,
 
 69
-00:04:25.331 --> 00:04:30.579
+00:04:26.631 --> 00:04:31.879
 a far scene is postcard-sharp across nearly all of the picture at the small dot.
 
 70
-00:04:30.329 --> 00:04:34.829
+00:04:31.629 --> 00:04:36.129
 At the large dot, it's sharp across about six parts in ten.
 
 71
-00:04:34.579 --> 00:04:37.369
+00:04:35.879 --> 00:04:38.669
 A bigger hole would cost even more.
 
 72
-00:04:37.119 --> 00:04:41.179
+00:04:38.419 --> 00:04:42.479
 Every setting is a trade: more light, less sharpness.
 
 73
-00:04:40.929 --> 00:04:43.775
+00:04:42.229 --> 00:04:45.075
 It's the pinhole's bargain all over again.
 
 74
-00:04:44.500 --> 00:04:47.000
+00:04:45.800 --> 00:04:48.300
 So why 8, 11, 16?
 
 75
-00:04:46.750 --> 00:04:52.470
+00:04:48.050 --> 00:04:53.770
 Each step doubles the light, and doubling the light takes 1.41 times the width.
 
 76
-00:04:52.220 --> 00:04:55.220
+00:04:53.520 --> 00:04:56.520
 You can watch this happen on your own face.
 
 77
-00:04:54.970 --> 00:05:00.728
+00:04:56.270 --> 00:05:02.028
 Look in a mirror as you switch the light off and on: your pupil is your eye's own dot.
 
 78
-00:05:00.478 --> 00:05:04.510
+00:05:01.778 --> 00:05:05.810
 And try this: take the back off, with no film inside,
 
 79
-00:05:04.260 --> 00:05:08.148
+00:05:05.560 --> 00:05:09.448
 and watch a window on tracing paper as you change dots.
 
 80
-00:05:07.898 --> 00:05:09.968
+00:05:09.198 --> 00:05:11.268
 That's the hole sorted out.
 
 81
-00:05:09.718 --> 00:05:12.108
+00:05:11.018 --> 00:05:13.408
 But the hole is only half of it.
 
 82
-00:05:11.858 --> 00:05:16.470
+00:05:13.158 --> 00:05:17.770
 The other half is time, and your camera does that with a piece of plastic.
 
 83
-00:05:16.220 --> 00:05:21.670
+00:05:17.520 --> 00:05:22.970
 So next time: how do you make plastic move that fast, the same way every time?
 
 84
-00:05:21.420 --> 00:05:24.915
+00:05:22.720 --> 00:05:26.215
 Every picture here is drawn or simulated.
 
 85
-00:05:24.665 --> 00:05:27.873
+00:05:25.965 --> 00:05:29.173
 No photograph has been taken with this camera yet.
 

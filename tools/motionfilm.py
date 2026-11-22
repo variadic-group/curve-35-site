@@ -138,14 +138,14 @@ def guide_clips(voice=True):
     for s in ST.STEPS:
         img = "o1" if (s["sec"], s["n"]) == ("FILM OUT", 1) else s["img"]; fn, md = MOVE[img]; t0 = 1.1; cl = dict(key=ST.code(s), img=img, kind="step", step=s, of=cnt[s["sec"]], fn=fn, md=md, t0=t0)
         if voice:
-            f, d = lines(s["do"]); L = [(0.5, f)]; t = 0.5 + d + 0.45; tc = round(max(t, t0 + md * .55), 2); f, d = lines(s["check"]); L.append((tc, f)); t = tc + d + 0.6; tw = None
+            f, d = lines(s["do"]); L = [(0.9, f)]; t = 0.9 + d + 0.45; tc = round(max(t, t0 + md * .55), 2); f, d = lines(s["check"]); L.append((tc, f)); t = tc + d + 0.6; tw = None
             if s["why"]: tw = round(t, 2); f, d = lines(s["why"]); L.append((tw, f)); t = tw + d
             cl.update(lines=L, t_check=tc, t_why=tw, dur=math.ceil(max(t + 1.0, t0 + md + 2.0) * 10) / 10)
         else: words = len((s["do"] + " " + s["check"]).split()); cl["dur"] = round(max(md + 4.0, 3.4 + words / 2.7 + len(s["why"].split()) / 3.4), 1)
         cl["loops"] = min(3, max(1, int((cl["dur"] - t0 - 0.8) // (md + HOLD)))); out.append(cl)
     ti = dict(key="title", kind="title", dur=5.0); en = dict(key="end", kind="end", dur=8.0)
     if voice:
-        f, d = lines("Curve thirty-five. Build it, load it, take pictures, unload it. Twenty-two steps."); ti.update(lines=[(0.5, f)], dur=math.ceil((d + 1.6) * 10) / 10)
+        f, d = lines("Curve thirty-five. Build it, load it, take pictures, unload it. Twenty-two steps."); ti.update(lines=[(1.5, f)], dur=math.ceil((d + 2.6) * 10) / 10)          # the first word waits for the player's sound to wake; a step's clip, played alone on its page, waits 0.9 s
         f, d = lines("That is the whole camera. Eight printed parts, one lens, one film. No screws, no glue, no tools."); en.update(lines=[(0.6, f)], dur=math.ceil((d + 2.6) * 10) / 10)
     return [ti] + out + [en]
 # ---------------------------------------------------------------- drawing a frame
