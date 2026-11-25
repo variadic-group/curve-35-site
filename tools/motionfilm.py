@@ -10,7 +10,7 @@ import film as FL; from film import text, para, wrap, rrect, col, layer, ease, r
 import steps as ST
 ROOT = os.getcwd(); OUT = "build/motion"; FRD = OUT + "/fr"; MS = OUT + "/mesh"; [os.makedirs(d, exist_ok=True) for d in (FRD, MS)]
 MODEL = FL.MODEL; I = np.eye(4); W1, W2 = V["WPOS"][1], V["WPOS"][2]; SL = V["SLIDE"]; RO, SP, CA = V["ROLLER"], V["SPOOL"], V["CASS"]; CW, CH, SS = 1240, 930, 1.5; CX, CY = 40, 104
-COL = dict(body=[0.22, 0.23, 0.26], back=[0.80, 0.81, 0.83], plate1=[0.58, 0.30, 0.78], slide1=[0.13, 0.13, 0.15], pinring=[0.20, 0.21, 0.24], front=[0.93, 0.46, 0.13], blade=[0.15, 0.62, 0.60], wheel=[0.95, 0.78, 0.20], spool=[0.85, 0.20, 0.18], knob=[0.35, 0.72, 0.25], roller=[0.22, 0.52, 0.86],
+COL = dict(body=[0.22, 0.23, 0.26], back=[0.80, 0.81, 0.83], plate1=[0.58, 0.30, 0.78], slide1=[0.13, 0.13, 0.15], pinring=[0.20, 0.21, 0.24], front=[0.93, 0.46, 0.13], blade=[0.506, 0.271, 0.753], wheel=[0.95, 0.78, 0.20], spool=[0.85, 0.20, 0.18], knob=[0.35, 0.72, 0.25], roller=[0.22, 0.52, 0.86],
            lens=[0.55, 0.80, 0.95], cassette=[0.90, 0.68, 0.10], film=[0.50, 0.32, 0.20], arrow=[0.98, 0.98, 0.96])
 PLATE_IN = (2, 8, 0, 58, 0, 28, 300); FRONT = (0, 20, 6, 66, 0, 200, 250); FRONT_NEAR = (12, 40, 0, 62, 0, 232, 280); REAR_FAR = (4, -26, 0, 46, 0, 24, 450); REAR_TOP = (4, -22, 0, 46, 0, 24, 410); FACE = (0, 12, 2, 70, 0, 205, 300)
 TOP = (0, 0, 8, 52, 0, 28, 320); B3 = (0, 0, 2, 64, 0, 28, 400); B8 = (20, 4, 6, 58, 0, 208, 250); L2 = (-45, 10, 12, 70, 0, 28, 230); S2 = (0, 8, 20, 30, 0, 0, 300); S3 = (6, 20, 10, 62, 0, 205, 285)

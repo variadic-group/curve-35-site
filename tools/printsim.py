@@ -94,9 +94,9 @@ if __name__ == "__main__":
     fr = printed("front", 3.2, e); bl = printed("blade", 0.8, e); frc = cad("front", 3.2); blc = cad("blade", 0.8)
     tip = P + (B["R_OUT"] + 3.6) * np.array([np.cos(np.radians(B["DB_A"] + TH)), np.sin(np.radians(B["DB_A"] + TH))])
     for a_, ctr, half, ttl in ((ax[0, 0], (-2, 2), 33, "front plate and blade"), (ax[0, 1], tip, 5.5, "the blade's tooth in its notch")):
-        draw(a_, fr, "#f0a060"); draw(a_, rot(bl, TH, P), "#30a0a0"); line(a_, frc); line(a_, rot(blc, TH, P)); a_.set_xlim(ctr[0] - half, ctr[0] + half); a_.set_ylim(ctr[1] - half, ctr[1] + half); a_.set_title(ttl)
+        draw(a_, fr, "#f0a060"); draw(a_, rot(bl, TH, P), "#8145c0"); line(a_, frc); line(a_, rot(blc, TH, P)); a_.set_xlim(ctr[0] - half, ctr[0] + half); a_.set_ylim(ctr[1] - half, ctr[1] + half); a_.set_title(ttl)
     a_ = ax[0, 2]; rt = P + (B["R_OUT"] + 1.0) * np.array([np.cos(np.radians(B["DB_A"] - B["BL_ARC"])), np.sin(np.radians(B["DB_A"] - B["BL_ARC"]))])
-    draw(a_, bl, "#30a0a0"); line(a_, blc); a_.set_xlim(rt[0] - 5.5, rt[0] + 5.5); a_.set_ylim(rt[1] - 5.5, rt[1] + 5.5); a_.set_title("where the blade's spring starts")
+    draw(a_, bl, "#8145c0"); line(a_, blc); a_.set_xlim(rt[0] - 5.5, rt[0] + 5.5); a_.set_ylim(rt[1] - 5.5, rt[1] + 5.5); a_.set_title("where the blade's spring starts")
     a_ = ax[0, 3]; fw = printed("front", 4.4, e); wh = printed("wheel", 0.8, e); draw(a_, fw, "#f0a060"); draw(a_, wh, "#e0c040"); line(a_, cad("front", 4.4)); line(a_, cad("wheel", 0.8))
     a_.set_xlim(C[0] - 23, C[0] + 19); a_.set_ylim(C[1] - 19, C[1] + 23); a_.set_title("front plate and aperture wheel")
     a_ = ax[1, 0]; hc = [C + B["R_HOLE"] * np.array([np.cos(np.radians(B["A_AX"] + w_)), np.sin(np.radians(B["A_AX"] + w_))]) for w_ in B["WPOS"]]

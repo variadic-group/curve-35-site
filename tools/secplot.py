@@ -14,8 +14,8 @@ def draw(ax, stl, origin, normal, axes, color, alpha=0.6, lw=0.6):
 if __name__ == "__main__":
     LY = json.load(open("build/layout.json")); TH = LY["B"]["THETA"]; YF = 25.47; YR = LY["A"]["Y_RIM"]; RO = LY["A"]["roller"]
     fig, ax = plt.subplots(2, 3, figsize=(21, 13))
-    a = ax[0, 0]; draw(a, "front.stl", [0, YF + 1.75, 0], [0, 1, 0], [0, 2], "#f0a060"); draw(a, f"blade_PHI{TH}.stl", [0, YF + 1.75, 0], [0, 1, 0], [0, 2], "#30a0a0"); a.set_title("blade level: plate + blade (closed)")
-    a = ax[0, 1]; draw(a, "front.stl", [0, YF + 1.75, 0], [0, 1, 0], [0, 2], "#f0a060"); draw(a, f"blade_PHI{-TH}.stl", [0, YF + 1.75, 0], [0, 1, 0], [0, 2], "#30a0a0"); draw(a, "blade_PHI0.0.stl", [0, YF + 1.75, 0], [0, 1, 0], [0, 2], "#8080d0", 0.35); a.set_title("blade level: other side, and open")
+    a = ax[0, 0]; draw(a, "front.stl", [0, YF + 1.75, 0], [0, 1, 0], [0, 2], "#f0a060"); draw(a, f"blade_PHI{TH}.stl", [0, YF + 1.75, 0], [0, 1, 0], [0, 2], "#8145c0"); a.set_title("blade level: plate + blade (closed)")
+    a = ax[0, 1]; draw(a, "front.stl", [0, YF + 1.75, 0], [0, 1, 0], [0, 2], "#f0a060"); draw(a, f"blade_PHI{-TH}.stl", [0, YF + 1.75, 0], [0, 1, 0], [0, 2], "#8145c0"); draw(a, "blade_PHI0.0.stl", [0, YF + 1.75, 0], [0, 1, 0], [0, 2], "#8080d0", 0.35); a.set_title("blade level: other side, and open")
     a = ax[0, 2]; draw(a, "front.stl", [0, YF + 0.55, 0], [0, 1, 0], [0, 2], "#f0a060")
     for k, c in ((0, "#e0c040"), (2, "#909090")): draw(a, f"wheel_STOP{k}.stl", [0, YF + 0.55, 0], [0, 1, 0], [0, 2], c, 0.5)
     a.set_title("wheel level: plate + wheel at P and at C")

@@ -3,7 +3,7 @@ usage: python3 tools/asmview.py out.png [az el px_per_mm [blade_phi]]  ...  or i
 import sys, json, numpy as np, trimesh
 from PIL import Image
 from trimesh.ray.ray_pyembree import RayMeshIntersector as Fast
-COL = dict(body=(176, 182, 194), back=(150, 170, 206), front=(232, 132, 62), blade=(52, 168, 152), wheel=(232, 190, 60), roller=(74, 138, 222), knob=(214, 84, 76), spool=(214, 84, 76), lens=(120, 200, 235))
+COL = dict(body=(176, 182, 194), back=(150, 170, 206), front=(232, 132, 62), blade=(129, 69, 192), wheel=(232, 190, 60), roller=(74, 138, 222), knob=(214, 84, 76), spool=(214, 84, 76), lens=(120, 200, 235))
 THETA = json.load(open("build/layout.json"))["B"]["THETA"]
 def load_parts(phi=None, parts=("body", "back", "front", "blade", "wheel", "roller", "knob", "spool", "lens"), A="build/asm/"):
     phi = THETA if phi is None else phi; out = {}

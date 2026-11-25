@@ -343,7 +343,7 @@
   function T(x, y, s, o) { o = o || {}; return '<text x="' + x + '" y="' + y + '" font-size="' + (o.size || 15) + '" font-weight="' + (o.w || 600) + '" fill="' + (o.fill || "#2D2A26") + '"' + (o.anchor ? ' text-anchor="' + o.anchor + '"' : "") + ">" + s + "</text>"; }
 
   CURVE.fig("fig_m02_nine", function () {
-    var parts = [["body", "#3b3936", "r"], ["back", "#c9cdcf", "r"], ["front plate", "#D9601A", "r"], ["shutter", "#1aa39a", "s"], ["dot wheel", "#f2c230", "c"], ["spool", "#d6301f", "c"], ["green winder", "#2fa84f", "c"], ["frame wheel", "#2f6fe0", "c"], ["lens", "#9fd3e6", "l"]];
+    var parts = [["body", "#3b3936", "r"], ["back", "#c9cdcf", "r"], ["front plate", "#D9601A", "r"], ["shutter", "#8145C0", "s"], ["dot wheel", "#f2c230", "c"], ["spool", "#d6301f", "c"], ["green winder", "#2fa84f", "c"], ["frame wheel", "#2f6fe0", "c"], ["lens", "#9fd3e6", "l"]];
     var b = "";
     parts.forEach(function (p, i) {
       var x = 40 + (i % 5) * 136, y = i < 5 ? 40 : 170;

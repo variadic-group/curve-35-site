@@ -23,7 +23,7 @@
     "Light can't get round the corners in the gaps"
    ],
    "answer": 2,
-   "reveal": "<p><strong>Corners.</strong> Light is far smaller than any gap: a 0.6 mm gap is about a thousand times the size of a light wave. And there's no foam or seal anywhere. What stops light is that it goes in straight lines, and no straight line runs through any gap to the film. To get in it would have to bounce round corners, and every bounce off black plastic throws most of it away.</p>"
+   "reveal": "<p><strong>Corners.</strong> Light is far smaller than any gap: a 0.6 mm gap is about a thousand times the size of a light wave. And there's no foam or seal anywhere. What stops light is that it goes in straight lines, and no straight line runs through any gap to the film. To get in it would have to bounce round corners, and every bounce throws a share of it away: most of it, off black plastic.</p>"
   },
   {
    "id": "why",
@@ -58,7 +58,7 @@
     {
      "sim": "l07_trap",
      "intro": "A cut through a gap, 60 times life size: 0.6 mm wide, the back's ridge reaching 1.9 mm in. Drag the torch and fire.",
-     "after": "A straight gap lets light walk right in. One corner lets a few bounces through. The real joint, with black walls: nothing worth counting."
+     "after": "A straight gap lets light walk right in. One corner lets a few bounces through. The real joint's shape, at the model's 0.3 a bounce: nothing worth counting."
     },
     {
      "sim": "l07_bounces",
@@ -74,7 +74,7 @@
    "render": "b9",
    "alt": "The light grey back being pressed onto the camera",
    "caption": "The back closes the dark box.",
-   "body": "<p>Press the back on until both ends click. The light trap only works when the ridge is down in its groove, so a back left standing off is the biggest risk to your pictures.</p><p>Open it only when the film is wound home into its shell, and then in the shade. The back is drawn light grey so you can see it; the parts round the film are black.</p>",
+   "body": "<p>Press the back on until both ends click. The light trap only works when the ridge is down in its groove, so a back left standing off is the biggest risk to your pictures.</p><p>Open it only when the film is wound home into its shell, and then in the shade. The body is matte black. The back is grey, and grey sends back more light than black: how much that matters is not known until a printed camera has sat in the sun.</p>",
    "step": [
     "b4",
     "f5"
@@ -92,7 +92,7 @@
    "title": "How much light survives the corners?",
    "summary": "one sum, with the real numbers",
    "lines": [
-    "worst case: every surface sends back 30 % of the light: 0.3",
+    "the model: every surface sends back 30 % of the light: 0.3",
     "1 bounce: 0.3",
     "2 bounces: 0.3 × 0.3 = 0.09",
     "3 bounces: 0.027, about 1 part in 37",
@@ -183,7 +183,7 @@
       "Exactly none"
      ],
      "answer": 2,
-     "why": "0.3 × 0.3 × 0.3 × 0.3 × 0.3 = 0.0024: about one part in 400, and that is the worst case."
+     "why": "0.3 × 0.3 × 0.3 × 0.3 × 0.3 = 0.0024: about one part in 400, for black plastic at its worst."
     }
    ]
   },
@@ -285,7 +285,7 @@
   "objectives": [
    "Say why a gap with a bend in it keeps light out when the same gap straight does not.",
    "Name the ways into this camera (two winders, the frame wheel's opening, the back's joint, the front plate's edge, the lens) and what keeps light out at each.",
-   "Work out how much light is left after a number of bounces at a given share, and say why the model's 0.3 is a worst case.",
+   "Work out how much light is left after a number of bounces at a given share, and say what the model's 0.3 stands for: black plastic at its worst.",
    "Explain why a test must be shown finding a problem (the open shutter) before its 'none' can be believed."
   ],
   "materials": [

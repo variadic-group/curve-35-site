@@ -10,6 +10,9 @@
 // What is left is named in ROADMAP.md: the floor of the lens's pocket in the front plate (the lens sits on it; it is 1 mm thick and prints as bridges 2.7 and 2.9 mm wide) and a few faces of 6 mm2 or less.
 // tools/overhangcheck.py measures what the farm's check measures; tools/layerdiff.py lists, layer by layer, what a change did to the print.
 //
+// 24 November 2026, colours only (no shape changed, the print files are the same): the shutter is drawn purple, where it was teal.  Each part is now printed in the
+// colour it is drawn in.  The back, the shutter and the aperture wheel keep light off the film, and in grey, purple and yellow they have not been tested against light.
+//
 // v2.19 (a print farm's thickness check): the tapered spring's layer on the bed was its outline less 0.3 mm each side, which left a strip 0.3 mm wide along its thin half:
 // narrower than a line of plastic.  It is 0.7 mm or more everywhere now (0.75 before v2.18): rimspring_bed2d.  Nothing above the first layer has moved.  tools/thincheck.py measures
 // thickness the way the farm's checker does and gives its numbers; the other places it lists are edge reliefs and hook lips, named in ROADMAP.md.
@@ -921,7 +924,7 @@ module part(n) {
     if (n == "body")   color([0.20, 0.21, 0.24]) body();
     if (n == "back")   color([0.26, 0.28, 0.32]) back();
     if (n == "front")  color([0.93, 0.46, 0.13]) front();
-    if (n == "blade")  translate([0, 0, SLID]) color(DARK ? [0.10, 0.10, 0.11] : [0.20, 0.62, 0.60]) blade();
+    if (n == "blade")  translate([0, 0, SLID]) color(DARK ? [0.10, 0.10, 0.11] : [0.506, 0.271, 0.753]) blade();
     if (n == "wheel")  translate([0, 0, SLID]) color([0.95, 0.80, 0.25]) wheel();
     if (n == "roller") color([0.25, 0.55, 0.85]) roller(ROLL_UP);
     if (n == "knob")   color([0.85, 0.20, 0.18]) knob(CASS);
@@ -967,9 +970,9 @@ G_ROT = [0, 0, 0];     // the whole guide picture turned (to show the plate lyin
 G_MESH = false;    // draw the front plate from its exported mesh (build/asm/front.stl): the preview draws its many cuts wrongly otherwise
 G_PHI = PHI; G_STOP = STOP; G_SLID = 0; G_SIDE = 0;      // G_SLID, G_SIDE: the front plate and what it carries drawn this far up and this far toward the way out (the two moves of its mount)
 G_UP = 0;             // the first plate's slide drawn this far up (0 = shut, P1_T = open)
-G_TRUE = false;       // true: the four parts light must not pass drawn black, as they are printed.  false (the guide): shutter teal, aperture wheel yellow, back grey, so each can be followed in the pictures
+G_TRUE = false;       // true: the four parts light must not pass drawn black (how they were to be printed until 24 November 2026).  false: each part in the colour it is printed in: shutter purple, aperture wheel yellow, back grey
 G_RAINBOW = false;    // a colourway to look at, not adopted: red spool, orange plate, yellow wheel, green wind knob, blue frame wheel, indigo shutter, violet film can; body black, back white
-function g_col(n) = n == "front" ? [0.93, 0.46, 0.13] : n == "wheel" ? (G_TRUE ? [0.20, 0.21, 0.24] : [0.95, 0.78, 0.20]) : n == "blade" ? (G_RAINBOW ? [0.27, 0.22, 0.62] : G_TRUE ? [0.20, 0.21, 0.24] : [0.15, 0.62, 0.60])
+function g_col(n) = n == "front" ? [0.93, 0.46, 0.13] : n == "wheel" ? (G_TRUE ? [0.20, 0.21, 0.24] : [0.95, 0.78, 0.20]) : n == "blade" ? (G_RAINBOW ? [0.27, 0.22, 0.62] : G_TRUE ? [0.20, 0.21, 0.24] : [0.506, 0.271, 0.753])
     : n == "spool" ? [0.85, 0.20, 0.18] : n == "knob" ? [0.35, 0.72, 0.25]           // v2.11: the wind knob has its own colour (green: print services stock it), so the guide can tell the two knobs apart by name
     : n == "roller" ? [0.22, 0.52, 0.86] : n == "lens" ? [0.55, 0.80, 0.95] : n == "pinring" ? [0.20, 0.21, 0.24] : n == "pindisc" ? [0.80, 0.70, 0.45] : n == "can" ? [0.58, 0.30, 0.78]
     : n == "cassette" ? [0.90, 0.68, 0.10] : n == "film" || n == "film_loose" || n == "film_full" ? [0.50, 0.32, 0.20] : n == "shims" ? [0.95, 0.55, 0.20] : n == "tape" ? [0.70, 0.85, 0.95]

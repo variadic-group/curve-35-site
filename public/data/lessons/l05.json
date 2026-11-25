@@ -76,7 +76,7 @@
    "kind": "kit",
    "title": "The blade and the rocker",
    "render": "s3",
-   "alt": "A finger pressing the teal rocker on top of the camera",
+   "alt": "A finger pressing the purple rocker on top of the camera",
    "caption": "One quick press of the rocker.",
    "body": "<p>Building the shutter takes a second: lay the front plate face down and drop the blade onto its peg, rocker over the edge. The rocker is a shallow V; press the raised side, and next time the other side is up.</p><p>The secret middle click: press only halfway and the window stops right over the lens. The shutter stays open while you count, for pictures in dim light. Stand the camera on something first.</p>",
    "step": [
@@ -139,7 +139,7 @@
       "A flap that lifts up"
      ],
      "answer": 1,
-     "why": "One teal blade with one window. At rest solid plastic covers the lens; a press swings the window across it once."
+     "why": "One purple blade with one window. At rest solid plastic covers the lens; a press swings the window across it once."
     },
     {
      "q": "You press the rocker very slowly. What happens to the picture?",

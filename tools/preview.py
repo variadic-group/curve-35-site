@@ -11,7 +11,7 @@ from PIL import Image, ImageDraw, ImageFont
 from trimesh.ray.ray_pyembree import RayMeshIntersector as Fast
 OUT = "build/preview"; os.makedirs(OUT, exist_ok=True); SS = 2
 F = "/usr/share/fonts/truetype/liberation/LiberationSans-%s.ttf"; font = lambda size, bold=False: ImageFont.truetype(F % ("Bold" if bold else "Regular"), size)
-COL = dict(body=(176, 182, 194), back=(150, 170, 206), front=(232, 132, 62), blade=(52, 168, 152), wheel=(232, 190, 60), roller=(74, 138, 222), knob=(214, 84, 76), spool=(214, 84, 76))
+COL = dict(body=(176, 182, 194), back=(150, 170, 206), front=(232, 132, 62), blade=(129, 69, 192), wheel=(232, 190, 60), roller=(74, 138, 222), knob=(214, 84, 76), spool=(214, 84, 76))
 
 def frame(az, el):
     """camera looking at the part from azimuth az (degrees round the bed's upright axis, 0 = from the front, -y) and elevation el (90 = straight down)"""

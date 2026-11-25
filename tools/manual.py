@@ -19,7 +19,7 @@ def how_picture():
     ax.add_patch(P([(-17.5, 1), (17.5, 1), (4, 25.5), (-4, 25.5)], fc="#17191d", ec="none"))                                             # the dark funnel between lens and film
     for a in (-26, 0, 26):
         fx, fy = 32 * np.sin(np.radians(a)), 32 - 32 * np.cos(np.radians(a)); dx, dy = -fx, 29.3 - fy; ax.plot([fx, fx + dx * 2.6], [fy, fy + dy * 2.6], color="#ffd23f", lw=2.2, zorder=3)
-    ax.add_patch(matplotlib.patches.Ellipse((0, 29.6), 9, 3.2, fc="#9fd0ee", ec="#2a78d6", lw=1.2, zorder=5)); ax.plot([-9, -1.2], [26.2, 26.2], color="#e7b416", lw=3, zorder=5); ax.plot([1.2, 9], [26.2, 26.2], color="#e7b416", lw=3, zorder=5); ax.plot([-12, 12], [27.4, 27.4], color="#1b9e8f", lw=3, zorder=4)
+    ax.add_patch(matplotlib.patches.Ellipse((0, 29.6), 9, 3.2, fc="#9fd0ee", ec="#2a78d6", lw=1.2, zorder=5)); ax.plot([-9, -1.2], [26.2, 26.2], color="#e7b416", lw=3, zorder=5); ax.plot([1.2, 9], [26.2, 26.2], color="#e7b416", lw=3, zorder=5); ax.plot([-12, 12], [27.4, 27.4], color="#8145c0", lw=3, zorder=4)
     ax.add_patch(C(cass, 12.5, fc="#d9a514", ec="none")); ax.add_patch(C(cass, 3.3, fc="#59b840", ec="none")); ax.add_patch(C(sp, A["ROLL_FULL"], fc="#8a5a3a", ec="none")); ax.add_patch(C(sp, A["CORE_R"], fc="#d0342c", ec="none")); ax.add_patch(C(ro, A["R_ROLL"], fc="#2a78d6", ec="none"))
     aa = np.radians(np.arange(-A["A_L"], A["A_R"] + 1, 2)); film = [(cass[0] + 12.3, cass[1] - 3.5)] + [(32.4 * np.sin(t), 32 - 32.4 * np.cos(t)) for t in aa] + [(ro[0] - 2.5, ro[1] - 5.6), (ro[0] + 4.5, ro[1] - 4.2), (sp[0] - 7.5, sp[1] - 6.8)]
     ax.plot(*zip(*film), color="#8a5a3a", lw=2.6, zorder=6, solid_capstyle="round")

@@ -278,6 +278,18 @@ def validate(C):
     text = json.dumps(raw(), ensure_ascii=False)
     used_f = {m.group(1) for m in TEMPLATE.finditer(text)} | {f for l in C["lessons"] for f in l["facts"]} | {f for c in C["checks"] for f in c.get("facts", [])} | {f["id"] for f in C["facts"] if f.get("used_by")}
     for f in C["facts"]: need(f["id"] in used_f, f"fact {f['id']}: no lesson, check or text uses it (orphan)")
+    # A part's colour is written where each picture is drawn (the model, the build film, the 3D parts, the films' palette).  The shutter changed colour on
+    # 24 November 2026 and had to be changed in six places: this holds them to the part's card.
+    card = next((p.get("card", {}).get("colour") for p in C["parts"] if p["id"] == "blade"), None); want = tuple(int(card[i:i + 2], 16) for i in (1, 3, 5)) if card else None
+    def rgb(rel, pattern, scale):
+        f = ROOT / rel
+        if not f.exists(): return None
+        m = re.search(pattern, f.read_text(encoding="utf-8")); return None if not m else tuple(round(float(x) * scale) for x in m.groups()[:3]) if len(m.groups()) >= 3 else tuple(int(m.group(1)[i:i + 2], 16) for i in (0, 2, 4))
+    num = r"([0-9.]+), *([0-9.]+), *([0-9.]+)"
+    for rel, pattern, scale in (("scad/one135.scad", r'n == "blade" \? \(G_RAINBOW \? \[[^\]]*\] : G_TRUE \? \[[^\]]*\] : \[' + num + r"\]", 255), ("scad/one135.scad", r'n == "blade"\)  translate\(\[0, 0, SLID\]\) color\(DARK \? \[[^\]]*\] : \[' + num + r"\]", 255),
+                                ("tools/motionfilm.py", r"blade=\[" + num + r"\]", 255), ("tools/asmview.py", r"blade=\(" + num + r"\)", 1), ("site/assets3d.py", r'\("blade",[^#]*"#([0-9A-Fa-f]{6})"', 1), ("course/draw.py", r'SHUTTER = col\("([0-9A-Fa-f]{6})"\)', 1)):
+        got = rgb(rel, pattern, scale)
+        if want and (ROOT / rel).exists(): need(got is not None and all(abs(x - y) <= 2 for x, y in zip(got, want)), f"the shutter's colour: its card says {card}, {rel} draws it {got}")
     return E, N, states
 
 # ----------------------------------------------------------------------------------------------------------------------------- writing

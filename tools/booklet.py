@@ -157,7 +157,7 @@ def build():
     fit(c, trim("p_pinring", 6), x0 + 4, y0 + 4, 20, 22); fit(c, trim("p_pindisc", 6), x0 + 22, y0 + 4, 16, 22); c.setFillColor(INK); c.setFont("LSB", 8.6); c.drawString(x0 + 40, y0 + 18, "pinhole ring + disc"); c.setFillColor(GREY); c.setFont("LS", 7.6); c.drawString(x0 + 40, y0 + 8, "for the pinhole"); c.drawString(x0 + 40, y0 - 1, "experiment: page 15")
     c.setStrokeColor(BOXL); c.setLineWidth(0.8); c.setFillColor(BOX); c.roundRect(M, M + 2, W - 2 * M, 44, 8, fill=1, stroke=1); fit(c, trim("cassette", 6), M + 8, M + 5, 40, 38)
     c.setFillColor(INK); c.setFont("LSB", 11); c.drawString(M + 56, M + 27, "Film: any 35 mm film.  A roll is in the starter kit."); c.setFillColor(GREY); c.setFont("LS", 9.5); c.drawString(M + 56, M + 13, "The dot chart in this guide is for ISO 400 film.")
-    c.setFont("LS", 7.6); c.drawRightString(W - M - 8, M + 27, "In your bag the shutter and the aperture wheel are black:"); c.drawRightString(W - M - 8, M + 18, "they keep light off the film. They are drawn in colour"); c.drawRightString(W - M - 8, M + 9, "here so you can follow them."); c.showPage()
+    c.setFont("LS", 7.6); c.drawRightString(W - M - 8, M + 22, "The parts in your bag are the colours"); c.drawRightString(W - M - 8, M + 13, "they are drawn in here."); c.showPage()
     # build, film in, pictures, film out: from the master list in tools/steps.py
     from steps import STEPS, WEB
     w = (W - 2 * M - 18) / 2; h = H - 2 * M - 26; page = [3]

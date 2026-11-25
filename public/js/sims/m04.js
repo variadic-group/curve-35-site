@@ -281,7 +281,7 @@
       b += '<rect x="' + (x + 20) + '" y="70" width="120" height="44" rx="6" fill="#3b3936"/><circle cx="' + (x + 80) + '" cy="118" r="8" fill="#9fd3e6" stroke="#2D2A26"/>';
       if (i === 0) b += '<rect x="' + (x + 60) + '" y="104" width="6" height="22" fill="#f2c230"/><rect x="' + (x + 94) + '" y="104" width="6" height="22" fill="#f2c230"/>';
       if (i === 1) b += '<rect x="' + (x + 77) + '" y="72" width="6" height="40" fill="#f2c230"/>';
-      if (i === 2) b += '<rect x="' + (x + 100) + '" y="76" width="22" height="10" rx="3" fill="#1aa39a"/>';
+      if (i === 2) b += '<rect x="' + (x + 100) + '" y="76" width="22" height="10" rx="3" fill="#8145C0"/>';
       if (i === 3) b += '<line x1="' + (x + 80) + '" y1="72" x2="' + (x + 80) + '" y2="112" stroke="#f2c230" stroke-width="3"/><line x1="' + (x + 52) + '" y1="72" x2="' + (x + 40) + '" y2="112" stroke="#f2c230" stroke-width="2"/><line x1="' + (x + 108) + '" y1="72" x2="' + (x + 120) + '" y2="112" stroke="#f2c230" stroke-width="2"/><path d="M' + (x + 75) + " 112 L" + (x + 80) + " 104 L" + (x + 85) + ' 112Z" fill="#D9601A"/>';
       b += T(x + 14, 156, it[1], { size: 13 });
       var words = it[2].split(" "), line = "", ly = 178;
@@ -297,7 +297,7 @@
     function rocker(x, tilt, label, sub) {
       var s = "";
       s += '<rect x="' + (x - 90) + '" y="150" width="180" height="60" rx="10" fill="#3b3936"/>';
-      s += '<g transform="rotate(' + tilt + " " + x + ' 140)"><path d="M' + (x - 80) + " 128 L" + x + " 142 L" + (x + 80) + " 128 L" + (x + 80) + " 140 L" + x + " 152 L" + (x - 80) + ' 140Z" fill="#1aa39a"/></g>';
+      s += '<g transform="rotate(' + tilt + " " + x + ' 140)"><path d="M' + (x - 80) + " 128 L" + x + " 142 L" + (x + 80) + " 128 L" + (x + 80) + " 140 L" + x + " 152 L" + (x - 80) + ' 140Z" fill="#8145C0"/></g>';
       s += '<circle cx="' + x + '" cy="146" r="5" fill="#fff"/>';
       s += T(x, 248, label, { anchor: "middle", size: 15 }) + T(x, 268, sub, { anchor: "middle", size: 13, w: 400, fill: "#625C53" });
       return s;

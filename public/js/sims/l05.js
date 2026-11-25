@@ -89,7 +89,7 @@
   function lg2(x) { return Math.log(x) / Math.LN2; }
 
   reg("sim", "l05_swing", function (host, api) {
-    var K = (api && api.colour) || "#0f8b8d", RM = !!(api && api.reducedMotion);
+    var K = (api && api.colour) || "#0f8b8d", RM = !!(api && api.reducedMotion), BL = "#8145C0", BLK = "#3A1F5C";   // the shutter is purple, whatever the page's own colour is
     var r = root(host, K);
     var st = { mode: "click", p: 3, v: 10, side: 1, phase: "idle", t: 0, raf: 0, dots: [] };
     var W = 720, H = 430, px = 180, py = 300, R = R_MM * PX, lx = px, ly = py - R;
@@ -104,8 +104,8 @@
     var A = 0.86, ri = 120, ro = 212, p1 = arc(ri, -A), p2 = arc(ro, -A), p3 = arc(ro, A), p4 = arc(ri, A), wr = (OPEN_MM - 2.88) / 2 * PX;
     var d = "M" + p1 + " L" + p2 + " A" + ro + " " + ro + " 0 0 1 " + p3 + " L" + p4 + " A" + ri + " " + ri + " 0 0 0 " + p1 + "Z " +
       "M" + (lx - wr) + "," + ly + " a" + wr + "," + wr + " 0 1,0 " + 2 * wr + ",0 a" + wr + "," + wr + " 0 1,0 " + -2 * wr + ",0Z";
-    blade.appendChild(sv("path", { d: d, fill: K, "fill-rule": "evenodd", stroke: "#0b3d3e", "stroke-width": 2 }));
-    blade.appendChild(sv("path", { d: "M" + (px - 16) + "," + py + " L" + arc(ri, -A) + " L" + arc(ri, A) + " L" + (px + 16) + "," + py + "Z", fill: K, stroke: "#0b3d3e", "stroke-width": 2 }));
+    blade.appendChild(sv("path", { d: d, fill: BL, "fill-rule": "evenodd", stroke: BLK, "stroke-width": 2 }));
+    blade.appendChild(sv("path", { d: "M" + (px - 16) + "," + py + " L" + arc(ri, -A) + " L" + arc(ri, A) + " L" + (px + 16) + "," + py + "Z", fill: BL, stroke: BLK, "stroke-width": 2 }));
     s.appendChild(blade);
     s.appendChild(sv("circle", { cx: px, cy: py, r: 11, fill: "#ddd", stroke: "#0b3d3e", "stroke-width": 2 }));
     function lab(x, y, t, a, c, sz, w) { var e = sv("text", { x: x, y: y, "text-anchor": a || "start", fill: c || "#fff", "font-size": sz || 13, "font-weight": w || 600 }); e.textContent = t; s.appendChild(e); return e; }
@@ -300,8 +300,8 @@
   /* ---- figures ---- */
   reg("fig", "fig_l05_blade", function () {
     var b = '<rect width="560" height="300" fill="#fff"/>';
-    b += '<g transform="translate(150 270)"><path d="M-98,-90 L-168,-150 A222,222 0 0 1 168,-150 L98,-90 A130,130 0 0 0 -98,-90Z M-13,-170 a13,13 0 1,0 26,0 a13,13 0 1,0 -26,0Z" fill="#0f8b8d" fill-rule="evenodd" stroke="#0b3d3e" stroke-width="2"/>';
-    b += '<path d="M-14,0 L-60,-110 L60,-110 L14,0Z" fill="#0f8b8d" stroke="#0b3d3e" stroke-width="2"/><circle r="10" fill="#eee" stroke="#0b3d3e" stroke-width="2"/></g>';
+    b += '<g transform="translate(150 270)"><path d="M-98,-90 L-168,-150 A222,222 0 0 1 168,-150 L98,-90 A130,130 0 0 0 -98,-90Z M-13,-170 a13,13 0 1,0 26,0 a13,13 0 1,0 -26,0Z" fill="#8145C0" fill-rule="evenodd" stroke="#3A1F5C" stroke-width="2"/>';
+    b += '<path d="M-14,0 L-60,-110 L60,-110 L14,0Z" fill="#8145C0" stroke="#3A1F5C" stroke-width="2"/><circle r="10" fill="#eee" stroke="#3A1F5C" stroke-width="2"/></g>';
     b += '<circle cx="150" cy="100" r="58" fill="none" stroke="#D9601A" stroke-width="3" stroke-dasharray="7 5"/>';
     b += '<path d="M330,70 h200 M330,70 l14,-8 M330,70 l14,8" stroke="#2D2A26" stroke-width="2" fill="none"/>';
     b += '<text x="346" y="58" font-size="15" font-weight="600" fill="#2D2A26">window: the only way in</text>';
@@ -313,7 +313,7 @@
     b += '<line x1="168" y1="268" x2="326" y2="258" stroke="#2D2A26" stroke-width="1.5"/>';
     b += '<path d="M60,40 A140,140 0 0 1 240,40" fill="none" stroke="#D9601A" stroke-width="2.5" marker-end="url(#ah5)"/><defs><marker id="ah5" markerWidth="10" markerHeight="10" refX="6" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10Z" fill="#D9601A"/></marker></defs>';
     b += '<text x="12" y="292" font-size="11" fill="#625C53">seen from inside the camera</text>';
-    return svgFig(560, 300, "The shutter blade, a teal fan on a peg with one round window. Pressing the rocker swings it so the window passes the lens once; at rest solid plastic covers the lens.", b);
+    return svgFig(560, 300, "The shutter blade, a purple fan on a peg with one round window. Pressing the rocker swings it so the window passes the lens once; at rest solid plastic covers the lens.", b);
   });
   reg("fig", "fig_l05_force", function () {
     var x0 = 60, y0 = 240, w = 440, h = 190, b = '<rect width="560" height="300" fill="#fff"/>';

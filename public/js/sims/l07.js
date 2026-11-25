@@ -83,7 +83,7 @@
       [120, 136, 260, 136], [260, 136, 260, 286], [260, 286, 404, 286], [404, 286, 404, 136], [404, 136, 600, 136]], inside: function (x, y) { return x >= 600; } }
   };
   Object.keys(GEO).forEach(function (k) { GEO[k].walls.push([120, 0, 120, 100], [120, 136, 120, 400]); });
-  var SOLIDS = {   // filled shapes for drawing: back (light grey in pictures) above, body (near black) below
+  var SOLIDS = {   // filled shapes for drawing: back (grey) above, body (matte black) below
     straight: { back: [[0, 0, 720, 100]], body: [[120, 136, 600, 264]] },
     corner: { back: [[0, 0, 720, 100], [400, 100, 320, 300]], body: [[120, 136, 244, 264]] },
     joint: { back: [[0, 0, 720, 100], [296, 100, 72, 150]], body: [[120, 136, 140, 264], [260, 286, 144, 114], [404, 136, 196, 264]] }
@@ -245,7 +245,7 @@
   });
 })();
 
-/* Lesson 7's picture (hero_fig, and its card): a light trap.  Light that gets into a gap must turn corners; each bounce sends back at most 0.3 of it. */
+/* Lesson 7's picture (hero_fig, and its card): a light trap.  Light that gets into a gap must turn corners; in the model each bounce sends back 0.3 of it. */
 (function () {
   "use strict";
   var C = window.CURVE; if (!C || !C.fig) return;
@@ -259,7 +259,7 @@
       '<line x1="332" y1="260" x2="600" y2="260" stroke="' + SUN + '" stroke-width="2.5" stroke-linecap="round" opacity=".6"/>' +
       '<circle cx="332" cy="140" r="9" fill="#fff" stroke="' + INK + '" stroke-width="2.5"/><circle cx="332" cy="260" r="9" fill="#fff" stroke="' + INK + '" stroke-width="2.5"/>' +
       T(20, 72, "light", 26, 800, INK) + T(392, 160, "0.3", 30, 800, INK) + T(630, 236, "0.09", 34, 800, INK, "end") +
-      T(526, 324, "dark inside", 22, 700, "#fff", "middle") + T(632, 46, "each corner: at most 0.3 gets past", 19, 600, "#625C53", "end");
-    return C.U.svg(640, 360, b, "A light trap. Light getting into a gap has to bounce round two corners. Each bounce lets at most 0.3 of it through: 0.3 after one corner, 0.09 after two, so the inside stays dark.");
+      T(526, 324, "dark inside", 22, 700, "#fff", "middle") + T(632, 46, "in the model, 0.3 gets past each corner", 19, 600, "#625C53", "end");
+    return C.U.svg(640, 360, b, "A light trap. Light getting into a gap has to bounce round two corners. In the model each bounce lets 0.3 of it through: 0.3 after one corner, 0.09 after two, so the inside stays dark.");
   });
 })();
